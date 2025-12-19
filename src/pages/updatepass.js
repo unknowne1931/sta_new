@@ -18,7 +18,7 @@ const Updatepass = () => {
       e.preventDefault();
       try{
         setAlert(false)
-        axios.post(`${"http://kalanirdhari.in"}/update/password/without/token`,{pass : cnf_pass, oldpass: pass, user})
+        axios.post(`${"https://kalanirdhari.in"}/update/password/without/token`,{pass : cnf_pass, oldpass: pass, user})
         .then(res=>{
           if(res.data.Status === "OK"){
             setData("Password Updated")

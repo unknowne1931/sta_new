@@ -23,7 +23,7 @@
 //     try{
 //       setLoad(true);
 //       setAlert(false);
-//       axios.post(`${"http://kalanirdhari.in"}/post/new/user/data`,{pass, email, name, username : user_name})
+//       axios.post(`${"https://kalanirdhari.in"}/post/new/user/data`,{pass, email, name, username : user_name})
 //       .then(res=>{
 //         if(res.data.Status === "OK"){
 //           setLoad(false)
@@ -76,7 +76,7 @@
 //     e.preventDefault();
 //     try{
 //       setAlert(false)
-//       axios.post("http://kalanirdhari.in/get/all/users/data/otp/to/verify", {OTP, username : user_name})
+//       axios.post("https://kalanirdhari.in/get/all/users/data/otp/to/verify", {OTP, username : user_name})
 //       .then(res=>{
 //         if(res.data.Status === "OK"){
 //           window.location.href='/login'
@@ -212,7 +212,7 @@ const Signup = () => {
     try {
       setLoad(true);
       setAlert(false);
-      axios.post(`http://kalanirdhari.in/post/new/user/data`, { pass, email, name, username: user_name })
+      axios.post(`https://kalanirdhari.in/post/new/user/data`, { pass, email, name, username: user_name })
         .then(res => {
           if (res.data.Status === "OK" || res.data.Status === "OK-EML-VERI") {
             setLoad(false)
@@ -250,7 +250,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       setAlert(false)
-      axios.post("http://kalanirdhari.in/get/all/users/data/otp/to/verify", { OTP, username: user_name })
+      axios.post("https://kalanirdhari.in/get/all/users/data/otp/to/verify", { OTP, username: user_name })
         .then(res => {
           if (res.data.Status === "OK") {
             window.location.href = '/login'
@@ -278,7 +278,7 @@ const Signup = () => {
         const uid = user.uid;
 
         // Send to backend
-        axios.post("http://kalanirdhari.in/post/new/google/user", {
+        axios.post("https://kalanirdhari.in/post/new/google/user", {
           email,
           name,
           username,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api_user_admin = axios.create({
-  baseURL: `${"http://kalanirdhari.in"}/user_admin`
+  baseURL: `${"https://kalanirdhari.in"}/user_admin`
 });
 
 // Add a request interceptor

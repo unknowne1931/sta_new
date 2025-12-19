@@ -30,7 +30,7 @@ const Data = () => {
     } else {
       try {
         const res = await api.get(
-          `http://kalanirdhari.in/users/name/and/more/get/${user}`
+          `https://kalanirdhari.in/users/name/and/more/get/${user}`
         )
         if (res.data?.data) {
           setData(res.data.data)
@@ -58,7 +58,7 @@ const Data = () => {
     } else {
       try {
         const res = await api.get(
-          `http://kalanirdhari.in/get/bank/account/data/${user}`
+          `https://kalanirdhari.in/get/bank/account/data`
         )
         const result = res.data
 

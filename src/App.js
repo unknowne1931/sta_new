@@ -31,6 +31,7 @@ import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import DemoBarGraph from './admin/graphs';
 import logo from "./image/logo.png"
 import Navi_2 from './navi_2';
+import api from './pages/api';
 
 
 const User_admin = lazy(()=> import('./admin/add_admins'))
@@ -82,11 +83,22 @@ const DisplayPath = () => {
   const [alert, setAlert] = useState(false);
 
   useEffect(()=>{
+    api.get("https://kalanirdhari.in/print/user/data")
+    .then(res=>
+      res.json()
+    ).then(res=>{
+      console.log(res.data)
+    }).catch((error)=>{
+      console.log(error)
+    })
+  },[])
+
+  useEffect(()=>{
     if(location.pathname !== "/start" && user){
       setAlert(false)
       removeFromDB('targetSecond');
       try{
-        axios.delete(`${"http://kalanirdhari.in"}/delete/by/user/id/for/valid/data/${user}`)
+        api.delete(`${"https://kalanirdhari.in"}/delete/by/user/id/for/valid/data`)
         .then(res =>{
           if(res.data.Status === "OK"){
             localStorage.removeItem("valid")
@@ -176,7 +188,7 @@ const App = () => {
         console.log(res.ip)
         saveToDB("ip" , res.ip)
         saveToDB('city', res.city.name)
-        axios.post("http://kalanirdhari.in/new/ip/data", {ip : res.ip, city : res.city.name})
+        axios.post("https://kalanirdhari.in/new/ip/data", {ip : res.ip, city : res.city.name})
         
       })
       .catch(error =>{

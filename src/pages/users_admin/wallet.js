@@ -21,7 +21,7 @@ const Wallet = () => {
 
     const get_qno_len = () =>{
         try{
-            api_user_admin.get(`http://kalanirdhari.in/get/admin/sub/users/posted/datas/011/${user}`)
+            api_user_admin.get(`https://kalanirdhari.in/get/admin/sub/users/posted/datas/011/${user}`)
             .then(res=>{
                 if(res.data.data){
                     setData(res.data.data)
@@ -49,7 +49,7 @@ const Wallet = () => {
 
     const Get_All_Data = () =>{
         try{
-            api_user_admin.get(`http://kalanirdhari.in/get/wallet/amount/credits/links/by/${user}`)
+            api_user_admin.get(`https://kalanirdhari.in/get/wallet/amount/credits/links/by/${user}`)
             .then(res=>{
                 if(res.data.Datas){
                     setAll_Data(res.data.Datas)

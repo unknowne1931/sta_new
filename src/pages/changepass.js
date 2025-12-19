@@ -24,7 +24,7 @@ const Changepass = () => {
       try{
         setAlert(false)
         if(pass === cnf_pass){
-          axios.post(`${"http://kalanirdhari.in"}/update/new/pass/by/token`, {pass, token,id})
+          axios.post(`${"https://kalanirdhari.in"}/update/new/pass/by/token`, {pass, token,id})
           .then(res=>{
             if(res.data.Status === "OK"){
               setData("Password Updated")

@@ -18,7 +18,7 @@ const Carthist = () => {
   const GetClaimed = () =>{
     try{
       setTimeout(()=>{
-        api.get(`${"http://kalanirdhari.in"}/get/claimed/from/pending/coins/${user}`)
+        api.get(`${"https://kalanirdhari.in"}/get/claimed/from/pending/coins`)
         .then(res =>{
           if(res.data.data){
             setClaimed_data(res.data.data);
@@ -52,7 +52,7 @@ const Carthist = () => {
 
   const GetPending = () =>{
     try{
-      api.get(`${"http://kalanirdhari.in"}/get/requested/coins/by/${user}`)
+      api.get(`${"https://kalanirdhari.in"}/get/requested/coins/by`)
       .then(res =>{
         if(res.data.data){
           setPending_data(res.data.data);

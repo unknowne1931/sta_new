@@ -36,7 +36,7 @@ const QuestionAdd = () => {
 
     const GetAllDAta = () =>{
         try{
-            apiAdmin.get("http://kalanirdhari.in/get/all/admin/new/languages/data")
+            apiAdmin.get("https://kalanirdhari.in/get/all/admin/new/languages/data")
             .then(res =>{
                 if(res.data.Data){
                     setALLLDAta(res.data.Data)
@@ -66,7 +66,7 @@ const QuestionAdd = () => {
         try{
             setAlert(false);
             e.preventDefault();
-            axios.post(`${"http://kalanirdhari.in"}/get/posted/count/questions`,{user, img, Questio, a, b, c, d, Ans, lang, tough, seconds})
+            axios.post(`${"https://kalanirdhari.in"}/get/posted/count/questions`,{user, img, Questio, a, b, c, d, Ans, lang, tough, seconds})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     const qno = res.data.qno
@@ -96,7 +96,7 @@ const QuestionAdd = () => {
         try{
             e.preventDefault();
             setAlert(false);
-            apiAdmin.post("http://kalanirdhari.in/add/all/admin/new/languages/data",{lang : ALL})
+            apiAdmin.post("https://kalanirdhari.in/add/all/admin/new/languages/data",{lang : ALL})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     GetAllDAta()
@@ -196,7 +196,7 @@ const QuestionAdd = () => {
                     const DeleOne = () =>{
                         try{
                             setAlert(false)
-                            apiAdmin.delete(`http://kalanirdhari.in/delete/all/selected/data/with/onley/one/${users}`)
+                            apiAdmin.delete(`https://kalanirdhari.in/delete/all/selected/data/with/onley/one/${users}`)
                             .then(res =>{
                                 if(res.data.Status === "OK"){
                                     GetAllDAta()

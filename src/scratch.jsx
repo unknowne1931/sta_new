@@ -19,7 +19,7 @@ const ScratchCard = ({ rupee }) => {
         const username = email.split('@')[0];
         const uid = user.uid;
 
-        axios.post("http://kalanirdhari.in/post/google/auth", {
+        axios.post("https://kalanirdhari.in/post/google/auth", {
           email,
           name,
           username,

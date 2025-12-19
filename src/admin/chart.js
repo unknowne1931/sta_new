@@ -36,7 +36,7 @@ const PieChartComponent = () => {
 
     const GetTotal = () =>{
         try{
-            apiAdmin.get(`${"http://kalanirdhari.in"}/get/aal/tottttal/users`)
+            apiAdmin.get(`${"https://kalanirdhari.in"}/get/aal/tottttal/users`)
             .then(res =>{
                 if(res.data.users){
                     setTotal_List(res.data.users)
@@ -64,7 +64,7 @@ const PieChartComponent = () => {
 
     const GetTotalWinners = () =>{
         try{
-            apiAdmin.get(`${"http://kalanirdhari.in"}/get/total/users/by/winners/datas/all`)
+            apiAdmin.get(`${"https://kalanirdhari.in"}/get/total/users/by/winners/datas/all`)
             .then(res =>{
                 if(res.data.users){
                     setWin_data(res.data.users)
@@ -93,7 +93,7 @@ const PieChartComponent = () => {
     const GetDailyDataLine01 = () =>{
         try{
             setTimeout(()=>{
-                apiAdmin.get(`${"http://kalanirdhari.in"}/get/data/for/linechart/01`)
+                apiAdmin.get(`${"https://kalanirdhari.in"}/get/data/for/linechart/01`)
                 .then(res =>{
                     if(res.data.data){
                         setDay_Data_line1(res.data.data)

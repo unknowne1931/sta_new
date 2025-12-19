@@ -25,7 +25,7 @@ const Cupon = () => {
     const GetCupon = () =>{
         try{
             setTimeout(()=>{
-                fetch(`${"http://kalanirdhari.in"}/get/cupon/get/all/datas`)
+                fetch(`${"https://kalanirdhari.in"}/get/cupon/get/all/datas`)
                 .then(res => res.json())
                 .then(data =>{
                     if(data.data){
@@ -58,7 +58,7 @@ const Cupon = () => {
         try{
             e.preventDefault();
             setAlert(false)
-            axios.post(`${"http://kalanirdhari.in"}/get/new/cupon/for/neww/cupon`, {title, img, valid, body, type, user})
+            axios.post(`${"https://kalanirdhari.in"}/get/new/cupon/for/neww/cupon`, {title, img, valid, body, type, user})
             .then(res=>{
                 if(res.data.Status === "OK"){
                     GetCupon()
@@ -117,7 +117,7 @@ const Cupon = () => {
                     const Dele = () =>{
                         try{
                             setAlert(false)
-                            axios.delete(`${"http://kalanirdhari.in"}/delete/cupon/s/by/id/${data._id}`)
+                            axios.delete(`${"https://kalanirdhari.in"}/delete/cupon/s/by/id/${data._id}`)
                             .then(res=>{
                                 if(res.data.Status === "OK"){
                                     GetCupon()

@@ -49,7 +49,7 @@ const Account = () => {
       const valid_to_claim = (await getFromDB("new")) || "";
       const refer_ui = (await getFromDB("refer_ui")) || "";
 
-      const res = await api.post("http://kalanirdhari.in/get/balance/new/data", {
+      const res = await api.post("https://kalanirdhari.in/get/balance/new/data", {
         user,
         val_cm: valid_to_claim,
         refer_ui
@@ -80,7 +80,7 @@ const Account = () => {
   const GetBalance = async () => {
     try {
       setTimeout(async () => {
-        const res = await api.get(`http://kalanirdhari.in/get/acount/balence/${user}`);
+        const res = await api.get(`https://kalanirdhari.in/get/acount/balence`);
         if (res.data.data) {
           setBtn1(true);
           setBalance(res.data.data);
@@ -127,7 +127,7 @@ const Account = () => {
     }
 
     // 🟡 Step 1: Create Order from backend
-    const orderData = await fetch("http://kalanirdhari.in/create-order", {
+    const orderData = await fetch("https://kalanirdhari.in/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
