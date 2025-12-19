@@ -30,15 +30,12 @@ import Get_start from './get_start';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import DemoBarGraph from './admin/graphs';
 import logo from "./image/logo.png"
-import Navi_2 from './navi_2';
 import api from './pages/api';
 
 
 const User_admin = lazy(()=> import('./admin/add_admins'))
 const Home = lazy(()=> import('./pages/home'))
 // const Login = lazy(()=> import('./pages/login'))
-const Forgotpass = lazy(()=> import('./pages/forgotpass'))
-const Changepass = lazy(()=> import('./pages/changepass'))
 const Error = lazy(()=> import('./error'))
 const Ac_upi = lazy(()=> import('./pages/Account/ac_upi'))
 const History = lazy(()=> import('./pages/Account/history'))
@@ -47,7 +44,6 @@ const Payment = lazy(()=> import('./pages/Account/payment'))
 const Cart = lazy(()=> import('./pages/cart'))
 const Carthist = lazy(()=> import('./pages/carthist'))
 const Settings = lazy(()=> import('./pages/settings'))
-const Updatepass = lazy(()=>import('./pages/updatepass'))
 const Play = lazy(()=> import('./pages/play'))
 const Start = lazy(()=> import('./pages/start'))
 const Coin = lazy(()=> import('./admin/coin'))
@@ -83,7 +79,7 @@ const DisplayPath = () => {
   const [alert, setAlert] = useState(false);
 
   useEffect(()=>{
-    api.get("https://kalanirdhari.in/print/user/data")
+    api.get("http://localhost/print/user/data")
     .then(res=>
       res.json()
     ).then(res=>{
@@ -98,7 +94,7 @@ const DisplayPath = () => {
       setAlert(false)
       removeFromDB('targetSecond');
       try{
-        api.delete(`${"https://kalanirdhari.in"}/delete/by/user/id/for/valid/data`)
+        api.delete(`${"http://localhost"}/delete/by/user/id/for/valid/data`)
         .then(res =>{
           if(res.data.Status === "OK"){
             localStorage.removeItem("valid")
@@ -188,7 +184,7 @@ const App = () => {
         console.log(res.ip)
         saveToDB("ip" , res.ip)
         saveToDB('city', res.city.name)
-        axios.post("https://kalanirdhari.in/new/ip/data", {ip : res.ip, city : res.city.name})
+        axios.post("http://localhost/new/ip/data", {ip : res.ip, city : res.city.name})
         
       })
       .catch(error =>{
@@ -235,8 +231,6 @@ const App = () => {
 
                 <Route path='/signup' element={token ? <Home /> : <Signup />} />
                 <Route path='/login' element={token ? <Home /> : <Login />} />
-                <Route path='/forgotpass' element={token ? <Home /> : <Forgotpass />} />
-                <Route path='/changepass' element={token ? <Home /> : <Changepass />} />
                 <Route path='/navi' element={<Navi />} />
                 <Route path='/account' element={token ? <Account /> : <Login />} />
                 <Route path='/account/upi' element={token ? <Ac_upi /> : <Login />} />
@@ -246,7 +240,6 @@ const App = () => {
                 <Route path='/cart' element={token ? <Cart /> : <Login />} />
                 <Route path='/cart/history' element={token ? <Carthist /> : <Login />} />
                 <Route path='/settings' element={token ? <Settings /> : <Login />} />
-                <Route path='/update/password' element={token ? <Updatepass /> : <Login />} />
                 <Route path='/play' element={token ? <Play /> : <Login />} />
                 <Route path='/claim/cupon' element={token ? <Claimcupom /> : <Login /> } />
                 <Route path='/delete' element={token? <Delete /> : <Login/>} />
