@@ -288,7 +288,7 @@ const Play = () => {
     try {
       setAlert(false)
       e.preventDefault()
-      axios.post(`${"http://localhost"}/start/playing/by/debit/amount`, { user })
+      api.post(`${"http://localhost"}/start/playing/by/debit/amount/new`, { user })
         .then(res => {
           if (res.data.Status === "OK") {
             localStorage.setItem("valid", "yes")
