@@ -110,12 +110,26 @@ const Ticket_Page = () => {
 
                                     
                                     <div className='tickets_report_image_cnt'>
-                                        <img src={data.img} />
+                                       <img src={`data:image/png;base64,${data.img.trim()}`} alt="" />
+
+
                                     </div>
 
                                     
                                     <div className='tickets_report_opt_cnt_01'>
-                                        <div className='tickets_report_opt_cnt_01_sub'>
+                                        {data?.options?.map((option, index) => (
+                                            <div key={index} className='tickets_report_opt_cnt_01_sub'>
+                                                {option}
+                                                {option == data.usa && (
+                                                <div className='tickets_report_opt_cnt_01_sub_sub_01'>
+                                                    My Answered
+                                                </div>
+                                                )}
+                                            </div>
+                                            ))}
+
+                                        
+                                        {/* <div className='tickets_report_opt_cnt_01_sub'>
                                             {data.a}
                                             {data.a === data.usa &&
                                                 <div className='tickets_report_opt_cnt_01_sub_sub_01'>
@@ -151,7 +165,7 @@ const Ticket_Page = () => {
                                                     my Answerd
                                                 </div>
                                             }
-                                        </div>}
+                                        </div>} */}
 
                                     </div>
                                 </div>

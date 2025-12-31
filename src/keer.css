@@ -2119,7 +2119,8 @@
     position: absolute;
     top: -9px;
     left: 10px;
-    background-color: #00b618;
+    background-color: #23b93af2;
+    font-size: 1.4rem;
     border-radius: 10px;
     color: rgb(255, 255, 255);
     padding:  0 10px 0 10px;
@@ -2130,6 +2131,7 @@
 
 .tickets_my_ans_show_span_01{
     width: 100%;
+    /* font-size: 5px; */
     /* padding: 5px; */
     height: auto;
     /* margin: 5px; */
@@ -2558,4 +2560,13 @@
     .navi_2_main{
         width: 50%;
     }
+}
+
+.game_opt_cntr-01{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    margin: auto
 }

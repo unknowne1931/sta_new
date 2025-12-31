@@ -17,18 +17,7 @@ const Play = () => {
   const location = useLocation();
   const queryParm = new URLSearchParams(location.search);
   const id = queryParm.get('id');
-  const sec = queryParm.get('sec');
-  const qst = queryParm.get('qst');
-  const a = queryParm.get('a');
-  const b = queryParm.get('b');
-  const c = queryParm.get('c');
-  const d = queryParm.get('d');
-  const img = queryParm.get('img');
-  const ans = queryParm.get('ans');
-  const usa = queryParm.get('usa');
-  const vr = queryParm.get('vr');
-  const cat = queryParm.get('cat');
-  const tough = queryParm.get('tough');
+
 
   const [balance, setBalance] = useState([]);
   const [verify, setVerify] = useState(false)
@@ -50,12 +39,25 @@ const Play = () => {
   const [amt_fx, setAmt_Fx] = useState('')
   const [ex_seconds, setEx_Seconds] = useState('')
   const [ex_sec, setEx_Sec] = useState('')
+  const [time_ot, setTime_Ot] = useState('')
 
 
+useEffect(() => {
+  const fetchData = async () => {
+    await GetAllDAta();
 
-  useEffect(() => {
-    GetAllDAta()
-  }, [])
+    if (id === "timeout") {
+      const data = await getFromDB("start_time_out");
+      setTime_Ot(data);
+    } else if (id === "wronganswer") {
+      const data = await getFromDB("start_game_out");
+      setTime_Ot(data);
+    }
+  };
+
+  fetchData();
+}, []);
+
 
   useEffect(() => {
     GetBalance()
@@ -68,6 +70,7 @@ const Play = () => {
     } else {
       setSH_Bn1(true)
     }
+    console.log(time_ot)
   }, [])
 
 
@@ -87,8 +90,11 @@ const Play = () => {
   };
 
 
+
   const new_sec = (msg) =>{
-    api.post("http://localhost/get/id/to/update/seonds", {id, user, sec, qst, a, b, c, d, img, ans, usa, vr, msg, ex_seconds : ex_sec, cat, tough})
+    api.post("http://localhost/get/id/to/update/seonds", {
+      id : time_ot.qno_id, sec : time_ot.seconds, qst : time_ot.Qst, options : time_ot.options, img : time_ot.img, ans : time_ot.Ans, usa : time_ot.usa, vr : time_ot.vr, msg, ex_seconds : ex_sec, cat : time_ot.cat, tough : time_ot.tough
+    })
     .then(res => {
       if(res.data.Status === "OK"){
         window.location.replace("/tickets")
@@ -713,7 +719,7 @@ const Play = () => {
               <img src={imgg} alt='time over' />
             </div> */}
             {/* <span className='playyy_spn_01'>If time is short, please report it to us.</span> */}
-            <h2>Past seconds : {sec} </h2>
+            <h2>Past seconds : {time_ot?.seconds} </h2>
             <p className='playyy_para_01'>Report to us, and we will verify and refund if there is any issue.</p>
             <button style={{backgroundColor : "green"}} onClick={()=>window.location.replace("/play")}>
               Everything’s Fine
@@ -724,8 +730,8 @@ const Play = () => {
                 Wrong Option
               </button>
             }
-            
-            {vr === "false" &&
+
+            {time_ot?.vr === "false" &&
             <button onClick={()=>new_sec("Time Shortage")}>
               Time Shortage
             </button>
@@ -733,7 +739,7 @@ const Play = () => {
 
 
 
-            {vr === "false" &&
+            {time_ot?.vr === "false" &&
               <>
                 <div className='play_seconds_increase_txt' >
                   <span>Add more seconds</span>
@@ -741,11 +747,11 @@ const Play = () => {
               </>
             }
 
-            {vr === "false" &&
+            {time_ot?.vr === "false" &&
               <input type='number' className='input_report_1_sec' onChange={e=>{setEx_Sec(e.target.value)}} placeholder='expected seconds' />
             }
 
-            {vr === "false" &&
+            {time_ot?.vr === "false" &&
               <>
                 {ex_sec.length >= 1 &&
                   <div className='add_play_sec_new_01' onClick={()=>new_sec("Time Shortage")} >Add</div>

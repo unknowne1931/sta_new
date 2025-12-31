@@ -1,546 +1,786 @@
-<!DOCTYPE html>
-<html lang="en">
+import React, { useEffect, useState } from 'react'
+import img1 from "../image/refer.jpg"
+import api from './api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBank, faCar, faClose, faCoins, faEdit, faIndianRupee, faIndianRupeeSign, faPencil, faPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios';
+import Popup from './popup';
+import Loading from '../loading';
+import veri from "../image/verify.gif"
+import pro from "../image/pro.gif"
+import { useLocation } from 'react-router-dom';
+import imgg from "../image/to.gif"
+import { getFromDB, saveToDB } from '../db';
 
-<head>
-    <meta charset="UTF-8">
-    <title>Birth Certificate - Form 5</title>
-    <style>
-        body {
-            font-family: "Times New Roman", "Noto Sans Kannada", serif;
-            margin: 0;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+const Play = () => {
+
+  const location = useLocation();
+  const queryParm = new URLSearchParams(location.search);
+  const id = queryParm.get('report');
+
+
+  const [balance, setBalance] = useState([]);
+  const [verify, setVerify] = useState(false)
+  const [start, setStart] = useState(''); // should be "on" or "off"
+  const [btn1, setBtn1] = useState([]);
+  const [get_rupe, setGet_Rupee] = useState([]);
+  const user = localStorage.getItem("user");
+  const [alert, setAlert] = useState(false)
+  const [data, setData] = useState([]);
+  const [selLanguages, setSelLanguages] = useState([]);
+  const [getlang, setLang] = useState([]);
+  const [show1, setShow1] = useState(false)
+  const [show2, setShow2] = useState(false)
+  const [ALLLData, setALLLDAta] = useState([]);
+  const [load, setLoad] = useState(true);
+  const [sh_bn1, setSH_Bn1] = useState()
+  const [pro_img, setProImg] = useState(false);
+  const [pay_amt, setPay_Amt] = useState(false);
+  const [amt_fx, setAmt_Fx] = useState('')
+  const [ex_seconds, setEx_Seconds] = useState('')
+  const [ex_sec, setEx_Sec] = useState('')
+  const [time_ot, setTime_Ot] = useState('')
+
+
+  useEffect(async () => {
+    GetAllDAta()
+
+    if (id == "timeout" ) {
+      const data = await getFromDB('start_time_out');
+      setTime_Ot(data)
+    }else if (id == "wronganswer") {
+      const data = await getFromDB('start_game_out');
+      setTime_Ot(data)
+    }
+
+
+  }, [])
+
+  useEffect(() => {
+    GetBalance()
+    GetRupeeVal()
+    GetLanguages()
+    start_check()
+    const show_ban = localStorage.getItem("ban")
+    if (show_ban === "hide") {
+      setSH_Bn1(false)
+    } else {
+      setSH_Bn1(true)
+    }
+    console.log(time_ot)
+  }, [])
+
+
+  const start_check = () => {
+    fetch("http://localhost/start/or/no/check")
+      .then(res => res.json())
+      .then(data => {
+        if (data.status) {
+          setStart(data.status);
+        } else {
+          console.warn("Unexpected data:", data);
         }
-
-        .certificate {
-            border: 3px double black;
-            padding: 20px 30px;
-            width: 850px;
-            background: #fff;
-        }
-
-        .top-row {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            font-size: 10px;
-            font-weight: 1000;
-            margin: auto;
-        }
-
-        .top-row_2 {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            font-size: 10px;
-            font-weight: 1000;
-            margin: auto;
-            letter-spacing: 1px;
-        }
-
-        .cert_top_3_cnt {
-            width: 100%;
-            height: auto;
-            display: flex;
-            justify-content: space-around;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            margin: auto;
-        }
-
-        .cert_top_3_cnt_1 {
-            width: auto;
-            height: auto;
-            min-height: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            align-content: center;
-            justify-content: end;
-            /* text-align: end; */
-        }
-
-        .cert_top_4_cnt_1 {
-            width: auto;
-            height: auto;
-            min-height: 10px;
-            display: flex;
-            flex-wrap: wrap;
-            align-content: center;
-            justify-content: start;
-            /* text-align: end; */
-        }
-
-        .cert_top_3_cnt_2 {
-            width: 70%;
-            height: auto;
-            min-height: 10px;
-            text-align: center;
-        }
-
-        .cert_top_3_cnt_2 h2 {
-            font-size: 13px;
-            font-weight: bolder;
-        }
-
-        .cert_top_3_cnt_1_sub {
-            width: 70%;
-            height: 60%;
-            overflow: hidden;
-        }
-
-        .cert_top_3_cnt_1_sub img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .cert_top_3_cnt_3_sub {
-            width: 50%;
-            height: 60%;
-            overflow: hidden;
-        }
-
-        .cert_top_3_cnt_3_sub img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .birth_txt_caps {
-            font-size: 12px;
-            position: relative;
-            bottom: 10px;
-            font-weight: 1000;
-        }
-
-        .br_txt_cnt {
-            width: 90%;
-            /* border: 1px solid; */
-            text-align: center;
-            margin: auto;
-        }
-
-        .br_txt_cnt div {
-            width: 80%;
-            /* border: 1px solid; */
-            margin: auto;
-            font-size: 12px;
-        }
-
-        .ap_topin {
-            width: 100%;
-            height: auto;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .ap_topin p {
-            line-height: 13px;
-            word-spacing: 3px;
-            margin: auto;
-            text-align: start;
-
-        }
+      })
+      .catch(err => {
+        console.error("Check error:", err);
+      });
+  };
 
 
-        .row_simp {
-            width: 100%;
-            height: auto;
-            display: flex;
-            flex-wrap: nowrap;
-            flex-direction: row;
-        }
 
-        .row_simp_sub {
-            width: 50%;
-            min-height: 10px;
-            max-height: auto;
-            display: flex;
+  const new_sec = (msg) =>{
+    api.post("http://localhost/get/id/to/update/seonds", {
+      id : time_ot.qno_id, sec : time_ot.seconds, qst : time_ot.Qst, options : time_ot.options, img : time_ot.img, ans : time_ot.Ans, usa : "", vr : time_ot.vr, msg, ex_seconds : ex_sec, cat : time_ot.cat, tough : time_ot.tough
+    })
+    .then(res => {
+      if(res.data.Status === "OK"){
+        window.location.replace("/tickets")
+      }else{
+        window.location.replace("/play")
+      }
+    }).catch(error =>{
+      console.log(error)
+    })
+  }
 
-        }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (start === "off") {
+        start_check();
+      } else {
+        clearInterval(interval); // Stop when start is "on"
+      }
+    }, 5000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [start]);
 
 
-        .row_simp_sub_1 {
-            width: 10%;
-        }
+  const GetAllDAta = () => {
+    try {
+      api.get("http://localhost/get/all/admin/new/languages/data/user")
+        .then(res => {
+          if (res.data.Data) {
+            setALLLDAta(res.data.Data)
+          } else if (res.data.Logout === "OUT") {
+            localStorage.removeItem("token");
+            window.location.reload()
+          } else {
+            console.warn("Unexpected response structure:", res.data);
+          }
+        }).catch(error => {
+          if (error.response) {
+            console.error("API Error:", error.response.status, error.response.data);
+          } else if (error.request) {
+            console.error("No response from server. Please check your connection.");
+          } else {
+            console.error("Error occurred:", error.message);
+          }
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-        .row_simp_sub_2 {
-            width: auto;
-        }
+  const Delete_Lang = () => {
+    try {
+      api.delete(`http://localhost/get/language/datas/all/get/and/delete`)
+        .then(res => {
+          if (res.data.Status === "OK") {
+            GetLanguages()
+          } else if (res.data.Status === "BAD") {
 
-        .row_main-cnt_01 {
-            width: 100%;
-            height: auto;
-            display: flex;
-            flex-wrap: nowrap;
-            flex-direction: row;
-        }
+          } else if (res.data.Logout === "OUT") {
+            localStorage.removeItem("ssid");
+            window.location.reload()
+          } else {
+            console.warn("Unexpected response structure:", res.data);
+          }
+        }).catch(error => {
+          if (error.response) {
+            console.error("API Error:", error.response.status, error.response.data);
+          } else if (error.request) {
+            console.error("No response from server. Please check your connection.");
+          } else {
+            console.error("Error occurred:", error.message);
+          }
+        })
+    } catch (error) {
+      console.log(error)
+    }
 
-        .row_main-cnt_01 div {
-            width: 25%;
-            height: auto;
-            min-height: 10px;
-            padding: 3px;
-            font-size: 12px;
-            box-sizing: border-box;
-            font-weight: 500;
-        }
+  }
 
-        .bot_ttom {
-            width: 98%;
-            height: auto;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-content: center;
-        }
+  const GetRupeeVal = () => {
+    try {
+      fetch(`${"http://localhost"}/get/rupee/data/play`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.data) {
+            setGet_Rupee(data.data)
+          } else {
+            console.warn("Unexpected response structure:", data);
+          }
+        }).catch(error => {
+          if (error.response) {
+            console.error("API Error:", error.response.status, error.response.data);
+          } else if (error.request) {
+            console.error("No response from server. Please check your connection.");
+          } else {
+            console.error("Error occurred:", error.message);
+          }
+        })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-        .bot_ttom_2 {
-            width: 100px;
-            height: auto;
-            padding: 10px;
-        }
+  const PostLang = () => {
+    try {
+      setAlert(false)
+      api.post(`${"http://localhost"}/get/language/datas/all`, { lang: selLanguages, user })
+        .then(res => {
+          if (res.data.Status === "OK") {
+            GetLanguages()
+          } else {
+            setData("Amoun not Credited")
+            setAlert(true)
+          }
+        }).catch(error => {
+          if (error.response) {
+            console.error("API Error:", error.response.status, error.response.data);
+          } else if (error.request) {
+            console.error("No response from server. Please check your connection.");
+          } else {
+            console.error("Error occurred:", error.message);
+          }
+        })
+    } catch (error) {
+      console.log(error)
+    }
 
-        .bot_ttom_2 img {
-            width: 100%;
-            height: auto;
-        }
+  }
 
-        .logo_tiger {
-            width: 30px;
-            height: auto;
-            overflow: hidden;
-            margin: auto;
-            position: absolute;
-            left: 0;
-            right: 18px;
-            top: 25px;
-        }
+  const GetBalance = () => {
+    try {
+      api.get(`${"http://localhost"}/get/acount/balence`)
+        .then(res => {
+          if (res.data.data) {
+            setBtn1(true)
+            setBalance(res.data.data);
+          } else if (res.data.Status === "NO") {
+            setBtn1(false);
+          } else if (res.data.Logout === "OUT") {
+            localStorage.removeItem("ssid");
+            window.location.reload()
+          } else {
+            console.warn("Unexpected response structure:", res.data);
+          }
+        }).catch(error => {
+          if (error.response) {
+            console.error("API Error:", error.response.status, error.response.data);
+          } else if (error.request) {
+            console.error("No response from server. Please check your connection.");
+          } else {
+            console.error("Error occurred:", error.message);
+          }
+        })
+    } catch (error) {
+      console.log(error)
+    }
 
-        .logo_tiger img {
-            width: 100%;
-            height: auto;
-        }
+  }
 
-        .date {
-            text-align: center;
-        }
-        
-        .botoom_txt{
-            text-align: center;
-            font-size: 12px;
-            font-weight: 600;
-        }
+  const New = async () => {
+  try {
+    setAlert(false);
 
-    </style>
-</head>
+    const valid_to_claim = (await getFromDB("new")) || "";
+    const refer_ui = (await getFromDB("refer_ui")) || "";
 
-<body>
-    <div class="certificate">
-        <div class="logo_tiger">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" />
+    const res = await api.post("http://localhost/get/balance/new/data", {
+      user,
+      val_cm: valid_to_claim,
+      refer_ui
+    });
+
+    if (res.data.Status === "OK") {
+      await saveToDB("new", "no");
+      GetBalance();
+    } else if (res.data.Status === "BAD_REF") {
+      setData("Invalid referral");
+      setAlert(true);
+    } else {
+      setData("Amount not Credited");
+      setAlert(true);
+    }
+
+  } catch (error) {
+    if (error.response) {
+      console.error("API Error:", error.response.status, error.response.data);
+    } else if (error.request) {
+      console.error("No response from server. Please check your connection.");
+    } else {
+      console.error("Error occurred:", error.message);
+    }
+  }
+};
+
+  const StartGame = (e) => {
+    setVerify(true)
+    try {
+      setAlert(false)
+      e.preventDefault()
+      api.post(`${"http://localhost"}/start/playing/by/debit/amount/new`, { user })
+        .then(res => {
+          if (res.data.Status === "OK") {
+            localStorage.setItem("valid", "yes")
+            GetBalance()
+            window.location.href = '/start'
+            setVerify(false)
+          } else if (res.data.Status === "Low-Bal") {
+            setVerify(false)
+            setData("You not Have Enough Balance")
+            setAlert(true)
+
+          } else if (res.data.Status === "BAD") {
+            setVerify(false)
+            setData("Your turn has ended.")
+            setAlert(true)
+          } else if(res.data.Status === "BAD_CR"){
+            setVerify(false)
+            setData("Try Again or Wait a Minute")
+            setAlert(true)
+          }
+          else if (res.data.Status === "Time") {
+            setVerify(false)
+            setData(res.data.message)
+            setAlert(true)
+          }
+          else if (res.data.Status === "no_us") {
+            setVerify(false)
+            setData("Claim your Free Credit")
+            setAlert(true)
+          } else if (res.data.Status === "les_10") {
+            setVerify(false)
+            setData("Try Again")
+            setAlert(true)
+          } else if (res.data.Status === "s_m") {
+            setVerify(false)
+            setData("Some credentials are missing. Please try again.")
+            setAlert(true)
+          }
+          else {
+            setVerify(false)
+            setData("Something Went Wrong Try Again")
+            setAlert(true)
+          }
+        }).catch(error => {
+          setVerify(false)
+          if (error.response) {
+            console.error("API Error:", error.response.status, error.response.data);
+          } else if (error.request) {
+            console.error("No response from server. Please check your connection.");
+          } else {
+            console.error("Error occurred:", error.message);
+          }
+        })
+    } catch (error) {
+      setVerify(false)
+      console.log(error)
+    }
+
+
+  }
+
+
+  const SelHandel = (data) => {
+    setSelLanguages(data);
+  }
+
+  const GetLanguages = () => {
+    try {
+      setTimeout(() => {
+        api.get(`${"http://localhost"}/get/language/datas/all/get/${user}`)
+          .then(res => {
+
+            if (res.data.Users) {
+              setShow1(false);
+              setShow2(true);
+              setLang(res.data.Users.lang)
+              setLoad(false)
+            }
+
+            else if (res.data.Status === "IN") {
+              setShow1(true);
+              setShow2(false);
+              setLoad(false)
+            }
+
+            else if (res.data.Logout === "OUT") {
+              setLoad(false)
+              localStorage.removeItem("ssid");
+              window.location.reload()
+            }
+
+            else {
+              setLoad(false)
+              console.warn("Unexpected response structure:", res.data);
+            }
+
+          }).catch(error => {
+            setLoad(false)
+            if (error.response) {
+              console.error("API Error:", error.response.status, error.response.data);
+            } else if (error.request) {
+              console.error("No response from server. Please check your connection.");
+            } else {
+              console.error("Error occurred:", error.message);
+            }
+          })
+      }, 1000)
+
+    } catch (error) {
+      setLoad(false)
+      console.log(error)
+    }
+
+  }
+
+
+
+
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+
+
+  const initiatePayment = async (amt) => {
+    setAlert(false);
+    try {
+      const isScriptLoaded = await loadRazorpayScript();
+      if (!isScriptLoaded) {
+        setData("Razorpay SDK failed to load. Are you online?");
+        setAlert(true);
+        return;
+      }
+
+      const response = await fetch("http://localhost/create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user, amt }),
+      });
+
+      const data = await response.json();
+      if (!data.success) throw new Error("Order creation failed");
+      const { order } = data;
+      setAmt_Fx(false)
+
+      const options = {
+        key: "rzp_live_J6nOYKPF6WZxFj",
+        amount: order.amount,
+        currency: order.currency,
+        order_id: order.id,
+        name: "staWro",
+        description: "The knowledge competition",
+        // 🔁 Remove handler and use backend webhook instead
+        callback_url: "https://www.stawro.com/play", // Optional redirect after success
+        theme: { color: "#3399cc" },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error(error.message);
+      setData("Payment initiation failed.");
+      setAlert(true);
+    }
+  };
+
+
+
+  return (
+    <div className='playyy_main'>
+
+
+
+
+
+      {/* {sh_bn1 &&
+        <div className='baner_1' > <div onClick={() => { setSH_Bn1(false) }}>close</div> <h2>Write a review to earn <span>credits</span>. Share it with friends and get extra <span>credits</span> when they like it!</h2>
+          <br />
+          <button onClick={() => { window.location.href = '/review' }} >Go</button>
         </div>
-        <!-- Top Row -->
-        <div class="top-row">
-            <div>ನಂ.</div>
-            <div>ನಮೂನೆ &nbsp; –&nbsp;&nbsp; 5</div>
-        </div>
-
-        <div class="top-row_2">
-            <div>No.</div>
-            <div>Form &nbsp; –&nbsp;&nbsp;5</div>
-        </div>
+      } */}
 
 
-        <div class="cert_top_3_cnt">
+      {load ? <Loading /> :
+        <center>
+          <div className='Home-cnt-01-sub-01_logo'>
+            <strong>sta<span>W</span>ro</strong>
+            <hr />
+          </div>
 
-            <div class="cert_top_4_cnt_1">
-                <div class="cert_top_3_cnt_3_sub">
-                    <img src="img.jpg" />
+          
+          <h1 className='play-h1-01'>Start <span>Game</span></h1>
+
+
+
+
+          {/* main container */}
+
+          {!pay_amt &&
+            <div className='play-main-cnt-02'>
+              {btn1 &&
+                <div>
+                  <h3>Account Balance</h3>
+                  <FontAwesomeIcon icon={faIndianRupeeSign} className='play-main-cnt-02-icon-01' />
+                  <span> {balance.balance ? balance.balance : "0"}.00</span>
+                </div>
+              }
+
+              {!btn1 &&
+                <button onClick={New} className="get_bln">Get ₹05.00 Free</button>
+              }
+
+              {btn1 &&
+                <div className='add_more_btn' onClick={() => { setPay_Amt(true) }} >
+                  Add More
+
+                  {parseInt((parseInt(balance.balance) / parseInt(get_rupe.rupee))) <= 0 &&
+                    <div className='add_more_btn_sub_01'>
+                      All Payments Accepted
+                    </div>}
+                </div>
+              }
+
+
+              <br />
+              {show2 &&
+
+                <div className='play_sele_sel_lang'>
+                  <div className='play_sele_sel_lang_div' onClick={Delete_Lang} >Tap to Change</div>
+                  Selected Language : <strong>{getlang.map((lang, i) => (
+                    <>
+                      {lang}.
+                    </>
+                  ))}</strong>
+                </div>
+
+              }
+
+              {start.Status === "on" &&
+                <>
+                  {show1 || show2 &&
+                    <div onClick={StartGame} className='play_start_game_btn_01_cnt'>
+                      <div className='play_start_game_btn_01_cnt-sub_02'>
+                        {balance.balance &&
+                          `You have ${parseInt((parseInt(balance.balance) / parseInt(get_rupe.rupee)))} Attempts`
+                        }
+                      </div>
+                      <span>start</span>
+                      <div className='play_start_game_btn_01_cnt-sub_01'>
+                        Play with ₹ {get_rupe.rupee}.00 only
+                      </div>
+                    </div>
+                  }
+                </>
+              }
+
+
+
+
+              {show1 &&
+
+                <div className='play_main_select_lang_01_main'>
+                  <h1 className='play-h1-may-be-01'>Choose English, Then tap to start : </h1>
+                  <div className='play-h1-may-be-01_opt_cnt_01'>
+                    {ALLLData.map((data, i) => (
+                      <div key={i} onClick={() => { SelHandel(data) }}
+                        className={
+                          selLanguages.includes(data)
+                            ? "play-main-cnt-03-sub-div-02"
+                            : "play-main-cnt-03-sub-div-01"
+                        }
+                      >
+                        {selLanguages.includes(data) &&
+                          <div className='play-main-cnt-03-sub-div-02_sel'>
+                            selected
+                          </div>
+                        }
+                        {data}
+                      </div>
+                    ))}
+                  </div>
+
+                  {selLanguages.length > 0 &&
+                    <div onClick={PostLang} className='play_sel_lang_submit_btn'>
+                      Add
+                    </div>
+                  }
+
+
 
                 </div>
 
-            </div>
-            <div class="cert_top_3_cnt_2">
-                <h2>ಕರ್ನಾಟಕ ಸರ್ಕಾರ
-                    <br />
-                    <div style="height: 5px;"></div>
-                    GOVERNMENT OF KARNATAKA
-                    <br />
-                    ಜನನ ಮತ್ತು ಮರಣಗಳ ಮುಖ್ಯ ರಿಜಿಸ್ಟ್ರಾರರು
-                    <br />
-                    <div style="height: 5px;"></div>
-                    <span style="font-size: 12px; word-spacing: 2px;">Chief Registrar of Births and Deaths</span>
-                    <br />
-                    <div style="height: 10px;"></div>
-                    <span style="text-decoration: underline; font-size: 12px;">ಜನನ ಪ್ರಮಾಣ ಪತ್ರ</span>
-                </h2>
+              }
 
 
-
-
+              <div className='play_quick_links' onClick={() => { window.location.href = '/account/upi' }}>
+                <span>Add Bank or UPI to Receive Payments</span>
+              </div>
 
 
             </div>
+          }
 
-            <div class="cert_top_3_cnt_1">
-                <div class="cert_top_3_cnt_1_sub">
-                    <img src="imgg.png" />
+          {pay_amt &&
 
+            <div className='play-main-cnt-02-true'>
+              <h2>Add Amount to Wallet</h2>
+              <form onSubmit={(e) => {
+                e.preventDefault(); // prevent page reload
+                initiatePayment(amt_fx);
+              }}>
+                <div className='play-main-cnt-02-true_sub'>
+                  <input
+                    type='text'
+                    placeholder='0.00'
+                    onChange={e => setAmt_Fx(e.target.value)}
+                    required
+                  />
                 </div>
+                <br />
+
+                <div className='pay_buttonn-n'>
+                  <button type='submit'>Pay</button>
+                </div>
+              </form>
+
+
+
+              <div className='mod-rppu' >Quick Add</div>
+              <div className='play-main-cnt-02-true_sub_sub'>
+                <button onClick={() => initiatePayment(20)} >20</button>
+                <button onClick={() => initiatePayment(50)} >50</button>
+                <button onClick={() => initiatePayment(100)} >100</button>
+                <button onClick={() => initiatePayment(200)} >200</button>
+                <button onClick={() => initiatePayment(500)} >500</button>
+                <button onClick={() => initiatePayment(1000)} >1000</button>
+              </div>
+            </div>
+          }
+
+
+          <br />
+
+
+          {start.Status !== "on" &&
+            <div className='stop_play_cnt-01'>
+
+              <strong>
+                {start.text}
+              </strong>
+              <p>to Start the Game</p>
 
             </div>
 
+          }
+
+          <div className='stop_play_ticket_page' onClick={()=>window.location.href='/tickets'} >
+            My Submissions
+          </div>
 
 
+          <h2 className='play_refer_h2_01'>Refer <span>Friend</span> </h2>
+          <div className='play_refer_one'>
+            <div className='play_refer_one_img'>
+              <img src={img1} />
+            </div>
+            <div className='rfrr_h2_01'>
+              <h2>Write a review to earn <span>credits</span>. Share it with friends and get extra <span>credits</span> when they like it!</h2>
+              <br />
+              <button onClick={() => { window.location.href = '/refer' }} >Go</button>
+            </div>
+          </div>
+
+
+
+        </center>}
+      {alert &&
+
+        <Popup data={data} val={alert} />
+      
+      }
+
+
+      {verify &&
+
+        <div className='start_play_main_load-cnt-01'>
+          <div className="verify_pop_up-cnt-01">
+            <img src={veri} />
+          </div>
         </div>
 
-        <div class="br_txt_cnt">
-            <div>
-                (ಭಾ.ಮಾ.ಸಂ.ಕ್ರ.ಆದೇಶ,1969ರ 12/17ನೇ ವಿಧಿ ಹಾಗೂ ಕೆ.ಮಾ.ಸಂ.ಕ್ರ.ನಿಯಮಾವಳಿ, 1999ರ ನಿಯಮ 8/13ರ ಪ್ರಕಾರ ನೀಡಲ್ಪಟ್ಟಿದೆ)
-            </div>
-            <h2 class="birth_txt_caps">BIRTH CERTIFICATE</h2>
-            <div style="position: relative; bottom: 20px;">
-                (Issued Under Section 12/17 of the RBD Act, 1969 and Rule 8/13 of the KRBD Rules, 1999)
-            </div>
+      }
+
+      {pro_img &&
+        <div className='play-header_process'>
+          <h1 className='play-header_process_h1_01'>Processing... Do not refresh or close the page</h1>
+
+          <div className='play-header_process-sub'>
+            <img src={pro} />
+            {/* <h2>Play with ₹ 05.00 only</h2>
+            <p>Get ₹ 05.00 Free on your first play</p> */}
+
+          </div>
+          <div className='play-header_process-sub-02'>
+            <h2>Otherwise you will lose your Transaction</h2>
+          </div>
         </div>
+      }
 
-        <div class="ap_topin">
+      <div style={{ height: "50px" }}></div>
 
-            <p>
-                ಈ ಕೆಳಕಂಡ ವಿವರಣೆಯನ್ನು ಕರ್ನಾಟಕ ರಾಜ್ಯದ ಚಿತ್ರದುರ್ಗ ಜಿಲ್ಲೆಯ ಮೊಳಕಾಲ್ಮೂರು ತಾಲ್ಲೂಕಿನ ಮೊಳಕಾಲ್ಮೂರು (ಗ್ರಾಮ/ಪಟ್ಟಣ)ದ
-                ರಿಜಿಸ್ಟರಿನಲ್ಲಿರುವ ಜನನ ಸಂಬಂಧವಾದ ಮೂಲ ದಾಖಲೆಯಿಂದ ತೆಗೆದುಕೊಳ್ಳಲಾಗಿದೆಯಂದು ಪ್ರಮಾಣೀಕರಿಸಲಾಗಿ
-            </p>
+      {id &&
+        <div className='playyy_main_sub_01'>
+            <h1>Let Us Know</h1>
+            {/* <div className='playyy_main_sub_01_sub_01'>
+              <img src={imgg} alt='time over' />
+            </div> */}
+            {/* <span className='playyy_spn_01'>If time is short, please report it to us.</span> */}
+            <h2>Past seconds : {time_ot?.seconds} </h2>
+            <p className='playyy_para_01'>Report to us, and we will verify and refund if there is any issue.</p>
+            <button style={{backgroundColor : "green"}} onClick={()=>window.location.replace("/play")}>
+              Everything’s Fine
+            </button>
+            
+            {ex_sec.length < 1 && 
+              <button onClick={()=>new_sec("Wrong Option")}>
+                Wrong Option
+              </button>
+            }
 
-            <div style="height: 15px;"></div>
-
-
-            <p>
-
-                This is to certify that the following
-                information has been taken from the original record of birth
-                which Molakalmuru
-                (village/town) of
-                Molakalmuru
-                taluk of Chitradurga
-
-                district of Karnataka State.
-
-            </p>
-        </div>
-        <br />
-
-
-
-
-
+            {time_ot?.vr === "false" &&
+            <button onClick={()=>new_sec("Time Shortage")}>
+              Time Shortage
+            </button>
+            }
 
 
 
+            {time_ot?.vr === "false" &&
+              <>
+                <div className='play_seconds_increase_txt' >
+                  <span>Add more seconds</span>
+                </div>                
+              </>
+            }
 
+            {time_ot?.vr === "false" &&
+              <input type='number' className='input_report_1_sec' onChange={e=>{setEx_Sec(e.target.value)}} placeholder='expected seconds' />
+            }
 
+            {time_ot?.vr === "false" &&
+              <>
+                {ex_sec.length >= 1 &&
+                  <div className='add_play_sec_new_01' onClick={()=>new_sec("Time Shortage")} >Add</div>
+                }
+              </>
+            }
 
-        <div class="row_main-cnt_01">
-            <div>
-                1) ಹೆಸರು<br />
-                Name
-            </div>
-            <div>
-                ಚಂದನ<br />
-                Chandana
+            {ex_sec.length < 1 &&
 
-            </div>
-            <div>
-                2) ಲಿಂಗ<br />
-                Sex
+            <>
+              <button onClick={()=>new_sec("Image Loading")}>
+                Image Loading
+              </button>
+              <button onClick={()=>new_sec("Question not found")}>
+                Question not found
+              </button>
+            </>
+            }
 
-            </div>
-            <div>
-                ಹೆಣ್ಣು<br />
-                Female
-            </div>
+            
 
-        </div>
+            
 
-
-        <div class="row_main-cnt_01">
-            <div>
-                3) ಜನನದ ದಿನಾಂಕ<br />
-                Date of Birth
-
-            </div>
-            <div>
-                27/04/1983
-
-            </div>
-            <div>
-                4) ಜನನದ ಸ್ಥಳ<br />
-                Place of Birth<br />
-                Government Hospital, Molakalmuru(TP), Molakalmuru Taluk, Chitradurga District
-
-            </div>
-
-
-        </div>
-
-        <div class="row_main-cnt_01">
-            <div>
-                5) ತಾಯಿಯ ಹೆಸರು<br />
-                Name of Mother
-
-            </div>
-            <div>
-                ರಾಯಮ್ಮ<br />
-                Rayamma
-
-            </div>
-            <div>
-                6) ತಂದೆಯ ಹೆಸರು<br />
-                Name of Father
-
-            </div>
-            <div>
-                ದಾಸರ ಬೋರಯ್ಯ<br />
-                Dasaraboraiah
-            </div>
-
+          <br/>
+          <br/>
+          {/* <span onClick={()=>window.location.replace('/play')} className='playyy_spn_out'>Yes, the time is sufficient</span> */}
 
         </div>
-
-        <div class="row_main-cnt_01">
-            <div>
-                7)ಪತಿ / ಪತ್ನಿಯ ಹೆಸರು<br />
-                Name of Husband / Wife
-            </div>
-            <div>
-                ಸೂರಿ <br />
-                Suri
-            </div>
-        </div>
-
-        <div class="row_main-cnt_01">
-            <div>
-                8)ಜನನ ಸಮಯದ ವಿಳಾಸ<br />
-                Address at the time of Birth<br />
-            </div>
-            <div>
-                ನೇತ್ರನಹಳ್ಳಿ, ಚಿತ್ರದುರ್ಗ, ಕರ್ನಾಟಕ – 577529<br />
-                netranahalli, chitradurga karnataka - 577529
-            </div>
-            <div>
-                9)ತಂದೆಯ ಶಾಶ್ವತ ವಿಳಾಸ<br />
-                Father permanent address<br />
-            </div>
-            <div>
-                ನೇತ್ರನಹಳ್ಳಿ, ಚಿತ್ರದುರ್ಗ, ಕರ್ನಾಟಕ – 577529<br />
-                netranahalli, chitradurga karnataka - 577529
-            </div>
-        </div>
-
-        <div class="row_main-cnt_01">
-            <div>
-                10)ನೊಂದಾಯಿಸಿದ ದಿನಾಂಕ<br />
-                Date of Registration<br />
-            </div>
-            <div>
-                27/04/1983
-            </div>
-            <div>
-                11)ನೊಂದಾಯಿಸಿದ ಸಂಖ್ಯೆ<br />
-                Registration Number<br />
-            </div>
-            <div>
-                <strong>803162/B/B/2018/085565</strong>
-            </div>
-        </div>
-
-        <div class="row_main-cnt_01">
-            <div>
-                12)ಶರಾ (ಯಾವುದಾದರೂ ಇದ್ದರೆ)<br />
-                Remarks(if any)
-            </div>
-            <div>
-                --
-            </div>
-            <div>
-                13) ಪ್ರಮಾಣ ಪತ್ರ ಕೊಡುವ ಪ್ರಾಧಿಕಾರಿಯ ಸಹಿ <br />
-                Signature of the Issuing Authority<br />
-                <span>Digitally signed certificate, manual Signature is not required.</span>
-            </div>
-        </div>
-        <div class="row_main-cnt_01">
-            <div>
-                14)ಪ್ರಮಾಣ ಪತ್ರ ಕೊಡುವ ಪ್ರಾಧಿಕಾರಿಯ ವಿಳಾಸ<br />
-                Address of the issuing Authority Health Inspector/Officer
-            </div>
-            <div>
-                Molakalmuru Taluk, Chitradurga District
-            </div>
-
-        </div>
-
-
-
-
-
-
-
-
-
-        <div style="height: 10px;"></div>
-
-
-
-
-
-        <div class="bot_ttom">
-            <div class="bot_ttom_1">
-                <img src="IMG1.png" />
-            </div>
-            <div class="bot_ttom_2">
-                <img src="IMG.png" />
-
-            </div>
-
-        </div>
-
-        <div class="date">
-            <span>Date of issue</span> <span>17-12-2025</span>
-        </div>
-
-        <div class="botoom_txt">
-            <div class="quote">
-                “ಪ್ರತಿಯೊಂದು ಜನನ ಮತ್ತು ಮರಣ ನೋಂದಣಿಯನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ”
-            </div>
-
-            <div class="quote">
-                “Ensure registration of every birth and death”
-            </div>
-
-            <div class="note">
-                <strong>ಸೂಚನೆ:</strong> ಜನನ ನೋಂದಣಿಯನ್ನು
-                <a href="https://ejanma.karnataka.gov.in" target="_blank">
-                    https://ejanma.karnataka.gov.in
-                </a> ನಲ್ಲಿ ದೃಢೀಕರಿಸಿಕೊಳ್ಳಿ
-            </div>
-
-            <div class="note">
-                <strong>Note:</strong> Verify the Birth registration at
-                <a href="https://ejanma.karnataka.gov.in" target="_blank">
-                    https://ejanma.karnataka.gov.in
-                </a>
-            </div>
-        </div>
-
-
-
-
-
-
-
+      }
     </div>
-</body>
+  )
+}
 
-</html>
+export default Play
+

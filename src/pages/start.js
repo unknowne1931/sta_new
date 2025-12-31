@@ -9,7 +9,7 @@ const Start = () => {
   const [data, setData] = useState("");
   const [verify, setVerify] = useState(false);
   const [alert, setAlert] = useState(false);
-  const [QData, setQData] = useState([]);
+  const [QData, setQData] = useState({});
   const [remaining, setRemaining] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
   const user = localStorage.getItem("user");
@@ -107,8 +107,21 @@ const Start = () => {
     if (secondsLeft <= 0) {
       clearInterval(intervalRef.current);
       await removeFromDB('targetSecond');
+      await removeFromDB('start_time_out');
       console.log("Time Out");
-      window.location.replace(`/play?id=${QData._id}&sec=${QData.seconds}&qst=${QData.Question}&a=${QData.a}&b=${QData.b}&c=${QData.c}&d=${QData.d}&img=${QData.img}&ans=${QData.Ans}&usa=${''}&vr=false&cat=${QData.cat}&tough=${QData.tough}`);
+      await saveToDB( "start_time_out" ,{
+        qno_id: QData._id,
+        seconds: QData.seconds,
+        Qst : QData.Question,
+        options : QData.options,
+        img : QData.img,
+        Ans : QData.Ans,
+        cat : QData.cat,
+        tough : QData.tough,
+        vr : "false",
+        usa : '',
+      });
+      window.location.replace('/play?id=timeout');
       // window.location.href = `/play?id=${QData._id}&sec=${QData.seconds}`;
     }
   };
@@ -145,7 +158,6 @@ const Start = () => {
     try {
       const response = await api.post(`http://localhost/verify/answer/question/number`, {
         answer,
-        user,
         id: QData._id,
         seconds : parseInt(QData.seconds)- parseInt(remaining),
         Ans : QData.Ans
@@ -166,10 +178,26 @@ const Start = () => {
         setAlert(true);
         window.location.replace('/cart');
       } else {
+        await removeFromDB('start_game_out');
         setData("Wrong Answer");
         setAlert(true);
         setVerify(false);
-        window.location.replace(`/play?id=${QData._id}&sec=${QData.seconds}&qst=${QData.Question}&a=${QData.a}&b=${QData.b}&c=${QData.c}&d=${QData.d}&img=${QData.img}&ans=${QData.Ans}&usa=${answer}&vr=true&cat=${QData.cat}&tough=${QData.tough}`);
+        await saveToDB( "start_game_out" ,{
+        qno_id: QData._id,
+        seconds: QData.seconds,
+        Qst : QData.Question,
+        options : QData.options,
+        img : QData.img,
+        Ans : QData.Ans,
+        cat : QData.cat,
+        tough : QData.tough,
+        vr : "true",
+        usa : answer,
+      });
+
+      window.location.replace('/play?id=wronganswer');
+
+        // window.location.replace(`/play?id=${QData._id}&sec=${QData.seconds}&qst=${QData.Question}&a=${QData.a}&b=${QData.b}&c=${QData.c}&d=${QData.d}&img=${QData.img}&ans=${QData.Ans}&usa=${answer}&vr=true&cat=${QData.cat}&tough=${QData.tough}`);
 
         // window.location.replace('/play');
       }
@@ -198,13 +226,13 @@ const Start = () => {
         {QData.Question && (
           <div className="game_start-main-cnt-01">
             <div className="game_start-main-cnt-01-span-01">
-              <span className="game_start-main-cnt-01-span-01-span-01">{parseInt(QData.Qno) + 1}</span>: {QData.Question}.
+              {QData.Question}.
             </div>
             <br />
             {QData.img && (
               <div className="game_start-main-cnt-01-img-cnt-01">
                 <img
-                  src={QData.img}
+                  src={`data:image/png;base64,${QData.img}`}
                   alt="Question related"
                   onLoad={async () => {
                     const existingTarget = await getFromDB('targetSecond');
@@ -234,14 +262,28 @@ const Start = () => {
               </div>
             )}
             <br />
-            <div className="game_start-main-cnt-01-sub-cnt-01">
+
+            <div className='game_opt_cntr-01'>
+              {imageLoaded && (
+                <>
+                  {QData.options && QData.options.map((option, index) => (  
+                    <div key={index} className="game_start-main-cnt-01-sub-cnt-01">
+                      <button onClick={() => VerifyAnswer(option)}>{option}</button>
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+
+            
+            {/* <div className="game_start-main-cnt-01-sub-cnt-01">
               <button onClick={() => VerifyAnswer(QData.a)}>{QData.a}</button>
               <button onClick={() => VerifyAnswer(QData.b)}>{QData.b}</button>
             </div>
             <div className="game_start-main-cnt-01-sub-cnt-01">
               <button onClick={() => VerifyAnswer(QData.c)}>{QData.c}</button>
               <button onClick={() => VerifyAnswer(QData.d)}>{QData.d}</button>
-            </div>
+            </div> */}
             
           </div>
         )}
