@@ -21,7 +21,7 @@ const View_qstn = () => {
 
     const Get_Data = () =>{
         try{
-            api_user_admin.get(`http://localhost/get/admin/sub/users/posted/datas/011/${user}`)
+            api_user_admin.get(`https://kalanirdhari.in/get/admin/sub/users/posted/datas/011/${user}`)
             .then(res =>{
                 if(res.data.data){
                     setData(res.data.data)
@@ -75,7 +75,7 @@ const View_qstn = () => {
                     const DeleOne_fromId = () =>{
                         try{
                             setAlert(false)
-                            api_user_admin.delete(`http://localhost/delete/users/admin/qno/from/admin/users/${user._id}`)
+                            api_user_admin.delete(`https://kalanirdhari.in/delete/users/admin/qno/from/admin/users/${user._id}`)
                             .then(res =>{
                                 if(res.data.Status === "OK"){
                                     Get_Data()
