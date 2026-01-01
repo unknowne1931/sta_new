@@ -29,7 +29,7 @@ const Refer = () => {
 
     const di = await getFromDB("di");
     const shareUrl = `https://stawro.com/get/start?referralCode=${localStorage.getItem("user")}&ssid=${dev_id}`;
-    const title = "Answer 1 Question & Win Up To ₹ 100.00";
+    const title = "Join staWro and earn rewards!";
     const message = `${title} ${shareUrl}`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/?text=${encodedMessage}`, "_blank");

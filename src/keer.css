@@ -2570,3 +2570,204 @@
     padding: 10px;
     margin: auto
 }
+
+
+.wallet-admin-page{
+    width: auto;
+    height: auto;
+    margin: auto;
+    
+}
+
+.wallet-admin-page_01{
+    width: 95%;
+    height: auto;
+    border-radius: 10px;
+    margin: auto;
+    gap: 10px;
+    display: flex;
+    margin-top: 40px;
+}
+
+.wallet-admin-page_01_sub-01{
+    height: auto;
+    border: 1px solid;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(48, 127, 231, 0.921);
+    box-shadow: 4px 4px 8px rgba(37, 36, 36, 0.589);
+    text-align: start;
+    color: rgb(255, 255, 255);
+    position: relative;
+}
+
+.wallet-admin-page_01_sub-01 h2{
+    font-size: 3rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+}
+
+.wallet-admin-page-h1-01{
+    font-size: 5rem;
+    text-align: start;
+    margin: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    color: rgb(228, 228, 228);
+}
+
+.wallet-admin-page_01_sub-01 span{
+    font-size: 2rem;
+}
+
+.wallet-admin-page_01_sub-0_sub-01{
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    color: #000000;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    text-align: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.wallet-admin-page_01_sub-0_sub-01 div{
+    margin-top: 5px;
+    text-align: start;
+    width: 45%;
+    margin: auto;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.wallet-admin-page_01_sub-0_sub-01-sub-01{
+    color: rgb(72, 255, 0);
+    position: relative;
+    border: 1px solid white;
+    padding: 10px 1px 10px 2px;
+    border-radius: 10px;
+}
+
+.wallet-admin-page_01_sub-0_sub-01-sub-02{
+    color: rgba(151, 34, 2, 0.821);
+    position: relative;
+    border: 1px solid white;
+    padding: 10px 1px 10px 2px;
+    border-radius: 10px;
+}
+
+.wallet-admin-page_01_sub-0_sub-01-sub-01 strong{
+    color: #000000;
+    display: none;
+}
+.wallet-admin-page_01_sub-0_sub-01-sub-01 h2{
+    font-size: 4rem;
+}
+
+.wallet-admin-page-h1-01{
+    position: absolute;
+    background-color: rgb(48, 127, 231);
+    font-size: 1rem;
+    padding: 0 10px 0px 10px;
+    border-radius: 50px;
+    top: -22%;
+    left: 10px;
+    color: white;
+    border: 1px solid white;
+}
+
+
+.wallet-admin-page-transaction-card{
+    width: 90%;
+    height: 100px;
+    border-radius: 10px;
+    color: white;
+    border: 1px solid;
+    display: flex;
+    flex-direction: row;
+}
+
+.wallet-admin-page-transaction-card div{
+    width: 33.33%;
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wallet-admin-page-transaction-card p span{
+    color: rgb(2, 249, 2);
+    font-size: 5rem;
+}
+
+.wallet_usr_cnt-01{
+    width: 100%;
+    height: 70vh;
+    margin-top: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    font-size: 2rem;
+    overflow: hidden;
+}
+
+.pppp_pichi{
+    font-size: 3rem;
+    color: white;
+    display: flex;
+    padding: 10px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.wallet_usr_cnt-01_sub-01{
+    width: 45%;
+    height: auto;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
+    background-color: #000000;
+    box-shadow: 2px 4px 8px rgba(255, 255, 255, 0.473);
+    overflow: scroll;
+}
+.wallet-admin-page_01_sub-0_sub-01-sub-03{
+    color: rgb(176, 5, 5);
+    position: relative;
+    padding: 1px;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+.wallet-admin-page_01_sub-0_sub-01-sub-02_sub-01{
+    font-size: 1rem;
+    position: absolute;
+    color: white;
+    top: -13px;
+    left: 10px;
+    background-color: #084a85;
+    padding: 2px;
+    border: 1px solid white;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
