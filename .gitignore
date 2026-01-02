@@ -3,3 +3,4 @@ node_modules/
 *.log
 __pycache__/
 auto_update_to_git.bat
+python_auto_setup_live_server.py
