@@ -80,7 +80,7 @@ const DisplayPath = () => {
   const [alert, setAlert] = useState(false);
 
   useEffect(()=>{
-    api.get("https://kalanirdhari.in/print/user/data")
+    api.get("http://localhost/print/user/data")
     .then(res=>
       res.json()
     ).then(res=>{
@@ -95,7 +95,7 @@ const DisplayPath = () => {
       setAlert(false)
       removeFromDB('targetSecond');
       try{
-        api.delete(`${"https://kalanirdhari.in"}/delete/by/user/id/for/valid/data`)
+        api.delete(`${"http://localhost"}/delete/by/user/id/for/valid/data`)
         .then(res =>{
           if(res.data.Status === "OK"){
             localStorage.removeItem("valid")
@@ -185,7 +185,7 @@ const App = () => {
         console.log(res.ip)
         saveToDB("ip" , res.ip)
         saveToDB('city', res.city.name)
-        axios.post("https://kalanirdhari.in/new/ip/data", {ip : res.ip, city : res.city.name})
+        axios.post("http://localhost/new/ip/data", {ip : res.ip, city : res.city.name})
         
       })
       .catch(error =>{

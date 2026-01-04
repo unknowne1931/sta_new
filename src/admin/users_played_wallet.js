@@ -15,14 +15,28 @@ const UsersPlayedWalletAdmin = () => {
     const [tick, setTick] = useState([]);
 
     useEffect(() => {
+        // Set background color once
         document.body.style.backgroundColor = "#14036bff";
-        get_referd_coin();
-        get_paid_data();
-        get_refund_ticket();
+
+        // Function to run periodically
+        const refreshData = () => {
+            get_referd_coin();
+            get_paid_data();
+            get_refund_ticket();
+        };
+
+        // Run immediately on mount
+        refreshData();
+
+        // Set interval to run every 2 minutes (120000 ms)
+        const intervalId = setInterval(refreshData, 10000);
+
+        // Cleanup interval on unmount
+        return () => clearInterval(intervalId);
     }, []);
 
     function get_refund_ticket() {
-        apiAdmin.get('https://kalanirdhari.in/admin/refund/tickets/list')
+        apiAdmin.get('http://localhost/admin/refund/tickets/list')
             .then((response) => {
                 if (response.data.Logout === "OUT") {
                 } else {
@@ -32,9 +46,9 @@ const UsersPlayedWalletAdmin = () => {
             })
             .catch((error) => console.error('There was an error!', error));
     }
- 
+
     function get_referd_coin() {
-        apiAdmin.get('https://kalanirdhari.in/admin/refund/data/list')
+        apiAdmin.get('http://localhost/admin/refund/data/list')
             .then((response) => {
                 if (response.data.Logout === "OUT") {
                     window.location.href = "/admin/login";
@@ -47,7 +61,7 @@ const UsersPlayedWalletAdmin = () => {
     }
 
     function get_paid_data() {
-        apiAdmin.get('https://kalanirdhari.in/admin/balance/wallet')
+        apiAdmin.get('http://localhost/admin/balance/wallet')
             .then((response) => {
                 if (response.data.Logout === "OUT") {
                     window.location.href = "/admin/login";
@@ -98,7 +112,7 @@ const UsersPlayedWalletAdmin = () => {
             <br />
 
             <div className="wallet_usr_cnt-01">
-                {paid_data?.user_id?.map((item, index) => (
+                {paid_data?.user_id?.slice().reverse().map((item, index) => (
                     <div className="wallet-admin-page-transaction-card" key={index}>
                         <div>
                             <h2><FontAwesomeIcon icon={faUser} /></h2>
@@ -111,6 +125,7 @@ const UsersPlayedWalletAdmin = () => {
                         </div>
                     </div>
                 ))}
+
             </div>
 
         </div>

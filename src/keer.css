@@ -2714,16 +2714,19 @@
 }
 
 .wallet_usr_cnt-01{
-    width: 100%;
-    height: 70vh;
-    margin-top: 10px;
+    width: 90%;
+    height: auto;
     color: white;
     display: flex;
+    margin: 4px;
+    gap: 5px;
     justify-content: center;
     align-content: center;
     flex-direction: row;
+    flex-wrap: wrap;
     font-size: 2rem;
-    overflow: hidden;
+    overflow: scroll;
+    /* border: 1px solid; */
 }
 
 .pppp_pichi{
@@ -2740,11 +2743,8 @@
     height: auto;
     border: 1px solid;
     border-radius: 10px;
-    padding: 10px;
-    margin: auto;
     background-color: #000000;
     box-shadow: 2px 4px 8px rgba(255, 255, 255, 0.473);
-    overflow: scroll;
 }
 .wallet-admin-page_01_sub-0_sub-01-sub-03{
     color: rgb(176, 5, 5);

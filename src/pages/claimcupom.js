@@ -14,7 +14,7 @@ const Claimcupom = () => {
         if(id){
             try{
                 setTimeout(()=>{
-                    fetch(`${"https://kalanirdhari.in"}/get/coin/cupons/sds/by/id/${id}`)
+                    fetch(`${"http://localhost"}/get/coin/cupons/sds/by/id/${id}`)
                     .then(res => res.json())
                     .then(data =>{
                         setLoad(false);
