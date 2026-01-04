@@ -28,7 +28,7 @@ const Cart = () => {
     const GetStarsBala = () =>{
         try{
             setAlert(false)
-            api.get(`${"http://localhost"}/get/stars/balance`)
+            api.get(`${"https://kalanirdhari.in"}/get/stars/balance`)
             .then(res =>{
                 if(res.data.data){
                     setStarBal(res.data.data);
@@ -59,7 +59,7 @@ const Cart = () => {
     const GetMyCoins = () =>{
         try{
             setAlert(false)
-            api.get(`${"http://localhost"}/get/coins/data/by/id`)
+            api.get(`${"https://kalanirdhari.in"}/get/coins/data/by/id`)
             .then(res=>{
                 if(res.data.data){
                     setMy_Coins(res.data.data);
@@ -92,7 +92,7 @@ const Cart = () => {
         try{
             setTimeout(()=>{
                 setAlert(false)
-                api.get(`${"http://localhost"}/get/coin/data`)
+                api.get(`${"https://kalanirdhari.in"}/get/coin/data`)
                 .then(res=>{
                 if(res.data.data){
                     setStore_coins(res.data.data);
@@ -180,7 +180,7 @@ const Cart = () => {
                         e.preventDefault();
                         try{
                             setAlert(false);
-                            api.post(`${"http://localhost"}/claim/reqst/coins/admin`,{user, id : data._id})
+                            api.post(`${"https://kalanirdhari.in"}/claim/reqst/coins/admin`,{user, id : data._id})
                             .then(res=>{
                                 if(res.data.Status === "OK"){
                                     delay(5000)
@@ -250,7 +250,7 @@ const Cart = () => {
                         try{
                             setAlert(false);
                             e.preventDefault();
-                            api.post(`${"http://localhost"}/get/my/conis/get`, { user, id : data._id })
+                            api.post(`${"https://kalanirdhari.in"}/get/my/conis/get`, { user, id : data._id })
                             .then(res=>{
                                 if(res.data.Status === "OK"){
                                     GetMyCoins()

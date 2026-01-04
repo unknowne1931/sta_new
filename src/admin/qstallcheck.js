@@ -20,7 +20,7 @@ const Qstallcheck = () => {
 
     const GetAllDAta = () =>{
       try{
-        apiAdmin.get("http://localhost/get/all/admin/new/languages/data")
+        apiAdmin.get("https://kalanirdhari.in/get/all/admin/new/languages/data")
         .then(res =>{
             if(res.data.Data){
                 setALLLDAta(res.data.Data)
@@ -52,7 +52,7 @@ const Qstallcheck = () => {
     try{
       e.preventDefault();
       apiAdmin
-        .get(`${"http://localhost"}/get/admin/all/question/lists/${lang}`)
+        .get(`${"https://kalanirdhari.in"}/get/admin/all/question/lists/${lang}`)
         .then((res) => {
           if (res.data.data) {
             setQData(res.data.data);
@@ -81,7 +81,7 @@ const Qstallcheck = () => {
 
   const Delet = () =>{
     try{
-      axios.delete(`http://localhost/delete/unwanted/questions/${id}`)
+      axios.delete(`https://kalanirdhari.in/delete/unwanted/questions/${id}`)
       .then(res =>{
         if(res.data.Status === "OK"){
           setShow1(false)
@@ -152,7 +152,7 @@ const Qstallcheck = () => {
 
             const GetQustNo = (qno) =>{
               try{
-                apiAdmin.get(`${"http://localhost"}/question/one/by/${qno}/${lang}`)
+                apiAdmin.get(`${"https://kalanirdhari.in"}/question/one/by/${qno}/${lang}`)
                 .then(res => {
                   if(res.data.question){
                     setShow1(true)
@@ -212,7 +212,7 @@ const Qstallcheck = () => {
 
               const GetQustNo = (num) =>{
                 try{
-                  apiAdmin.get(`${"http://localhost"}/question/one/by/${num}/${lang}`)
+                  apiAdmin.get(`${"https://kalanirdhari.in"}/question/one/by/${num}/${lang}`)
                   .then(res => {
                     if(res.data.question){
                       setShow1(true)
