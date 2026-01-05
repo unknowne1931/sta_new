@@ -24,7 +24,7 @@ const Claimdreques = () => {
     const GetPending = () =>{
       try{
         setTimeout(()=>{
-          apiAdmin.get(`${"https://kalanirdhari.in"}/get/requested/coins/admin`)
+          apiAdmin.get(`${"http://localhost"}/get/requested/coins/admin`)
           .then(res =>{
             if(res.data.data){
               setPending_data(res.data.data);
@@ -75,7 +75,7 @@ const Claimdreques = () => {
                     try{
                       setAlert(false)
                       e.preventDefault();
-                      axios.delete(`${"https://kalanirdhari.in"}/find/by/id/and/delete/req/coins/${user.data._id}`)
+                      axios.delete(`${"http://localhost"}/find/by/id/and/delete/req/coins/${user.data._id}`)
                       .then(res =>{
                           if(res.data.Status === "OK"){
                               GetPending()
