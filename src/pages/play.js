@@ -40,6 +40,7 @@ const Play = () => {
   const [ex_seconds, setEx_Seconds] = useState('')
   const [ex_sec, setEx_Sec] = useState('')
   const [time_ot, setTime_Ot] = useState('')
+  const [level, setLevel] = useState('0')
 
 
 useEffect(() => {
@@ -64,6 +65,7 @@ useEffect(() => {
     GetRupeeVal()
     GetLanguages()
     start_check()
+    get_rank()
     const show_ban = localStorage.getItem("ban")
     if (show_ban === "hide") {
       setSH_Bn1(false)
@@ -100,6 +102,19 @@ useEffect(() => {
         window.location.replace("/tickets")
       }else{
         window.location.replace("/play")
+      }
+    }).catch(error =>{
+      console.log(error)
+    })
+  }
+
+  const get_rank = () =>{
+    api.get("http://localhost/get/levels/user")
+    .then(res=>{
+      if(res.data){
+        setLevel(res.data)
+      }else{
+        console.log("No Data Found")
       }
     }).catch(error =>{
       console.log(error)
@@ -501,6 +516,13 @@ useEffect(() => {
 
           {!pay_amt &&
             <div className='play-main-cnt-02'>
+
+              {level?.rank == null &&
+
+              <div className='play-main-cnt-02_abs'>
+                <h2>Level : <strong>{level.rank ? level.rank : 0}</strong></h2>
+              </div>}
+
               {btn1 &&
                 <div>
                   <h3>Account Balance</h3>

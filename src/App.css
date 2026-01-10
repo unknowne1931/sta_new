@@ -1768,6 +1768,8 @@ select {
   border-bottom-right-radius: 20px;
   box-shadow: 2px 5px 12px rgb(54, 50, 50);
   align-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .play-main-cnt-02-true {
