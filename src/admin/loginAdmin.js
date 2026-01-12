@@ -8,10 +8,12 @@ const LoginAdmin = () => {
     const [otp, setOTP] = useState([])
     const [show, setShow] = useState(false);
 
+    document.body.style.backgroundColor = "#0648b1ff";
+
     const SendOtp = (e) =>{
         try{
             e.preventDefault()
-            axios.post(`${"http://localhost"}/login/to/admin/account`,{username})
+            axios.post(`${"https://kalanirdhari.in"}/login/to/admin/account`,{username})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     setShow(true)
@@ -37,7 +39,7 @@ const LoginAdmin = () => {
     const Login = (e) =>{
         try{
             e.preventDefault()
-            axios.post(`${"http://localhost"}/verify/otp/and/pass/by/admin`,{username, pass, otp})
+            axios.post(`${"https://kalanirdhari.in"}/verify/otp/and/pass/by/admin`,{username, pass, otp})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     localStorage.setItem("token", res.data.token)
@@ -67,34 +69,55 @@ const LoginAdmin = () => {
     <div>
       <center>
             <div className='Home-cnt-01-sub-01'>
-                <strong>sta<span>W</span>ro</strong>
+                <strong style={{color : "white"}}>sta<span>W</span>ro</strong>
                 <hr/>
             </div>
             <h1 className='admin-signup-h1-01'>Admin Login</h1>
 
-            {show ?
+            <div className='admin-signup-h1-01_sun'>
+                {show ?
 
-                <div className='loginadmin-main-cnt-01'>
-                <form onSubmit={Login}>
-                    <input type='password' placeholder='Pass' onChange={e=>{setPass(e.target.value)}} autoComplete='off' required /><br/>
-                    <input type='otp' placeholder='OTP' onChange={e=>{setOTP(e.target.value)}} autoComplete='none' required /><br/>
-                    <button type='submit'>Login</button>
-                </form>
-                </div>
-            
-            :
-
-                <div className='loginadmin-main-cnt-01'>
-                    <form onSubmit={SendOtp}>
-                        <input type='text' placeholder='Username' onChange={e=>{setUsername(e.target.value)}} autoComplete='none' required /><br/>
-                        <button type='submit'>OTP</button>
+                    <div className='loginadmin-main-cnt-01'>
+                    <form onSubmit={Login}>
+                        <input type='password' placeholder='Pass' onChange={e=>{setPass(e.target.value)}} autoComplete='off' required /><br/>
+                        <input type='otp' placeholder='OTP' onChange={e=>{setOTP(e.target.value)}} autoComplete='none' required /><br/>
+                        <button type='submit'>Login</button>
                     </form>
-                </div>
+                    </div>
 
-            }
+                :
+
+                    <div className='loginadmin-main-cnt-01'>
+                        <form onSubmit={SendOtp}>
+                            <input type='text' placeholder='Username' onChange={e=>{setUsername(e.target.value)}} autoComplete='none' required /><br/>
+                            <button type='submit'>OTP</button>
+                        </form>
+                    </div>
+
+                }
+            </div>
+
+            <br/>
+
+            <div className='only_admin'>
+                <h1>Only Admin : </h1>
+                <br/>
+                <li>Only Admin can Access this page.</li><br/>
+                <li>Don't Refresh this Page</li>
+            </div>
+
+            <br/>
 
             
             <br/>
+            <hr  style={{width : "80%", color : "white"}}/>
+
+            <div className='admoin'>
+                <h2>Return To Home</h2>
+                <button onClick={()=>{window.location.replace='/'}}>Home</button>
+            </div>
+
+            
 
             
       </center>

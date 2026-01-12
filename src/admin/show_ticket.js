@@ -8,13 +8,14 @@ const Show_ticket = () => {
   const [sec, setSec] = useState('no')  // store seconds per ticket
 
   useEffect(() => {
+    document.body.style.backgroundColor = "#095391ff";
     get_data();
     const interval = setInterval(get_data, 5000);
     return () => clearInterval(interval);
   }, []);
 
   const get_data = () =>{
-    apiAdmin.get("http://localhost/get/all/tickets/data/admin")
+    apiAdmin.get("https://kalanirdhari.in/get/all/tickets/data/admin")
     .then(res=>{
       if(res.data.data){
         setData(res.data.data)
@@ -27,7 +28,7 @@ const Show_ticket = () => {
   }
 
   const add = (id, dat) =>{
-    apiAdmin.post("http://localhost/refund/data/and/add/to/users", {id, text: dat, ex_seconds: sec[id] || "no"})
+    apiAdmin.post("https://kalanirdhari.in/refund/data/and/add/to/users", {id, text: dat, ex_seconds: sec[id] || "no"})
     .then(res =>{
       if(res.data.Status === "OK"){
         get_data()

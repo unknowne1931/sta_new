@@ -37,7 +37,7 @@ const Like = () => {
 
 
   const get_review = () => {
-    axios.get(`http://localhost/comment/get/single/data/${id}`)
+    axios.get(`https://kalanirdhari.in/comment/get/single/data/${id}`)
       .then(res => {
         if (res.data.data) {
           setData(res.data.data)
@@ -68,7 +68,7 @@ const Like = () => {
         const uid = user.uid;
 
         // Send to backend
-        axios.post("http://localhost/post/google/auth", {
+        axios.post("https://kalanirdhari.in/post/google/auth", {
           email,
           name,
           username,
@@ -102,7 +102,7 @@ const Like = () => {
       alert("Login to Like")
       console.log("need to login")
     } else {
-      api.post("http://localhost/make/like/review/count", { l_id: data._id, email: fire.email })
+      api.post("https://kalanirdhari.in/make/like/review/count", { l_id: data._id, email: fire.email })
         .then(res => {
           if (res.data.Status === "OK") {
             alert("Thank you for your like")

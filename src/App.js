@@ -32,6 +32,7 @@ import DemoBarGraph from './admin/graphs';
 import logo from "./image/logo.png"
 import api from './pages/api';
 import UsersPlayedWalletAdmin from './admin/users_played_wallet';
+import User_Data from './admin/user_data';
 
 
 const User_admin = lazy(()=> import('./admin/add_admins'))
@@ -80,7 +81,7 @@ const DisplayPath = () => {
   const [alert, setAlert] = useState(false);
 
   useEffect(()=>{
-    api.get("http://localhost/print/user/data")
+    api.get("https://kalanirdhari.in/print/user/data")
     .then(res=>
       res.json()
     ).then(res=>{
@@ -95,7 +96,7 @@ const DisplayPath = () => {
       setAlert(false)
       removeFromDB('targetSecond');
       try{
-        api.delete(`${"http://localhost"}/delete/by/user/id/for/valid/data`)
+        api.delete(`${"https://kalanirdhari.in"}/delete/by/user/id/for/valid/data`)
         .then(res =>{
           if(res.data.Status === "OK"){
             localStorage.removeItem("valid")
@@ -165,6 +166,12 @@ const App = () => {
     }
   }, [token]);
 
+  useEffect(() => {
+    if (!admin) {
+      localStorage.removeItem("token");
+    }
+  }, [admin]);
+
   useEffect(()=>{
 
     async function checkdb() {
@@ -185,7 +192,7 @@ const App = () => {
         console.log(res.ip)
         saveToDB("ip" , res.ip)
         saveToDB('city', res.city.name)
-        axios.post("http://localhost/new/ip/data", {ip : res.ip, city : res.city.name})
+        axios.post("https://kalanirdhari.in/new/ip/data", {ip : res.ip, city : res.city.name})
         
       })
       .catch(error =>{
@@ -294,7 +301,8 @@ const App = () => {
                 <Route path='/admin/add/reward' element={admin ? <Add_reward_1 /> : <LoginAdmin />} />
                 <Route path='/admin/ticket' element={admin ? <Show_ticket /> : <LoginAdmin/> } />
                 <Route path='/admin/graphs' element={admin ? <DemoBarGraph /> : <LoginAdmin />} />
-                <Route path='/admin/wallet' element={<UsersPlayedWalletAdmin />} />
+                <Route path='/admin/wallet' element={admin ? <UsersPlayedWalletAdmin /> : <LoginAdmin />} />
+                <Route path='/admin/data' element={admin ? <User_Data /> : <LoginAdmin /> } />
 
                 {/* User Routes */}
                 <Route path='*' element={<Error />} />

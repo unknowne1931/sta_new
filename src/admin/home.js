@@ -16,6 +16,8 @@ const AdminHome = () => {
     const [show, setShow] = useState(false)
     const [load, setLoad] = useState(true);
 
+    document.body.style.backgroundColor = "#0648b1ff";
+
     useEffect(()=>{
 
         GetTotalWinners();
@@ -48,7 +50,7 @@ const AdminHome = () => {
 
     const GetTotal = () =>{
         try{
-            apiAdmin.get(`${"http://localhost"}/get/aal/tottttal/users`)
+            apiAdmin.get(`${"https://kalanirdhari.in"}/get/aal/tottttal/users`)
             .then(res =>{
                 if(res.data.users){
                     setTotal_List(res.data.users)
@@ -76,7 +78,7 @@ const AdminHome = () => {
 
     const GetTotalWinners = () =>{
         try{
-            apiAdmin.get(`${"http://localhost"}/get/total/users/by/winners/datas/all`)
+            apiAdmin.get(`${"https://kalanirdhari.in"}/get/total/users/by/winners/datas/all`)
             .then(res =>{
                 if(res.data.users){
                     setWin_data(res.data.users)
@@ -105,7 +107,7 @@ const AdminHome = () => {
     const GetLive = () =>{
         try{
             setTimeout(()=>{
-                apiAdmin.get(`${"http://localhost"}/admin/get/all/users/data/logined`)
+                apiAdmin.get(`${"https://kalanirdhari.in"}/admin/get/all/users/data/logined`)
                 .then(res =>{
                     if(res.data.users){
                         setLive(res.data.users);
@@ -142,7 +144,7 @@ const AdminHome = () => {
         try{
             e.preventDefault()
             setAlert(false);
-            apiAdmin.post(`${"http://localhost"}/length/and/calcul/ation/of/chart`)
+            apiAdmin.post(`${"https://kalanirdhari.in"}/length/and/calcul/ation/of/chart`)
             .then(res =>{
                 if(res.data.Status === "OK"){
                     setData("Data Saved")

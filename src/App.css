@@ -1587,6 +1587,9 @@ select {
 .admin-signup-h1-01 {
   font-size: 20px;
   font-family: var(--ff1);
+  color: white;
+  text-align: start;
+  padding-left: 10px;
 }
 
 .admin-span-01 {
@@ -1619,22 +1622,45 @@ select {
 }
 
 .loginadmin-main-cnt-01 input {
-  width: 200px;
+  width: 250px;
   height: 30px;
-  margin: 2px;
+  padding: 5px;
+  margin: auto;
   border: 1px solid;
-  border-radius: 5px;
+  border-radius: 10px;
   text-align: center;
+  font-family: 'Courier New', Courier, monospace;
 }
+
+
 
 .loginadmin-main-cnt-01 button {
   width: 120px;
   margin-top: 10px;
+  padding: 10px;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
   height: 30px;
-  background: linear-gradient(90deg, orangered, orange);
-  border: 1px solid gray;
+  background-color: #032f8e;
+  border: 1px solid rgb(255, 255, 255);
   border-radius: 5px;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: 600;
   cursor: pointer;
+}
+
+@media all and (max-width: 700px){
+  .loginadmin-main-cnt-01 input{
+    width: 90%;
+  }
+  .loginadmin-main-cnt-01 button{
+    width: 90%;
+  }
 }
 
 .admin-navibar-cnt-01 {
@@ -1702,8 +1728,7 @@ select {
   width: 400px;
   height: 400px;
   border: 1px solid gray;
-  box-shadow: 2px 5px 10px gray;
-  background-color: #009ad6;
+  background-color: #0237694c;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
   overflow: hidden;

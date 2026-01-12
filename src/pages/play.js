@@ -77,7 +77,7 @@ useEffect(() => {
 
 
   const start_check = () => {
-    fetch("http://localhost/start/or/no/check")
+    fetch("https://kalanirdhari.in/start/or/no/check")
       .then(res => res.json())
       .then(data => {
         if (data.status) {
@@ -94,7 +94,7 @@ useEffect(() => {
 
 
   const new_sec = (msg) =>{
-    api.post("http://localhost/get/id/to/update/seonds", {
+    api.post("https://kalanirdhari.in/get/id/to/update/seonds", {
       id : time_ot.qno_id, sec : time_ot.seconds, qst : time_ot.Qst, options : time_ot.options, img : time_ot.img, ans : time_ot.Ans, usa : time_ot.usa, vr : time_ot.vr, msg, ex_seconds : ex_sec, cat : time_ot.cat, tough : time_ot.tough
     })
     .then(res => {
@@ -109,10 +109,11 @@ useEffect(() => {
   }
 
   const get_rank = () =>{
-    api.get("http://localhost/get/levels/user")
+    api.get("https://kalanirdhari.in/get/levels/user")
     .then(res=>{
       if(res.data){
-        setLevel(res.data)
+        console.log(res.data.data)
+        setLevel(res.data.data)
       }else{
         console.log("No Data Found")
       }
@@ -136,7 +137,7 @@ useEffect(() => {
 
   const GetAllDAta = () => {
     try {
-      api.get("http://localhost/get/all/admin/new/languages/data/user")
+      api.get("https://kalanirdhari.in/get/all/admin/new/languages/data/user")
         .then(res => {
           if (res.data.Data) {
             setALLLDAta(res.data.Data)
@@ -162,7 +163,7 @@ useEffect(() => {
 
   const Delete_Lang = () => {
     try {
-      api.delete(`http://localhost/get/language/datas/all/get/and/delete`)
+      api.delete(`https://kalanirdhari.in/get/language/datas/all/get/and/delete`)
         .then(res => {
           if (res.data.Status === "OK") {
             GetLanguages()
@@ -191,7 +192,7 @@ useEffect(() => {
 
   const GetRupeeVal = () => {
     try {
-      fetch(`${"http://localhost"}/get/rupee/data/play`)
+      fetch(`${"https://kalanirdhari.in"}/get/rupee/data/play`)
         .then(res => res.json())
         .then(data => {
           if (data.data) {
@@ -216,7 +217,7 @@ useEffect(() => {
   const PostLang = () => {
     try {
       setAlert(false)
-      api.post(`${"http://localhost"}/get/language/datas/all`, { lang: selLanguages, user })
+      api.post(`${"https://kalanirdhari.in"}/get/language/datas/all`, { lang: selLanguages, user })
         .then(res => {
           if (res.data.Status === "OK") {
             GetLanguages()
@@ -241,7 +242,7 @@ useEffect(() => {
 
   const GetBalance = () => {
     try {
-      api.get(`${"http://localhost"}/get/acount/balence`)
+      api.get(`${"https://kalanirdhari.in"}/get/acount/balence`)
         .then(res => {
           if (res.data.data) {
             setBtn1(true)
@@ -276,7 +277,7 @@ useEffect(() => {
     const valid_to_claim = (await getFromDB("new")) || "";
     const refer_ui = (await getFromDB("refer_ui")) || "";
 
-    const res = await api.post("http://localhost/get/balance/new/data", {
+    const res = await api.post("https://kalanirdhari.in/get/balance/new/data", {
       user,
       val_cm: valid_to_claim,
       refer_ui
@@ -309,7 +310,7 @@ useEffect(() => {
     try {
       setAlert(false)
       e.preventDefault()
-      api.post(`${"http://localhost"}/start/playing/by/debit/amount/new`, { user })
+      api.post(`${"https://kalanirdhari.in"}/start/playing/by/debit/amount/new`, { user })
         .then(res => {
           if (res.data.Status === "OK") {
             localStorage.setItem("valid", "yes")
@@ -379,7 +380,7 @@ useEffect(() => {
   const GetLanguages = () => {
     try {
       setTimeout(() => {
-        api.get(`${"http://localhost"}/get/language/datas/all/get/${user}`)
+        api.get(`${"https://kalanirdhari.in"}/get/language/datas/all/get/${user}`)
           .then(res => {
 
             if (res.data.Users) {
@@ -450,7 +451,7 @@ useEffect(() => {
         return;
       }
 
-      const response = await fetch("http://localhost/create-order", {
+      const response = await fetch("https://kalanirdhari.in/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user, amt }),
@@ -520,7 +521,7 @@ useEffect(() => {
               {level?.rank == null &&
 
               <div className='play-main-cnt-02_abs'>
-                <h2>Level : <strong>{level.rank ? level.rank : 0}</strong></h2>
+                <h2>Level : <strong>{level ? level : 0}</strong></h2>
               </div>}
 
               {btn1 &&
