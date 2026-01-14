@@ -11,7 +11,7 @@ const Start_Gm = () => {
   }, []);
 
   const start_check = () => {
-    fetch("https://kalanirdhari.in/start/or/no/check")
+    fetch("http://localhost/start/or/no/check")
       .then(res => res.json())
       .then(data => {
         if (data.status) {
@@ -27,7 +27,7 @@ const Start_Gm = () => {
 
   const handleClick = (text) => {
     if (start.Status === "on") {
-      apiAdmin.post("https://kalanirdhari.in/start/game/by/click", { status: "off", text })
+      apiAdmin.post("http://localhost/start/game/by/click", { status: "off", text })
         .then(res => {
           if (res.data.Status === "OK") {
             start_check();
@@ -48,7 +48,7 @@ const Start_Gm = () => {
             clearInterval(interval);
             setShowPopup(false);
 
-            apiAdmin.post("https://kalanirdhari.in/start/game/by/click", { status: "on" })
+            apiAdmin.post("http://localhost/start/game/by/click", { status: "on" })
               .then(res => {
                 if (res.data.Status === "OK") {
                   start_check();

@@ -36,7 +36,7 @@ const UsersPlayedWalletAdmin = () => {
     }, []);
 
     function get_refund_ticket() {
-        apiAdmin.get('https://kalanirdhari.in/admin/refund/tickets/list')
+        apiAdmin.get('http://localhost/admin/refund/tickets/list')
             .then((response) => {
                 if (response.data.Logout === "OUT") {
                 } else {
@@ -48,7 +48,7 @@ const UsersPlayedWalletAdmin = () => {
     }
 
     function get_referd_coin() {
-        apiAdmin.get('https://kalanirdhari.in/admin/refund/data/list')
+        apiAdmin.get('http://localhost/admin/refund/data/list')
             .then((response) => {
                 if (response.data.Logout === "OUT") {
                     window.location.href = "/admin/login";
@@ -61,7 +61,7 @@ const UsersPlayedWalletAdmin = () => {
     }
 
     function get_paid_data() {
-        apiAdmin.get('https://kalanirdhari.in/admin/balance/wallet')
+        apiAdmin.get('http://localhost/admin/balance/wallet')
             .then((response) => {
                 if (response.data.Logout === "OUT") {
                     window.location.href = "/admin/login";
