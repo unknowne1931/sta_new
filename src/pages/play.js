@@ -41,23 +41,24 @@ const Play = () => {
   const [ex_sec, setEx_Sec] = useState('')
   const [time_ot, setTime_Ot] = useState('')
   const [level, setLevel] = useState('0')
+  const [play, setPlay] = useState(false)
 
 
-useEffect(() => {
-  const fetchData = async () => {
-    await GetAllDAta();
+  useEffect(() => {
+    const fetchData = async () => {
+      await GetAllDAta();
 
-    if (id === "timeout") {
-      const data = await getFromDB("start_time_out");
-      setTime_Ot(data);
-    } else if (id === "wronganswer") {
-      const data = await getFromDB("start_game_out");
-      setTime_Ot(data);
-    }
-  };
+      if (id === "timeout") {
+        const data = await getFromDB("start_time_out");
+        setTime_Ot(data);
+      } else if (id === "wronganswer") {
+        const data = await getFromDB("start_game_out");
+        setTime_Ot(data);
+      }
+    };
 
-  fetchData();
-}, []);
+    fetchData();
+  }, []);
 
 
   useEffect(() => {
@@ -93,33 +94,33 @@ useEffect(() => {
 
 
 
-  const new_sec = (msg) =>{
+  const new_sec = (msg) => {
     api.post("http://localhost/get/id/to/update/seonds", {
-      id : time_ot.qno_id, sec : time_ot.seconds, qst : time_ot.Qst, options : time_ot.options, img : time_ot.img, ans : time_ot.Ans, usa : time_ot.usa, vr : time_ot.vr, msg, ex_seconds : ex_sec, cat : time_ot.cat, tough : time_ot.tough
+      id: time_ot.qno_id, sec: time_ot.seconds, qst: time_ot.Qst, options: time_ot.options, img: time_ot.img, ans: time_ot.Ans, usa: time_ot.usa, vr: time_ot.vr, msg, ex_seconds: ex_sec, cat: time_ot.cat, tough: time_ot.tough
     })
-    .then(res => {
-      if(res.data.Status === "OK"){
-        window.location.replace("/tickets")
-      }else{
-        window.location.replace("/play")
-      }
-    }).catch(error =>{
-      console.log(error)
-    })
+      .then(res => {
+        if (res.data.Status === "OK") {
+          window.location.replace("/tickets")
+        } else {
+          window.location.replace("/play")
+        }
+      }).catch(error => {
+        console.log(error)
+      })
   }
 
-  const get_rank = () =>{
+  const get_rank = () => {
     api.get("http://localhost/get/levels/user")
-    .then(res=>{
-      if(res.data){
-        console.log(res.data.data)
-        setLevel(res.data.data)
-      }else{
-        console.log("No Data Found")
-      }
-    }).catch(error =>{
-      console.log(error)
-    })
+      .then(res => {
+        if (res.data) {
+          console.log(res.data.data)
+          setLevel(res.data.data)
+        } else {
+          console.log("No Data Found")
+        }
+      }).catch(error => {
+        console.log(error)
+      })
   }
 
   useEffect(() => {
@@ -271,41 +272,42 @@ useEffect(() => {
   }
 
   const New = async () => {
-  try {
-    setAlert(false);
+    try {
+      setAlert(false);
 
-    const valid_to_claim = (await getFromDB("new")) || "";
-    const refer_ui = (await getFromDB("refer_ui")) || "";
+      const valid_to_claim = (await getFromDB("new")) || "";
+      const refer_ui = (await getFromDB("refer_ui")) || "";
 
-    const res = await api.post("http://localhost/get/balance/new/data", {
-      user,
-      val_cm: valid_to_claim,
-      refer_ui
-    });
+      const res = await api.post("http://localhost/get/balance/new/data", {
+        user,
+        val_cm: valid_to_claim,
+        refer_ui
+      });
 
-    if (res.data.Status === "OK") {
-      await saveToDB("new", "no");
-      GetBalance();
-    } else if (res.data.Status === "BAD_REF") {
-      setData("Invalid referral");
-      setAlert(true);
-    } else {
-      setData("Amount not Credited");
-      setAlert(true);
+      if (res.data.Status === "OK") {
+        await saveToDB("new", "no");
+        GetBalance();
+      } else if (res.data.Status === "BAD_REF") {
+        setData("Invalid referral");
+        setAlert(true);
+      } else {
+        setData("Amount not Credited");
+        setAlert(true);
+      }
+
+    } catch (error) {
+      if (error.response) {
+        console.error("API Error:", error.response.status, error.response.data);
+      } else if (error.request) {
+        console.error("No response from server. Please check your connection.");
+      } else {
+        console.error("Error occurred:", error.message);
+      }
     }
-
-  } catch (error) {
-    if (error.response) {
-      console.error("API Error:", error.response.status, error.response.data);
-    } else if (error.request) {
-      console.error("No response from server. Please check your connection.");
-    } else {
-      console.error("Error occurred:", error.message);
-    }
-  }
-};
+  };
 
   const StartGame = (e) => {
+    setPlay(false)
     setVerify(true)
     try {
       setAlert(false)
@@ -326,7 +328,7 @@ useEffect(() => {
             setVerify(false)
             setData("Your turn has ended.")
             setAlert(true)
-          } else if(res.data.Status === "BAD_CR"){
+          } else if (res.data.Status === "BAD_CR") {
             setVerify(false)
             setData("Try Again or Wait a Minute")
             setAlert(true)
@@ -501,13 +503,13 @@ useEffect(() => {
 
 
       {load ? <Loading /> :
-        <center>
+        <center >
           <div className='Home-cnt-01-sub-01_logo'>
             <strong>sta<span>W</span>ro</strong>
             <hr />
           </div>
 
-          
+
           <h1 className='play-h1-01'>Start <span>Game</span></h1>
 
 
@@ -520,9 +522,9 @@ useEffect(() => {
 
               {level?.rank == null &&
 
-              <div className='play-main-cnt-02_abs'>
-                <h2>Level : <strong>{level ? level : 0}</strong></h2>
-              </div>}
+                <div className='play-main-cnt-02_abs'>
+                  <h2>Level : <strong>{level ? level : 0}</strong></h2>
+                </div>}
 
               {btn1 &&
                 <div>
@@ -565,7 +567,7 @@ useEffect(() => {
               {start.Status === "on" &&
                 <>
                   {show1 || show2 &&
-                    <div onClick={StartGame} className='play_start_game_btn_01_cnt'>
+                    <div onClick={()=>{setPlay(true)}} className='play_start_game_btn_01_cnt'>
                       <div className='play_start_game_btn_01_cnt-sub_02'>
                         {balance.balance &&
                           `You have ${parseInt((parseInt(balance.balance) / parseInt(get_rupe.rupee)))} Attempts`
@@ -611,9 +613,6 @@ useEffect(() => {
                       Add
                     </div>
                   }
-
-
-
                 </div>
 
               }
@@ -680,7 +679,7 @@ useEffect(() => {
 
           }
 
-          <div className='stop_play_ticket_page' onClick={()=>window.location.href='/tickets'} >
+          <div className='stop_play_ticket_page' onClick={() => window.location.href = '/tickets'} >
             My Submissions
           </div>
 
@@ -698,12 +697,78 @@ useEffect(() => {
           </div>
 
 
+          {play &&
+          
+
+            <div className='warning_before_start'>
+              <h1 className='warning_before_start_h1_01'>Agree to This</h1>
+              <div className='warning_before_start_sub_01'>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  This is a knowledge‑based game involving logic, mental ability, and more. Solve puzzles at your own risk.
+                </div>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  The game becomes more challenging as you play, with fewer seconds available for each move.
+                </div>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  f you feel the time was insufficient, report it to us. After verification, we will refund if the lack of time led to a wrong answer. No refunds will be given once the Time Shortage question is answered.
+                </div>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  Your payment is non‑refundable after the game starts.
+                </div>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  Refunds are not available once the Time Shortage question has been answered.
+                </div>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  Refunds will be issued only if the fault is ours. No refunds will be given for customer mistakes.
+                </div>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  We charge entry fees only, and GST is included in the amount.
+                </div>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  Connect with us on WhatsApp or Instagram, but please confirm that the official website link and domain is <a href="https://www.stawro.com" target="_blank" rel="noopener noreferrer">https://www.stawro.com</a>.
+                  <br /><br />
+                  We do not send or share payment links via WhatsApp or Instagram.
+                  Make payments only through our verified website <a href="https://www.stawro.com" target="_blank" rel="noopener noreferrer">https://www.stawro.com</a>.
+                  <br /><br />
+                  We are not responsible for any loss of money outside our official site.
+                  <br /><br />
+                  WhatsApp Group:
+                  <a href="https://chat.whatsapp.com/KI9dfAj4LDiI3XShpf6Ab4" target="_blank" rel="noopener noreferrer">
+                    Join Here
+                  </a>
+                  <br />
+                  Instagram:
+                  <a href="https://www.instagram.com/stawro" target="_blank" rel="noopener noreferrer">
+                    @stawro
+                  </a>
+                </div>
+                <h2 className='all_the_best'>All The Best</h2>
+
+              </div>
+              <div className='warning_before_start_sub_02'>
+                <button onClick={()=>{setPlay(false)}} className='warning_before_start_sub_02-2'>Reject</button>
+                <button onClick={StartGame} className='warning_before_start_sub_02-1'>Start</button>
+                
+              </div>
+            </div>
+
+          }
+
+
 
         </center>}
       {alert &&
 
         <Popup data={data} val={alert} />
-      
+
       }
 
 
@@ -737,69 +802,69 @@ useEffect(() => {
 
       {id &&
         <div className='playyy_main_sub_01'>
-            <h1>Let Us Know</h1>
-            {/* <div className='playyy_main_sub_01_sub_01'>
+          <h1>Let Us Know</h1>
+          {/* <div className='playyy_main_sub_01_sub_01'>
               <img src={imgg} alt='time over' />
             </div> */}
-            {/* <span className='playyy_spn_01'>If time is short, please report it to us.</span> */}
-            <h2>Past seconds : {time_ot?.seconds} </h2>
-            <p className='playyy_para_01'>Report to us, and we will verify and refund if there is any issue.</p>
-            <button style={{backgroundColor : "green"}} onClick={()=>window.location.replace("/play")}>
-              Everything’s Fine
-            </button>
-            
-            {ex_sec.length < 1 && 
-              <button onClick={()=>new_sec("Wrong Option")}>
-                Wrong Option
-              </button>
-            }
+          {/* <span className='playyy_spn_01'>If time is short, please report it to us.</span> */}
+          <h2>Past seconds : {time_ot?.seconds} </h2>
+          <p className='playyy_para_01'>Report to us, and we will verify and refund if there is any issue.</p>
+          <button style={{ backgroundColor: "green" }} onClick={() => window.location.replace("/play")}>
+            Everything’s Fine
+          </button>
 
-            {time_ot?.vr === "false" &&
-            <button onClick={()=>new_sec("Time Shortage")}>
+          {ex_sec.length < 1 &&
+            <button onClick={() => new_sec("Wrong Option")}>
+              Wrong Option
+            </button>
+          }
+
+          {time_ot?.vr === "false" &&
+            <button onClick={() => new_sec("Time Shortage")}>
               Time Shortage
             </button>
-            }
+          }
 
 
 
-            {time_ot?.vr === "false" &&
-              <>
-                <div className='play_seconds_increase_txt' >
-                  <span>Add more seconds</span>
-                </div>                
-              </>
-            }
+          {time_ot?.vr === "false" &&
+            <>
+              <div className='play_seconds_increase_txt' >
+                <span>Add more seconds</span>
+              </div>
+            </>
+          }
 
-            {time_ot?.vr === "false" &&
-              <input type='number' className='input_report_1_sec' onChange={e=>{setEx_Sec(e.target.value)}} placeholder='expected seconds' />
-            }
+          {time_ot?.vr === "false" &&
+            <input type='number' className='input_report_1_sec' onChange={e => { setEx_Sec(e.target.value) }} placeholder='expected seconds' />
+          }
 
-            {time_ot?.vr === "false" &&
-              <>
-                {ex_sec.length >= 1 &&
-                  <div className='add_play_sec_new_01' onClick={()=>new_sec("Time Shortage")} >Add</div>
-                }
-              </>
-            }
+          {time_ot?.vr === "false" &&
+            <>
+              {ex_sec.length >= 1 &&
+                <div className='add_play_sec_new_01' onClick={() => new_sec("Time Shortage")} >Add</div>
+              }
+            </>
+          }
 
-            {ex_sec.length < 1 &&
+          {ex_sec.length < 1 &&
 
             <>
-              <button onClick={()=>new_sec("Image Loading")}>
+              <button onClick={() => new_sec("Image Loading")}>
                 Image Loading
               </button>
-              <button onClick={()=>new_sec("Question not found")}>
+              <button onClick={() => new_sec("Question not found")}>
                 Question not found
               </button>
             </>
-            }
+          }
 
-            
 
-            
 
-          <br/>
-          <br/>
+
+
+          <br />
+          <br />
           {/* <span onClick={()=>window.location.replace('/play')} className='playyy_spn_out'>Yes, the time is sufficient</span> */}
 
         </div>

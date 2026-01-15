@@ -33,6 +33,7 @@ import logo from "./image/logo.png"
 import api from './pages/api';
 import UsersPlayedWalletAdmin from './admin/users_played_wallet';
 import User_Data from './admin/user_data';
+import Test from './admin/test';
 
 
 const User_admin = lazy(()=> import('./admin/add_admins'))
@@ -303,6 +304,7 @@ const App = () => {
                 <Route path='/admin/graphs' element={admin ? <DemoBarGraph /> : <LoginAdmin />} />
                 <Route path='/admin/wallet' element={admin ? <UsersPlayedWalletAdmin /> : <LoginAdmin />} />
                 <Route path='/admin/data' element={admin ? <User_Data /> : <LoginAdmin /> } />
+                <Route path='/admin/test/:id' element={<Test />} />
 
                 {/* User Routes */}
                 <Route path='*' element={<Error />} />

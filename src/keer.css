@@ -2968,3 +2968,185 @@
     font-size: 12px;
     font-family: var(--ff1);
 }
+
+.tesst_main_01 h1{
+    color: #ffffff;
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.tesst_h2{
+    color: #d1d2d2;
+}
+
+.tesst_h2 span{
+    font-size: 2rem;
+    color: white;
+}
+
+.tesst_button_01{
+    position: relative;
+    top: 35vh;
+}
+
+
+.tesst_button_01 button{
+    width:190px;
+    height: auto;
+    padding: 10px;
+    background-color: #ff3c00;
+    border-radius: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    font-size: 2rem;
+    color: white;
+}
+
+.tesst_buttonns{
+    min-width:80px;
+    height: auto;
+    max-width: auto;
+    padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    margin: 10px;
+    background-color: #000000;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.tesst_refund_sub button{
+    min-width: 120px;
+    max-width: auto;
+    padding: 10px;
+    background-color: #f96204;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tesst_btn_2{
+    width: 90%;
+    height: 30px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    font-weight: 600;
+    background-color: #20047b;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+}
+
+
+.tesst_btn_1{
+    width: 90%;
+    height: 30px;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    background-color: #008b00;
+    border-radius: 10px;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+}
+
+.warning_before_start{
+    position: absolute;
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    top: 20%;
+    border: 1px solid gray;
+    background-color: #ffffff;
+    margin: auto;
+    left: 0;
+    right: 0;
+    box-shadow: 10px 10px 100px rgb(36, 35, 35);
+    border-radius: 10px;
+}
+
+.warning_before_start_h1_01{
+    text-align: start;
+    font-family: var(--ff1);
+    font-size: 2.5rem;
+}
+
+.warning_before_start_sub_01{
+    width: 95%;
+    height: 250px;
+    overflow: scroll;
+}
+
+.warning_before_start_sub_01_sub_01{
+    width: 95%;
+    height: auto;
+    padding: 5px;
+    text-align: start;
+    font-size: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #3f3b3b;
+    border-radius: 5px;
+    background-color: #ebe7e7;
+    margin-top: 5px;
+}
+
+.warning_before_start_sub_02{
+    width: 90%;
+    height: auto;
+    padding: 5px;
+    margin: auto;
+    display: flex;
+}
+
+.warning_before_start_sub_02-1{
+    width: 120px;
+    height: auto;
+    padding: 10px;
+    background-color: #037fcc;
+    border: 1px solid;
+    border-radius: 20px;
+    color: white;
+    font-family: var(--ff1);
+    font-size: 3rem;
+    margin: auto
+    ;cursor: pointer;
+}
+
+.warning_before_start_sub_02-2{
+    width: 120px;
+    height: auto;
+    padding: 10px;
+    background-color: #4b4a49;
+    border: 1px solid;
+    border-radius: 20px;
+    color: white;
+    font-family: var(--ff1);
+    font-size: 3rem;
+    margin: auto
+    ;cursor: pointer;
+}
+
+.all_the_best{
+    font-size: 2.5rem;
+    font-family: var(--ff2);
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+
+}
