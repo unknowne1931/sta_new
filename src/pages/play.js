@@ -535,7 +535,7 @@ const Play = () => {
               }
 
               {!btn1 &&
-                <button onClick={New} className="get_bln">Get ₹05.00 Free</button>
+                <button onClick={New} className="get_bln">Try for Free</button>
               }
 
               {btn1 &&
@@ -709,11 +709,17 @@ const Play = () => {
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
-                  The game becomes more challenging as you play, with fewer seconds available for each move.
+                  <strong>
+                    As you play, the game gets harder because you have less time for each move if you answer too quickly. To get extra time, wait until the last seconds then 2 bonus seconds will be added to the next question of the same difficulty.
+                  </strong>
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
-                  f you feel the time was insufficient, report it to us. After verification, we will refund if the lack of time led to a wrong answer. No refunds will be given once the Time Shortage question is answered.
+                  If you feel the time was too short, report it to us. After verification, we will refund only if the lack of time caused a wrong answer. No refunds will be given once a Time Shortage question has been answered. To avoid losing time, make sure to answer at the last second
+                </div>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  If you fail to submit your answer in the last seconds, you won’t be able to clear all levels or reach the top.
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>

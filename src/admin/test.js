@@ -48,7 +48,7 @@ function Test() {
     };
 
     const reset_seconds_and_refund = (text, t2) => {
-        apiAdmin.post("http://localhost/refund/data/and/add/to/users", { id: id, text: text, ex_seconds: t2 })
+        apiAdmin.post("http://localhost/refund/data/and/add/to/users", { id: id, text: text, ex_seconds: t2, level, cat })
         .then(res=>{
             if(res.data.Status === "OK"){
                 window.location.replace("/admin/ticket")
@@ -124,7 +124,7 @@ function Test() {
                     <>
                         {data.exp_sec === "" &&
                             <div className='tesst_refund_sub'>
-                                <button onClick={() => { reset_seconds_and_refund("refund", "no") }} >Only Refund</button>
+                                <button onClick={() => { reset_seconds_and_refund("refund", "no", data.tough, data.cat) }} >Only Refund</button>
                             </div>
                         }
 
@@ -132,7 +132,7 @@ function Test() {
 
                         {data.exp_sec === "" &&
                             <div className='tesst_refund_sub'>
-                                <button onClick={() => { reset_seconds_and_refund("non-refund", "no") }} >Non-Refund</button>
+                                <button onClick={() => { reset_seconds_and_refund("non-refund", "no", data.tough, data.cat) }} >Non-Refund</button>
                             </div>
                         }
 
@@ -140,7 +140,7 @@ function Test() {
 
                         {data.exp_sec === "" &&
                             <div className='tesst_refund_sub'>
-                                <button onClick={() => { reset_seconds_and_refund("refund", "1") }} >Refund And Reset Seconds</button>
+                                <button onClick={() => { reset_seconds_and_refund("refund", "1", data.tough, data.cat) }} >Refund And Reset Seconds</button>
                             </div>
                         }
                     </>

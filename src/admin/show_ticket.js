@@ -27,8 +27,8 @@ const Show_ticket = () => {
       })
   }
 
-  const add = (id, dat) => {
-    apiAdmin.post("http://localhost/refund/data/and/add/to/users", { id, text: dat, ex_seconds: sec[id] || "no" })
+  const add = (id, dat, level, cat) => {
+    apiAdmin.post("http://localhost/refund/data/and/add/to/users", { id, text: dat, ex_seconds: sec[id] || "no", level : level, cat: cat  })
       .then(res => {
         if (res.data.Status === "OK") {
           get_data()
@@ -129,11 +129,11 @@ const Show_ticket = () => {
                   )}
 
 
-                  <div className='ticket_show_btn_cnt_01_02' onClick={() => { add(item._id, "refund") }}>
+                  <div className='ticket_show_btn_cnt_01_02' onClick={() => { add(item._id, "refund", item.tough, item.cat) }}>
                     Refund
                   </div>
                   <br />
-                  <div className='ticket_show_btn_cnt_01_02' onClick={() => { add(item._id, "non-refund") }}>
+                  <div className='ticket_show_btn_cnt_01_02' onClick={() => { add(item._id, "non-refund", item.tough, item.cat) }}>
                     Non-Refund
                   </div>
                 </div>
