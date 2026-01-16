@@ -47,7 +47,7 @@ function Test() {
             });
     };
 
-    const reset_seconds_and_refund = (text, t2) => {
+    const reset_seconds_and_refund = (text, t2, level, cat) => {
         apiAdmin.post("http://localhost/refund/data/and/add/to/users", { id: id, text: text, ex_seconds: t2, level, cat })
         .then(res=>{
             if(res.data.Status === "OK"){
