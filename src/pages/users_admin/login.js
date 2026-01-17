@@ -18,7 +18,7 @@ const Login = () => {
       setAlert(false)
       try{
         e.preventDefault();
-        axios.post('http://localhost/get/and/login/users/admin/pages/auth',{username, password : pass})
+        axios.post('http://192.168.31.133/get/and/login/users/admin/pages/auth',{username, password : pass})
         .then(res =>{
           if(res.data.Status === "OK"){
             setShow1(true)
@@ -47,7 +47,7 @@ const Login = () => {
       e.preventDefault()
       setAlert(false)
       try{
-        apiAdmin.post('http://localhost/verify/users/language/modele/and/otp', {otp, id : ssid})
+        apiAdmin.post('http://192.168.31.133/verify/users/language/modele/and/otp', {otp, id : ssid})
         .then(res=>{
           if(res.data.Status === "OK"){
             localStorage.setItem('admin_token' , res.data.Token)

@@ -30,7 +30,7 @@ function Test() {
     }, [timeLeft]);
 
     const handleStart = () => {
-        apiAdmin.get(`http://localhost/get/singel/ticket/to/test/${id}`)
+        apiAdmin.get(`http://192.168.31.133/get/singel/ticket/to/test/${id}`)
             .then(res => {
                 if (res.data.data) {
                     setData(res.data.data);
@@ -48,7 +48,7 @@ function Test() {
     };
 
     const reset_seconds_and_refund = (text, t2, level, cat) => {
-        apiAdmin.post("http://localhost/refund/data/and/add/to/users", { id: id, text: text, ex_seconds: t2, level, cat })
+        apiAdmin.post("http://192.168.31.133/refund/data/and/add/to/users", { id: id, text: text, ex_seconds: t2, level, cat })
         .then(res=>{
             if(res.data.Status === "OK"){
                 window.location.replace("/admin/ticket")

@@ -14,7 +14,7 @@ const Login = () => {
   const [imageLoaded, setImageLoaded] = useState(false); // NEW STATE
   const [show_i, setShow_I] = useState(false)
 
-  const url = "http://localhost";
+  const url = "http://192.168.31.133";
 
 
 
@@ -27,7 +27,7 @@ const Login = () => {
         const username = email.split('@')[0];
         const uid = user.uid;
 
-        axios.post("http://localhost/post/google/auth", {
+        axios.post("http://192.168.31.133/post/google/auth", {
           email,
           name,
           username,

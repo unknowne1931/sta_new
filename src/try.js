@@ -61,7 +61,7 @@ const Try = () => {
     const get_Data = async () => {
         setLoad(true)
         const ip = await getFromDB('di');
-        fetch(`http://localhost/get/singel/qst/${ip}`)
+        fetch(`http://192.168.31.133/get/singel/qst/${ip}`)
             .then(res => res.json())
             .then((res) => {
                 console.log("Data fetched:", res.data);
@@ -133,7 +133,7 @@ const Try = () => {
                 pauseCountdown();
 
                 if (!submitted) {
-                    axios.post("http://localhost/time/out/by/singel/qst/data", {
+                    axios.post("http://192.168.31.133/time/out/by/singel/qst/data", {
                         ip
                     }).then(res => {
                         setShow("Time_Out");
@@ -158,7 +158,7 @@ const Try = () => {
         console.log(`Submitted answer: ${option}`);
 
         // ✅ Optional: Send answer to backend
-        axios.post("http://localhost/get/singel/qst/ans", {
+        axios.post("http://192.168.31.133/get/singel/qst/ans", {
             ip,
             qno: data.qno,
             ans: option

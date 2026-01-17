@@ -49,7 +49,7 @@ const Account = () => {
       const valid_to_claim = (await getFromDB("new")) || "";
       const refer_ui = (await getFromDB("refer_ui")) || "";
 
-      const res = await api.post("http://localhost/get/balance/new/data", {
+      const res = await api.post("http://192.168.31.133/get/balance/new/data", {
         val_cm: valid_to_claim,
         refer_ui
       });
@@ -79,7 +79,7 @@ const Account = () => {
   const GetBalance = async () => {
     try {
       setTimeout(async () => {
-        const res = await api.get(`http://localhost/get/acount/balence`);
+        const res = await api.get(`http://192.168.31.133/get/acount/balence`);
         if (res.data.data) {
           setBtn1(true);
           setBalance(res.data.data);
@@ -126,7 +126,7 @@ const Account = () => {
     }
 
     // 🟡 Step 1: Create Order from backend
-    const orderData = await fetch("http://localhost/create-order", {
+    const orderData = await fetch("http://192.168.31.133/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

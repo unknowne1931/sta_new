@@ -15,7 +15,7 @@ const Questionview = () => {
 
     const GetAllDAta = () =>{
         try{
-            apiAdmin.get("http://localhost/get/all/admin/new/languages/data")
+            apiAdmin.get("http://192.168.31.133/get/all/admin/new/languages/data")
             .then(res =>{
                 if(res.data.Data){
                     setALLLDAta(res.data.Data)
@@ -44,7 +44,7 @@ const Questionview = () => {
     const GetListsQuest = (e)=>{
         try{
             e.preventDefault();
-            apiAdmin.get(`${"http://localhost"}/get/admin/all/question/lists/${lang}`)
+            apiAdmin.get(`${"http://192.168.31.133"}/get/admin/all/question/lists/${lang}`)
             .then(res=>{
             if(res.data.data){
                 setQData(res.data.data);

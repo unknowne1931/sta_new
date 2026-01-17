@@ -16,7 +16,7 @@ const Cupons = () => {
   const GetCupon = () => {
     try {
       setTimeout(() => {
-        fetch(`http://localhost/get/cupon/get/all/datas`)
+        fetch(`http://192.168.31.133/get/cupon/get/all/datas`)
           .then(res => res.json())
           .then(data => {
             if (data.data) {
@@ -78,7 +78,7 @@ const Cupons = () => {
 
         for (let i = 0; i < cuponData.length; i++) {
           try {
-            const res = await fetch(`http://localhost/get/singel/user/won/data/${i + 1}`);
+            const res = await fetch(`http://192.168.31.133/get/singel/user/won/data/${i + 1}`);
             const json = await res.json();
 
             if (json.data) {

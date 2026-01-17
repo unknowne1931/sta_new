@@ -12,7 +12,7 @@ const User_Data = () => {
         console.log(data)
         if (data.length > 0) {
             setSearch(false)
-            apiAdmin.get(`http://localhost/get/all/user/data/new/for/kick/dataa/${data}`)
+            apiAdmin.get(`http://192.168.31.133/get/all/user/data/new/for/kick/dataa/${data}`)
                 .then(res => {
                     if (res.data.Status === "OK") {
                         setGet_Data(res.data)
@@ -144,6 +144,21 @@ const User_Data = () => {
 
                                 <div className="user_data_top">
                                     <span>Bank Data</span>
+                                </div>
+
+                            </div>
+
+                            <div className="moni_data_main-div-1_sub_01_sub_01">
+                                <h2> <span>AC H Name</span>  : <strong>{get_data?.bank?.ac_h_nme}</strong></h2>
+                                <h2><span>Bank Name</span> : <strong>{get_data?.bank?.bank_nme}</strong></h2>
+                                <h2><span>Acc No</span> : <strong>{get_data?.bank?.Acc_no}</strong></h2>
+                                <h2><span>IFSC</span> : <strong>{get_data?.bank?.ifsc}</strong></h2>
+                                <h2><span>Payment Type</span> : <strong>{get_data?.bank?.type}</strong></h2>
+                                <h2><span>Created DOC</span> : <strong>{Time(get_data?.bank?.createdAt)}</strong></h2>
+                                <h2><span>Doc Last Updated</span> : <strong>{Time(get_data?.bank?.updatedAt)}</strong></h2>
+
+                                <div className="user_data_top">
+                                    <span>Add Balance</span>
                                 </div>
 
                             </div>

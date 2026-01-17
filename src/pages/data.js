@@ -30,7 +30,7 @@ const Data = () => {
     } else {
       try {
         const res = await api.get(
-          `http://localhost/users/name/and/more/get/${user}`
+          `http://192.168.31.133/users/name/and/more/get/${user}`
         )
         if (res.data?.data) {
           setData(res.data.data)
@@ -58,7 +58,7 @@ const Data = () => {
     } else {
       try {
         const res = await api.get(
-          `http://localhost/get/bank/account/data`
+          `http://192.168.31.133/get/bank/account/data`
         )
         const result = res.data
 
