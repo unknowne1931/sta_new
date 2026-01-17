@@ -32,7 +32,7 @@ const AddReview = () => {
     }
 
     api
-      .post("https://kalanirdhari.in/get/new/post/from/comment", {
+      .post("http://localhost/get/new/post/from/comment", {
         text: review,
         stars: selectedStars,
         name: userData.displayName,

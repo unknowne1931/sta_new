@@ -12,7 +12,7 @@ const User_Data = () => {
         console.log(data)
         if (data.length > 0) {
             setSearch(false)
-            apiAdmin.get(`https://kalanirdhari.in/get/all/user/data/new/for/kick/dataa/${data}`)
+            apiAdmin.get(`http://localhost/get/all/user/data/new/for/kick/dataa/${data}`)
                 .then(res => {
                     if (res.data.Status === "OK") {
                         setGet_Data(res.data)
