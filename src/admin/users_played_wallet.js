@@ -123,6 +123,7 @@ const UsersPlayedWalletAdmin = () => {
                         <div>
                             <p>Amount: ₹<span>{item.rupee}</span></p>
                         </div>
+                        
                     </div>
                 ))}
 
