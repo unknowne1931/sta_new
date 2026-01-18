@@ -36,7 +36,7 @@ const QuestionAdd = () => {
 
     const GetAllDAta = () =>{
         try{
-            apiAdmin.get("http://192.168.31.133/get/all/admin/new/languages/data")
+            apiAdmin.get("http://localhost/get/all/admin/new/languages/data")
             .then(res =>{
                 if(res.data.Data){
                     setALLLDAta(res.data.Data)
@@ -66,7 +66,7 @@ const QuestionAdd = () => {
         try{
             setAlert(false);
             e.preventDefault();
-            axios.post(`${"http://192.168.31.133"}/get/posted/count/questions`,{user, img, Questio, a, b, c, d, Ans, lang, tough, seconds})
+            axios.post(`${"http://localhost"}/get/posted/count/questions`,{user, img, Questio, a, b, c, d, Ans, lang, tough, seconds})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     const qno = res.data.qno
@@ -96,7 +96,7 @@ const QuestionAdd = () => {
         try{
             e.preventDefault();
             setAlert(false);
-            apiAdmin.post("http://192.168.31.133/add/all/admin/new/languages/data",{lang : ALL})
+            apiAdmin.post("http://localhost/add/all/admin/new/languages/data",{lang : ALL})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     GetAllDAta()
@@ -196,7 +196,7 @@ const QuestionAdd = () => {
                     const DeleOne = () =>{
                         try{
                             setAlert(false)
-                            apiAdmin.delete(`http://192.168.31.133/delete/all/selected/data/with/onley/one/${users}`)
+                            apiAdmin.delete(`http://localhost/delete/all/selected/data/with/onley/one/${users}`)
                             .then(res =>{
                                 if(res.data.Status === "OK"){
                                     GetAllDAta()

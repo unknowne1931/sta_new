@@ -16,7 +16,7 @@ const Admin_Users_Home = () => {
     
     const get_all_lang = () =>{
         try{
-            api_user_admin.get(`http://192.168.31.133/get/user/admin/languages/to/post/${user}`)
+            api_user_admin.get(`http://localhost/get/user/admin/languages/to/post/${user}`)
             .then(res=>{
                 if(res.data.data){
                     setData(res.data.data)

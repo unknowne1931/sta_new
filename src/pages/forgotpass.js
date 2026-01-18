@@ -13,7 +13,7 @@ const Forgotpass = () => {
       try{
         setLoad(true)
         setAlert(false)
-        axios.post(`${"http://192.168.31.133"}/pass/send/requests`,{data : user_name})
+        axios.post(`${"http://localhost"}/pass/send/requests`,{data : user_name})
         .then(res=>{
           if(res.data.Status === "OK"){
             setLoad(false)

@@ -1,7 +1,7 @@
 // import axios from 'axios';
 
 // const apiAdmin = axios.create({
-//   baseURL: `${"http://192.168.31.133"}/admin`
+//   baseURL: `${"http://localhost"}/admin`
 // });
 
 // // Add a request interceptor
@@ -23,7 +23,7 @@
 import axios from 'axios';
 
 const apiAdmin = axios.create({
-  baseURL: `${"http://192.168.31.133"}/admin`
+  baseURL: `${"http://localhost"}/admin`
 });
 
 // Add a request interceptor

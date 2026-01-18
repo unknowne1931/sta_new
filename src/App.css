@@ -1761,23 +1761,42 @@ select {
 
 
 .admin-home-main-cnt-01-sub-cnt-01-sunb-cnt-01-sub-cnt-01 {
-  width: 98%;
-  height: 50px;
-  border: 1px solid rgb(17, 16, 16);
-  margin: 2px;
+  width: 90%;
+  height: auto;
+  border: 1px solid rgb(255, 255, 255);
+  margin: 20px 0 10px 0;
   border-radius: 5px;
+  padding: 5px;
   /* display: flex; */
   justify-content: center;
   /* Aligns children horizontally at the center */
   align-items: center;
   /* Aligns children vertically at the center */
-  text-align: center;
+  text-align: start;
   align-content: center;
+  color: rgb(223, 215, 215);
+  position: relative;
+  font-size: 2rem;
 }
 
 .admin-home-main-cnt-01-sub-cnt-01-sunb-cnt-01-sub-cnt-01 span {
-  font-size: 15px;
-  font-family: var(--ff4);
+  font-family: var(--ff2);
+  padding: 5px;
+}
+
+.admin-home-main-cnt-01-sub-cnt-01-sunb-cnt-01-sub-cnt-01 div{
+  position: absolute;
+  width: auto;
+  padding: 2px;
+  font-family: 'Times New Roman', Times, serif;
+  border: 1px solid white;
+  font-size: 1.7rem;
+  background-color: rgb(20, 6, 98);
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  top: -17px;
+  align-content: center;
+  justify-content: center;
 }
 
 .play-main-cnt-02 {

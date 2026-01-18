@@ -14,7 +14,7 @@ const Add_reward_1 = () => {
   React.useEffect(() => {
     const fetchRewards = async () => {
       try {
-        const res = await axios.get("http://192.168.31.133/get/singel/rewards");
+        const res = await axios.get("http://localhost/get/singel/rewards");
         if (res.data.Status === "OK") {
           const rewards = res.data.data;
           setRewardPoints(rewards);
@@ -37,7 +37,7 @@ const Add_reward_1 = () => {
 
 
   const get_pay = () =>{
-    apiAdmin.get("http://192.168.31.133/get/won/module/reward/with/upi/data")
+    apiAdmin.get("http://localhost/get/won/module/reward/with/upi/data")
     .then(res =>{
       if(res.data.data){
         setRew_Data(res.data.data)
@@ -55,7 +55,7 @@ const Add_reward_1 = () => {
     if (!inputValue.trim()) return;
 
     try {
-      const response = await apiAdmin.post("http://192.168.31.133/add/singel/rewards", {
+      const response = await apiAdmin.post("http://localhost/add/singel/rewards", {
         data: inputValue
       }, {
         headers: {
@@ -122,7 +122,7 @@ const Add_reward_1 = () => {
           {rew_data.map((data, i) =>{
 
             const delet_doc_paid = () =>{
-              apiAdmin.delete(`http://192.168.31.133/delet/paid/after/one/day/data/${data.reward._id}`)
+              apiAdmin.delete(`http://localhost/delet/paid/after/one/day/data/${data.reward._id}`)
               .then(res=>{
                 if(res.data.Status === "OK"){
                   get_pay()

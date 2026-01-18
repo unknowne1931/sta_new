@@ -37,7 +37,7 @@ const Like = () => {
 
 
   const get_review = () => {
-    axios.get(`http://192.168.31.133/comment/get/single/data/${id}`)
+    axios.get(`http://localhost/comment/get/single/data/${id}`)
       .then(res => {
         if (res.data.data) {
           setData(res.data.data)
@@ -68,7 +68,7 @@ const Like = () => {
         const uid = user.uid;
 
         // Send to backend
-        axios.post("http://192.168.31.133/post/google/auth", {
+        axios.post("http://localhost/post/google/auth", {
           email,
           name,
           username,
@@ -102,7 +102,7 @@ const Like = () => {
       alert("Login to Like")
       console.log("need to login")
     } else {
-      api.post("http://192.168.31.133/make/like/review/count", { l_id: data._id, email: fire.email })
+      api.post("http://localhost/make/like/review/count", { l_id: data._id, email: fire.email })
         .then(res => {
           if (res.data.Status === "OK") {
             alert("Thank you for your like")

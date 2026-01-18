@@ -14,7 +14,7 @@ const Claimcupom = () => {
         if(id){
             try{
                 setTimeout(()=>{
-                    fetch(`${"http://192.168.31.133"}/get/coin/cupons/sds/by/id/${id}`)
+                    fetch(`${"http://localhost"}/get/coin/cupons/sds/by/id/${id}`)
                     .then(res => res.json())
                     .then(data =>{
                         setLoad(false);

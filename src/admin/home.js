@@ -50,7 +50,7 @@ const AdminHome = () => {
 
     const GetTotal = () =>{
         try{
-            apiAdmin.get(`${"http://192.168.31.133"}/get/aal/tottttal/users`)
+            apiAdmin.get(`${"http://localhost"}/get/aal/tottttal/users`)
             .then(res =>{
                 if(res.data.users){
                     setTotal_List(res.data.users)
@@ -78,7 +78,7 @@ const AdminHome = () => {
 
     const GetTotalWinners = () =>{
         try{
-            apiAdmin.get(`${"http://192.168.31.133"}/get/total/users/by/winners/datas/all`)
+            apiAdmin.get(`${"http://localhost"}/get/total/users/by/winners/datas/all`)
             .then(res =>{
                 if(res.data.users){
                     setWin_data(res.data.users)
@@ -107,7 +107,7 @@ const AdminHome = () => {
     const GetLive = () =>{
         try{
             setTimeout(()=>{
-                apiAdmin.get(`${"http://192.168.31.133"}/admin/get/all/users/data/logined`)
+                apiAdmin.get(`${"http://localhost"}/admin/get/all/users/data/logined`)
                 .then(res =>{
                     if(res.data.users){
                         setLive(res.data.users);
@@ -144,7 +144,7 @@ const AdminHome = () => {
         try{
             e.preventDefault()
             setAlert(false);
-            apiAdmin.post(`${"http://192.168.31.133"}/length/and/calcul/ation/of/chart`)
+            apiAdmin.post(`${"http://localhost"}/length/and/calcul/ation/of/chart`)
             .then(res =>{
                 if(res.data.Status === "OK"){
                     setData("Data Saved")
@@ -172,6 +172,16 @@ const AdminHome = () => {
         
     }
 
+    function Time(utcTime) {
+        if (!utcTime) return "";
+
+        return new Date(utcTime).toLocaleString("en-IN", {
+            timeZone: "Asia/Kolkata",
+            dateStyle: "medium",
+            timeStyle: "medium",
+        });
+    }
+
   return (
 
     <div>
@@ -193,7 +203,7 @@ const AdminHome = () => {
                         return(
                             <div key={i} className='admin-home-main-cnt-01-sub-cnt-01-sunb-cnt-01-sub-cnt-01'>
                                 <span>Username : <strong>{user.username}</strong> </span><br/>
-                                <span>Time : <strong>{user.time}</strong></span><br/>
+                                <span>Time : <strong>{Time(user.time)}</strong></span><br/>
                                 <span></span><br/>
                             </div>        
                         )
@@ -213,8 +223,14 @@ const AdminHome = () => {
                     {win_data.map((user, i)=>{
                         return(
                             <div className='admin-home-main-cnt-01-sub-cnt-01-sunb-cnt-01-sub-cnt-01'>
+                                
                                 <span>User : <strong>{user.user}</strong> </span><br/>
-                                <span>Rank : <strong>{user.no}</strong> </span><br/>
+                                
+                                <span>{Time(user.createdAt)}</span>
+                                <div>
+                                    <span>Rank : <strong>{user.no}</strong> </span><br/>
+                                </div>
+                                
                             </div>
                         )
                     })}
@@ -233,6 +249,9 @@ const AdminHome = () => {
                         return(
                             <div className='admin-home-main-cnt-01-sub-cnt-01-sunb-cnt-01-sub-cnt-01'>
                                 <span>User : <strong>{user.user}</strong> </span><br/>
+                                <div>
+                                    <span>{Time(user.createdAt)}</span>
+                                </div>
                             </div>
                         )
                     })}
