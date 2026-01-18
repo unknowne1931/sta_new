@@ -11,6 +11,7 @@ const User_Data = () => {
     const [new_bal, setNew_Bal0] = useState("")
     const [recent, setRecent] = useState([])
     const [len, setLen] = useState("")
+    const [code, setCode] = useState("")
 
     const { pass } = useParams();
 
@@ -136,6 +137,29 @@ const User_Data = () => {
             });
     };
 
+    const post_new_code = (e, user) => {
+        e.preventDefault();
+
+        apiAdmin.post(
+            "http://localhost/verify/data/to-confirm/reported/doc/async",
+            { user, id : code }
+        )
+            .then(res => {
+                if (res.data.Status === "OK") {
+                    fetch_Data(user);
+                }else if(res.data.Status === "CLMD"){
+                    alert("User Claimed This")
+                }else if(res.data.Status === "NTHIM"){
+                    alert("This Coin Not Belongs To Him")
+                }else{
+                    alert("Something Went Wrong")
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    };
+
 
     return (
         <div className="moni_data_main">
@@ -251,13 +275,29 @@ const User_Data = () => {
                             </div>
 
                             <div className="moni_data_main-div-1_sub_01_sub_01">
-                                <h2>Win : <strong style={{fontSize : "3rem"}} >{get_data?.won}</strong> </h2>
-                                <h2>Total Played : <strong style={{fontSize : "3rem"}} >{get_data?.total_played}</strong> </h2>
-                                <h2>Total Played list : <strong style={{fontSize : "3rem"}} >{get_data?.Old_List}</strong> </h2>
+                                <h2>Win : <strong style={{ fontSize: "3rem" }} >{get_data?.won}</strong> </h2>
+                                <h2>Total Played : <strong style={{ fontSize: "3rem" }} >{get_data?.total_played}</strong> </h2>
+                                <h2>Total Played list : <strong style={{ fontSize: "3rem" }} >{get_data?.Old_List}</strong> </h2>
 
                                 <div className="user_data_top">
                                     <span>User Played</span>
                                 </div>
+                            </div>
+
+                            <div className="moni_data_main-div-1_sub_01_sub_01">
+                                <h2>Add More</h2>
+                                <form onSubmit={(e) => post_new_code(e, get_data?.data?._id)}>
+
+                                    <input type="text" placeholder={`add More ${get_data?.balance?.balance}₹`} onChange={e => { setCode(e.target.value) }} />
+
+                                    <button type="submit" >Add</button>
+                                </form>
+
+
+                                <div className="user_data_top">
+                                    <span>Add Code</span>
+                                </div>
+
                             </div>
 
 

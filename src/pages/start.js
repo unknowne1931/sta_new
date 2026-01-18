@@ -21,6 +21,8 @@ const Start = () => {
   }, []);
 
   const checkSavedTimerOrFetch = async () => {
+
+    setAlert(false)
     const target = await getFromDB('targetSecond');
     const savedId = await getFromDB('qno_id');
 
@@ -39,8 +41,14 @@ const Start = () => {
           if (!data.img) {
             setImageLoaded(true);
             startCountdown(target);
-          } else {
+          }else if(response.data.Status === "BAD"){
+            setData(`${response.data.message} || And take screenshot to Claim Refund ${response.data.id}`)
+            setAlert(true)
+            setImageLoaded(false);
+          } 
+          else {
             // image will trigger countdown on load
+          
             setImageLoaded(false);
           }
           return;
@@ -54,6 +62,7 @@ const Start = () => {
 
   const GetQuestion = async () => {
     try {
+      setAlert(false)
       setImageLoaded(false);
       const response = await api.get(`http://localhost/get/question/no/by/user/name`);
       const resData = response.data;
@@ -81,6 +90,9 @@ const Start = () => {
 
       } else if (resData.Status === "BAD") {
         setVerify(false);
+        // setData(resData.message)
+        setData(`${resData.data.message} || And take screenshot to Claim Refund ${resData.data.id}.`)
+        setAlert(true)
         console.error("Bad status from server.");
       } else if (resData.Logout === "OUT") {
         setVerify(false);
