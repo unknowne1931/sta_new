@@ -107,7 +107,7 @@ const History = () => {
                 <div className='account_histor-page-main-cnt-01-sub-cnt-01_01_sub_div'>
                   <h1>
                     {user.type === "Debited" && <span className='account_histor-page-main-cnt-01-sub-cnt-01_01_sub_div_deb'>{user.tp === "Rupee" && <span>+ ₹</span>} {user.rupee} {user.tp === "Stars" && <span>Stars</span>}</span> }
-                    {user.type === "Credited" && <span className='account_histor-page-main-cnt-01-sub-cnt-01_01_sub_div_cred'>+ ₹{user.rupee}</span> }
+                    {user.type === "Credited" && <span className='account_histor-page-main-cnt-01-sub-cnt-01_01_sub_div_cred'> {user.tp === "Rupee" ? "+ ₹" : "Stars" } {user.rupee}</span> }
                   </h1>
                 </div>
 
