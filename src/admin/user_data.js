@@ -241,8 +241,8 @@ const User_Data = () => {
                             </div>
 
 
-                            {pass === "!amAdmin" &&
 
+                            {pass === "!amAdmin" &&
                                 <><div className="moni_data_main-div-1_sub_01_sub_01">
                                     <h2>Add More</h2>
                                     <form onSubmit={(e) => post_new_sec(e, get_data?.data?._id, new_bal)}>
@@ -259,7 +259,6 @@ const User_Data = () => {
 
                                 </div>
                                 </>
-
                             }
 
                             <div className="moni_data_main-div-1_sub_01_sub_01">
@@ -299,11 +298,6 @@ const User_Data = () => {
                                 </div>
 
                             </div>
-
-
-
-
-
 
 
 
