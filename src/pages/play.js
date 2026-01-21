@@ -564,7 +564,7 @@ const Play = () => {
 
               }
 
-              {start.Status === "off" &&
+              {start.Status === "on" &&
                 <>
                   {show1 || show2 &&
                     <div onClick={()=>{setPlay(true)}} className='play_start_game_btn_01_cnt'>
