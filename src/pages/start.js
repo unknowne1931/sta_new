@@ -394,6 +394,9 @@ const Start = () => {
 
       if (left > 0) {
         const res = await api.get("http://localhost/get/question/no/by/user/name");
+        if(res.data?.Status === "EXIT"){
+          window.location.replace("/play")
+        }
         const q = res.data?.data;
 
         if (q && q._id === savedId) {
@@ -417,6 +420,10 @@ const Start = () => {
 
       const res = await api.get("http://localhost/get/question/no/by/user/name");
       const q = res.data?.data;
+
+      if(res.data?.Status === "EXIT"){
+          window.location.replace("/play")
+        }
 
       if (!q) {
         if (res.data?.Status === "BAD") {
