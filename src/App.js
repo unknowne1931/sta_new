@@ -35,6 +35,7 @@ import UsersPlayedWalletAdmin from './admin/users_played_wallet';
 import User_Data from './admin/user_data';
 import Test from './admin/test';
 import Extra_time from './pages/extra_time';
+import Admin_controle from './admin/controle';
 
 
 const User_admin = lazy(()=> import('./admin/add_admins'))
@@ -286,6 +287,7 @@ const App = () => {
                 
                 
                 {/* Admin Routes */}
+                <Route path='/admin/controle' element={admin? <Admin_controle /> : <LoginAdmin/> } />
                 <Route path='/admin/coins' element={admin ? <Coin /> : <LoginAdmin />} />
                 <Route path='/admin/request' element={admin ? <Claimdreques /> : <LoginAdmin />} />
                 <Route path='/admin/start' element={admin ?  <Start_Gm />  : <LoginAdmin />} />
