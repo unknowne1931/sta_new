@@ -3238,3 +3238,11 @@
     color: rgb(6, 203, 6);
 }
 
+.playyyyy_cnt_01{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}

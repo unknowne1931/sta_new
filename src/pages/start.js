@@ -393,7 +393,7 @@ const Start = () => {
       const left = Math.floor((target - now) / 1000);
 
       if (left > 0) {
-        const res = await api.get("http://localhost/get/question/no/by/user/name");
+        const res = await api.get("http://localhost/get/question/no/by/user/name/bf/xx");
         if(res.data?.Status === "EXIT"){
           window.location.replace("/play")
         }
@@ -418,7 +418,7 @@ const Start = () => {
       setAlert(false);
       setVerify(false);
 
-      const res = await api.get("http://localhost/get/question/no/by/user/name");
+      const res = await api.get("http://localhost/get/question/no/by/user/name/bf/xx");
       const q = res.data?.data;
 
       if(res.data?.Status === "EXIT"){
@@ -567,7 +567,7 @@ const Start = () => {
           </div>
         )}
 
-        {QData?.cat && <h2>Cat : {QData.cat}</h2>}
+        {QData?.cat && <h2>Question Number : {QData.Qno}</h2>}
 
         {QData?.Question && (
           <div className="game_start-main-cnt-01">

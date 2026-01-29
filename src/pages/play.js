@@ -42,14 +42,16 @@ const Play = () => {
   const [time_ot, setTime_Ot] = useState('')
   const [level, setLevel] = useState('0')
   const [play, setPlay] = useState(false)
+  const [Api, setApi] = useState("2x")
 
 
   useEffect(() => {
     const fetchData = async () => {
-      await GetAllDAta();
+      GetAllDAta();
 
       if (id === "timeout") {
         const data = await getFromDB("start_time_out");
+        post_tm_out()
         setTime_Ot(data);
       } else if (id === "wronganswer") {
         const data = await getFromDB("start_game_out");
@@ -59,6 +61,20 @@ const Play = () => {
 
     fetchData();
   }, []);
+
+
+  const post_tm_out = () =>{
+    api.get("http://localhost/verify/by/timed/out/data/v/fy")
+    .then(res =>{
+      if(res.data.Status === "OK"){
+        console.log("Everything went Good")
+      }else{
+        console.log("Something went wrong")
+      }
+    }).catch(error =>{
+      console.log(error)
+    })
+  }
 
 
   useEffect(() => {
@@ -312,7 +328,7 @@ const Play = () => {
     try {
       setAlert(false)
       e.preventDefault()
-      api.post(`${"http://localhost"}/start/playing/by/debit/amount/new`, { user })
+      api.post(`${"http://localhost"}/start/playing/by/debit/amount/new/${Api}`, { user })
         .then(res => {
           if (res.data.Status === "OK") {
             localStorage.setItem("valid", "yes")
@@ -566,21 +582,72 @@ const Play = () => {
 
               {start.Status === "on" &&
                 <>
-                  {show1 || show2 &&
-                    <div onClick={()=>{setPlay(true)}} className='play_start_game_btn_01_cnt'>
-                      <div className='play_start_game_btn_01_cnt-sub_02'>
-                        {balance.balance &&
-                          `You have ${parseInt((parseInt(balance.balance) / parseInt(get_rupe.rupee)))} Attempts`
-                        }
+                  <div className='playyyyy_cnt_01'>
+                    {show1 || show2 &&
+                      <div onClick={() => { setPlay(true); setApi("2x") }} className='play_start_game_btn_01_cnt'>
+                        <div className='play_start_game_btn_01_cnt-sub_02'>
+                          4 stars | 20s/q
+                        </div>
+                        <span>Start 0.1</span>
+                        <div className='play_start_game_btn_01_cnt-sub_01'>
+                          Play with ₹ {get_rupe.rupee}.00 only
+                        </div>
                       </div>
-                      <span>start</span>
-                      <div className='play_start_game_btn_01_cnt-sub_01'>
-                        Play with ₹ {get_rupe.rupee}.00 only
+                    }
+
+                    {show1 || show2 &&
+                      <div onClick={() => { setPlay(true); setApi("5x") }} className='play_start_game_btn_01_cnt'>
+                        <div className='play_start_game_btn_01_cnt-sub_02'>
+                          10 stars | 20s/q
+                        </div>
+                        <span>Start 0.2</span>
+                        <div className='play_start_game_btn_01_cnt-sub_01'>
+                          Play with ₹ {get_rupe.rupee}.00 only
+                        </div>
                       </div>
-                    </div>
-                  }
+                    }
+
+                    {show1 || show2 &&
+                      <div onClick={() => { setPlay(true); setApi("7x") }} className='play_start_game_btn_01_cnt'>
+                        <div className='play_start_game_btn_01_cnt-sub_02'>
+                          14 stars | 20s/q
+                        </div>
+                        <span>start 0.3</span>
+                        <div className='play_start_game_btn_01_cnt-sub_01'>
+                          Play with ₹ {get_rupe.rupee}.00 only
+                        </div>
+                      </div>
+                    }
+
+                    {show1 || show2 &&
+                      <div onClick={() => { setPlay(true); setApi("10x") }} className='play_start_game_btn_01_cnt'>
+                        <div className='play_start_game_btn_01_cnt-sub_02'>
+                          20 stars | 20s/q
+                        </div>
+                        <span>start 0.4</span>
+                        <div className='play_start_game_btn_01_cnt-sub_01'>
+                          Play with ₹ {get_rupe.rupee}.00 only
+                        </div>
+                      </div>
+                    }
+
+                    {show1 || show2 &&
+                      <div onClick={() => { setPlay(true); setApi("15x") }} className='play_start_game_btn_01_cnt'>
+                        <div className='play_start_game_btn_01_cnt-sub_02'>
+                          30 stars | 20s/q
+                        </div>
+                        <span>start 0.5</span>
+                        <div className='play_start_game_btn_01_cnt-sub_01'>
+                          Play with ₹ {get_rupe.rupee}.00 only
+                        </div>
+                      </div>
+                    }
+                  </div>
+
                 </>
               }
+
+
 
 
 
@@ -657,13 +724,13 @@ const Play = () => {
 
 
               <div className='mod-rppu' >Quick Add</div>
-              <div className='play-main-cnt-02-true_sub_sub'>
-                <button onClick={() => initiatePayment(20)} >20</button>
-                <button onClick={() => initiatePayment(50)} >50</button>
+              <div className='play-main-cnt-02-true_sub_sub' >
+                <button onClick={() => initiatePayment(20)}  >20</button>
+                <button onClick={() => initiatePayment(50)}  >50</button>
                 <button onClick={() => initiatePayment(100)} >100</button>
                 <button onClick={() => initiatePayment(200)} >200</button>
                 <button onClick={() => initiatePayment(500)} >500</button>
-                <button onClick={() => initiatePayment(1000)} >1000</button>
+                <button onClick={() => initiatePayment(1000)}>1000</button>
               </div>
             </div>
           }
@@ -704,7 +771,6 @@ const Play = () => {
 
           {play &&
           
-
             <div className='warning_before_start'>
               <h1 className='warning_before_start_h1_01'>Agree to This</h1>
               <div className='warning_before_start_sub_01'>
@@ -714,21 +780,23 @@ const Play = () => {
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
-                  <strong>
-                    As you play, the game gets harder because you have less time for each move if you answer too quickly. To get extra time, wait until the last seconds then 2 bonus seconds will be added to the next question of the same difficulty.
-                  </strong>
-                </div>
-
-                <div className='warning_before_start_sub_01_sub_01'>
                   If you feel the time was too short, report it to us. After verification, we will refund only if the lack of time caused a wrong answer. No refunds will be given once a Time Shortage question has been answered. To avoid losing time, make sure to answer at the last second
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
-                  If you fail to submit your answer in the last seconds, you won’t be able to clear all levels or reach the top.
+                  If there is a time shortage, select the option 'Time Shortage'.
+                  If the issue is related to options, report it as 'Wrong Options'.
+                  If the problem is image-related, report it as 'Image Loading'.
+                  Refunds will not be provided if the reports match your ticket
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
-                  The refund will be processed within 24 hours.
+                  If the fault is on our side while playing the game, such as missing any question, wrong options, or image errors, we will pay 2 rupees for each previously answered question.
+
+                </div>
+
+                <div className='warning_before_start_sub_01_sub_01'>
+                  The refund will be processed within 24 hours. 
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
@@ -807,8 +875,7 @@ const Play = () => {
 
           <div className='play-header_process-sub'>
             <img src={pro} />
-            {/* <h2>Play with ₹ 05.00 only</h2>
-            <p>Get ₹ 05.00 Free on your first play</p> */}
+            {/* <h2>Play with ₹ 05.00 only</h2><p>Get ₹ 05.00 Free on your first play</p> */}
 
           </div>
           <div className='play-header_process-sub-02'>
