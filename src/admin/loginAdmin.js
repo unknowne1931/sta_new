@@ -13,7 +13,7 @@ const LoginAdmin = () => {
     const SendOtp = (e) =>{
         try{
             e.preventDefault()
-            axios.post(`${"http://localhost"}/login/to/admin/account`,{username})
+            axios.post(`${"https://kalanirdhari.in"}/login/to/admin/account`,{username})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     setShow(true)
@@ -39,7 +39,7 @@ const LoginAdmin = () => {
     const Login = (e) =>{
         try{
             e.preventDefault()
-            axios.post(`${"http://localhost"}/verify/otp/and/pass/by/admin`,{username, pass, otp})
+            axios.post(`${"https://kalanirdhari.in"}/verify/otp/and/pass/by/admin`,{username, pass, otp})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     localStorage.setItem("token", res.data.token)

@@ -17,7 +17,7 @@ const Pending = () => {
   const GetPendingData = () => {
     try {
       setTimeout(() => {
-        api.get(`${"http://localhost"}/get/pending/notification`)
+        api.get(`${"https://kalanirdhari.in"}/get/pending/notification`)
           .then(res => {
             if (res.data.data){
               setPending_Data(res.data.data);

@@ -26,7 +26,7 @@ const Add_admins = () => {
 
     const fetch_users_data = () =>{
       try{
-        apiAdmin.get('http://localhost/get/all/total/users/data/from/admins/super')
+        apiAdmin.get('https://kalanirdhari.in/get/all/total/users/data/from/admins/super')
         .then(res =>{
           if(res.data.data){
               setAll_Users(res.data.data)
@@ -53,7 +53,7 @@ const Add_admins = () => {
 
     const GetAllDAta = () =>{
         try{
-          apiAdmin.get("http://localhost/get/all/admin/new/languages/data")
+          apiAdmin.get("https://kalanirdhari.in/get/all/admin/new/languages/data")
           .then(res =>{
               if(res.data.Data){
                   setALLLDAta(res.data.Data)
@@ -85,7 +85,7 @@ const Add_admins = () => {
       e.preventDefault();
       setAlert(false)
       try{
-        apiAdmin.post('http://localhost/get/employe/login/data/create/new',{username, password, email ,language : lang})
+        apiAdmin.post('https://kalanirdhari.in/get/employe/login/data/create/new',{username, password, email ,language : lang})
         .then(res =>{
           if(res.data.Status === "OK"){
             fetch_users_data()

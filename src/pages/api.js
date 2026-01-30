@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: `${"http://localhost"}/api`
+  baseURL: `${"https://kalanirdhari.in"}/api`
 });
 
 // Add a request interceptor

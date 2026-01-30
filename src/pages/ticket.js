@@ -15,7 +15,7 @@ const Ticket_Page = () => {
 
 
     const get_data = () =>{
-        api.get(`http://localhost/get/data/ticket`)
+        api.get(`https://kalanirdhari.in/get/data/ticket`)
         .then(res=>{
             if(res.data.data){
                 setData(res.data.data)
