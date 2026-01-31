@@ -31,7 +31,7 @@
 //       const timeLeft = Math.floor((target - now) / 1000);
 
 //       if (timeLeft > 0) {
-//         const response = await api.get(`https://kalanirdhari.in/get/question/no/by/user/name`);
+//         const response = await api.get(`http://localhost/get/question/no/by/user/name`);
 //         const data = response.data?.data;
 
 //         if (data && data._id === savedId) {
@@ -64,7 +64,7 @@
 //     try {
 //       setAlert(false)
 //       setImageLoaded(false);
-//       const response = await api.get(`https://kalanirdhari.in/get/question/no/by/user/name`);
+//       const response = await api.get(`http://localhost/get/question/no/by/user/name`);
 //       const resData = response.data;
 
 //       if (resData.data) {
@@ -146,7 +146,7 @@
 //     await removeFromDB('targetSecond');
 //     setAlert(false);
 //     try {
-//       const response = await api.delete(`https://kalanirdhari.in/delete/by/user/id/for/valid/data`);
+//       const response = await api.delete(`http://localhost/delete/by/user/id/for/valid/data`);
 //       const resData = response.data;
 //       if (resData.Status === "OK") {
 //         setData("You are quitting the game.");
@@ -170,7 +170,7 @@
 //     setAlert(false);
 //     await removeFromDB('targetSecond');
 //     try {
-//       const response = await api.post(`https://kalanirdhari.in/verify/answer/question/number`, {
+//       const response = await api.post(`http://localhost/verify/answer/question/number`, {
 //         answer,
 //         id: QData._id,
 //         seconds : parseInt(QData.seconds)- parseInt(remaining),
@@ -393,7 +393,7 @@ const Start = () => {
       const left = Math.floor((target - now) / 1000);
 
       if (left > 0) {
-        const res = await api.get("https://kalanirdhari.in/get/question/no/by/user/name/bf/xx");
+        const res = await api.get("http://localhost/get/question/no/by/user/name/bf/xx");
         if(res.data?.Status === "EXIT"){
           window.location.replace("/play")
         }
@@ -418,7 +418,7 @@ const Start = () => {
       setAlert(false);
       setVerify(false);
 
-      const res = await api.get("https://kalanirdhari.in/get/question/no/by/user/name/bf/xx");
+      const res = await api.get("http://localhost/get/question/no/by/user/name/bf/xx");
       const q = res.data?.data;
 
       if(res.data?.Status === "EXIT"){
@@ -493,9 +493,10 @@ const Start = () => {
     await removeFromDB("targetSecond");
 
     try {
-      api.post("https://kalanirdhari.in/verify/answer/question/number/xss", {
+      api.post("http://localhost/verify/answer/question/number/xss", {
         answer,
         id: QData._id,
+        sec: QData.seconds - remaining,
         Ans: QData.Ans,
       })
       .then(async (res)=>{
@@ -544,7 +545,7 @@ const Start = () => {
 
     try {
       const res = await api.post(
-        "https://kalanirdhari.in/verify/answer/question/number",
+        "http://localhost/verify/answer/question/number",
         
         {
           answer,
