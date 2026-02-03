@@ -11,12 +11,14 @@ import pro from "../image/pro.gif"
 import { useLocation } from 'react-router-dom';
 import imgg from "../image/to.gif"
 import { getFromDB, saveToDB } from '../db';
+import { useNavigate } from "react-router-dom";
 
 const Play = () => {
 
   const location = useLocation();
   const queryParm = new URLSearchParams(location.search);
   const id = queryParm.get('id');
+  const navigate = useNavigate();
 
 
   const [balance, setBalance] = useState([]);
@@ -895,7 +897,7 @@ const Play = () => {
           {/* <span className='playyy_spn_01'>If time is short, please report it to us.</span> */}
           <h2>Past seconds : {time_ot?.seconds} </h2>
           <p className='playyy_para_01'>Report to us, and we will verify and refund if there is any issue.</p>
-          <button style={{ backgroundColor: "green" }} onClick={() => window.location.replace("/play")}>
+          <button style={{ backgroundColor: "green" }} onClick={() => navigate('/play')}>
             Everything’s Fine
           </button>
 

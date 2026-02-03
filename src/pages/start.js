@@ -496,7 +496,7 @@ const Start = () => {
       api.post("http://localhost/verify/answer/question/number/xss", {
         answer,
         id: QData._id,
-        sec: QData.seconds - remaining,
+        sec: parseInt(QData.seconds) - parseInt(remaining),
         Ans: QData.Ans,
       })
       .then(async (res)=>{
