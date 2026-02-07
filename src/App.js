@@ -36,6 +36,7 @@ import User_Data from './admin/user_data';
 import Test from './admin/test';
 import Extra_time from './pages/extra_time';
 import Admin_controle from './admin/controle';
+import Users_Paid from './admin/users_paid';
 
 
 const User_admin = lazy(()=> import('./admin/add_admins'))
@@ -234,6 +235,7 @@ const App = () => {
                 <Route path='/refund-shipping' element={<ShippingAndRefundPolicy/>}/>
                 <Route path='/load' element={<Loading />} />
                 <Route path='/sample' element={<Sample_qn />} />
+                <Route path='/cal' element={<Users_Paid />} />
 
                 <Route path='/try' element={<Try />} />
 
