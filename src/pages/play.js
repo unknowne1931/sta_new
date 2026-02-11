@@ -65,7 +65,7 @@ const Play = () => {
         
         const data = await getFromDB("start_time_out");
         setTime_Ot(data);
-        await post_tm_out()
+        post_tm_out(data)
       } else if (id === "wronganswer") {
         const data = await getFromDB("start_game_out");
         setTime_Ot(data);
@@ -76,8 +76,7 @@ const Play = () => {
   }, []);
 
 
-  const post_tm_out = async () =>{
-    const data = await getFromDB("start_time_out");
+  const post_tm_out = async (data) =>{
     api.post("http://localhost/verify/by/timed/out/data/v/fy", {difi : data.tough, cat : data.cat, q_id : data.qno_id})
     .then(res =>{
       if(res.data.Status === "OK"){
