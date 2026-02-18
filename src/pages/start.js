@@ -418,7 +418,7 @@ const Start = () => {
       setAlert(false);
       setVerify(false);
 
-      const res = await api.get("http://localhost/get/question/no/by/user/name/bf/xx");
+      const res = await api.get("http://localhost/get/question/no/by/user/name/bf/all/xx");
       const q = res.data?.data;
 
       if(res.data?.Status === "EXIT"){
@@ -493,11 +493,12 @@ const Start = () => {
     await removeFromDB("targetSecond");
 
     try {
-      api.post("http://localhost/verify/answer/question/number/xss", {
+      api.post("http://localhost/verify/answer/question/number/all/xs", {
         answer,
         id: QData._id,
-        sec: parseInt(QData.seconds) - parseInt(remaining),
         Ans: QData.Ans,
+        sec : remaining
+        // sec: parseInt(QData.seconds) - parseInt(remaining),
       })
       .then(async (res)=>{
         if(res.data.Status === "OK"){

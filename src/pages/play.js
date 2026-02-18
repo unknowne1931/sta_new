@@ -1457,6 +1457,75 @@ const Play = () => {
   }
 
 
+  const StartGame_1 = (e) => {
+    setPlay(false)
+    setVerify(true)
+    try {
+      setAlert(false)
+      e.preventDefault()
+      api.post(`${"http://localhost"}/start/playing/by/debit/amount/new/all/xx`, { user })
+        .then(res => {
+          if (res.data.Status === "OK") {
+            localStorage.setItem("valid", "yes")
+            GetBalance()
+            window.location.href = '/start'
+            setVerify(false)
+          } else if (res.data.Status === "Low-Bal") {
+            setVerify(false)
+            setData("You not Have Enough Balance")
+            setAlert(true)
+
+          } else if (res.data.Status === "BAD") {
+            setVerify(false)
+            setData("Your turn has ended.")
+            setAlert(true)
+          } else if (res.data.Status === "BAD_CR") {
+            setVerify(false)
+            setData("Try Again or Wait a Minute")
+            setAlert(true)
+          }
+          else if (res.data.Status === "Time") {
+            setVerify(false)
+            setData(res.data.message)
+            setAlert(true)
+          }
+          else if (res.data.Status === "no_us") {
+            setVerify(false)
+            setData("Claim your Free Credit")
+            setAlert(true)
+          } else if (res.data.Status === "les_10") {
+            setVerify(false)
+            setData("Try Again")
+            setAlert(true)
+          } else if (res.data.Status === "s_m") {
+            setVerify(false)
+            setData("Some credentials are missing. Please try again.")
+            setAlert(true)
+          }
+          else {
+            setVerify(false)
+            setData("Something Went Wrong Try Again")
+            setAlert(true)
+          }
+        }).catch(error => {
+          setVerify(false)
+          if (error.response) {
+            console.error("API Error:", error.response.status, error.response.data);
+          } else if (error.request) {
+            console.error("No response from server. Please check your connection.");
+          } else {
+            console.error("Error occurred:", error.message);
+          }
+        })
+    } catch (error) {
+      setVerify(false)
+      console.log(error)
+    }
+
+
+  }
+
+
   const SelHandel = (data) => {
     setSelLanguages(data);
   }
@@ -1722,7 +1791,7 @@ const Play = () => {
                       <p>
                         Answer the question as soon as possible. Saved time is converted into money at the rate of <strong className='class_200_max_data'>10.00₹</strong> per second.
                       </p>
-                      <div onClick={() => {  }} className='play_start_game_btn_01_cnt'>
+                      <div onClick={() => {setPlay(true)  }} className='play_start_game_btn_01_cnt'>
                         <div className='play_start_game_btn_01_cnt-sub_02'>
                           win max <strong className='class_200_max_data'>200.00 ₹</strong> | 20s/q
                         </div>
@@ -1931,7 +2000,7 @@ const Play = () => {
               </div>
               <div className='warning_before_start_sub_02'>
                 <button onClick={()=>{setPlay(false)}} className='warning_before_start_sub_02-2'>Reject</button>
-                <button onClick={StartGame} className='warning_before_start_sub_02-1'>Start</button>
+                <button onClick={StartGame_1} className='warning_before_start_sub_02-1'>Start</button>
                 
               </div>
             </div>
