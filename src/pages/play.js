@@ -1463,7 +1463,7 @@ const Play = () => {
     try {
       setAlert(false)
       e.preventDefault()
-      api.post(`${"http://localhost"}/start/playing/by/debit/amount/new/all/xx`, { user })
+      api.post(`${"http://localhost"}/start/playing/by/debit/amount/new/all/xx/main`, { user })
         .then(res => {
           if (res.data.Status === "OK") {
             localStorage.setItem("valid", "yes")
