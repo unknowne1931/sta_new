@@ -17,7 +17,7 @@ const AddBalance = () => {
     
     const GetUsersData = () =>{
         try{
-            apiAdmin.get(`${"http://localhost"}/get/all/users/usernames/by/id/to/update/balance`)
+            apiAdmin.get(`${"https://kalanirdhari.in"}/get/all/users/usernames/by/id/to/update/balance`)
             .then(res=>{
                 if(res.data.users){
                     setUsers_Data(res.data.users)
@@ -48,7 +48,7 @@ const AddBalance = () => {
         try{
             setAlert(false);
             const data = utr.trim()
-            axios.post(`${"http://localhost"}/post/utr/ids/by/admin`,{utr : data})
+            axios.post(`${"https://kalanirdhari.in"}/post/utr/ids/by/admin`,{utr : data})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     setData("Data Posted")

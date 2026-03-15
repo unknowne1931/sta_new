@@ -34,7 +34,7 @@ const Start_Try = () => {
   //       const result = await fp.get();
   //       const id = result.visitorId
   //       const u_id = localStorage.getItem("user")
-  //       api.get(`http://localhost/get/singel/reward/data/by/${id}/${u_id}`)
+  //       api.get(`https://kalanirdhari.in/get/singel/reward/data/by/${id}/${u_id}`)
   //       .then(res=>{
   //           if(res.data.data){
   //               console.log(res.data.data)
@@ -53,7 +53,7 @@ const Start_Try = () => {
   const get_data = () => {
     setLoad(true)
     axios
-      .get("http://localhost/remaining/rewards/len/and/list")
+      .get("https://kalanirdhari.in/remaining/rewards/len/and/list")
       .then((res) => {
         if (res.data.Status === "OK") {
           setData(res.data.data);
