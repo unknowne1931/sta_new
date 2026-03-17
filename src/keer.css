@@ -3507,3 +3507,68 @@
     letter-spacing: 1px;
     text-shadow: 2px 2px 4px gray;
 }
+
+
+.Trry_main_01{
+    margin-top: 100px;
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px rgba(28, 28, 28, 0.777);
+    background-color: #4a4a4a;
+    color: white;
+}
+
+.Trry_main_01 h3{
+    font-size: 2.5rem;
+    text-align: start;
+}
+
+.Trry_main_01 h3 span{
+    color: rgb(0, 255, 0);
+}
+
+.Trry_main_01_sub_01{
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    background-color: #004cff8b;
+    border-radius: 10px;
+    font-size: 2.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    text-align: start;
+}
+
+
+.Tryy_start_btn_01{
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid white;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #000000;
+    cursor: pointer;
+}
+
+.Trry_main_02{
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 4px 4px 8px gray;
+    background-color: #494848;
+}
+
+.Trry_main_02 h3{
+    font-size: 2.6rem;
+    text-align: start;
+    color: white;
+    font-family: var(--ff1);
+}
