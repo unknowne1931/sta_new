@@ -32,7 +32,7 @@ const History = () => {
   const Hist = () => {
     try {
       setTimeout(() => {
-        api.get(`${"https://kalanirdhari.in"}/update/data`)
+        api.get(`${"http://localhost"}/update/data`)
           .then(res => {
             if (res.data.data) {
               setData(res.data.data);

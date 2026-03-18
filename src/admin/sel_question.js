@@ -32,7 +32,7 @@ const Sel_question = () => {
     }, []);
 
     const fetchLanguages = () => {
-        apiAdmin.get('https://kalanirdhari.in/get/all/admin/new/languages/data')
+        apiAdmin.get('http://localhost/get/all/admin/new/languages/data')
             .then(res => {
                 if (res.data.Data) {
                     setLanguages(res.data.Data);
@@ -44,7 +44,7 @@ const Sel_question = () => {
     };
 
     const fetchAllQuestions = () => {
-        apiAdmin.get('https://kalanirdhari.in/admin/get/tottal/users/created/questions')
+        apiAdmin.get('http://localhost/admin/get/tottal/users/created/questions')
             .then(res => {
                 if (res.data.data) {
                     setQuestions(res.data.data);
@@ -86,7 +86,7 @@ const Sel_question = () => {
             return;
         }
 
-        apiAdmin.post("https://kalanirdhari.in/get/data/and/post/users/selected/data/to/db", {
+        apiAdmin.post("http://localhost/get/data/and/post/users/selected/data/to/db", {
             user: question.user,
             img: question.img,
             Questio: question.Questio,

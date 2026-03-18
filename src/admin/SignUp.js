@@ -18,7 +18,7 @@ const SignUpAdmin = () => {
         try{
             e.preventDefault();
             if(answ.length > 2 && id.length > 2){
-                axios.post(`${"https://kalanirdhari.in"}/get/new/user/admin/account`,{username, pass, quest, answ, id})
+                axios.post(`${"http://localhost"}/get/new/user/admin/account`,{username, pass, quest, answ, id})
                 .then(res=>{
                     if(res.data.Status === "OK"){
                         alert("Account Created")

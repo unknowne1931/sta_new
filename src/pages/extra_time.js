@@ -18,7 +18,7 @@ const Extra_time = () => {
     }, [])
 
     function get_up_sec() {
-        api.get("https://kalanirdhari.in/get/verifyed/seonds/updates/data/and/avug/cal")
+        api.get("http://localhost/get/verifyed/seonds/updates/data/and/avug/cal")
             .then(res => {
                 if (res.data.data) {
                     setData(res.data.data)
