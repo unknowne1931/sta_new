@@ -617,7 +617,14 @@ const Start = () => {
 
         {remaining > 0 && (
           <div style={{ fontSize: 20, color: remaining <= 5 ? "red" : "black" }}>
-            ⏳ {remaining}s
+            ⏳ {remaining}s <br/>
+
+            {remaining <= 10 && 
+              <>
+                <span style={{color : "green"}}>{remaining*10}.00 ₹</span>
+              </>
+            }
+
           </div>
         )}
 
