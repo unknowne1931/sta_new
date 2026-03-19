@@ -499,45 +499,41 @@ import axios from 'axios';
  
 const Try = () => {
 
-    const [deviceId, setDeviceId] = useState([])
+    const [deviceId, setDeviceId] = useState('')
     const [start_game, setStart_Game] = useState();
     const [data, setData] = useState([])
 
 
     useEffect(() => {
-        const initFingerprint = async () => {
-            const id = await getFromDB("di");
-            if (!id) {
-                const fp = await FingerprintJS.load();
-                const result = await fp.get();
-                setDeviceId(result.visitorId);
-                await saveToDB("di", result.visitorId);
-                console.log("Device ID saved:", result.visitorId);
-            } else {
-                setDeviceId(id);
-                console.log("Device ID loaded from DB:", id);
-            }
-        };
-        initFingerprint();
+        const ip = getFromDB("ip")
+        setDeviceId(ip)
+        // const initFingerprint = async () => {
+        //     const id = await getFromDB("di");
+        //     if (!id) {
+        //         const fp = await FingerprintJS.load();
+        //         const result = await fp.get();
+        //         setDeviceId(result.visitorId);
+        //         await saveToDB("di", result.visitorId);
+        //         console.log("Device ID saved:", result.visitorId);
+        //     } else {
+        //         setDeviceId(id);
+        //         console.log("Device ID loaded from DB:", id);
+        //     }
+        // };
+        // initFingerprint();
     }, []);
 
 
-    const get_qst = () =>{
-        axios.post("http://localhost/get/question/for/new/users/signed/out/users/qstion", { u_id : deviceId})
-        .then(res =>{
-            if(res.data.Status === "OK"){
-                setStart_Game(true)
-                setData(res.data.data)
-                console.log(res.data.data)
-            }else{
-                alert(res.data.Status)
-                console.log(res)
-                window.location.href = '/play'
-            }
-        }).catch((error) =>{
-            console.log(error)
-        })
-    }
+const get_qst = () => {
+  if (!deviceId) return;
+
+  fetch(`http://localhost/get/question/for/new/users/signed/out/users/qstion/${deviceId}`)
+    .then(res => res.json())
+    .then(res => {
+      console.log("FETCH RESULT:", res);
+    })
+    .catch(err => console.log(err));
+};
 
 
     const Post_data = () => {
@@ -546,7 +542,6 @@ const Try = () => {
             if(res.data.Status === "OK"){
                 console.log("Created")
                 setStart_Game(true)
-                get_qst()
             }else{
                 alert(res.data.Status)
                 console.log(res)
@@ -587,7 +582,6 @@ const Try = () => {
 
                   <div className='Trry_main_02'>
                       <h3>Free Trial for First-Time Users</h3>
-
                   </div>
               </>
           }
@@ -595,6 +589,8 @@ const Try = () => {
           {start_game &&
             <>
                 <h1>Game started</h1>
+                <button onClick={get_qst} >get</button>
+
             </>
             
           }
