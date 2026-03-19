@@ -37,6 +37,7 @@ import Test from './admin/test';
 import Extra_time from './pages/extra_time';
 import Admin_controle from './admin/controle';
 import Users_Paid from './admin/users_paid';
+import View_Most_Ans from './admin/view_most_ans';
 
 
 const User_admin = lazy(()=> import('./admin/add_admins'))
@@ -312,6 +313,7 @@ const App = () => {
                 <Route path='/admin/data' element={admin ? <User_Data /> : <LoginAdmin /> } />
                 <Route path='/admin/data/:pass' element={admin ? <User_Data /> : <LoginAdmin /> } />
                 <Route path='/admin/test/:id' element={<Test />} />
+                <Route path='/admin/most/ans' element={<View_Most_Ans />} />
 
                 {/* User Routes */}
                 <Route path='*' element={<Error />} />

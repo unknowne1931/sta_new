@@ -3572,3 +3572,24 @@
     color: white;
     font-family: var(--ff1);
 }
+
+
+.view_main_01{
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    overflow: scroll;
+}
+
+.table_019{
+    width: 90%;
+    border-collapse: collapse;
+    border: none;
+}
+
+.table_h1_01{
+    background-color: #00b327;
+    color: white;
+}
+
+
