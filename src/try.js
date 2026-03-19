@@ -500,6 +500,8 @@ import axios from 'axios';
 const Try = () => {
 
     const [deviceId, setDeviceId] = useState([])
+    const [start_game, setStart_Game] = useState();
+    const [data, setData] = useState([])
 
 
     useEffect(() => {
@@ -520,12 +522,38 @@ const Try = () => {
     }, []);
 
 
-    function Post_data(){
-        axios.post("http://localhost/post/new/user/data", {deviceId})
+    const get_qst = () =>{
+        axios.post("http://localhost/get/question/for/new/users/signed/out/users/qstion", { u_id : deviceId})
         .then(res =>{
-            if(res.data){
-
+            if(res.data.Status === "OK"){
+                setStart_Game(true)
+                setData(res.data.data)
+                console.log(res.data.data)
+            }else{
+                alert(res.data.Status)
+                console.log(res)
+                window.location.href = '/play'
             }
+        }).catch((error) =>{
+            console.log(error)
+        })
+    }
+
+
+    const Post_data = () => {
+        axios.post("http://localhost/get/question/for/new/users/signed/out/users", { u_id : deviceId})
+        .then(res =>{
+            if(res.data.Status === "OK"){
+                console.log("Created")
+                setStart_Game(true)
+                get_qst()
+            }else{
+                alert(res.data.Status)
+                console.log(res)
+                window.location.href = '/play'
+            }
+        }).catch((error) =>{
+            console.log(error)
         })
     }
 
@@ -537,29 +565,40 @@ const Try = () => {
     
   return (
     <div>
-           <div className='Trry_main_01'>
-            <h3>Get up to <span>100₹</span> </h3>
-            <div className='Trry_main_01_sub_01'>
-                Time : 20 seconds <br/>
-                Start fee : Free<br/>
-                Questions : 01<br/>
-            </div>
+
+          {start_game !== true &&
+              <>
+                  <div className='Trry_main_01'>
+                      <h3>Get up to <span>100₹</span> </h3>
+                      <div className='Trry_main_01_sub_01'>
+                          Time : 20 seconds <br />
+                          Start fee : Free<br />
+                          Questions : 01<br />
+                      </div>
 
 
-            <div className='Tryy_start_btn_01' onClick={()=>{
-                console.log("Hiii")
-            }}>
-                start
-            </div>
+                      <div className='Tryy_start_btn_01' onClick={Post_data}>
+                          start
+                      </div>
+
+                  </div>
+
+                  <br />
+
+                  <div className='Trry_main_02'>
+                      <h3>Free Trial for First-Time Users</h3>
+
+                  </div>
+              </>
+          }
+
+          {start_game &&
+            <>
+                <h1>Game started</h1>
+            </>
             
-           </div>
-
-           <br/>
-
-           <div className='Trry_main_02'>
-                <h3>Free Trial for First-Time Users</h3>
-
-           </div>
+          }
+           
     </div>
   )
 }

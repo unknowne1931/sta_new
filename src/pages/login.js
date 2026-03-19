@@ -6,7 +6,7 @@ import Popup from './popup';
 import { auth, provider, signInWithPopup } from './firebase';
 import img1 from "../image/login.gif";
 import g from "../image/g-logo.png"
-import { saveToDB } from '../db';
+import { getFromDB, saveToDB } from '../db';
 
 const Login = () => {
   const [data, setData] = useState('');
@@ -18,7 +18,8 @@ const Login = () => {
 
 
 
-  const handleGoogleSignup = () => {
+  async function handleGoogleSignup(){
+    const u_id = await getFromDB("di") || ""
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
@@ -31,7 +32,8 @@ const Login = () => {
           email,
           name,
           username,
-          uid
+          uid,
+          u_id
         }).then(res => {
           if(res.data.Status === "OK") {
             setData("Account Created, Sign-In now!");
