@@ -1786,7 +1786,7 @@ const Play = () => {
               {start.Status === "on" &&
                 <>
                   <div className='singel_qstt_cnt_01'>
-                    <h1>Singel Question</h1>
+                    <h1>Single Question</h1>
                     <div className='singel_qstt_cnt_01_div_01'>
                       <p>
                         Answer the question as soon as possible. Saved time is converted into money at the rate of <strong className='class_200_max_data'>10.00₹</strong> per second.

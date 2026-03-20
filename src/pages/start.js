@@ -625,6 +625,12 @@ const Start = () => {
               </>
             }
 
+            {remaining > 10 && 
+              <>
+                <span style={{color : "green"}}>{100}.00 ₹</span>
+              </>
+            }
+
           </div>
         )}
 

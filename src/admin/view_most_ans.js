@@ -36,6 +36,7 @@ const View_Most_Ans = () => {
               <th style={thStyle}>📈 Total</th>
               <th style={thStyle}>✅ Correct</th>
               <th style={thStyle}>❌ Wrong</th>
+              <th style={thStyle}>Seconds</th>
             </tr>
           </thead>
 
@@ -61,6 +62,14 @@ const View_Most_Ans = () => {
                       <span style={wrongBadge}>
                         {item.no?.length || 0}
                       </span>
+                    </td>
+
+                    <td style={tdStyle}>
+                      <span>{item.seconds.map((sec=>{
+                        return(
+                          <span>{sec}</span>
+                        )
+                      }))}</span>
                     </td>
 
                   </tr>

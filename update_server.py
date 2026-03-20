@@ -41,7 +41,6 @@
 
 
 
-
 import pyautogui
 import time
 
@@ -50,10 +49,9 @@ def type_and_enter(text, delay=0.5):
     pyautogui.press('enter')
     time.sleep(delay)
 
-# safety pause
 time.sleep(3)
 
-# open CMD
+# Open CMD
 pyautogui.press('win')
 time.sleep(1)
 pyautogui.write('cmd', interval=0.1)
@@ -61,22 +59,33 @@ time.sleep(1)
 pyautogui.press('enter')
 time.sleep(2)
 
-# go to Downloads
+# Go to Downloads
 type_and_enter('cd Downloads')
 
-# SSH targets (ADD MORE HERE)
 servers = [
     'ssh -i "staWro.pem" ubuntu@ec2-13-62-50-230.eu-north-1.compute.amazonaws.com',
     'ssh -i "staWro.pem" ubuntu@ec2-13-62-231-214.eu-north-1.compute.amazonaws.com'
-
 ]
 
 for server in servers:
-    type_and_enter(server, delay=5)   # wait for SSH login
+    type_and_enter(server, delay=5)
 
     type_and_enter('sudo su', delay=1)
     type_and_enter('cd sta_backend', delay=1)
-    type_and_enter('git pull origin main', delay=2)
+    type_and_enter('rm -r server.js', delay=1)
+    type_and_enter('nano server.js', delay=2)
+    pyautogui.hotkey('ctrl', 'v')
+    # 🔥 NOW MANUALLY PASTE YOUR CODE HERE
+    # 👉 After nano opens:
+    # Press RIGHT CLICK or CTRL + SHIFT + V
+    # Paste your server.js code
+    # Then save:
+    # CTRL + O → ENTER → CTRL + X
+
+    time.sleep(15)  # ⏳ give yourself time to paste manually
+    pyautogui.hotkey('ctrl', 's')
+    pyautogui.hotkey('ctrl', 'x')
+
     type_and_enter('pm2 restart all', delay=10)
-    type_and_enter('exit', delay=5)   # exit root
-    type_and_enter('exit', delay=5)   # exit SSH
+    type_and_enter('exit', delay=5)
+    type_and_enter('exit', delay=5)
