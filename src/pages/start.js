@@ -510,7 +510,10 @@ const Start = () => {
           setData(`You won ${res.data.stars} stars`);
           setAlert(true);
           window.location.replace("/cart");
-        }else if(res.data.Status === "BAD"){
+        }else if(res.data.Status === "Cheated"){
+          window.location.replace("/play")
+        }
+        else if(res.data.Status === "BAD"){
           await saveToDB("start_game_out", {
           qno_id: QData._id,
           seconds: QData.seconds,
