@@ -18,7 +18,7 @@ const Carthist = () => {
   const GetClaimed = () =>{
     try{
       setTimeout(()=>{
-        api.get(`${"http://localhost"}/get/claimed/from/pending/coins`)
+        api.get(`${"http://192.168.31.133"}/get/claimed/from/pending/coins`)
         .then(res =>{
           if(res.data.data){
             setClaimed_data(res.data.data);
@@ -52,7 +52,7 @@ const Carthist = () => {
 
   const GetPending = () =>{
     try{
-      api.get(`${"http://localhost"}/get/requested/coins/by`)
+      api.get(`${"http://192.168.31.133"}/get/requested/coins/by`)
       .then(res =>{
         if(res.data.data){
           setPending_data(res.data.data);

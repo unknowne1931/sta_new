@@ -30,7 +30,7 @@ const Post_qstn = () => {
         try{
             setAlert(false);
             e.preventDefault();
-            api_user_admin.post(`${"http://localhost"}/get/a/users/admin/posted/questions/from/all/users`,{user, img, Questio, a, b, c, d, Ans, tough, seconds})
+            api_user_admin.post(`${"http://192.168.31.133"}/get/a/users/admin/posted/questions/from/all/users`,{user, img, Questio, a, b, c, d, Ans, tough, seconds})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     const qno = res.data.qno

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Modal.css';
 
-const Popup = ({data, val}) => {
+const Popup = ({ data, val }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [run, setRun] = useState(val);
 
@@ -23,10 +23,14 @@ const Popup = ({data, val}) => {
     <div>
       {run && (
         <div className="modal" onClick={handleClickOutside}>
-            <div className="modal-content">
-            <span className="close" onClick={closeModal}>&times;</span>
+          <div className="modal-content">
+            {/* <span className="close" onClick={closeModal}>&times;</span> */}
             <p>{data}</p>
+            <div className='close_cnt_01' onClick={closeModal} >
+              Close
             </div>
+          </div>
+          
         </div>
       )}
     </div>

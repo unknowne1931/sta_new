@@ -140,11 +140,13 @@ const DisplayPath = () => {
 };
 
 const App = () => {
+
   const [show, setShow] = useState(false);
   const token = localStorage.getItem("ssid");
   const admin = localStorage.getItem("token");
   const valid = localStorage.getItem("valid");
   const admin_user = localStorage.getItem('admin_token')
+
 
   useEffect(() => {
     const fetchData = async () => {

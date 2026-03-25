@@ -1,602 +1,232 @@
-// import React, { useEffect, useRef, useState } from 'react';
-// import axios from 'axios';
-// import { getFromDB, saveToDB } from './db';
-// import img from './image/to.gif'; // Adjust the path as necessary
-// import img2 from './image/insta_1.png'; // Adjust the path as necessary
-// import img3 from "./image/wr.gif"
-// import img4 from "./image/vi.gif"
-// import ScratchCard from './scratch';
-// import FingerprintJS from '@fingerprintjs/fingerprintjs';
-// import Loading from './loading';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faShare } from '@fortawesome/free-solid-svg-icons';
-
-// const Try = () => {
-//     const [data, setData] = useState('');
-//     const [show, setShow] = useState('');
-//     const [imageLoaded, setImageLoaded] = useState(false);
-//     const [secondsLeft, setSecondsLeft] = useState(null);
-//     const [timerStarted, setTimerStarted] = useState(false);
-//     const [submitted, setSubmitted] = useState(false);
-//     const [rupee, setRupee] = useState('')
-//     const [deviceId, setDeviceId] = useState('');
-//     const [load, setLoad] = useState(true)
-
-//     const timerRef = useRef(null);
-//     const uniqueKey = `targetSecond-${data?._id || 'default'}`;
-
-//     useEffect(() => {
-//         const initFingerprint = async () => {
-//             const id = await getFromDB("di");
-//             if (!id) {
-//                 const fp = await FingerprintJS.load();
-//                 const result = await fp.get();
-//                 setDeviceId(result.visitorId);
-//                 await saveToDB("di", result.visitorId);
-//                 console.log("Device ID saved:", result.visitorId);
-//             } else {
-//                 setDeviceId(id);
-//                 console.log("Device ID loaded from DB:", id);
-//             }
-//         };
-//         initFingerprint();
-//     }, []);
-
-//     useEffect(() => {
-//         get_Data();
-//     }, []);
-
-//     useEffect(() => {
-//         if (imageLoaded && data?.seconds && !timerStarted) {
-//             resumeCountdown();
-//         }
-//     }, [imageLoaded, data]);
-
-//     useEffect(() => {
-//         return () => {
-//             pauseCountdown(); // cleanup
-//         };
-//     }, []);
-
-//     const get_Data = async () => {
-//         setLoad(true)
-//         const ip = await getFromDB('di');
-//         fetch(`http://localhost/get/singel/qst/${ip}`)
-//             .then(res => res.json())
-//             .then((res) => {
-//                 console.log("Data fetched:", res.data);
-//                 console.log(res.data)
-//                 if (res.Status === "OK") {
-//                     setData(res.data);
-//                     setShow("!");
-//                     setLoad(false)
-//                 } else if(res.Status === "Yes") {
-//                     setShow("Yes")
-//                     setRupee(res.rupee)
-//                     setLoad(false)
-//                 }
-//                 else if (res.Status === "Time_Out") {
-//                     setShow("Time_Out");
-//                     setLoad(false)
-//                 } else if (res.Status === "NO") {
-//                     setShow("No");
-//                     setLoad(false)
-//                 }
-//                 else {
-//                     setShow("Default");
-//                 }
-//             })
-//             .catch((err) => {
-//                 console.error("Error fetching data:", err);
-//                 setShow("Default")
-//                 setLoad(false)
-//             });
-//     };
-
-//     const pauseCountdown = () => {
-//         if (timerRef.current) {
-//             clearInterval(timerRef.current);
-//             timerRef.current = null;
-//             console.log("⏸ Countdown paused");
-//         }
-//     };
-
-
-//     const resumeCountdown = async () => {
-//         pauseCountdown(); // Clear existing timer
-//         const ip = await getFromDB('di');
-
-//         const existingTarget = await getFromDB(uniqueKey);
-//         const now = Date.now();
-//         const seconds = parseInt(data.seconds);
-//         let targetTime;
-
-//         if (existingTarget) {
-//             const storedTime = parseInt(existingTarget);
-//             if (now >= storedTime) {
-//                 targetTime = now + seconds * 1000;
-//                 await saveToDB(uniqueKey, targetTime);
-//             } else {
-//                 targetTime = storedTime;
-//             }
-//         } else {
-//             targetTime = now + seconds * 1000;
-//             await saveToDB(uniqueKey, targetTime);
-//         }
-
-//         const updateSeconds = () => {
-//             const remaining = Math.ceil((targetTime - Date.now()) / 1000);
-//             if (remaining > 0) {
-//                 setSecondsLeft(remaining);
-//             } else {
-//                 setSecondsLeft(0);
-//                 pauseCountdown();
-
-//                 if (!submitted) {
-//                     axios.post("http://localhost/time/out/by/singel/qst/data", {
-//                         ip
-//                     }).then(res => {
-//                         setShow("Time_Out");
-//                     }).catch(err => {
-//                         console.error("Error posting timeout:", err);
-//                     });
-//                 }
-//             }
-//         };
-
-//         updateSeconds();
-//         timerRef.current = setInterval(updateSeconds, 1000);
-//         setTimerStarted(true);
-//     };
-
-//     const handleOptionClick = async (option) => {
-//         setLoad(true)
-//         const ip = await getFromDB('di');
-//         if (submitted) return;
-//         setSubmitted(true);
-//         pauseCountdown();
-//         console.log(`Submitted answer: ${option}`);
-
-//         // ✅ Optional: Send answer to backend
-//         axios.post("http://localhost/get/singel/qst/ans", {
-//             ip,
-//             qno: data.qno,
-//             ans: option
-//         }).then(res => {
-//             if (res.data.Status === "CORRECT") {
-//                 setRupee(res.data.rupee)
-//                 setShow("Yes")
-//                 setLoad(false)
-//             } else if (res.data.Status === "CORRECT NO REWARD") {
-//                 setLoad(false)
-//                 alert("Correct But You cant claim Rewards, Offer Ended")
-//                 window.location.href = '/'
-//             } else if (res.data.Status === "EX CORRECT") {
-//                 setLoad(false)
-//                 alert("You Have Answerd Before this")
-//                 window.location.href = '/'
-//             } else if (res.data.Status === "INCORRECT") {
-//                 setShow("No")
-//                 setLoad(false)
-//             } else {
-//                 setLoad(false)
-//                 alert(`Something went Wrong : ${res.data.Status}`)
-//             }
-//         }).catch(err => {
-//             setLoad(false)
-//             console.error("Error posting answer:", err);
-//         });
-//     };
-
-
-//     const styles = {
-//         page: {
-//             margin: 0,
-//             background: "#f2f2f2",
-//             fontFamily: "Arial, sans-serif",
-//             display: "flex",
-//             justifyContent: "center",
-//             alignItems: "center",
-//             height: "100vh",
-//         },
-//         container: {
-//             position: "relative",
-//             width: "300px",
-//             height: "200px",
-//             boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
-//             borderRadius: "10px",
-//             overflow: "hidden",
-//             background: "white",
-//         },
-//         message: {
-//             position: "absolute",
-//             width: "100%",
-//             height: "100%",
-//             background: "linear-gradient(135deg, #FFD700, #FF8C00)",
-//             display: "flex",
-//             justifyContent: "center",
-//             alignItems: "center",
-//             color: "#fff",
-//             fontSize: "24px",
-//             fontWeight: "bold",
-//             zIndex: 0,
-//         },
-//         canvas: {
-//             position: "absolute",
-//             top: 0,
-//             left: 0,
-//             zIndex: 1,
-//             cursor: "crosshair",
-//         },
-//     };
-
-//     const share = () => {
-//     const shareUrl = `https://stawro.com/start/try`;
-//     const title = "Answer 1 Question & Win Up To ₹ 100.00";
-//     const message = `${title} ${shareUrl}`;
-//     const encodedMessage = encodeURIComponent(message);
-//     window.open(`https://wa.me/?text=${encodedMessage}`, "_blank");
-//   };
-
-
-//     return (
-//         <>
-            
-//              <>
-//                 {show === "!" && (
-//                 <div>
-
-//                     {data.Questio && 
-//                         <>
-//                             <div className='try_main_cnt_01'>
-//                             <div className='try_main_cnt_01_left'>
-//                                 <h1>
-//                                     Seconds Left:
-//                                     <span className='try_main_cnt_01_left_time1'>
-//                                         {secondsLeft !== null ? secondsLeft : 'Loading...'}
-//                                     </span>
-//                                 </h1>
-//                             </div>
-//                         </div>
-
-//                         <br />
-
-//                         <div className='try_main_cnt_02'>
-//                             <h1>{data.Questio}</h1>
-//                         </div>
-
-//                         <div className='try_main_cnt_03'>
-//                             <img
-//                                 src={data.img}
-//                                 onLoad={() => {
-//                                     console.log("Image Loaded");
-//                                     setImageLoaded(true);
-//                                 }}
-//                                 alt='icon'
-//                                 className='try_main_cnt_03_img'
-//                             />
-//                         </div>
-
-//                         <br />
-
-//                         <div className='try_main_cnt_04'>
-//                             <button className='try_main_cnt_04_btn' onClick={() => handleOptionClick("a")}>{data.a}</button>
-//                             <button className='try_main_cnt_04_btn' onClick={() => handleOptionClick("b")}>{data.b}</button>
-//                             <button className='try_main_cnt_04_btn' onClick={() => handleOptionClick("c")}>{data.c}</button>
-//                             <button className='try_main_cnt_04_btn' onClick={() => handleOptionClick("d")}>{data.d}</button>
-//                         </div>
-
-//                         <br />
-//                         </>
-//                     }
-                    
-
-
-//                 </div>
-//             )}
-
-//             {show === "Yes" && (
-//                 <div className='try_yes_main_01'>
-
-//                     <div className='Home-cnt-01-sub-01'>
-//                         <strong>sta<span>W</span>ro</strong>
-//                         <hr />
-//                     </div>
-
-//                     <h1>Woohoo! <span>Victory</span> is <strong>Yours</strong>!</h1>
-//                     <ScratchCard rupee={rupee} />
-//                     {/* <div className='try_yes_main_01_sub_01'>
-//                         <img src={img4} />
-//                     </div> */}
-//                     <br/>
-                    
-
-//                     <div className='try_main_cnt_06'>
-//                         <h1 style={{color : "white"}} >Play more Like this</h1>
-
-//                         <div className='try_main_cnt_06_btn' onClick={() => { window.location.href = '/' }} >
-//                             Get Start
-//                         </div>
-//                     </div>
-
-//                     <div className='try_main_cnt_07'>
-//                         <h2>Follow us for the latest updates!</h2>
-//                         <div className='try_main_cnt_07_min-00'>
-//                             <div className='try_instagram_cnt_01' onClick={() => { window.location.href = 'https://www.instagram.com/stawro' }} >
-//                                 <img src={img2} alt='Follow us' />
-//                             </div>
-
-//                             <div className='try_instagram_cnt_02' onClick={share} >
-//                                 <FontAwesomeIcon icon={faShare} />
-//                             </div>
-
-//                         </div>
-//                     </div>
-//                 </div>
-//             )}
-
-//             {show === "No" && (
-//                 <div>
-//                     <div className='Home-cnt-01-sub-01'>
-//                         <strong>sta<span>W</span>ro</strong>
-//                         <hr />
-//                     </div>
-
-
-//                     <h1 className='time_out_main_h1_01'>Wrong Answer</h1>
-
-//                     <span className='time_out_main_span_01'>Coming up next... Stay tuned!</span>
-
-//                     <div className='try_main_cnt_05' style={{ border: "none" }} >
-//                         <img src={img3} alt='Timeout' className='try_main_cnt_03_img' />
-//                     </div>
-
-//                     <div className='try_main_cnt_06'>
-//                         <h1>Play more Like this</h1>
-
-//                         <div className='try_main_cnt_06_btn' onClick={() => { window.location.href = '/' }} >
-//                             Get Start
-//                         </div>
-//                     </div>
-
-                   
-
-//                     <div className='try_main_cnt_07'>
-//                         <h2>Follow us for the latest updates!</h2>
-//                         <div className='try_main_cnt_07_min-00'>
-//                             <div className='try_instagram_cnt_01' onClick={() => { window.location.href = 'https://www.instagram.com/stawro' }} >
-//                                 <img src={img2} alt='Follow us' />
-//                             </div>
-
-//                             <div className='try_instagram_cnt_02' onClick={share} >
-//                                 <FontAwesomeIcon icon={faShare} />
-//                             </div>
-
-//                         </div>
-//                     </div>
-
-
-//                 </div>
-//             )}
-
-//             {show === "Time_Out" && (
-//                 <div>
-//                     <div className='Home-cnt-01-sub-01'>
-//                         <strong>sta<span>W</span>ro</strong>
-//                         <hr />
-//                     </div>
-
-
-//                     <h1 className='time_out_main_h1_01'>Time Out</h1>
-
-//                     <span className='time_out_main_span_01'>Coming up next... Stay tuned!</span>
-
-//                     <div className='try_main_cnt_05'>
-//                         <img src={img} alt='Timeout' className='try_main_cnt_03_img' />
-//                     </div>
-
-//                     <div className='try_main_cnt_06'>
-//                         <h1>Play more Like this</h1>
-
-//                         <div className='try_main_cnt_06_btn' onClick={() => { window.location.href = '/' }} >
-//                             Get Start
-//                         </div>
-//                     </div>
-
-//                     <div className='try_main_cnt_07'>
-//                         <h2>Follow us for the latest updates!</h2>
-//                         <div className='try_main_cnt_07_min-00'>
-//                             <div className='try_instagram_cnt_01' onClick={() => { window.location.href = 'https://www.instagram.com/stawro' }} >
-//                                 <img src={img2} alt='Follow us' />
-//                             </div>
-
-//                             <div className='try_instagram_cnt_02' onClick={share} >
-//                                 <FontAwesomeIcon icon={faShare} />
-//                             </div>
-
-//                         </div>
-//                     </div>
-
-
-//                 </div>
-//             )}
-
-//             {show === "Default" &&
-            
-//                 <>
-//                     <div className='Home-cnt-01-sub-01'>
-//                         <strong>sta<span>W</span>ro</strong>
-//                         <hr />
-//                     </div>
-//                     <br/>
-
-//                     <div className='refresh_btn_01' onClick={()=>{window.location.reload()}}>
-//                         <h1>Click to refresh or just reload the page</h1>
-//                         <div>
-                            
-//                         </div>
-//                     </div>
-//                     <br/>
-
-//                     <div className='try_main_cnt_07'>
-//                         <h2>Follow us for the latest updates!</h2>
-//                         <div className='try_main_cnt_07_min-00'>
-//                             <div className='try_instagram_cnt_01' onClick={() => { window.location.href = 'https://www.instagram.com/stawro' }} >
-//                                 <img src={img2} alt='Follow us' />
-//                             </div>
-
-//                             <div className='try_instagram_cnt_02' onClick={share} >
-//                                 <FontAwesomeIcon icon={faShare} />
-//                             </div>
-
-//                         </div>
-//                     </div>
-//                 </>
-//             }
-
-//             <br />
-//              </>
-             
-
-//         </>
-//     );
-// };
-
-// export default Try;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import { getFromDB, saveToDB } from './db';
 import axios from 'axios';
- 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faClockFour, faGift, faTimeline, faTimesCircle, faWallet } from '@fortawesome/free-solid-svg-icons';
+import Popup from './pages/popup';
+
 const Try = () => {
+  const [deviceId, setDeviceId] = useState('');
+  const [startGame, setStartGame] = useState(false);
+  const [dataa, setDataa] = useState('');
+    const [alert, setAlert] = useState(false);
+  const [data, setData] = useState([]);
+  const [seconds, setSeconds] = useState(20); // start countdown from 20
+  const [timerStarted, setTimerStarted] = useState(false);
 
-    const [deviceId, setDeviceId] = useState('')
-    const [start_game, setStart_Game] = useState();
-    const [data, setData] = useState([])
+  // Initialize device ID
+  useEffect(() => {
+    const initFingerprint = async () => {
+      const id = await getFromDB("di");
+      if (!id) {
+        const fp = await FingerprintJS.load();
+        const result = await fp.get();
+        setDeviceId(result.visitorId);
+        await saveToDB("di", result.visitorId);
+        console.log("Device ID saved:", result.visitorId);
+      } else {
+        setDeviceId(id);
+        console.log("Device ID loaded from DB:", id);
+      }
+    };
+    initFingerprint();
+  }, []);
 
-
-    useEffect(() => {
-        const ip = getFromDB("ip")
-        setDeviceId(ip)
-        // const initFingerprint = async () => {
-        //     const id = await getFromDB("di");
-        //     if (!id) {
-        //         const fp = await FingerprintJS.load();
-        //         const result = await fp.get();
-        //         setDeviceId(result.visitorId);
-        //         await saveToDB("di", result.visitorId);
-        //         console.log("Device ID saved:", result.visitorId);
-        //     } else {
-        //         setDeviceId(id);
-        //         console.log("Device ID loaded from DB:", id);
-        //     }
-        // };
-        // initFingerprint();
-    }, []);
-
-
-const get_qst = () => {
-  if (!deviceId) return;
-
-  fetch(`http://localhost/get/question/for/new/users/signed/out/users/qstion/${deviceId}`)
-    .then(res => res.json())
-    .then(res => {
-      console.log("FETCH RESULT:", res);
-    })
-    .catch(err => console.log(err));
-};
-
-
-    const Post_data = () => {
-        axios.post("http://localhost/get/question/for/new/users/signed/out/users", { u_id : deviceId})
-        .then(res =>{
-            if(res.data.Status === "OK"){
-                console.log("Created")
-                setStart_Game(true)
-            }else{
-                alert(res.data.Status)
-                console.log(res)
-                window.location.href = '/play'
-            }
-        }).catch((error) =>{
-            console.log(error)
-        })
+  // Countdown timer
+  useEffect(() => {
+    let interval;
+    if (timerStarted && seconds > 0) {
+      interval = setInterval(() => {
+        setSeconds(prev => {
+          const newSeconds = prev - 1;
+          saveToDB("game_seconds", newSeconds); // store every second
+          return newSeconds;
+        });
+      }, 1000);
     }
+    return () => clearInterval(interval);
+  }, [timerStarted, seconds]);
+
+  // Get questions and start countdown
+  const getQst = () => {
+    setAlert(false)
 
 
-    
+    if (!deviceId) return;
+
+    axios.post("http://192.168.31.133/get/question/for/new/users/signed/out/users/qstion", { u_id: deviceId })
+      .then(res => {
+        if (res.data.Status === "OK") {
+          setData(res.data.data);
+          console.log(res.data.data);
+          setTimerStarted(true); // start countdown
+        } else {
+            setDataa("Try Again")
+            setAlert(true)
+        }
+      }).catch(error => console.log(error));
+  };
+
+  // Post data to start game
+  const postData = () => {
+    setAlert(false)
+    axios.post("http://192.168.31.133/get/question/for/new/users/signed/out/users", { u_id: deviceId })
+      .then(res => {
+        if (res.data.Status === "OK") {
+          console.log("Created");
+          setStartGame(true);
+          setSeconds(20); // reset countdown
+        } else {
+            setDataa("You’ve already played this game")
+            setAlert(true)
+            
+                       
+            window.location.href = '/';
+        }
+      }).catch(error => console.log(error));
+  };
 
 
+  const verify_data = (opt) =>{
+    setAlert(false)
+    axios.post("http://192.168.31.133/get/question/for/new/users/signed/out/users/verify/qst", {u_id : deviceId, sec : seconds, ans : opt , q_id : data._id})
+    .then(res =>{
+        if(res.data.Status === "OKK"){
+            console.log(res.data.rupee)
+            // alert(`You Got ${res.data.rupee} ₹ `)
+            setDataa(`🎉 You won ₹${res.data.rupee}! Please log in or sign up to claim your reward.`)
+            setAlert(true)
+        }else if(res.data.Status === "OK"){
+            setDataa(`Wrong Answer`)
+            setAlert(true)
+            window.location.href = '/'
+        }else if(res.data.Status === "Cheated"){
+            setDataa("⚠️ Time ran out!")
+            setAlert(true)
+            window.location.href = '/'
+        }
+    }).catch(error =>{
+        console.log(error)
+    })
+  }
 
-    
   return (
     <div>
+      {!startGame &&
+        <>
+          <div className='Trry_main_01'>
+            <h3>Get up to <span>100₹</span></h3>
+            <div className='Trry_main_01_sub_01'>
+              Time : 20 seconds <br />
+              Start fee : Free<br />
+              Questions : 01<br />
+            </div>
 
-          {start_game !== true &&
-              <>
-                  <div className='Trry_main_01'>
-                      <h3>Get up to <span>100₹</span> </h3>
-                      <div className='Trry_main_01_sub_01'>
-                          Time : 20 seconds <br />
-                          Start fee : Free<br />
-                          Questions : 01<br />
-                      </div>
+            <div className='Tryy_start_btn_01' onClick={postData}>
+              Start
+            </div>
+          </div>
+
+          <br />
+          <div className='Trry_main_02'>
+            <h3>Free Trial for First-Time Users</h3>
+          </div>
+          <br/>
+
+          {localStorage.getItem("token") ? "IN" : "OUT"}
+
+          <div>
+
+          </div>
 
 
-                      <div className='Tryy_start_btn_01' onClick={Post_data}>
-                          start
-                      </div>
+        </>
+      }
 
-                  </div>
-
-                  <br />
-
-                  <div className='Trry_main_02'>
-                      <h3>Free Trial for First-Time Users</h3>
-                  </div>
-              </>
-          }
-
-          {start_game &&
+      {startGame &&
+        <>
+          {!data._id &&
             <>
-                <h1>Game started</h1>
-                <button onClick={get_qst} >get</button>
-
+              <div style={{ height: "60px" }}></div>
+              <h1 className='gs_01_h1'>Tap to <span>start</span></h1>
+              <div className='gs_01_div_01' onClick={getQst}>
+                Play
+              </div>
+              <br />
+              <h2>or</h2>
+              <br />
+              <div className='gs_01_div_02' onClick={() => window.location.href = '/sample'}>
+                View Previous Module
+              </div>
             </>
-            
           }
-           
-    </div>
-  )
-}
 
-export default Try
+          {data._id &&
+            <>
+                <div style={{height : "50px"}}></div>
+                <div className='gs_02_cnt_01'>
+                    <div className='gs_02_cnt_01_sub_01'>
+                        <div>
+                            <FontAwesomeIcon icon={faClockFour} style={{fontSize : "20px"}} />
+                        </div>
+                        <div>
+                            {seconds}<span>S</span>
+                        </div>
+                        
+                    </div>
+
+                    <div className='gs_02_cnt_01_sub_02'>
+                        {seconds> 10 &&
+                            <h2>--</h2>
+                        }
+                        {
+                            seconds <=10 &&
+                              <>
+                                  <div>
+                                      <FontAwesomeIcon icon={faWallet} style={{ fontSize: "20px" }} />
+                                  </div>
+                                  <div style={{fontSize : "3rem"}}>
+                                    {seconds*10}.00 ₹
+                                  </div>
+                              </>
+                        }
+                    </div>
+                </div>
+                <br/>
+
+                <div className='gs_02_cnt_02'>
+                    <span>{data.Questio}</span>
+                </div>
+                <br/>
+
+                <div className='gs_02_cnt_03'>
+                    <img src={`data:image/png;base64,${data.img}`} />
+                </div>
+
+                  <div className='gs_02_cnt_04'>
+                      {data.options.map((opt) => {
+                          return (
+                              <div onClick={()=>{
+                                verify_data(opt)
+                              }}>
+                                {opt}
+                              </div>
+                          )
+                      })}
+                  </div>
+
+                
+            </>
+          }
+        </>
+      }
+
+      {alert && <Popup data={dataa} val={alert} />}
+    </div>
+  );
+};
+
+export default Try;
+
+
