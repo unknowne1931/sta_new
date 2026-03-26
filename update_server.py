@@ -81,8 +81,10 @@ for server in servers:
     # Paste your server.js code
     # Then save:
     # CTRL + O → ENTER → CTRL + X
+    time.sleep(5)
+    pyautogui.hotkey('enter')
 
-    time.sleep(15)  # ⏳ give yourself time to paste manually
+    time.sleep(30)  # ⏳ give yourself time to paste manually
     pyautogui.hotkey('ctrl', 's')
     pyautogui.hotkey('ctrl', 'x')
 

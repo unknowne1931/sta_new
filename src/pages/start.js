@@ -31,7 +31,7 @@
 //       const timeLeft = Math.floor((target - now) / 1000);
 
 //       if (timeLeft > 0) {
-//         const response = await api.get(`http://192.168.31.133/get/question/no/by/user/name`);
+//         const response = await api.get(`https://kalanirdhari.in/get/question/no/by/user/name`);
 //         const data = response.data?.data;
 
 //         if (data && data._id === savedId) {
@@ -64,7 +64,7 @@
 //     try {
 //       setAlert(false)
 //       setImageLoaded(false);
-//       const response = await api.get(`http://192.168.31.133/get/question/no/by/user/name`);
+//       const response = await api.get(`https://kalanirdhari.in/get/question/no/by/user/name`);
 //       const resData = response.data;
 
 //       if (resData.data) {
@@ -146,7 +146,7 @@
 //     await removeFromDB('targetSecond');
 //     setAlert(false);
 //     try {
-//       const response = await api.delete(`http://192.168.31.133/delete/by/user/id/for/valid/data`);
+//       const response = await api.delete(`https://kalanirdhari.in/delete/by/user/id/for/valid/data`);
 //       const resData = response.data;
 //       if (resData.Status === "OK") {
 //         setData("You are quitting the game.");
@@ -170,7 +170,7 @@
 //     setAlert(false);
 //     await removeFromDB('targetSecond');
 //     try {
-//       const response = await api.post(`http://192.168.31.133/verify/answer/question/number`, {
+//       const response = await api.post(`https://kalanirdhari.in/verify/answer/question/number`, {
 //         answer,
 //         id: QData._id,
 //         seconds : parseInt(QData.seconds)- parseInt(remaining),
@@ -364,6 +364,8 @@ import Popup from "./popup";
 import api from "./api";
 import veri from "../image/verify.gif";
 import { getFromDB, removeFromDB, saveToDB } from "../db";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClock, faGift, faRss, faRupee, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Start = () => {
   const [data, setData] = useState("");
@@ -393,7 +395,7 @@ const Start = () => {
       const left = Math.floor((target - now) / 1000);
 
       if (left > 0) {
-        const res = await api.get("http://192.168.31.133/get/question/no/by/user/name/bf/all/xx");
+        const res = await api.get("https://kalanirdhari.in/get/question/no/by/user/name/bf/all/xx");
         if(res.data?.Status === "EXIT"){
           window.location.replace("/play")
         }
@@ -418,7 +420,7 @@ const Start = () => {
       setAlert(false);
       setVerify(false);
 
-      const res = await api.get("http://192.168.31.133/get/question/no/by/user/name/bf/all/xx");
+      const res = await api.get("https://kalanirdhari.in/get/question/no/by/user/name/bf/all/xx");
       const q = res.data?.data;
 
       if(res.data?.Status === "EXIT"){
@@ -454,7 +456,7 @@ const Start = () => {
   const startCountdown = (target) => {
     clearInterval(intervalRef.current);
     tick(target);
-    intervalRef.current = setInterval(() => tick(target), 1000);
+    // intervalRef.current = setInterval(() => tick(target), 1000);
   };
 
   const tick = async (target) => {
@@ -493,7 +495,7 @@ const Start = () => {
     await removeFromDB("targetSecond");
 
     try {
-      api.post("http://192.168.31.133/verify/answer/question/number/all/xs", {
+      api.post("https://kalanirdhari.in/verify/answer/question/number/all/xs", {
         answer,
         id: QData._id,
         Ans: QData.Ans,
@@ -549,7 +551,7 @@ const Start = () => {
 
     try {
       const res = await api.post(
-        "http://192.168.31.133/verify/answer/question/number",
+        "https://kalanirdhari.in/verify/answer/question/number",
         
         {
           answer,
@@ -618,26 +620,55 @@ const Start = () => {
           <hr />
         </div>
 
-        {remaining > 0 && (
-          <div style={{ fontSize: 20, color: remaining <= 5 ? "red" : "black" }}>
-            ⏳ {remaining}s <br/>
 
-            {remaining <= 10 && 
-              <>
-                <span style={{color : "green"}}>{remaining*10}.00 ₹</span>
-              </>
-            }
+        {remaining > 0 
+          &&
 
-            {remaining > 10 && 
-              <>
-                <span style={{color : "green"}}>{100}.00 ₹</span>
-              </>
-            }
+          <>
+            <div className="start_new_oppp_c1">
 
-          </div>
-        )}
+            <div
+              className="start_new_oppp_c1_sub_01"
+              style={{ backgroundColor: remaining <= 3 ? "red" : "blue" }}
+            >
+                <div>
+                  <FontAwesomeIcon icon={faClock} style={{fontSize : "3.5rem"}} />
+                </div>
+                <div style={{fontSize : "4rem"}}>
+                  {remaining}
+                </div>
 
-        {QData?.cat && <h2>Question Number : {QData.Qno}</h2>}
+              </div>
+
+              <div className="start_new_oppp_c1_sub_01" style={{backgroundColor : "green"}}>
+                <div>
+                  <FontAwesomeIcon icon={faGift} style={{fontSize : "3.5rem"}} />
+                </div>
+                <div>
+                  {remaining <= 10 &&
+                    <>
+                    {remaining * 10}.00 ₹
+                    </>
+                  }
+
+                  {remaining > 10 &&
+                    <>
+                    00.00 ₹
+                    </>
+                  }
+                  
+                </div>
+
+              </div>
+
+            </div>
+          </>
+        }
+
+
+
+
+        {/* {QData?.cat && <h2>Question Number : {QData.Qno}</h2>} */}
 
         {QData?.Question && (
           <div className="game_start-main-cnt-01">

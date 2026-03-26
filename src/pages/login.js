@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
@@ -14,11 +14,15 @@ const Login = () => {
   const [imageLoaded, setImageLoaded] = useState(false); // NEW STATE
   const [show_i, setShow_I] = useState(false)
 
-  const url = "http://192.168.31.133";
+  const url = "https://kalanirdhari.in";
 
+  useEffect(()=>{
+    document.body.style.backgroundColor = "#0641e5c6";
+  },[])
 
 
   async function handleGoogleSignup(){
+    setAlert(false)
     const u_id = await getFromDB("di") || ""
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -28,7 +32,7 @@ const Login = () => {
         const username = email.split('@')[0];
         const uid = user.uid;
 
-        axios.post("http://192.168.31.133/post/google/auth", {
+        axios.post("https://kalanirdhari.in/post/google/auth", {
           email,
           name,
           username,
@@ -36,8 +40,6 @@ const Login = () => {
           u_id
         }).then(res => {
           if(res.data.Status === "OK") {
-            setData("Account Created, Sign-In now!");
-            setAlert(true);
             localStorage.setItem("email", email);
             localStorage.setItem("ssid", res.data.token);
             localStorage.setItem("user", res.data.user);
@@ -66,38 +68,75 @@ const Login = () => {
   }
 
   return (
-    <div className='login_body'>
-      <center>
-        <div className='Home-cnt-01-sub-01'>
-          <strong>sta<span>W</span>ro</strong>
-          <hr />
+    // <div className='login_body'>
+    //   <center>
+    //     <div className='Home-cnt-01-sub-01'>
+    //       <strong>sta<span>W</span>ro</strong>
+    //       <hr />
+    //     </div>
+
+    //     <div className='signup-form-cnt-01'>
+    //       <div className='signup-h2-main-cnt-01'>
+    //         <h2><span>Log</span>-In / <span>Sign</span>-Up</h2>
+    //       </div>
+
+    //       <div className='sign_and_login_main' >
+    //         <div className='sign_and_login_main_sub'>
+    //           <img src={img1} onLoad={() => setImageLoaded(true)} alt="loading..." />
+    //         </div>
+    //           <div className='sign_and_login_main_sub_1'>
+    //             <div className='g_sign_up' onClick={handleGoogleSignup}>
+    //               <div className='G_cnt'>
+    //                 <img src={g} alt="Google" />
+    //               </div>
+    //               <div className='G_txt'>
+    //                 <span>Sign-Up / Sign-In</span>
+    //               </div>
+    //             </div>
+    //           </div>
+    //       </div>
+    //     </div>
+    //   </center>
+
+    //   {alert && <Popup data={data} val={alert} />}
+    // </div>
+
+
+    <>
+      <div className='Home-cnt-01-sub-01'>
+        <strong style={{color : "white"}}>sta<span>W</span>ro</strong>
+        <hr />
+      </div>
+      <div className='user_login_cnt_01'>
+        <h2>Login / Create Account</h2>
+        <div className='user_login_cnt_02'>
+          <div style={{width : "5rem"}}>
+            <img src={g} />
+          </div>
+          <div onClick={handleGoogleSignup}>
+            <h2>Login / Create Account</h2>
+          </div>
         </div>
 
-        <div className='signup-form-cnt-01'>
-          <div className='signup-h2-main-cnt-01'>
-            <h2><span>Log</span>-In / <span>Sign</span>-Up</h2>
-          </div>
+      </div>
 
-          <div className='sign_and_login_main' >
-            <div className='sign_and_login_main_sub'>
-              <img src={img1} onLoad={() => setImageLoaded(true)} alt="loading..." />
-            </div>
-              <div className='sign_and_login_main_sub_1'>
-                <div className='g_sign_up' onClick={handleGoogleSignup}>
-                  <div className='G_cnt'>
-                    <img src={g} alt="Google" />
-                  </div>
-                  <div className='G_txt'>
-                    <span>Sign-Up / Sign-In</span>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-      </center>
+      <br/>
+
+      <div className='user_login_cnt_03'>
+        <p>🧠 Solve puzzles. Prove your IQ. Win rewards!</p>
+        <p>⚠️ Challenge yourself at your own risk!</p>
+        <p>👾 This game is based on skill, not luck.</p>
+      </div>
+
+      {/* <div className='at_2026'>
+        powerd by @stawro
+      </div> */}
 
       {alert && <Popup data={data} val={alert} />}
-    </div>
+    </>
+
+
+
   );
 };
 

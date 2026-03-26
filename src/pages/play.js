@@ -77,7 +77,7 @@
 
 
 //   const post_tm_out = async (data) =>{
-//     api.post("http://192.168.31.133/verify/by/timed/out/data/v/fy", {difi : data.tough, cat : data.cat, q_id : data.qno_id})
+//     api.post("https://kalanirdhari.in/verify/by/timed/out/data/v/fy", {difi : data.tough, cat : data.cat, q_id : data.qno_id})
 //     .then(res =>{
 //       if(res.data.Status === "OK"){
 //         console.log("Everything went Good")
@@ -107,7 +107,7 @@
 
 
 //   const start_check = () => {
-//     fetch("http://192.168.31.133/start/or/no/check")
+//     fetch("https://kalanirdhari.in/start/or/no/check")
 //       .then(res => res.json())
 //       .then(data => {
 //         if (data.status) {
@@ -124,7 +124,7 @@
 
 
 //   const new_sec = (msg) => {
-//     api.post("http://192.168.31.133/get/id/to/update/seonds", {
+//     api.post("https://kalanirdhari.in/get/id/to/update/seonds", {
 //       id: time_ot.qno_id, sec: time_ot.seconds, qst: time_ot.Qst, options: time_ot.options, img: time_ot.img, ans: time_ot.Ans, usa: time_ot.usa, vr: time_ot.vr, msg, ex_seconds: ex_sec, cat: time_ot.cat, tough: time_ot.tough
 //     })
 //       .then(res => {
@@ -140,7 +140,7 @@
 //   }
 
 //   const get_rank = () => {
-//     api.get("http://192.168.31.133/get/levels/user")
+//     api.get("https://kalanirdhari.in/get/levels/user")
 //       .then(res => {
 //         if (res.data) {
 //           console.log(res.data.data)
@@ -168,7 +168,7 @@
 
 //   const GetAllDAta = () => {
 //     try {
-//       api.get("http://192.168.31.133/get/all/admin/new/languages/data/user")
+//       api.get("https://kalanirdhari.in/get/all/admin/new/languages/data/user")
 //         .then(res => {
 //           if (res.data.Data) {
 //             setALLLDAta(res.data.Data)
@@ -194,7 +194,7 @@
 
 //   const Delete_Lang = () => {
 //     try {
-//       api.delete(`http://192.168.31.133/get/language/datas/all/get/and/delete`)
+//       api.delete(`https://kalanirdhari.in/get/language/datas/all/get/and/delete`)
 //         .then(res => {
 //           if (res.data.Status === "OK") {
 //             GetLanguages()
@@ -223,7 +223,7 @@
 
 //   const GetRupeeVal = () => {
 //     try {
-//       fetch(`${"http://192.168.31.133"}/get/rupee/data/play`)
+//       fetch(`${"https://kalanirdhari.in"}/get/rupee/data/play`)
 //         .then(res => res.json())
 //         .then(data => {
 //           if (data.data) {
@@ -248,7 +248,7 @@
 //   const PostLang = () => {
 //     try {
 //       setAlert(false)
-//       api.post(`${"http://192.168.31.133"}/get/language/datas/all`, { lang: selLanguages, user })
+//       api.post(`${"https://kalanirdhari.in"}/get/language/datas/all`, { lang: selLanguages, user })
 //         .then(res => {
 //           if (res.data.Status === "OK") {
 //             GetLanguages()
@@ -273,7 +273,7 @@
 
 //   const GetBalance = () => {
 //     try {
-//       api.get(`${"http://192.168.31.133"}/get/acount/balence`)
+//       api.get(`${"https://kalanirdhari.in"}/get/acount/balence`)
 //         .then(res => {
 //           if (res.data.data) {
 //             setBtn1(true)
@@ -308,7 +308,7 @@
 //       const valid_to_claim = (await getFromDB("new")) || "";
 //       const refer_ui = (await getFromDB("refer_ui")) || "";
 
-//       const res = await api.post("http://192.168.31.133/get/balance/new/data", {
+//       const res = await api.post("https://kalanirdhari.in/get/balance/new/data", {
 //         user,
 //         val_cm: valid_to_claim,
 //         refer_ui
@@ -342,7 +342,7 @@
 //     try {
 //       setAlert(false)
 //       e.preventDefault()
-//       api.post(`${"http://192.168.31.133"}/start/playing/by/debit/amount/new/${Api}`, { user })
+//       api.post(`${"https://kalanirdhari.in"}/start/playing/by/debit/amount/new/${Api}`, { user })
 //         .then(res => {
 //           if (res.data.Status === "OK") {
 //             localStorage.setItem("valid", "yes")
@@ -412,7 +412,7 @@
 //   const GetLanguages = () => {
 //     try {
 //       setTimeout(() => {
-//         api.get(`${"http://192.168.31.133"}/get/language/datas/all/get/${user}`)
+//         api.get(`${"https://kalanirdhari.in"}/get/language/datas/all/get/${user}`)
 //           .then(res => {
 
 //             if (res.data.Users) {
@@ -483,7 +483,7 @@
 //         return;
 //       }
 
-//       const response = await fetch("http://192.168.31.133/create-order", {
+//       const response = await fetch("https://kalanirdhari.in/create-order", {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ user, amt }),
@@ -1129,7 +1129,7 @@ const Play = () => {
 
 
   const post_tm_out = async (data) =>{
-    api.post("http://192.168.31.133/verify/by/timed/out/data/v/fy", {difi : data.tough, cat : data.cat, q_id : data.qno_id})
+    api.post("https://kalanirdhari.in/verify/by/timed/out/data/v/fy", {difi : data.tough, cat : data.cat, q_id : data.qno_id})
     .then(res =>{
       if(res.data.Status === "OK"){
         console.log("Everything went Good")
@@ -1159,7 +1159,7 @@ const Play = () => {
 
 
   const start_check = () => {
-    fetch("http://192.168.31.133/start/or/no/check")
+    fetch("https://kalanirdhari.in/start/or/no/check")
       .then(res => res.json())
       .then(data => {
         if (data.status) {
@@ -1176,7 +1176,7 @@ const Play = () => {
 
 
   const new_sec = (msg) => {
-    api.post("http://192.168.31.133/get/id/to/update/seonds", {
+    api.post("https://kalanirdhari.in/get/id/to/update/seonds", {
       id: time_ot.qno_id, sec: time_ot.seconds, qst: time_ot.Qst, options: time_ot.options, img: time_ot.img, ans: time_ot.Ans, usa: time_ot.usa, vr: time_ot.vr, msg, ex_seconds: ex_sec, cat: time_ot.cat, tough: time_ot.tough
     })
       .then(res => {
@@ -1192,7 +1192,7 @@ const Play = () => {
   }
 
   const get_rank = () => {
-    api.get("http://192.168.31.133/get/levels/user")
+    api.get("https://kalanirdhari.in/get/levels/user")
       .then(res => {
         if (res.data) {
           console.log(res.data.data)
@@ -1220,7 +1220,7 @@ const Play = () => {
 
   const GetAllDAta = () => {
     try {
-      api.get("http://192.168.31.133/get/all/admin/new/languages/data/user")
+      api.get("https://kalanirdhari.in/get/all/admin/new/languages/data/user")
         .then(res => {
           if (res.data.Data) {
             setALLLDAta(res.data.Data)
@@ -1246,7 +1246,7 @@ const Play = () => {
 
   const Delete_Lang = () => {
     try {
-      api.delete(`http://192.168.31.133/get/language/datas/all/get/and/delete`)
+      api.delete(`https://kalanirdhari.in/get/language/datas/all/get/and/delete`)
         .then(res => {
           if (res.data.Status === "OK") {
             GetLanguages()
@@ -1275,7 +1275,7 @@ const Play = () => {
 
   const GetRupeeVal = () => {
     try {
-      fetch(`${"http://192.168.31.133"}/get/rupee/data/play`)
+      fetch(`${"https://kalanirdhari.in"}/get/rupee/data/play`)
         .then(res => res.json())
         .then(data => {
           if (data.data) {
@@ -1300,7 +1300,7 @@ const Play = () => {
   const PostLang = () => {
     try {
       setAlert(false)
-      api.post(`${"http://192.168.31.133"}/get/language/datas/all`, { lang: selLanguages, user })
+      api.post(`${"https://kalanirdhari.in"}/get/language/datas/all`, { lang: selLanguages, user })
         .then(res => {
           if (res.data.Status === "OK") {
             GetLanguages()
@@ -1325,7 +1325,7 @@ const Play = () => {
 
   const GetBalance = () => {
     try {
-      api.get(`${"http://192.168.31.133"}/get/acount/balence`)
+      api.get(`${"https://kalanirdhari.in"}/get/acount/balence`)
         .then(res => {
           if (res.data.data) {
             setBtn1(true)
@@ -1360,7 +1360,7 @@ const Play = () => {
       const valid_to_claim = (await getFromDB("new")) || "";
       const refer_ui = (await getFromDB("refer_ui")) || "";
 
-      const res = await api.post("http://192.168.31.133/get/balance/new/data", {
+      const res = await api.post("https://kalanirdhari.in/get/balance/new/data", {
         user,
         val_cm: valid_to_claim,
         refer_ui
@@ -1394,7 +1394,7 @@ const Play = () => {
     try {
       setAlert(false)
       e.preventDefault()
-      api.post(`${"http://192.168.31.133"}/start/playing/by/debit/amount/new/${Api}`, { user })
+      api.post(`${"https://kalanirdhari.in"}/start/playing/by/debit/amount/new/${Api}`, { user })
         .then(res => {
           if (res.data.Status === "OK") {
             localStorage.setItem("valid", "yes")
@@ -1463,7 +1463,7 @@ const Play = () => {
     try {
       setAlert(false)
       e.preventDefault()
-      api.post(`${"http://192.168.31.133"}/start/playing/by/debit/amount/new/all/xx/main`, { user })
+      api.post(`${"https://kalanirdhari.in"}/start/playing/by/debit/amount/new/all/xx/main`, { user })
         .then(res => {
           if (res.data.Status === "OK") {
             localStorage.setItem("valid", "yes")
@@ -1533,7 +1533,7 @@ const Play = () => {
   const GetLanguages = () => {
     try {
       setTimeout(() => {
-        api.get(`${"http://192.168.31.133"}/get/language/datas/all/get/${user}`)
+        api.get(`${"https://kalanirdhari.in"}/get/language/datas/all/get/${user}`)
           .then(res => {
 
             if (res.data.Users) {
@@ -1604,7 +1604,7 @@ const Play = () => {
         return;
       }
 
-      const response = await fetch("http://192.168.31.133/create-order", {
+      const response = await fetch("https://kalanirdhari.in/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user, amt }),
