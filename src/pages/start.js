@@ -456,7 +456,7 @@ const Start = () => {
   const startCountdown = (target) => {
     clearInterval(intervalRef.current);
     tick(target);
-    // intervalRef.current = setInterval(() => tick(target), 1000);
+    intervalRef.current = setInterval(() => tick(target), 1000);
   };
 
   const tick = async (target) => {
