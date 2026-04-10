@@ -3900,4 +3900,20 @@
     color: white;
 }
 
-
+.playyy_main_sub_01_pop{
+    width: 95%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: #0441f8;
+    color: white;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 4px 4px 8px rgba(46, 44, 44, 0.688);
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

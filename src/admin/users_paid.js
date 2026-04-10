@@ -50,7 +50,7 @@ function Paid_Users() {
   // FETCH DATA
   // =========================
   useEffect(() => {
-    fetch("https://kalanirdhari.in/get/paid/user/list")
+    fetch("http://192.168.126.1/get/paid/user/list")
       .then(res => res.json())
       .then(data => {
         if (data.Status === "OK") {

@@ -6,7 +6,7 @@ const View_Most_Ans = () => {
   const [data, setData] = useState([])
 
   const data_fetch = () => {
-    axios.get("https://kalanirdhari.in/get/calculate/data/monitor/main")
+    axios.get("http://192.168.126.1/get/calculate/data/monitor/main")
       .then(res => {
         if (res.data) {
           setData(res.data.data)
