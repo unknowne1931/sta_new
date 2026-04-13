@@ -10,6 +10,7 @@ import veri from "../image/verify.gif"
 import pro from "../image/pro.gif"
 import { useLocation } from 'react-router-dom';
 import imgg from "../image/to.gif"
+import one from "../image/one.png"
 import { getFromDB, saveToDB } from '../db';
 import { useNavigate } from "react-router-dom";
 
@@ -1062,7 +1063,30 @@ const Play = () => {
 
       {type_ct != "" &&
         <div className='playyy_main_sub_01_pop'>
-          <>{type_ct}</>
+          {type_ct === "star_circ_tria" &&
+
+            <>
+            <div className='playyy_main_sub_01_pop_sub_01'>
+              <h1>Sample Model</h1>
+              <div className='playyy_main_sub_01_pop_sub_01_img'>
+                <img src={one} />
+              </div>
+              <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
+                <br/>
+                <strong>Q.</strong> How many Unbroken boxes contain stars? <br />
+                <strong>Q.</strong> How many uncomplete boxes contain circles <br />
+                <strong>Q.</strong> Count the broken boxes that contain circles and triangles. <br />
+                <strong>...</strong>
+                <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
+                  <span>Sample Question</span>
+                </div>
+
+              </div>
+            </div>
+              
+            </>
+          
+          }
         </div>
       }
 
