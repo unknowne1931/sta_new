@@ -70,7 +70,7 @@ const Bottom = () => {
                     </div>
 
                     <div className='waves-cnt-02-sub-01'>
-                        <h1 className='waves-cnt-02-sub-01-h1-01'>Creator’s Corner</h1><br/>
+                        <h1 className='waves-cnt-02-sub-01-h1-01'>Founder & Developer</h1><br/>
                         <span><strong>Markeev Darshanckick 1931.</strong></span><br/>
                         <span><FontAwesomeIcon icon={faEnvelope} /> <strong>darshanckick@gmail.com</strong> </span>
                     </div>
@@ -83,7 +83,7 @@ const Bottom = () => {
                 </div>
 
 
-                <p className='footer_bootom-copy-prin'>&copy;2025 staWro | All Rights Reserved</p>
+                <p className='footer_bootom-copy-prin'>&copy;2026 staWro | All Rights Reserved</p>
             </footer>
         </center>
         

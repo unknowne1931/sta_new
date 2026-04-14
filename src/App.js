@@ -1,17 +1,11 @@
 import React, { lazy, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 import axios from 'axios';
 import Navi from './navi';
 import Signup from './pages/signup';
 import Loading from './loading';
 import Login from"./pages/login"
-import Admin_Users_Home from './pages/users_admin/home';
-import View_qstn from './pages/users_admin/view_qstn';
-import Post_qstn from './pages/users_admin/post_qstn';
-import Wallet from './pages/users_admin/wallet';
 import Sel_question from './admin/sel_question';
 import Sample_qn from './pages/sample_qn';
 import Start_Gm from './admin/start_gm';
@@ -74,7 +68,6 @@ const Terms = lazy(()=> import('./pages/terms'))
 const Privacy = lazy(()=> import('./pages/privacy'))
 const ShippingAndRefundPolicy = lazy(()=> import("./pages/shippingandrefund"))
 const Account = lazy(() => import("./pages/account"))
-const User_Login = lazy(()=> import('./pages/users_admin/login'))
 
 
 
@@ -265,7 +258,6 @@ const App = () => {
                 <Route path='/start/try' element={<Start_Try />} />
                 <Route path='/refer' element={token ? <Refer /> : <Login />} />
                 <Route path='/get/start' element={token ? <Play /> : <Get_start />  } />
-                <Route path='/time' element={token? <Extra_time /> : <Login/> } />
 
                 {valid &&
                   <Route path='/start' element={token ? <Start /> : <Login />} />
@@ -275,16 +267,6 @@ const App = () => {
                 }
 
                 <Route path='/data' element={token ? <Data /> : <Login />} />
-
-
-
-
-                <Route path='/admin/user/login' element={admin_user ? <Admin_Users_Home /> : <User_Login />} />
-                <Route path='/admin/user/home' element={admin_user ? <Admin_Users_Home /> : <User_Login /> } />
-                <Route path='/admin/user/questions' element={admin_user ? <View_qstn /> : <User_Login />  } />
-                <Route path='/admin/user/add' element={admin_user ? <Post_qstn /> : <User_Login />} />
-                <Route path='/admin/user/wallet' element={admin_user ? <Wallet /> : <User_Login />} />
-
 
 
 

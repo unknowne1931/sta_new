@@ -1728,8 +1728,7 @@ select {
   height: 400px;
   border: 1px solid gray;
   background-color: #0237694c;
-  border-top-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -1752,6 +1751,8 @@ select {
   height: 340px;
   margin-top: 10px;
   overflow: scroll;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; 
 }
 
 .admin-home-main-cnt-01-sub-cnt-01-sunb-cnt-01::-webkit-scrollbar {

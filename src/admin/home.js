@@ -263,7 +263,7 @@ const AdminHome = () => {
 
         </div>
 
-        {show ?
+        {/* {show ?
             <div className='Admin_Home_show-main-cnt-02'>
                 <button onClick={PostLineData}>save data</button>
             </div>
@@ -275,7 +275,7 @@ const AdminHome = () => {
                 </form>
                 
             </div>
-        }
+        } */}
 
         
         

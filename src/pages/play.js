@@ -71,7 +71,6 @@ const Play = () => {
     fetchData();
   }, []);
 
-
   const post_tm_out = async (data) =>{
     api.post("http://192.168.126.1/verify/by/timed/out/data/v/fy", {difi : data.tough, cat : data.cat, q_id : data.qno_id})
     .then(res =>{
@@ -413,8 +412,8 @@ const Play = () => {
             if(res.data.type !== ""){
               setType_Ct(res.data.type)
             }
-            // localStorage.setItem("valid", "yes")
-            // GetBalance()
+            localStorage.setItem("valid", "yes")
+            GetBalance()
             // window.location.href = '/start'
             setVerify(false)
           } else if (res.data.Status === "Low-Bal") {
@@ -587,9 +586,6 @@ const Play = () => {
 
   return (
     <div className='playyy_main'>
-
-
-
 
 
       {/* {sh_bn1 &&
@@ -794,10 +790,6 @@ const Play = () => {
                 <span>Add Bank or UPI to Receive Payments</span>
               </div>
               <br/>
-
-              <div className='play_quick_links' onClick={() => { window.location.href = '/time' }}>
-                <span>Time Gain</span>
-              </div>
 
 
             </div>
@@ -1063,11 +1055,13 @@ const Play = () => {
 
       {type_ct != "" &&
         <div className='playyy_main_sub_01_pop'>
-          {type_ct === "star_circ_tria" &&
 
+
+
+          {type_ct === "star_circ_tria" &&
             <>
             <div className='playyy_main_sub_01_pop_sub_01'>
-              <h1>Sample Model</h1>
+              <h1>Understand Before You Solve</h1>
               <div className='playyy_main_sub_01_pop_sub_01_img'>
                 <img src={one} />
               </div>
@@ -1082,11 +1076,22 @@ const Play = () => {
                 </div>
 
               </div>
+
+              <div className='start_note_01'>
+                <strong>Dont refersh the page</strong>
+              </div>
+
+              <div className='str_btn00on_01' onClick={() => { setType_Ct("") ; window.location.href = "/start" }} >
+                Let’s go!
+              </div>
+
+
             </div>
               
             </>
-          
           }
+
+
         </div>
       }
 

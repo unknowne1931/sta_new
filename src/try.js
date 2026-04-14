@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faClockFour, faGift, faTimeline, faTimesCircle, faWallet } from '@fortawesome/free-solid-svg-icons';
 import Popup from './pages/popup';
 import PopNav from './pop_nav';
+import img1 from "./image/one.png"
 
 const Try = () => {
   const [deviceId, setDeviceId] = useState('');
@@ -20,6 +21,7 @@ const Try = () => {
   const [navi, setNavi] = useState("")
   const [text, setText] = useState("")
   const [title, setTitle] = useState("")
+  const [typ, setTyp] = useState("")
 
   // Initialize device ID
   useEffect(() => {
@@ -90,6 +92,7 @@ const Try = () => {
       .then(res => {
         if (res.data.Status === "OK") {
           console.log("Created");
+          setTyp(res.data.typ)
           setStartGame(true);
           setSeconds(20); // reset countdown
         } else {
@@ -208,17 +211,45 @@ const Try = () => {
       {startGame &&
         <>
           {!data._id &&
-            <>
+          <>
             <div className='Home-cnt-01-sub-01'>
-          <strong>sta<span>W</span>ro</strong>
-          <hr />
-        </div>
-              <h1 className='gs_01_h1'>Tap to <span>start</span></h1>
+              <strong>sta<span>W</span>ro</strong>
+              <hr />
+            </div>
+
+            <div className='Home-cnt-01-sub-01_01'>
+              <span className='Home-cnt-01-sub-01_01_01' >Understand Before You Solve</span>
+              <div style={{height : "10px"}}></div>
+              {typ === "star_circ_tria" &&
+              <>
+                <div className='star_circ_tria_01_img'>
+                  <img src={img1} />
+                </div>
+                <br />
+                <span>Question Samples</span>
+                <div className='star_circ_tria_qst_sample'>
+                  <strong>Q.</strong> How many Unbroken boxes contain stars?<br />
+                  <strong>Q.</strong> How many uncomplete boxes contain circles<br />
+                  <strong>Q.</strong> Count the broken boxes that contain circles and triangles.<br />
+                </div>
+
+                <div>
+                  <span style={{ color: "red" }}>Note:</span> The above questions are just samples to help you understand the format. The actual question may vary and could be different from the samples provided.
+                </div>
+                <br/>
+
+                <div className='gs_01_div_01_02' onClick={getQst}>
+                  I am Ready to play
+                </div>
+              </>
+              }
+            </div>
+              {/* <h1 className='gs_01_h1'>Tap to <span>start</span></h1>
               <div className='gs_01_div_01' onClick={getQst}>
                 Play
               </div>
               <br />
-              <h2>or</h2>
+              <h2>or</h2> */}
               <br />
               <div className='gs_01_div_02' onClick={() => window.location.href = '/sample'}>
                 View Previous Module
