@@ -10,6 +10,7 @@ import dr from "../image/dr.gif"
 import Navi from '../navi';
 import founder from "../image/founder.png"
 import insta from "../image/insta.png"
+import Img1 from "../image/m1.png"
 
 import { auth, provider, signInWithPopup } from './firebase';
 
@@ -48,9 +49,18 @@ const Home = () => {
   const [user, setUser] = useState(null);
   const [data, setData] = useState([])
   const [rate_data, setRate_data] = useState([])
-  const [show, setShow] = useState([])
+  const [show, setShow] = useState([]);
+  const [index, setIndex] = useState(0);
 
   const email = localStorage.getItem('email');
+
+  const slides = [
+    {
+      img: Img1,
+      text: "How many broken boxes have stars?",
+    },
+
+  ];
 
   auth.onAuthStateChanged((user) => {
     if (user) {
@@ -74,6 +84,14 @@ const Home = () => {
     get_review()
     get_my_review()
   }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
 
   const handleGoogleSignup = () => {
@@ -278,6 +296,21 @@ async function get_my_review() {
         </div>
 
         <div className='Home-cnt-02'>
+
+          <div className='Home-cnt-02-sub-01'>
+            <div className='Home-cnt-02-sub-01_dr_mai'>
+              <div className='Home-cnt-02-sub-01_dr_mai_text'>Q. {slides[index].text}</div>
+              <img src={slides[index].img} alt="slider" />
+              
+             
+              <div className='Home-cnt-02-sub-01_dr_main_post'>
+                Puzzle Modules
+              </div>
+            </div>
+            
+          </div>
+
+
           {[
             { img: t1, text: 'Think it. Prove it. Win it.' },
             { img: t2, text: 'Knowledge pays off, Literally. win rewards now! ' },
