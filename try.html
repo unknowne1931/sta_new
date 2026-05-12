@@ -1,45 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Post Answer</title>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>staWro UI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      font-size: 18px;
+      color: #666;
+    }
+</style>
 </head>
+
 <body>
-  <button id="postBtn">Submit Answer</button>
+  <div class="">
 
-  <script>
-    const QData = {
-      _id: "12345",
-      seconds: 60,
-      Ans: "Sample Answer"
-    };
-    const remaining = 10;
-    const answer = "User's answer";
+    
+  </div>
+  
+  <h1>staWro UI</h1>
+  <p>Welcome to the staWro UI page!</p>
 
-    document.getElementById("postBtn").addEventListener("click", async () => {
-      try {
-        const res = await axios.post(
-          "http://192.168.126.1/verify/answer/question/number/m",
-          {
-            answer : "anss",
-            id: "53tfghius34rtghj" ,
-            seconds: "80",
-            Ans: "Iam Question",
-          }
-        );
-
-        const r = res.data;
-        if (r.Status === "OK") {
-          // Replace with your actual functions
-          console.log("Verification successful!");
-          // setVerify(false);
-          // GetQuestion();
-        }
-      } catch (err) {
-        console.error("Error posting answer:", err);
-      }
-    });
-  </script>
-</body>
 </html>
