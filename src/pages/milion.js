@@ -64,6 +64,7 @@ const Milion = ({prz}) => {
                                         display: 'flex',
                                         flexWrap: 'wrap',
                                         color: 'white',
+                                        border: isCurrent ? '2px solid white' : '2px solid #787777',
                                         background: isCompleted
                                             ? 'linear-gradient(90deg, orange, red)'
                                             : '#2b2b2b',
@@ -92,8 +93,6 @@ const Milion = ({prz}) => {
                                 )}
 
                             </React.Fragment>
-
-
 
 
 

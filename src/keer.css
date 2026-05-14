@@ -4238,11 +4238,48 @@
 }
 
 .seconds_cnt_01{
-    width: 150px;
+    width: 250px;
     height: auto;
-    padding: 10px;
     border: 1px solid white;
     color: #ffffff;
     font-size: 2rem;
     font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    border-radius: 20px;
+    background-color: #00000050;
+}
+
+.seconds_cnt_01 span{
+    align-content: center;
+
+}
+
+.seconds_cnt_02{
+    width: 400px;
+    height: auto;
+    padding: 10px;
+    border: 1px solid white;
+    margin: auto;
+}
+
+.seconds_cnt_02 img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+@media all and (max-width : 400px){
+    .seconds_cnt_02{
+        width: 90%;
+    }
+
+    .seconds_cnt_01{
+        width: 90%;
+    }
 }
