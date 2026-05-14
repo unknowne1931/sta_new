@@ -32,6 +32,8 @@ import Extra_time from './pages/extra_time';
 import Admin_controle from './admin/controle';
 import Users_Paid from './admin/users_paid';
 import View_Most_Ans from './admin/view_most_ans';
+import Milion from './pages/milion';
+import Ten_qst from './pages/ten_qst';
 
 
 const User_admin = lazy(()=> import('./admin/add_admins'))
@@ -258,6 +260,8 @@ const App = () => {
                 <Route path='/start/try' element={<Start_Try />} />
                 <Route path='/refer' element={token ? <Refer /> : <Login />} />
                 <Route path='/get/start' element={token ? <Play /> : <Get_start />  } />
+                <Route path='/milion' element={ token ? <Ten_qst /> : <Login /> } />
+
 
                 {valid &&
                   <Route path='/start' element={token ? <Start /> : <Login />} />
