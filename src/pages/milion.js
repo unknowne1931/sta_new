@@ -27,7 +27,6 @@ const Milion = ({prz}) => {
         <div
             style={{
                 padding: '10px',
-                color: 'white'
             }}
         >
 

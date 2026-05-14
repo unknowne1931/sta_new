@@ -4236,3 +4236,13 @@
     font-family: 'Courier New', Courier, monospace;
     background-color: #f67a06;
 }
+
+.seconds_cnt_01{
+    width: 150px;
+    height: auto;
+    padding: 10px;
+    border: 1px solid white;
+    color: #ffffff;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+}
