@@ -26,7 +26,7 @@ const Milion = ({prz}) => {
     return (
         <div
             style={{
-                padding: '10px',
+                // padding: '10px',
             }}
         >
 
@@ -36,7 +36,6 @@ const Milion = ({prz}) => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexWrap: 'wrap',
-                    gap: '0px'
                 }}
             >
 
@@ -71,7 +70,7 @@ const Milion = ({prz}) => {
                                         boxShadow: isCurrent
                                             ? '0 0 15px orange'
                                             : 'none',
-                                        transition: '0.3s'
+                                        transition: '0.3s',
                                     }}
                                 >
                                 {item.name}
@@ -81,7 +80,7 @@ const Milion = ({prz}) => {
                                 {index !== reward.length - 1 && (
                                     <div
                                         style={{
-                                            width: '1%',
+                                            width: '3%',
                                             height: '2px',
                                             background:
                                                 index < currentIndex

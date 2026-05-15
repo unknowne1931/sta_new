@@ -18,8 +18,10 @@ const Ten_qst = () => {
         padding: "20px"
       }}
     >
-      <div style={{ height: "30px" }}></div>
+      <div style={{ height: "50px" }}></div>
       <Milion prz={"30₹"} />
+
+      <br/>
 
 
       { false && <>
@@ -54,10 +56,19 @@ const Ten_qst = () => {
 
       <>
           <div className='seconds_cont_01'>
-            <h2>You can stop here or continue</h2>
-          </div>
-      </>
+            <h2 >You can stop here, or keep going.</h2>
 
+            <div className='seconds_cont_01_sub'>
+              <div>
+                stop & Withdraw
+              </div>
+              <div>
+                Continue
+              </div>
+
+            </div>
+          </div>      
+      </>
 
 
 

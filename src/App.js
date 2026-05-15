@@ -260,7 +260,8 @@ const App = () => {
                 <Route path='/start/try' element={<Start_Try />} />
                 <Route path='/refer' element={token ? <Refer /> : <Login />} />
                 <Route path='/get/start' element={token ? <Play /> : <Get_start />  } />
-                <Route path='/milion' element={ token ? <Ten_qst /> : <Login /> } />
+                {/* <Route path='/milion' element={ token ? <Ten_qst /> : <Login /> } /> */}
+                <Route path='/milion' element={<Ten_qst />} />
 
 
                 {valid &&
