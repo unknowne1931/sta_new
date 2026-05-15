@@ -13,35 +13,58 @@ const Ten_qst = () => {
   return (
     <div
       style={{
-        backgroundColor: dat === "1" ? "#071c5c" : "#fff",
+        backgroundColor: sec <= 3 ? "#02082a" : "#071c5c",
         minHeight: "100vh",
         padding: "20px"
       }}
     >
-      <div style={{height : "30px"}}></div>
+      <div style={{ height: "30px" }}></div>
       <Milion prz={"30₹"} />
 
 
-      <div className='seconds_cnt_01'>
-        <p style={{color : dat === "1" ? "white" : "black" , fontSize : "3rem"}}> 
-        <FontAwesomeIcon icon={faClock} style={{color : dat === "1" ? "white" : "red" , fontSize : "3rem"}} /> {sec} Sec</p>
-      </div>
+      { false && <>
+        <div className='seconds_cnt_01'>
+          <p style={{ color: "white", fontSize: "3rem" }}>
+            <FontAwesomeIcon icon={faClock} style={{ fontSize: "3rem" }} /> {sec} Sec</p>
+        </div>
 
-      <br/>
+        <br />
 
-      <div className='seconds_cnt_02'>
-        <img src={img1} alt='cross' />
-      </div>
+        <div className='seconds_qst_cntr'>
+          <h2>How many options are there?</h2>
+        </div>
 
-      <div>
-        {opt.map((option, index) => (
-          <div key={index} className='option_cnt'>
-            <p style={{color : dat === "1" ? "white" : "black" , fontSize : "2rem"}}>{option}</p>
+        <br />
+
+        <div className='seconds_cnt_02' >
+          <img src={img1} alt='cross' />
+        </div>
+
+        <br />
+
+        <div className='option_cnt_cnt_01'>
+          {opt.map((option, index) => (
+            <div key={index} className='option_cnt' style={{ backgroundColor: sec <= 3 ? "orangered" : "#0e0345", border: sec <= 3 ? "1px solid white" : "1px solid" }} >
+              <p style={{ color: dat === "1" ? "white" : "black", fontSize: "2rem" }}>{option}</p>
+            </div>
+          ))}
+        </div>
+      </>}
+
+
+      <>
+          <div className='seconds_cont_01'>
+            <h2>You can stop here or continue</h2>
           </div>
-        ))}
-      </div>
+      </>
 
-      
+
+
+
+
+
+
+
 
 
     </div>

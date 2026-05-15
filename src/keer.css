@@ -4283,3 +4283,39 @@
         width: 90%;
     }
 }
+
+.option_cnt_cnt_01{
+    width: 90%;
+    height: auto;
+    padding: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.option_cnt{
+    min-width: 120px;
+    max-width: auto;
+    background-color: #0e0345;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.seconds_qst_cntr{
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: rgb(2, 8, 49);
+    color: white;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
