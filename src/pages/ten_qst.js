@@ -23,8 +23,10 @@ const Ten_qst = () => {
 
       <br/>
 
+      { true && 
+      <>
 
-      { false && <>
+        <div style={{height : "20px"}}></div>
         <div className='seconds_cnt_01'>
           <p style={{ color: "white", fontSize: "3rem" }}>
             <FontAwesomeIcon icon={faClock} style={{ fontSize: "3rem" }} /> {sec} Sec</p>
@@ -51,12 +53,19 @@ const Ten_qst = () => {
             </div>
           ))}
         </div>
-      </>}
+      </>
+      }
 
 
-      <>
+      { false &&
+        <>
+          <br/>
+          <div className='seconds_cont_100'>
+            Total Prize Money: 30₹
+          </div>
+          <br/>
           <div className='seconds_cont_01'>
-            <h2 >You can stop here, or keep going.</h2>
+            <h2 >You can cash out now, or keep going to win more</h2>
 
             <div className='seconds_cont_01_sub'>
               <div>
@@ -68,7 +77,8 @@ const Ten_qst = () => {
 
             </div>
           </div>      
-      </>
+        </>
+      }
 
 
 

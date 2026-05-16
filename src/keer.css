@@ -4321,10 +4321,11 @@
 }
 
 .seconds_cont_01{
-    width: 90%;
+    width: 95%;
+    padding: 10px;
     font-family: 'Courier New', Courier, monospace;
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     border: 1px solid white;
     border-radius: 10px;
     background-color: #0d0341;
@@ -4335,10 +4336,11 @@
     height: auto;
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 10px;
     flex-direction: row;
     justify-content: center;
+    font-size: 2rem;
 }
 
 
@@ -4355,3 +4357,15 @@
     cursor: pointer;
 }
 
+.seconds_cont_100{
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    color: white;
+    font-size: 2.6rem;
+    font-family: var(--ff1);
+    font-weight: 600;
+    background-color: #0c20a2;
+}
