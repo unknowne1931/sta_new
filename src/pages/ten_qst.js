@@ -13,9 +13,10 @@ const Ten_qst = () => {
   return (
     <div
       style={{
-        backgroundColor: sec <= 3 ? "#02082a" : "#071c5c",
+        backgroundColor: sec <= 3 ? "#041239" : "#071c5c",
         minHeight: "100vh",
-        padding: "20px"
+        padding: "20px",
+        position: "relative",
       }}
     >
       <div style={{ height: "50px" }}></div>
@@ -27,20 +28,35 @@ const Ten_qst = () => {
       <>
 
         <div style={{height : "20px"}}></div>
-        <div className='seconds_cnt_01'>
+        <div className='seconds_cnt_01'
+          style={{
+            border: sec <= 3 ? "1px solid orangered" : "1px solid #ffffff",
+        transition: "background-color 0.5s ease, border 0.5s ease",
+          }}
+        >
           <p style={{ color: "white", fontSize: "3rem" }}>
             <FontAwesomeIcon icon={faClock} style={{ fontSize: "3rem" }} /> {sec} Sec</p>
         </div>
 
         <br />
 
-        <div className='seconds_qst_cntr'>
+        <div className='seconds_qst_cntr'
+          style={{
+            border: sec <= 3 ? "1px solid orangered" : "1px solid #ffffff",
+        transition: "background-color 0.5s ease, border 0.5s ease",
+          }}
+        >
           <h2>How many options are there?</h2>
         </div>
 
         <br />
 
-        <div className='seconds_cnt_02' >
+        <div className='seconds_cnt_02' 
+          style={{
+            border: sec <= 3 ? "1px solid orangered" : "1px solid #ffffff",
+        transition: "background-color 0.5s ease, border 0.5s ease",
+          }}
+        >
           <img src={img1} alt='cross' />
         </div>
 
@@ -79,6 +95,19 @@ const Ten_qst = () => {
           </div>      
         </>
       }
+
+
+      {/* <h1 style={{
+        position : "absolute",
+        fontSize : "80vw",
+        top : "30%",
+        left : "50%",
+        margin : "auto",
+        transform : "translate(-50%,-50%)",
+        color : "rgba(255, 255, 255, 0.1)",
+        pointerEvents : "none",
+        textAlign : "center",
+      }}>{sec}</h1> */}
 
 
 

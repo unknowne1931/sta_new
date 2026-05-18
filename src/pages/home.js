@@ -264,7 +264,7 @@ async function get_my_review() {
       <center>
         <div className='Home-cnt-01'>
           <div className='Home-cnt-01-sub-01'>
-            <strong>sta<span>W</span>ro</strong>
+            <strong style={{color : "white"}} >sta<span>W</span>ro</strong>
             <hr />
           </div>
           <div className='Home-cnt-01-sub-02'>
