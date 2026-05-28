@@ -331,73 +331,73 @@ const Play = () => {
     }
   };
 
-  const StartGame = (e) => {
-    setPlay(false)
-    setVerify(true)
-    try {
-      setAlert(false)
-      e.preventDefault()
-      api.post(`${"http://192.168.126.1"}/start/playing/by/debit/amount/new/${Api}`, { user })
-        .then(res => {
-          if (res.data.Status === "OK") {
-            localStorage.setItem("valid", "yes")
-            GetBalance()
-            window.location.href = '/start'
-            setVerify(false)
-          } else if (res.data.Status === "Low-Bal") {
-            setVerify(false)
-            setData("You not Have Enough Balance")
-            setAlert(true)
+  // const StartGame = (e) => {
+  //   setPlay(false)
+  //   setVerify(true)
+  //   try {
+  //     setAlert(false)
+  //     e.preventDefault()
+  //     api.post(`${"http://192.168.126.1"}/start/playing/by/debit/amount/new/${Api}`, { user })
+  //       .then(res => {
+  //         if (res.data.Status === "OK") {
+  //           localStorage.setItem("valid", "yes")
+  //           GetBalance()
+  //           window.location.href = '/start'
+  //           setVerify(false)
+  //         } else if (res.data.Status === "Low-Bal") {
+  //           setVerify(false)
+  //           setData("You not Have Enough Balance")
+  //           setAlert(true)
 
-          } else if (res.data.Status === "BAD") {
-            setVerify(false)
-            setData("Your turn has ended.")
-            setAlert(true)
-          } else if (res.data.Status === "BAD_CR") {
-            setVerify(false)
-            setData("Try Again or Wait a Minute")
-            setAlert(true)
-          }
-          else if (res.data.Status === "Time") {
-            setVerify(false)
-            setData(res.data.message)
-            setAlert(true)
-          }
-          else if (res.data.Status === "no_us") {
-            setVerify(false)
-            setData("Claim your Free Credit")
-            setAlert(true)
-          } else if (res.data.Status === "les_10") {
-            setVerify(false)
-            setData("Try Again")
-            setAlert(true)
-          } else if (res.data.Status === "s_m") {
-            setVerify(false)
-            setData("Some credentials are missing. Please try again.")
-            setAlert(true)
-          }
-          else {
-            setVerify(false)
-            setData("Something Went Wrong Try Again")
-            setAlert(true)
-          }
-        }).catch(error => {
-          setVerify(false)
-          if (error.response) {
-            console.error("API Error:", error.response.status, error.response.data);
-          } else if (error.request) {
-            console.error("No response from server. Please check your connection.");
-          } else {
-            console.error("Error occurred:", error.message);
-          }
-        })
-    } catch (error) {
-      setVerify(false)
-      console.log(error)
-    }
+  //         } else if (res.data.Status === "BAD") {
+  //           setVerify(false)
+  //           setData("Your turn has ended.")
+  //           setAlert(true)
+  //         } else if (res.data.Status === "BAD_CR") {
+  //           setVerify(false)
+  //           setData("Try Again or Wait a Minute")
+  //           setAlert(true)
+  //         }
+  //         else if (res.data.Status === "Time") {
+  //           setVerify(false)
+  //           setData(res.data.message)
+  //           setAlert(true)
+  //         }
+  //         else if (res.data.Status === "no_us") {
+  //           setVerify(false)
+  //           setData("Claim your Free Credit")
+  //           setAlert(true)
+  //         } else if (res.data.Status === "les_10") {
+  //           setVerify(false)
+  //           setData("Try Again")
+  //           setAlert(true)
+  //         } else if (res.data.Status === "s_m") {
+  //           setVerify(false)
+  //           setData("Some credentials are missing. Please try again.")
+  //           setAlert(true)
+  //         }
+  //         else {
+  //           setVerify(false)
+  //           setData("Something Went Wrong Try Again")
+  //           setAlert(true)
+  //         }
+  //       }).catch(error => {
+  //         setVerify(false)
+  //         if (error.response) {
+  //           console.error("API Error:", error.response.status, error.response.data);
+  //         } else if (error.request) {
+  //           console.error("No response from server. Please check your connection.");
+  //         } else {
+  //           console.error("Error occurred:", error.message);
+  //         }
+  //       })
+  //   } catch (error) {
+  //     setVerify(false)
+  //     console.log(error)
+  //   }
 
 
-  }
+  // }
 
 
   const StartGame_1 = (e) => {
@@ -469,6 +469,30 @@ const Play = () => {
     }
 
 
+  }
+
+
+  const start_mili = () =>{
+    setAlert(false)
+    setVerify(true)
+    api.post("http://192.168.126.1/milionear/game/start/ten/qst")
+    .then(res => {
+      if(res.data.Status === "Time"){
+        setVerify(false)
+        setData(res.data.message)
+        setAlert(true)
+      }else if(res.data.Status === "Low-Bal"){
+        setVerify(false)
+        setData("You not Have Enough Balance")
+        setAlert(true)
+      }else if(res.data.Status === "OK"){
+        setVerify(false)
+        localStorage.setItem("valid", "yes")
+        GetBalance()
+        window.location.replace("/milion")
+
+      }
+    })
   }
 
 

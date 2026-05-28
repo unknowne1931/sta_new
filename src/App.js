@@ -261,7 +261,7 @@ const App = () => {
                 <Route path='/refer' element={token ? <Refer /> : <Login />} />
                 <Route path='/get/start' element={token ? <Play /> : <Get_start />  } />
                 {/* <Route path='/milion' element={ token ? <Ten_qst /> : <Login /> } /> */}
-                <Route path='/milion' element={<Ten_qst />} />
+                {/* <Route path='/milion' element={<Ten_qst />} /> */}
 
 
                 {valid &&
@@ -269,6 +269,13 @@ const App = () => {
                 }
                 {!valid &&
                   <Route path='/start' element={token ? <Play /> : <Login />} />
+                }
+
+                {valid &&
+                  <Route path='/milion' element={token ? <Ten_qst /> : <Login />} />
+                }
+                {!valid &&
+                  <Route path='/milion' element={token ? <Play /> : <Login />} />
                 }
 
                 <Route path='/data' element={token ? <Data /> : <Login />} />

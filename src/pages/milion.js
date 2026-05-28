@@ -1,6 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import api from './api'
 
 const Milion = ({prz}) => {
+
+
+    const [data, setData] = useState([])
+
+    const fetchData = async () => {
+        api.get("http://192.168.126.1/milionear/game/get/qst/no/to/play")
+        .then(res =>{
+            console.log(res)
+        })
+    }
+
+    useEffect(()=>{
+        fetchData()
+    },[])
 
     const reward = [
         { name: '10₹' },
