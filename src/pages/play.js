@@ -963,7 +963,8 @@ const Play = () => {
               </div>
               <div className='warning_before_start_sub_02'>
                 <button onClick={()=>{setPlay(false)}} className='warning_before_start_sub_02-2'>Reject</button>
-                <button onClick={StartGame_1} className='warning_before_start_sub_02-1'>Start</button>
+                {/* <button onClick={StartGame_1} className='warning_before_start_sub_02-1'>Start</button> */}
+                <button onClick={start_mili} className='warning_before_start_sub_02-1'>Start</button>
                 
               </div>
             </div>
