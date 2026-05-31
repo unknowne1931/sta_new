@@ -4,21 +4,19 @@ import Popup from './popup'
 
 const Milion = ({prz}) => {
 
-
-    
-
     const reward = [
-        { name: '10₹' },
-        { name: '20₹' },
-        { name: '30₹' },
-        { name: '40₹' },
-        { name: '50₹' },
-        { name: '80₹' },
-        { name: '110₹' },
-        { name: '140₹' },
-        { name: '170₹' },
-        { name: '200₹' }
+        { name: '10' },
+        { name: '20' },
+        { name: '30' },
+        { name: '40' },
+        { name: '50' },
+        { name: '80' },
+        { name: '110' },
+        { name: '140' },
+        { name: '170' },
+        { name: '200' }
     ]
+
 
     // Current answered reward
     const [currentReward] = useState(prz)
@@ -78,7 +76,7 @@ const Milion = ({prz}) => {
                                         transition: '0.3s',
                                     }}
                                 >
-                                {item.name}
+                                {item.name}₹
                                 </div>
 
                                 {/* Line */}

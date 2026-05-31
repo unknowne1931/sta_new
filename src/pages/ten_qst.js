@@ -9,15 +9,14 @@ import api from './api';
 
 const Ten_qst = () => {
 
-  const dat = "1"
-  const sec = 30
-  const opt = ["Option 1", "Option 2", "Option 3", "Option 4"]
+  const sec = 0
 
   const [data, setData] = useState([])
   const [alert, setAlert] = useState(false)
   const [info, setInfo] = useState([])
 
   const fetchData = async () => {
+    localStorage.removeItem("rw")
     setAlert(false)
     api.get("http://192.168.126.1/milionear/game/get/qst/no/to/play")
       .then(res => {
@@ -29,6 +28,7 @@ const Ten_qst = () => {
           setAlert(true)
         } else if (res.data.Data) {
           setInfo(res.data.Data)
+          localStorage.setItem("rw", res.data.rw)
         }
       })
   }
@@ -48,7 +48,7 @@ const Ten_qst = () => {
       }}
     >
       <div style={{ height: "50px" }}></div>
-      <Milion prz={"30₹"} />
+      <Milion prz={localStorage.getItem("rw")} />
 
       <br />
 
@@ -74,7 +74,7 @@ const Ten_qst = () => {
               transition: "background-color 0.5s ease, border 0.5s ease",
             }}
           >
-            <h2>How many options are there?</h2>
+            <h2>{info.Questio}</h2>
           </div>
 
           <br />
@@ -85,18 +85,50 @@ const Ten_qst = () => {
               transition: "background-color 0.5s ease, border 0.5s ease",
             }}
           >
-            <img src={img1} alt='cross' />
+            <img src={`data:image/png;base64,${info.img}`} alt='cross' />
           </div>
 
           <br />
 
-          <div className='option_cnt_cnt_01'>
-            {opt.map((option, index) => (
-              <div key={index} className='option_cnt' style={{ backgroundColor: sec <= 3 ? "orangered" : "#0e0345", border: sec <= 3 ? "1px solid white" : "1px solid" }} >
-                <p style={{ color: dat === "1" ? "white" : "black", fontSize: "2rem" }}>{option}</p>
-              </div>
-            ))}
-          </div>
+
+        <div className='option_cnt_cnt_01'>
+
+  {info?.options?.map((data, i) => {
+
+    return (
+
+      <div
+        key={i}
+        className='option_cnt'
+        style={{
+          backgroundColor: sec <= 3 ? "orangered" : "#0e0345",
+          border: sec <= 3
+            ? "1px solid white"
+            : "1px solid"
+        }}
+      >
+
+        <p
+          style={{
+            color: localStorage.getItem("rw") === "1" ? "white" : "black",
+            fontSize: "2rem"
+          }}
+        >
+          {data}
+        </p>
+
+      </div>
+
+    )
+
+  })}
+
+</div>
+
+
+          
+
+
         </>
       }
 

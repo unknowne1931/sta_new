@@ -475,7 +475,7 @@ const Play = () => {
   const start_mili = () =>{
     setAlert(false)
     setVerify(true)
-    api.post("http://192.168.126.1/milionear/game/start/ten/qst")
+    api.post("http://192.168.126.1/milionear/game/start/ten/qst", {rs : 10})
     .then(res => {
       if(res.data.Status === "Time"){
         setVerify(false)
