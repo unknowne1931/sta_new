@@ -4369,3 +4369,46 @@
     font-weight: 600;
     background-color: #0c20a2;
 }
+
+.third_cont_100{
+    width: 90%;
+    height: auto;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    background-color: #010e2f;
+    border: 1px solid white;
+}
+
+.third_cont_100_sub_01{
+    position: absolute;
+    top: -20px;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 10px;
+    left: 20px;
+    color: white;
+    background-color: #02051d;
+    font-size: 2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.third_cont_100 h1{
+    color: white;
+    text-align: start;
+    margin-left: 20px;
+}
+
+.third_cont_100_sub_02{
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid white;
+    background-color: #000000a1;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    border-radius: 10px;
+}
