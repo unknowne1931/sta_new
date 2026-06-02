@@ -52,13 +52,13 @@ const Play = () => {
 
   useEffect(() => {
     setType_Ct("")
-      if (ran.current) return
-      ran.current = true
+    if (ran.current) return
+    ran.current = true
     const fetchData = async () => {
       GetAllDAta();
 
       if (id === "timeout") {
-        
+
         const data = await getFromDB("start_time_out");
         setTime_Ot(data);
         post_tm_out(data)
@@ -71,17 +71,17 @@ const Play = () => {
     fetchData();
   }, []);
 
-  const post_tm_out = async (data) =>{
-    api.post("http://192.168.126.1/verify/by/timed/out/data/v/fy", {difi : data.tough, cat : data.cat, q_id : data.qno_id})
-    .then(res =>{
-      if(res.data.Status === "OK"){
-        console.log("Everything went Good")
-      }else{
-        console.log("Something went wrong")
-      }
-    }).catch(error =>{
-      console.log(error)
-    })
+  const post_tm_out = async (data) => {
+    api.post("http://192.168.126.1/verify/by/timed/out/data/v/fy", { difi: data.tough, cat: data.cat, q_id: data.qno_id })
+      .then(res => {
+        if (res.data.Status === "OK") {
+          console.log("Everything went Good")
+        } else {
+          console.log("Something went wrong")
+        }
+      }).catch(error => {
+        console.log(error)
+      })
   }
 
 
@@ -124,8 +124,8 @@ const Play = () => {
     })
       .then(res => {
         if (res.data.Status === "OK") {
-            navigate("/tickets", { replace: true });
-            // window.location.replace("/tickets")
+          navigate("/tickets", { replace: true });
+          // window.location.replace("/tickets")
         } else {
           navigate("/play", { replace: true });
         }
@@ -409,7 +409,7 @@ const Play = () => {
       api.post(`${"http://192.168.126.1"}/start/playing/by/debit/amount/new/all/xx/main`, { user })
         .then(res => {
           if (res.data.Status === "OK") {
-            if(res.data.type !== ""){
+            if (res.data.type !== "") {
               setType_Ct(res.data.type)
             }
             localStorage.setItem("valid", "yes")
@@ -472,27 +472,27 @@ const Play = () => {
   }
 
 
-  const start_mili = () =>{
+  const start_mili = () => {
     setAlert(false)
     setVerify(true)
-    api.post("http://192.168.126.1/milionear/game/start/ten/qst", {rs : 10})
-    .then(res => {
-      if(res.data.Status === "Time"){
-        setVerify(false)
-        setData(res.data.message)
-        setAlert(true)
-      }else if(res.data.Status === "Low-Bal"){
-        setVerify(false)
-        setData("You not Have Enough Balance")
-        setAlert(true)
-      }else if(res.data.Status === "OK"){
-        setVerify(false)
-        localStorage.setItem("valid", "yes")
-        GetBalance()
-        window.location.replace("/milion")
+    api.post("http://192.168.126.1/milionear/game/start/ten/qst", { rs: 10 })
+      .then(res => {
+        if (res.data.Status === "Time") {
+          setVerify(false)
+          setData(res.data.message)
+          setAlert(true)
+        } else if (res.data.Status === "Low-Bal") {
+          setVerify(false)
+          setData("You not Have Enough Balance")
+          setAlert(true)
+        } else if (res.data.Status === "OK") {
+          setVerify(false)
+          localStorage.setItem("valid", "yes")
+          GetBalance()
+          window.location.replace("/milion")
 
-      }
-    })
+        }
+      })
   }
 
 
@@ -638,25 +638,64 @@ const Play = () => {
           {!pay_amt &&
             <div className='play-main-cnt-02'>
 
-              {level?.rank == null &&
+              {/* {level?.rank == null &&
 
                 <div className='play-main-cnt-02_abs'>
                   <h2>Level : <strong>{level ? level : 0}</strong></h2>
-                </div>}
+                </div>} */}
 
-              {btn1 &&
+              <h3 style={{ fontSize: "4rem" }} >Wallet</h3>
+
+              {/* {btn1 &&
                 <div>
-                  <h3>Account Balance</h3>
+                  <h3>Wallet Balance</h3>
                   <FontAwesomeIcon icon={faIndianRupeeSign} className='play-main-cnt-02-icon-01' />
                   <span> {balance.balance ? balance.balance : "0"}.00</span>
                 </div>
+              } */}
+
+              {
+                btn1 &&
+
+                <>
+                  <div className='bbbbbbbb_misbnasd_01' >
+                    <div className='bbb_1' >
+                      <div className='bbb_1_1'>
+                        <span style={{ fontSize: "2rem" }} >Wallet Balance : <FontAwesomeIcon icon={faIndianRupeeSign} className='play-main-cnt-02-icon-01' style={{ fontSize: "2rem" }} /> <strong>{balance.balance ? balance.balance : "0"}.00</strong> </span>
+
+
+                      </div>
+                      <hr style={{ color: "white", width: "80%" }} />
+                      <div className='bbb_1_1'>
+                        <div className='bbb_1_1'>
+                          <span style={{ fontSize: "2rem" }}  >Account Balance : <FontAwesomeIcon icon={faIndianRupeeSign} className='play-main-cnt-02-icon-01' style={{ fontSize: "2rem" }} /> <strong>{level ? level : 0}.00</strong> </span>
+
+
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div className='add_more_btn' style={{textAlign : "center"}} onClick={() => { setPay_Amt(true) }} >
+                      Add More
+
+                      {parseInt((parseInt(balance.balance) / parseInt(get_rupe.rupee))) <= 0 &&
+                        <div className='add_more_btn_sub_01'>
+                          All Payments Accepted
+                        </div>}
+                    </div>
+                  </div>
+
+                </>
               }
+
+
 
               {!btn1 &&
                 <button onClick={New} className="get_bln">Try for Free</button>
               }
 
-              {btn1 &&
+              {/* {btn1 &&
                 <div className='add_more_btn' onClick={() => { setPay_Amt(true) }} >
                   Add More
 
@@ -665,7 +704,7 @@ const Play = () => {
                       All Payments Accepted
                     </div>}
                 </div>
-              }
+              } */}
 
 
               <br />
@@ -758,7 +797,7 @@ const Play = () => {
                       <p>
                         Answer the question as soon as possible. Saved time is converted into money at the rate of <strong className='class_200_max_data'>10.00₹</strong> per second.
                       </p>
-                      <div onClick={() => {setPlay(true)  }} className='play_start_game_btn_01_cnt'>
+                      <div onClick={() => { setPlay(true) }} className='play_start_game_btn_01_cnt'>
                         <div className='play_start_game_btn_01_cnt-sub_02'>
                           win max <strong className='class_200_max_data'>100.00 ₹</strong> | 20s/q
                         </div>
@@ -813,7 +852,7 @@ const Play = () => {
               <div className='play_quick_links' onClick={() => { window.location.href = '/account/upi' }}>
                 <span>Add Bank or UPI to Receive Payments</span>
               </div>
-              <br/>
+              <br />
 
 
             </div>
@@ -891,7 +930,7 @@ const Play = () => {
 
 
           {play &&
-          
+
             <div className='warning_before_start'>
               <h1 className='warning_before_start_h1_01'>Agree to This</h1>
               <div className='warning_before_start_sub_01'>
@@ -917,7 +956,7 @@ const Play = () => {
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
-                  The refund will be processed within 24 hours. 
+                  The refund will be processed within 24 hours.
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
@@ -962,10 +1001,10 @@ const Play = () => {
 
               </div>
               <div className='warning_before_start_sub_02'>
-                <button onClick={()=>{setPlay(false)}} className='warning_before_start_sub_02-2'>Reject</button>
+                <button onClick={() => { setPlay(false) }} className='warning_before_start_sub_02-2'>Reject</button>
                 {/* <button onClick={StartGame_1} className='warning_before_start_sub_02-1'>Start</button> */}
                 <button onClick={start_mili} className='warning_before_start_sub_02-1'>Start</button>
-                
+
               </div>
             </div>
 
@@ -1085,34 +1124,34 @@ const Play = () => {
 
           {type_ct === "star_circ_tria" &&
             <>
-            <div className='playyy_main_sub_01_pop_sub_01'>
-              <h1>Understand Before You Solve</h1>
-              <div className='playyy_main_sub_01_pop_sub_01_img'>
-                <img src={one} />
-              </div>
-              <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-                <br/>
-                <strong>Q.</strong> How many Unbroken boxes contain stars? <br />
-                <strong>Q.</strong> How many uncomplete boxes contain circles <br />
-                <strong>Q.</strong> Count the broken boxes that contain circles and triangles. <br />
-                <strong>...</strong>
-                <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-                  <span>Sample Question</span>
+              <div className='playyy_main_sub_01_pop_sub_01'>
+                <h1>Understand Before You Solve</h1>
+                <div className='playyy_main_sub_01_pop_sub_01_img'>
+                  <img src={one} />
+                </div>
+                <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
+                  <br />
+                  <strong>Q.</strong> How many Unbroken boxes contain stars? <br />
+                  <strong>Q.</strong> How many uncomplete boxes contain circles <br />
+                  <strong>Q.</strong> Count the broken boxes that contain circles and triangles. <br />
+                  <strong>...</strong>
+                  <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
+                    <span>Sample Question</span>
+                  </div>
+
                 </div>
 
+                <div className='start_note_01'>
+                  <strong>Dont refersh the page</strong>
+                </div>
+
+                <div className='str_btn00on_01' onClick={() => { setType_Ct(""); window.location.href = "/start" }} >
+                  Let’s go!
+                </div>
+
+
               </div>
 
-              <div className='start_note_01'>
-                <strong>Dont refersh the page</strong>
-              </div>
-
-              <div className='str_btn00on_01' onClick={() => { setType_Ct("") ; window.location.href = "/start" }} >
-                Let’s go!
-              </div>
-
-
-            </div>
-              
             </>
           }
 

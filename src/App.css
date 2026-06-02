@@ -1811,9 +1811,10 @@ select {
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
   box-shadow: 2px 5px 12px rgb(54, 50, 50);
-  align-content: center;
+  /* align-content: center; */
   position: relative;
   overflow: hidden;
+  text-align: start;
 }
 
 .play-main-cnt-02-true {
@@ -4326,7 +4327,7 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 20px;
   margin-top: 10px;
   border-radius: 30px;
-  background-color: #0076d6;
+  background-color: #089e03;
   border: 1px solid;
   font-family: var(--ff1);
   font-weight: 600;
