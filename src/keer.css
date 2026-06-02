@@ -4412,3 +4412,17 @@
     cursor: pointer;
     border-radius: 10px;
 }
+
+.gm_over_img{
+    width: 95%;
+    height: auto;
+    padding: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.gm_over_img img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}

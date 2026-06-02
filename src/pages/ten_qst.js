@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Milion from './milion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight, faClock, faTimeline, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faClock, faL, faTimeline, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import img1 from "../image/one.png"
 import Popup from './popup';
 import api from './api';
+import gm_over from "../image/g_over.jpg"
+import { removeFromDB } from '../db';
 
 
 const Ten_qst = () => {
@@ -16,6 +18,46 @@ const Ten_qst = () => {
   const [info, setInfo] = useState([])
   const [txt, setText] = useState([])
 
+  const [QData, setQData] = useState(null);
+  const [remaining, setRemaining] = useState(0);
+
+  const intervalRef = useRef(null);
+  const latestSeconds = useRef(0);
+
+    /* -------------------- TIMER -------------------- */
+  
+    const startCountdown = (target) => {
+      clearInterval(intervalRef.current);
+      tick(target);
+      intervalRef.current = setInterval(() => tick(target), 1000);
+    };
+  
+    const tick = async (target) => {
+      const now = Date.now();
+      const left = Math.max(0, Math.floor((target - now) / 1000));
+      setRemaining(left);
+  
+      if (left <= 0) {
+        clearInterval(intervalRef.current);
+        await removeFromDB("targetSecond");
+  
+        // await saveToDB("start_time_out", {
+        //   qno_id: QData?._id,
+        //   seconds: QData?.seconds,
+        //   Qst: QData?.Question,
+        //   options: QData?.options,
+        //   img: QData?.img,
+        //   Ans: QData?.Ans,
+        //   cat: QData?.cat,
+        //   tough: QData?.tough,
+        //   vr: "false",
+        //   usa: "",
+        // });
+  
+        window.location.replace("/play?id=timeout");
+      }
+    };
+
   const fetchData = async () => {
     localStorage.removeItem("rw")
     setAlert(false)
@@ -23,12 +65,14 @@ const Ten_qst = () => {
       .then(res => {
         if (res.data.Status === "OUT") {
           setText(res.data.Status)
-          setData("Your game is over.")
+          // setData("Your game is over.")
           // setAlert(true)
+          setInfo("")
         } else if (res.data.Status === "yes/no") {
+          localStorage.setItem("rss", res.data.rs)
           setText(res.data.Status)
-          setData("Do you want to Quit")
-          setAlert(true)
+          // setData("Do you want to Quit")
+          // setAlert(true)
         } else if (res.data.Data) {
           setInfo(res.data.Data)
           localStorage.setItem("rw", res.data.rw)
@@ -42,6 +86,24 @@ const Ten_qst = () => {
   useEffect(() => {
     fetchData()
   }, [])
+
+  function Quit(ans){
+    setAlert(false)
+    api.post("http://192.168.126.1/milionear/game/quit/ten/qst", {yn : ans})
+    .then(res =>{
+      if(res.data.Status === "Credit_Quit"){
+        setData("Game exited. Rewards have been added to your account.")
+        setAlert(true)
+      }else if(res.data.Status === "No-Game"){
+        setText("OUT")
+      }else if(res.data.Status === "Continue"){
+        fetchData()
+      }else {
+          setData("Something went Wrong")
+          setAlert(true)
+        }
+    })
+  }
 
 
 
@@ -112,6 +174,7 @@ const Ten_qst = () => {
                       setText(res.data.Status)
                       setData("Your game is over.")
                       setAlert(true)
+                      setInfo("")
                     } else if (res.data.Status === "TimeOut") {
                       setData("Time Out")
                       setAlert(true)
@@ -178,17 +241,17 @@ const Ten_qst = () => {
         <>
           <br />
           <div className='seconds_cont_100'>
-            Total Prize Money: 30₹
+            Total Prize Money: {localStorage.getItem("rss")}₹
           </div>
           <br />
           <div className='seconds_cont_01'>
             <h2 >You can cash out now, or keep going to win more</h2>
 
             <div className='seconds_cont_01_sub'>
-              <div>
+              <div onClick={()=>{Quit("no")}}>
                 stop & Withdraw
               </div>
-              <div>
+              <div onClick={()=>{Quit("No")}}>
                 Continue
               </div>
 
@@ -200,7 +263,9 @@ const Ten_qst = () => {
       {txt === "OUT" &&
 
         <>
-          <br />
+          <div style={{height : "50px"}}>
+
+          </div>
           <div className='third_cont_100'>
             <br/>
 
@@ -215,6 +280,13 @@ const Ten_qst = () => {
               Back
             </div>
           </div>
+          <br/>
+
+
+          <div className='gm_over_img'>
+            <img src={gm_over} />
+          </div>
+        
         </>
 
       }
