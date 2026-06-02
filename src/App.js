@@ -91,36 +91,71 @@ const DisplayPath = () => {
     })
   },[])
 
-  useEffect(()=>{
-    if(location.pathname !== "/start" && user){
-      setAlert(false)
-      removeFromDB('targetSecond');
-      try{
-        api.delete(`${"http://localhost"}/delete/by/user/id/for/valid/data`)
-        .then(res =>{
-          if(res.data.Status === "OK"){
-            localStorage.removeItem("valid")
-            // setData("You are quitting the game.")
-            // setAlert(true)
-          }else{
-            console.warn("Unexpected response structure:", res.data);
-          }
-        })
-        .catch(error=>{
-          if (error.response) {
-              console.error("API Error:", error.response.status, error.response.data);
-          } else if (error.request) {
-              console.error("No response from server. Please check your connection.");
-          } else {
-              console.error("Error occurred:", error.message);
-          }
-      })
-      }catch(error){
-        console.log(error)
-      }
+  // useEffect(()=>{
+  //   if(!(location.pathname) "/start" && user){
+  //     setAlert(false)
+  //     removeFromDB('targetSecond');
+  //     try{
+  //       api.delete(`${"http://localhost"}/delete/by/user/id/for/valid/data`)
+  //       .then(res =>{
+  //         if(res.data.Status === "OK"){
+  //           localStorage.removeItem("valid")
+  //           // setData("You are quitting the game.")
+  //           // setAlert(true)
+  //         }else{
+  //           console.warn("Unexpected response structure:", res.data);
+  //         }
+  //       })
+  //       .catch(error=>{
+  //         if (error.response) {
+  //             console.error("API Error:", error.response.status, error.response.data);
+  //         } else if (error.request) {
+  //             console.error("No response from server. Please check your connection.");
+  //         } else {
+  //             console.error("Error occurred:", error.message);
+  //         }
+  //     })
+  //     }catch(error){
+  //       console.log(error)
+  //     }
       
-    }
-  },[])
+  //   }
+  // },[])
+
+
+  useEffect(() => {
+  if (
+    !["/start", "/milion"].includes(location.pathname) &&
+    user
+  ) {
+    setAlert(false);
+    removeFromDB("targetSecond");
+
+    api.delete("http://localhost/delete/by/user/id/for/valid/data")
+      .then((res) => {
+        if (res.data.Status === "OK") {
+          localStorage.removeItem("valid");
+        } else {
+          console.warn("Unexpected response structure:", res.data);
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.error(
+            "API Error:",
+            error.response.status,
+            error.response.data
+          );
+        } else if (error.request) {
+          console.error(
+            "No response from server. Please check your connection."
+          );
+        } else {
+          console.error("Error occurred:", error.message);
+        }
+      });
+  }
+}, []);
 
 
   if(alert){

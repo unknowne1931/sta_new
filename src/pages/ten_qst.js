@@ -18,45 +18,52 @@ const Ten_qst = () => {
   const [info, setInfo] = useState([])
   const [txt, setText] = useState([])
 
-  const [QData, setQData] = useState(null);
   const [remaining, setRemaining] = useState(0);
 
   const intervalRef = useRef(null);
   const latestSeconds = useRef(0);
 
-    /* -------------------- TIMER -------------------- */
-  
-    const startCountdown = (target) => {
+  useEffect(() => {
+    return () => clearInterval(intervalRef.current);
+  }, []);
+
+
+
+  const startCountdown = (target) => {
+    clearInterval(intervalRef.current);
+    tick(target);
+    intervalRef.current = setInterval(() => tick(target), 1000);
+  };
+
+  const stopCountdown = () => {
+    clearInterval(intervalRef.current);
+    localStorage.removeItem("targetSecond");
+    setRemaining(0);
+  }
+
+
+  const tick = async (target) => {
+    const now = Date.now();
+    const left = Math.max(
+      0,
+      Math.ceil((target - now) / 1000)
+    );
+
+    setRemaining(left);
+
+    if (left <= 0) {
       clearInterval(intervalRef.current);
-      tick(target);
-      intervalRef.current = setInterval(() => tick(target), 1000);
-    };
-  
-    const tick = async (target) => {
-      const now = Date.now();
-      const left = Math.max(0, Math.floor((target - now) / 1000));
-      setRemaining(left);
-  
-      if (left <= 0) {
-        clearInterval(intervalRef.current);
-        await removeFromDB("targetSecond");
-  
-        // await saveToDB("start_time_out", {
-        //   qno_id: QData?._id,
-        //   seconds: QData?.seconds,
-        //   Qst: QData?.Question,
-        //   options: QData?.options,
-        //   img: QData?.img,
-        //   Ans: QData?.Ans,
-        //   cat: QData?.cat,
-        //   tough: QData?.tough,
-        //   vr: "false",
-        //   usa: "",
-        // });
-  
-        window.location.replace("/play?id=timeout");
-      }
-    };
+
+      localStorage.removeItem("targetSecond");
+
+      window.location.replace("/play");
+    }
+  };
+
+
+
+
+
 
   const fetchData = async () => {
     localStorage.removeItem("rw")
@@ -74,8 +81,24 @@ const Ten_qst = () => {
           // setData("Do you want to Quit")
           // setAlert(true)
         } else if (res.data.Data) {
-          setInfo(res.data.Data)
-          localStorage.setItem("rw", res.data.rw)
+          if (res.data.Data) {
+            setInfo(res.data.Data);
+
+            const savedTarget = localStorage.getItem("targetSecond");
+
+            if (!savedTarget) {
+              const target =
+                Date.now() + Number(res.data.Data.seconds) * 1000;
+
+              localStorage.setItem("targetSecond", target);
+
+              startCountdown(target);
+            } else {
+              startCountdown(Number(savedTarget));
+            }
+
+            localStorage.setItem("rw", res.data.rw);
+          }
         } else {
           setData("Something went Wrong")
           setAlert(true)
@@ -87,22 +110,23 @@ const Ten_qst = () => {
     fetchData()
   }, [])
 
-  function Quit(ans){
+  function Quit(ans) {
+    stopCountdown()
     setAlert(false)
-    api.post("http://192.168.126.1/milionear/game/quit/ten/qst", {yn : ans})
-    .then(res =>{
-      if(res.data.Status === "Credit_Quit"){
-        setData("Game exited. Rewards have been added to your account.")
-        setAlert(true)
-      }else if(res.data.Status === "No-Game"){
-        setText("OUT")
-      }else if(res.data.Status === "Continue"){
-        fetchData()
-      }else {
+    api.post("http://192.168.126.1/milionear/game/quit/ten/qst", { yn: ans })
+      .then(res => {
+        if (res.data.Status === "Credit_Quit") {
+          setData("Game exited. Rewards have been added to your account.")
+          setAlert(true)
+        } else if (res.data.Status === "No-Game") {
+          setText("OUT")
+        } else if (res.data.Status === "Continue") {
+          fetchData()
+        } else {
           setData("Something went Wrong")
           setAlert(true)
         }
-    })
+      })
   }
 
 
@@ -112,7 +136,7 @@ const Ten_qst = () => {
   return (
     <div
       style={{
-        backgroundColor: String(info.seconds) <= 3 ? "#041239" : "#071c5c",
+        backgroundColor: remaining <= 3 ? "#041239" : "#071c5c",
         minHeight: "100vh",
         padding: "20px",
         position: "relative",
@@ -129,19 +153,19 @@ const Ten_qst = () => {
           <div style={{ height: "20px" }}></div>
           <div className='seconds_cnt_01'
             style={{
-              border: String(info.seconds) <= 3 ? "1px solid orangered" : "1px solid #ffffff",
+              border: remaining <= 3 ? "1px solid orangered" : "1px solid #ffffff",
               transition: "background-color 0.5s ease, border 0.5s ease",
             }}
           >
             <p style={{ color: "white", fontSize: "3rem" }}>
-              <FontAwesomeIcon icon={faClock} style={{ fontSize: "3rem" }} /> {String(info.seconds)} Sec</p>
+              <FontAwesomeIcon icon={faClock} style={{ fontSize: "3rem" }} /> {remaining} Sec</p>
           </div>
 
           <br />
 
           <div className='seconds_qst_cntr'
             style={{
-              border: String(info.seconds) <= 3 ? "1px solid orangered" : "1px solid #ffffff",
+              border: remaining <= 3 ? "1px solid orangered" : "1px solid #ffffff",
               transition: "background-color 0.5s ease, border 0.5s ease",
             }}
           >
@@ -152,7 +176,7 @@ const Ten_qst = () => {
 
           <div className='seconds_cnt_02'
             style={{
-              border: String(info.seconds) <= 3 ? "1px solid orangered" : "1px solid #ffffff",
+              border: remaining <= 3 ? "1px solid orangered" : "1px solid #ffffff",
               transition: "background-color 0.5s ease, border 0.5s ease",
             }}
           >
@@ -167,6 +191,8 @@ const Ten_qst = () => {
             {info?.options?.map((data, i) => {
 
               function submit_ans() {
+                stopCountdown()
+                fetchData();
                 setAlert(false)
                 api.post("http://192.168.126.1/milionear/game/verify/ans", { answer: data })
                   .then(res => {
@@ -200,8 +226,8 @@ const Ten_qst = () => {
                   key={i}
                   className='option_cnt'
                   style={{
-                    backgroundColor: String(info.seconds) <= 3 ? "orangered" : "#0e0345",
-                    border: String(info.seconds) <= 3
+                    backgroundColor: remaining <= 3 ? "orangered" : "#0e0345",
+                    border: remaining <= 3
                       ? "1px solid white"
                       : "1px solid",
                     color: "white"
@@ -214,7 +240,7 @@ const Ten_qst = () => {
 
                   <p
                     style={{
-                      color: String(info.seconds) === 1 ? "black" : "white",
+                      color: remaining === 1 ? "black" : "white",
                       fontSize: "2rem"
                     }}
                   >
@@ -248,10 +274,10 @@ const Ten_qst = () => {
             <h2 >You can cash out now, or keep going to win more</h2>
 
             <div className='seconds_cont_01_sub'>
-              <div onClick={()=>{Quit("no")}}>
+              <div onClick={() => { Quit("no") }}>
                 stop & Withdraw
               </div>
-              <div onClick={()=>{Quit("No")}}>
+              <div onClick={() => { Quit("No") }}>
                 Continue
               </div>
 
@@ -263,11 +289,11 @@ const Ten_qst = () => {
       {txt === "OUT" &&
 
         <>
-          <div style={{height : "50px"}}>
+          <div style={{ height: "50px" }}>
 
           </div>
           <div className='third_cont_100'>
-            <br/>
+            <br />
 
             <div className='third_cont_100_sub_01'>
               Your game is over.
@@ -275,18 +301,18 @@ const Ten_qst = () => {
             <h1>❌ Game Over</h1>
             <h1>You selected an incorrect answer.</h1>
             <h1>Please return to the start page and begin a new game.</h1>
-            <br/>
+            <br />
             <div onClick={() => { window.location.replace("/play") }} className='third_cont_100_sub_02'>
               Back
             </div>
           </div>
-          <br/>
+          <br />
 
 
           <div className='gm_over_img'>
             <img src={gm_over} />
           </div>
-        
+
         </>
 
       }
