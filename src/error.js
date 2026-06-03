@@ -26,7 +26,6 @@ const Error = () => {
             </section>
         </center>
     </div>
-    
   );
 };
 
