@@ -669,14 +669,12 @@ const Play = () => {
                       <div className='bbb_1_1'>
                         <div className='bbb_1_1'>
                           <span style={{ fontSize: "2rem" }}  >Account Balance : <FontAwesomeIcon icon={faIndianRupeeSign} className='play-main-cnt-02-icon-01' style={{ fontSize: "2rem" }} /> <strong>{level ? level : 0}.00</strong> </span>
-
-
                         </div>
 
                       </div>
 
                     </div>
-                    <div className='add_more_btn' style={{textAlign : "center"}} onClick={() => { setPay_Amt(true) }} >
+                    <div className='add_more_btn' style={{ textAlign: "center" }} onClick={() => { setPay_Amt(true) }} >
                       Add More
 
                       {parseInt((parseInt(balance.balance) / parseInt(get_rupe.rupee))) <= 0 &&
@@ -721,72 +719,6 @@ const Play = () => {
 
               }
 
-              {/* {start.Status === "on" &&
-                <>
-                  <div className='playyyyy_cnt_01'>
-                    {show1 || show2 &&
-                      <div onClick={() => { setPlay(true); setApi("2x") }} className='play_start_game_btn_01_cnt'>
-                        <div className='play_start_game_btn_01_cnt-sub_02'>
-                          4 stars | 20s/q
-                        </div>
-                        <span>Start 0.1</span>
-                        <div className='play_start_game_btn_01_cnt-sub_01'>
-                          Play with ₹ {get_rupe.rupee}.00 only
-                        </div>
-                      </div>
-                    }
-
-                    {show1 || show2 &&
-                      <div onClick={() => { setPlay(true); setApi("5x") }} className='play_start_game_btn_01_cnt'>
-                        <div className='play_start_game_btn_01_cnt-sub_02'>
-                          10 stars | 20s/q
-                        </div>
-                        <span>Start 0.2</span>
-                        <div className='play_start_game_btn_01_cnt-sub_01'>
-                          Play with ₹ {get_rupe.rupee}.00 only
-                        </div>
-                      </div>
-                    }
-
-                    {show1 || show2 &&
-                      <div onClick={() => { setPlay(true); setApi("7x") }} className='play_start_game_btn_01_cnt'>
-                        <div className='play_start_game_btn_01_cnt-sub_02'>
-                          14 stars | 20s/q
-                        </div>
-                        <span>start 0.3</span>
-                        <div className='play_start_game_btn_01_cnt-sub_01'>
-                          Play with ₹ {get_rupe.rupee}.00 only
-                        </div>
-                      </div>
-                    }
-
-                    {show1 || show2 &&
-                      <div onClick={() => { setPlay(true); setApi("10x") }} className='play_start_game_btn_01_cnt'>
-                        <div className='play_start_game_btn_01_cnt-sub_02'>
-                          20 stars | 20s/q
-                        </div>
-                        <span>start 0.4</span>
-                        <div className='play_start_game_btn_01_cnt-sub_01'>
-                          Play with ₹ {get_rupe.rupee}.00 only
-                        </div>
-                      </div>
-                    }
-
-                    {show1 || show2 &&
-                      <div onClick={() => { setPlay(true); setApi("15x") }} className='play_start_game_btn_01_cnt'>
-                        <div className='play_start_game_btn_01_cnt-sub_02'>
-                          30 stars | 20s/q
-                        </div>
-                        <span>start 0.5</span>
-                        <div className='play_start_game_btn_01_cnt-sub_01'>
-                          Play with ₹ {get_rupe.rupee}.00 only
-                        </div>
-                      </div>
-                    }
-                  </div>
-
-                </>
-              } */}
 
 
               {start.Status === "on" &&
@@ -801,6 +733,37 @@ const Play = () => {
                         <div className='play_start_game_btn_01_cnt-sub_02'>
                           win max <strong className='class_200_max_data'>100.00 ₹</strong> | 20s/q
                         </div>
+                        <span>Start</span>
+                        <div className='play_start_game_btn_01_cnt-sub_01'>
+                          Play with ₹ {get_rupe.rupee}.00 only
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              }
+
+              <br />
+
+
+              {start.Status === "on" &&
+                <>
+                  <div className='singel_qstt_cnt_01'>
+                    <h1>Ten Question</h1>
+                    <div className='singel_qstt_cnt_01_div_01'>
+                      {/* <p>
+                        Answer the question as soon as possible. Saved time is converted into money at the rate of <strong className='class_200_max_data'>10.00₹</strong> per second.
+                      </p> */}
+
+                      <p>
+                        <strong>10 questions</strong>
+                        . You must answer the first <strong>5</strong> . After that, you can <strong>Stop anytime</strong> and take your <start>winnings</start>, or continue playing for more <strong>reward.</strong>
+                      </p>
+                      <div onClick={() => { setPlay(true) }} className='play_start_game_btn_01_cnt'>
+                        <div className='play_start_game_btn_01_cnt-sub_02'>
+                          win upto <strong className='class_200_max_data'>200.00 ₹</strong> | 20s/q
+                        </div>
+
                         <span>Start</span>
                         <div className='play_start_game_btn_01_cnt-sub_01'>
                           Play with ₹ {get_rupe.rupee}.00 only
