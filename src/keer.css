@@ -4459,3 +4459,19 @@
     align-content: center;
     justify-content:space-around;
 }
+
+.Accept_btn_01{
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  border-radius: 30px;
+  background-color: #060934;
+  border: 1px solid;
+  font-family: var(--ff1);
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1rem;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}

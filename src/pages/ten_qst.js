@@ -7,6 +7,7 @@ import Popup from './popup';
 import api from './api';
 import gm_over from "../image/g_over.jpg"
 import { removeFromDB } from '../db';
+import Show_puz from './show';
 
 
 const Ten_qst = () => {
@@ -17,6 +18,7 @@ const Ten_qst = () => {
   const [alert, setAlert] = useState(false)
   const [info, setInfo] = useState([])
   const [txt, setText] = useState([])
+  const [typp, setTypp] = useState("")
 
   const [remaining, setRemaining] = useState(0);
 
@@ -75,9 +77,17 @@ const Ten_qst = () => {
           // setData("Your game is over.")
           // setAlert(true)
           setInfo("")
-        } else if (res.data.Status === "yes/no") {
+        }
+         else if (res.data.Status === "yes/no") {
+          setInfo("")
           localStorage.setItem("rss", res.data.rs)
           setText(res.data.Status)
+          // setData("Do you want to Quit")
+          // setAlert(true)
+        } else if (res.data.Status === "show") {
+          setInfo("")
+          setText(res.data.Status)
+          setTypp(res.data.cat)
           // setData("Do you want to Quit")
           // setAlert(true)
         } else if (res.data.Data) {
@@ -103,6 +113,8 @@ const Ten_qst = () => {
           setData("Something went Wrong")
           setAlert(true)
         }
+      }).catch(err => {
+        console.log(err)
       })
   }
 
@@ -204,19 +216,27 @@ const Ten_qst = () => {
                     } else if (res.data.Status === "TimeOut") {
                       setData("Time Out")
                       setAlert(true)
+                      setInfo("")
                     } else if (res.data.Status === "correct") {
                       fetchData()
                     } else if (res.data.Status === "completed") {
+                      setInfo("")
                       fetchData()
                       setData("You Have Completed the Game!")
                       setAlert(true)
                     } else if (res.data.Status === "wrong") {
                       setData("Incorrect Answer. Game Over.")
                       setAlert(true)
+                      setInfo("")
                     } else {
+                      setInfo("")
                       setData("Something went Wrong")
                       setAlert(true)
                     }
+                  }).catch(err => {
+                    console.log(err)
+                    setData("Something went Wrong")
+                    setAlert(true)
                   })
               }
 
@@ -329,6 +349,19 @@ const Ten_qst = () => {
         pointerEvents : "none",
         textAlign : "center",
       }}>{sec}</h1> */}
+
+
+      {txt === "show" &&
+        <>
+
+        
+        <div className='playyy_main_cont_01_9088' >
+          <Show_puz typ={typp} />
+        </div>
+
+
+        </>
+      }
 
 
 

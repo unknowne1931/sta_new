@@ -711,6 +711,7 @@ const Play = () => {
                 <div className='play_sele_sel_lang'>
                   <div className='play_sele_sel_lang_div' onClick={Delete_Lang} >Tap to Change</div>
                   Selected Language : <strong>{getlang.map((lang, i) => (
+                    
                     <>
                       {lang}.
                     </>
@@ -1089,9 +1090,11 @@ const Play = () => {
             <>
               <div className='playyy_main_sub_01_pop_sub_01'>
                 <h1>Understand Before You Solve</h1>
+                
                 <div className='playyy_main_sub_01_pop_sub_01_img'>
                   <img src={one} />
                 </div>
+
                 <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
                   <br />
                   <strong>Q.</strong> How many Unbroken boxes contain stars? <br />

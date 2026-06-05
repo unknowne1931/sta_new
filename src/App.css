@@ -4827,4 +4827,21 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: 600;
 }
 
+.playyy_main_cont_01_9088{
+  width: 95%;
+  height: auto;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: #202223fc;
+  color: rgb(218, 215, 215);
+  font-family: var(--ff4);
+}
+
+@media all and (min-width : 600px) {
+  .playyy_main_cont_01_9088 {
+    width: 400px;
+    margin: auto;
+  }
+}
+
 
