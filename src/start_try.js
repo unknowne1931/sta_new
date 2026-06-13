@@ -71,7 +71,7 @@ const Start_Try = () => {
 
   const share = () => {
     const shareUrl = `https://stawro.com/start/try`;
-    const title = "Answer 1 Question & Win Up To ₹ 100.00";
+    const title = "Answer 1 Question and Earn Rewards";
     const message = `${title} ${shareUrl}`;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/?text=${encodedMessage}`, "_blank");
@@ -92,7 +92,7 @@ const Start_Try = () => {
 
       <div className='start_try_main-2nd-01'>
         <div className='start_try_main-2nd-02'>
-          <h2>Answer 1 Question & Win Up To</h2>
+          <h2>Answer 1 Question & Unlock Rewards Up To</h2>
           <h1><span>₹</span> 100.00</h1>
         </div>
 

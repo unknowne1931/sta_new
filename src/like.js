@@ -139,7 +139,7 @@ const Like = () => {
 
 
         <div className='like_main_sub'>
-          <h2 className='like_main_sub_h2'>Be a part of my <span>Win!</span></h2>
+          <h2 className='like_main_sub_h2'>Be Part of <span>Something Big</span>.</h2>
           <p>Like my review to get <span className='like_main_sub_h2_spn_01'>free credits</span>.</p>
 
           <div className='like_main_sub_01'>

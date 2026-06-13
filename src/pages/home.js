@@ -274,7 +274,8 @@ async function get_my_review() {
               </h2>
               <div className='Home-cnt-01-sub-02-sub-01-sub-cnt-01'>
                 <button onClick={() => { window.location.href = "/play"; }}>
-                  Play for Free
+                  {/* Play for Free */}
+                  Explore More
                 </button>
               </div>
 
@@ -357,6 +358,106 @@ async function get_my_review() {
 
         </div>
         <br />
+
+        <div className='Home-cnt-03'>
+          <p>StaWro is a <strong>skill-based quiz platform built on knowledge, logic</strong> , and <strong>mental ability</strong>. It helps improve memory, thinking speed, and problem-solving skills through regular practice. Performance-based rewards may be earned by users based on their results. This platform is fully skill-driven and not based on luck or chance.</p>
+          <div className='Home-cnt-03-sub-01'>
+            <h1>What is <strong>staWro</strong>? </h1>
+          </div>
+        </div>
+       
+        <br/>
+
+        <div className="Home-cnt-04">
+          
+          
+          <div style={{
+            backgroundColor : "#418aff",
+            borderRadius : "10px",
+            boxShadow : "4px 4px 8px gray",
+            position : "relative"
+          }}>
+            <div>
+              <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJDB4i3z599P6-G4c7CNs01sZrEjxuaso6Pxw6EiASjA&s=10' />
+            </div>
+            <div>
+              <p className='para_text_01' style={{padding : "10px", color : "white"}}>
+                Skill-based thinking,
+                Mental ability enhancement,
+                Logical reasoning,
+                Problem-solving skills,
+                Fast decision making.
+              </p>
+            </div>
+
+            <div className='Home-cnt-04_abs'
+              style={{
+                position : "absolute",
+                top : "-22px",
+                left : "20px",
+                height : "auto",
+                backgroundColor : "#0c439c",
+                width :"auto",
+                fontSize : "1.8rem",
+                borderRadius : "20px",
+                padding : "10px",
+                color : "white",
+                border : "1px solid white"   
+              }}
+            >
+              Core Skill Areas
+            </div>
+
+          </div>
+
+
+          <div style={{
+            backgroundColor : "#418aff",
+            borderRadius : "10px",
+            boxShadow : "4px 4px 8px gray",
+            position : "relative"
+          }}>
+            <div>
+              <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg0OM_X0kqN-2_5Cq1eyFguSeXIVAOrLsasm2zobSgbQ&s=10' />
+            </div>
+            <div>
+              <p className='para_text_01' style={{padding : "10px", color : "white"}}>
+                Memory improvement,
+                Focus and concentration,
+                Analytical thinking,
+                Pattern recognition,
+                Critical thinking development.
+              </p>
+            </div>
+
+            <div className='Home-cnt-04_abs'
+              style={{
+                position : "absolute",
+                top : "-22px",
+                left : "20px",
+                height : "auto",
+                backgroundColor : "#0c439c",
+                width :"auto",
+                fontSize : "1.8rem",
+                borderRadius : "20px",
+                padding : "10px",
+                color : "white",
+                border : "1px solid white"   
+              }}
+            >
+              Cognitive Growth
+            </div>
+
+          </div>
+
+          <div>
+
+          </div>
+          <div>
+
+          </div>
+        </div>
+
 
         <h2 className='leadboard_h2'>leadboard</h2>
         <p className='leadboard_p1'>The Latest Winners List.</p>

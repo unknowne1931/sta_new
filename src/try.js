@@ -260,7 +260,7 @@ const Try = () => {
               <div className='gs_01_div_02' style={{textAlign : "start"}}>
               <p>⏳ Options will appear after 11 seconds.</p>
               <p>🧠 Select the correct answer based on the question and image.</p>
-              <p>🎯 Tap the correct option to win the reward.</p>
+              <p>🎯 Tap the correct option to earn rewards.</p>
               <p>💰 Check the reward amount at the top right corner.</p>
               <p>🎁 Free trial available for new users only.</p>
               <p>🎁 Create an account and get a free try!</p>

@@ -6,6 +6,10 @@ import insta from "../image/insta.png"
 
 
 const About = () => {
+
+    
+
+
   return (
     <div>
         <center>

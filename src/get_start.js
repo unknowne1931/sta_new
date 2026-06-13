@@ -400,8 +400,8 @@ const Get_start = () => {
 
       <div className='Home-cnt-02'>
         {[
-          { img: t1, text: 'Think it. Prove it. Win it.' },
-          { img: t2, text: 'Knowledge pays off, Literally. Win rewards now!' },
+          { img: t1, text: 'Think Smart. Solve Fast.' },
+          { img: t2, text: 'Your Brain Is Your Greatest Asset.' },
         ].map((item, index) => (
           <div key={index} className='Home-cnt-02-sub-01'>
             <div className='Home-cnt-02-sub-01-sub-01'>

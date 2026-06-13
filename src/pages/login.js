@@ -123,9 +123,9 @@ const Login = () => {
       <br/>
 
       <div className='user_login_cnt_03'>
-        <p>🧠 Solve puzzles. Prove your IQ. Win rewards!</p>
+        <p>🧠 Where puzzles meet skill and rewards.</p>
         <p>⚠️ Challenge yourself at your own risk!</p>
-        <p>👾 This game is based on skill, not luck.</p>
+        <p>👾 This is a skill-based game where outcomes depend on user knowledge and logic, not luck or chance</p>
       </div>
 
       {/* <div className='at_2026'>

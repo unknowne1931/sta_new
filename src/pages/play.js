@@ -628,7 +628,7 @@ const Play = () => {
           </div>
 
 
-          <h1 className='play-h1-01'>Start <span>Game</span></h1>
+          <h1 className='play-h1-01'>Start <span>Quiz</span></h1>
 
 
 
@@ -727,16 +727,20 @@ const Play = () => {
                   <div className='singel_qstt_cnt_01'>
                     <h1>Single Question</h1>
                     <div className='singel_qstt_cnt_01_div_01'>
-                      <p>
+                      {/* <p>
                         Answer the question as soon as possible. Saved time is converted into money at the rate of <strong className='class_200_max_data'>10.00₹</strong> per second.
+                      </p> */}
+
+                      <p>
+                        Answer the question as quickly as possible. Time saved is converted into reward points at a rate of ₹10.00 per second.
                       </p>
                       <div onClick={() => { setPlay(true) }} className='play_start_game_btn_01_cnt'>
                         <div className='play_start_game_btn_01_cnt-sub_02'>
-                          win max <strong className='class_200_max_data'>100.00 ₹</strong> | 20s/q
+                          Earn up to <strong className='class_200_max_data'>100.00 ₹</strong> | 20s/q
                         </div>
                         <span>Start</span>
                         <div className='play_start_game_btn_01_cnt-sub_01'>
-                          Play with ₹ {get_rupe.rupee}.00 only
+                          Training Fee ₹ {get_rupe.rupee}.00 only
                         </div>
                       </div>
                     </div>
@@ -757,17 +761,16 @@ const Play = () => {
                       </p> */}
 
                       <p>
-                        <strong>10 questions</strong>
-                        . You must answer the first <strong>5</strong> . After that, you can <strong>Stop anytime</strong> and take your <start>winnings</start>, or continue playing for more <strong>reward.</strong>
+                        <strong>10 questions</strong>. You must answer the <strong>first 5</strong>. After that, you may <strong>stop anytime</strong> and claim your <strong>earned rewards</strong>, or continue playing for more rewards.
                       </p>
                       <div onClick={() => { setPlay(true) }} className='play_start_game_btn_01_cnt'>
                         <div className='play_start_game_btn_01_cnt-sub_02'>
-                          win upto <strong className='class_200_max_data'>200.00 ₹</strong> | 20s/q
+                          Earn up to <strong className='class_200_max_data'>200.00 ₹</strong> | 20s/q
                         </div>
 
                         <span>Start</span>
                         <div className='play_start_game_btn_01_cnt-sub_01'>
-                          Play with ₹ {get_rupe.rupee}.00 only
+                          Training Fee ₹ {get_rupe.rupee}.00 only
                         </div>
                       </div>
                     </div>

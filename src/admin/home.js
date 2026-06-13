@@ -217,7 +217,7 @@ const AdminHome = () => {
 
             {/* Won Players Container */}
             <div className='admin-home-main-cnt-01-sub-cnt-01'>
-                <span className='admin-home-main-cnt-01-sub-cnt-01-span-01'>Won Players : {win_data.length}</span><br/>
+                <span className='admin-home-main-cnt-01-sub-cnt-01-span-01'>"Winners Count: {win_data.length}"</span><br/>
                 
                 <div className='admin-home-main-cnt-01-sub-cnt-01-sunb-cnt-01'>
                     {win_data.map((user, i)=>{
