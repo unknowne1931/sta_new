@@ -191,7 +191,7 @@ body::-webkit-scrollbar {
   font-family: var(--ff1);
   font-weight: 300;
   font-size: 25px;
-  color: white;
+  color: rgb(44, 43, 43);
   animation-duration: 1.5s;
   animation-name: slide5;
 }
@@ -211,9 +211,8 @@ body::-webkit-scrollbar {
 
 .Home-cnt-01-sub-02-sub-01-h2-01-span-01 {
   font-family: var(--ff6);
-  color: aliceblue;
   text-align: start;
-  color: #2dfc04;
+  color: #ffffff;
   font-weight: 700;
 }
 
@@ -4851,8 +4850,8 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 10px;
   background-color: #1876ce;
   margin: auto;
-  margin-top: 20px;
-  padding: 10px;
+  margin-top: 30px;
+  /* padding: 10px; */
   position: relative;
 }
 
@@ -4861,10 +4860,10 @@ input[type="number"]::-webkit-outer-spin-button {
   height: auto;
   border-radius: 10px;
   overflow: hidden;
-  padding: 5px 15px 5px 15px;
+  padding: 0px 15px 0px 15px;
   border: 1px solid rgb(242, 242, 242);
   position: absolute;
-  font-size: 1rem;
+  font-size: 1.5rem;
   top: -30px;
   left: 20px;
   background-color: #067ff0;
@@ -4872,7 +4871,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .Home-cnt-03 p{
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-family: var(--ff1);
   color: white;
   padding: 10px;
@@ -4890,8 +4889,9 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 10px;
   margin-top: 20px;
 }
 
@@ -4919,14 +4919,69 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .para_text_01{
-  font-family: var(--ff4);
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   text-align: center;
+  font-family: var(--ff4);
 }
 
 .Home-cnt-04_abs{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   border: 1px solid white;
   position: absolute;
-  top: -20px;  
+  top: -23px;  
+  border-radius: 10px;
+}
+
+
+@media all and (max-width : 700px){
+  .Home-cnt-04 div{
+    width: 90%;
+    margin-top: 20px;
+  }
+  .Home-cnt-04_abs{
+    top: -35px;
+  }
+}
+
+.Home-cnt-01-sub-03{
+  width: 10%;
+  height: auto;
+  object-fit: cover;
+  position: absolute;
+  bottom: 100px;
+  left: 50px;
+}
+
+.Home-cnt-01-sub-03 img{
+  width: 100%;
+}
+
+.play_start_game_btn_01_cnt_001{
+  width: auto;
+  height: auto;
+  padding: 10px;
+}
+
+.play_start_game_btn_01_cnt_001{
+  width: auto;
+  font-size: 2rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(233, 233, 233);
+  /* border: 1px solid; */
+}
+
+.play_start_game_btn_01_cnt_001 span{
+  position: relative;
+  left: -29px;
+  bottom: 0px;
+  font-size: 3rem;
+  color: #000000cd;
+}
+
+.play_start_game_btn_01_cnt_001 strong{
+  font-size: 3.5rem;
+  position: relative;
+  right: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #ffffff;
 }

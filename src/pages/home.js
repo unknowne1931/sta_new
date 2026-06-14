@@ -11,6 +11,7 @@ import Navi from '../navi';
 import founder from "../image/founder.png"
 import insta from "../image/insta.png"
 import Img1 from "../image/m1.png"
+import c1 from "../image/c2.png"
 
 import { auth, provider, signInWithPopup } from './firebase';
 
@@ -270,7 +271,9 @@ async function get_my_review() {
           <div className='Home-cnt-01-sub-02'>
             <div className='Home-cnt-01-sub-02-sub-01'>
               <h2 className='Home-cnt-01-sub-02-sub-01-h2-01'>
-                The <span className='Home-cnt-01-sub-02-sub-01-h2-01-span-01'>knowledge</span> Competition.
+                Where <strong className='Home-cnt-01-sub-02-sub-01-h2-01-span-01' >Knowledge, Skills and Logical Thinking</strong>  Lead the <strong className='Home-cnt-01-sub-02-sub-01-h2-01-span-01' >Way</strong> .
+                {/* Where  <strong className='Home-cnt-01-sub-02-sub-01-h2-01-span-01' >Knowledge</strong> Meets <strong className='Home-cnt-01-sub-02-sub-01-h2-01-span-01'>Skill</strong> */}
+                {/* The <span className='Home-cnt-01-sub-02-sub-01-h2-01-span-01'>knowledge</span> Competition. */}
               </h2>
               <div className='Home-cnt-01-sub-02-sub-01-sub-cnt-01'>
                 <button onClick={() => { window.location.href = "/play"; }}>
@@ -294,6 +297,13 @@ async function get_my_review() {
               <img src={img2} alt='img' />
             </div>
           </div>
+
+
+          {/* <div className='Home-cnt-01-sub-03'>
+            <img src={c1} />
+          </div> */}
+
+
         </div>
 
         <div className='Home-cnt-02'>
@@ -328,7 +338,7 @@ async function get_my_review() {
             </div>
           ))}
 
-          <div className='Home-cnt-02-sub-01'>
+          {/* <div className='Home-cnt-02-sub-01'>
             <div className='Home-cnt-02-sub-01_dr_main'>
               <img src={dr} alt='img' />
               <div className='Home-cnt-02-sub-01_dr_main_sub_cnt'>
@@ -343,9 +353,9 @@ async function get_my_review() {
               </div>
             </div>
             
-          </div>
+          </div> */}
 
-          <div className='Home-cnt-02-sub-01'>
+          {/* <div className='Home-cnt-02-sub-01'>
             <h3 className='Home-cnt-02-sub-01-h3-01' >View sample Questions</h3>
             <div className='Home-cnt-02-sub-01-sub-01-01-01-1-00'>
               <FontAwesomeIcon icon={faArrowRight} className='Home-cnt-02-sub-01-sub-01-01-01-1-00-icon' />
@@ -353,16 +363,18 @@ async function get_my_review() {
             <button onClick={() => { window.location.href = '/sample' }} className='Home-cnt-02-sub-01-sub-btn-01' >
               View
             </button>
-          </div>
+          </div> */}
 
 
         </div>
+
         <br />
 
         <div className='Home-cnt-03'>
-          <p>StaWro is a <strong>skill-based quiz platform built on knowledge, logic</strong> , and <strong>mental ability</strong>. It helps improve memory, thinking speed, and problem-solving skills through regular practice. Performance-based rewards may be earned by users based on their results. This platform is fully skill-driven and not based on luck or chance.</p>
+          <br/>
+          <p>staWro is a <strong>skill-based quiz platform built on knowledge, logic</strong> , and <strong>mental ability</strong>. It helps improve memory, thinking speed, and problem-solving skills through regular practice. Performance-based rewards may be earned by users based on their results. This platform is fully skill-driven and not based on luck or chance.</p>
           <div className='Home-cnt-03-sub-01'>
-            <h1>What is <strong>staWro</strong>? </h1>
+            <h1>What is <strong>sta<span style={{color : "orange"}}>W</span>ro</strong>? </h1>
           </div>
         </div>
        
@@ -393,13 +405,12 @@ async function get_my_review() {
             <div className='Home-cnt-04_abs'
               style={{
                 position : "absolute",
-                top : "-22px",
+                // top : "-22px",
                 left : "20px",
                 height : "auto",
                 backgroundColor : "#0c439c",
                 width :"auto",
                 fontSize : "1.8rem",
-                borderRadius : "20px",
                 padding : "10px",
                 color : "white",
                 border : "1px solid white"   
@@ -433,13 +444,12 @@ async function get_my_review() {
             <div className='Home-cnt-04_abs'
               style={{
                 position : "absolute",
-                top : "-22px",
+                // top : "-22px",
                 left : "20px",
                 height : "auto",
                 backgroundColor : "#0c439c",
                 width :"auto",
                 fontSize : "1.8rem",
-                borderRadius : "20px",
                 padding : "10px",
                 color : "white",
                 border : "1px solid white"   
@@ -450,7 +460,84 @@ async function get_my_review() {
 
           </div>
 
-          <div>
+          <div style={{
+            backgroundColor : "#418aff",
+            borderRadius : "10px",
+            boxShadow : "4px 4px 8px gray",
+            position : "relative"
+          }}>
+            <div>
+              <img src='https://media.istockphoto.com/id/1677846143/photo/time-management-planning.jpg?b=1&s=1024x1024&w=0&k=20&c=WtDJ_F9WnS-qx81GtZvBw1rMHqIJWIuKO5tRTjp7M7I=' />
+            </div>
+            <div>
+              <p className='para_text_01' style={{padding : "10px", color : "white"}}>
+                Smart solving techniques,
+                Quick tricks & shortcuts,
+                Time-saving strategies,
+                Efficient answering methods,
+                Brain training exercises.
+              </p>
+            </div>
+
+            <div className='Home-cnt-04_abs'
+              style={{
+                position : "absolute",
+                // top : "-22px",
+                left : "20px",
+                height : "auto",
+                backgroundColor : "#0c439c",
+                width :"auto",
+                fontSize : "1.8rem",
+                padding : "10px",
+                color : "white",
+                border : "1px solid white"   
+              }}
+            >
+              Strategy & Tricks
+            </div>
+
+          </div>
+
+
+
+          <div style={{
+            backgroundColor : "#418aff",
+            borderRadius : "10px",
+            boxShadow : "4px 4px 8px gray",
+            position : "relative"
+          }}>
+            <div>
+              {/* <img src='https://img.magnific.com/free-vector/app-development-illustration_52683-47931.jpg?semt=ais_hybrid&w=740&q=80' /> */}
+
+              {/* <img src='https://store.eccouncil.org/wp-content/uploads/2013/12/Eligibility-Application-Fee-Non-Refundable.jpg' /> */}
+
+              <img src='https://abhyaas.in/wp-content/uploads/2023/01/1-5application-form-b.png' />
+
+            </div>
+
+
+            <div>
+              <p className='para_text_01' style={{padding : "10px", color : "white"}}>
+                Only an application fee is charged; it is not a stake or betting contribution
+              </p>
+            </div>
+
+            <div className='Home-cnt-04_abs'
+              style={{
+                position : "absolute",
+                // top : "-22px",
+                left : "20px",
+                height : "auto",
+                backgroundColor : "#0c439c",
+                width :"auto",
+                fontSize : "1.8rem",
+                padding : "10px",
+                color : "white",
+                border : "1px solid white"   
+              }}
+            >
+              Application Fee Policy
+            </div>
 
           </div>
           <div>
@@ -496,9 +583,7 @@ async function get_my_review() {
         </div>
         <br />
 
-        <div>
-          <h2></h2>
-        </div>
+        
 
         <div className='sm_main_main_cnt'>
           <div className='sm_main'>

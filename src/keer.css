@@ -3107,7 +3107,7 @@
 
 .warning_before_start {
     position: absolute;
-    width: 90%;
+    width: 700px;
     height: auto;
     padding: 10px;
     top: 20%;
@@ -3118,6 +3118,12 @@
     right: 0;
     box-shadow: 10px 10px 100px rgb(36, 35, 35);
     border-radius: 10px;
+}
+
+@media all and (max-width : 800px){
+    .warning_before_start{
+        width: 90%;
+    }
 }
 
 .warning_before_start_h1_01 {
@@ -3138,11 +3144,11 @@
     padding: 5px;
     text-align: start;
     font-size: 2rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: var(--ff2);
     color: #3f3b3b;
     border-radius: 5px;
-    background-color: #ebe7e7;
-    margin-top: 5px;
+    /* background-color: #ebe7e7; */
+    /* margin-top: 5px; */
 }
 
 .warning_before_start_sub_02 {

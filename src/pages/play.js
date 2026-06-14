@@ -740,9 +740,13 @@ const Play = () => {
                         </div>
                         <span>Start</span>
                         <div className='play_start_game_btn_01_cnt-sub_01'>
-                          Training Fee ₹ {get_rupe.rupee}.00 only
+                          Training Fee ₹ {get_rupe.rupee} only
                         </div>
                       </div>
+
+                      
+
+                      
                     </div>
                   </div>
                 </>
@@ -763,6 +767,18 @@ const Play = () => {
                       <p>
                         <strong>10 questions</strong>. You must answer the <strong>first 5</strong>. After that, you may <strong>stop anytime</strong> and claim your <strong>earned rewards</strong>, or continue playing for more rewards.
                       </p>
+
+                      {parseInt(get_rupe.rupee) < 20 &&
+
+                      <>
+                        <div className='play_start_game_btn_01_cnt_001'>
+                          Training Fees : 20₹ <span>---</span>  <strong>{get_rupe.rupee}₹</strong>
+                          50% Off
+                        </div>
+                      </>
+                        
+                      }
+                      
                       <div onClick={() => { setPlay(true) }} className='play_start_game_btn_01_cnt'>
                         <div className='play_start_game_btn_01_cnt-sub_02'>
                           Earn up to <strong className='class_200_max_data'>200.00 ₹</strong> | 20s/q
@@ -773,6 +789,9 @@ const Play = () => {
                           Training Fee ₹ {get_rupe.rupee}.00 only
                         </div>
                       </div>
+
+                      
+
                     </div>
                   </div>
                 </>
@@ -903,23 +922,7 @@ const Play = () => {
               <div className='warning_before_start_sub_01'>
 
                 <div className='warning_before_start_sub_01_sub_01'>
-                  This is a knowledge‑based game involving logic, mental ability, and more. Solve puzzles at your own risk.
-                </div>
-
-                <div className='warning_before_start_sub_01_sub_01'>
-                  If you feel the time was too short, report it to us. After verification, we will refund only if the lack of time caused a wrong answer. No refunds will be given once a Time Shortage question has been answered. To avoid losing time, make sure to answer at the last second
-                </div>
-
-                <div className='warning_before_start_sub_01_sub_01'>
-                  If there is a time shortage, select the option 'Time Shortage'.
-                  If the issue is related to options, report it as 'Wrong Options'.
-                  If the problem is image-related, report it as 'Image Loading'.
-                  Refunds will not be provided if the reports match your ticket
-                </div>
-
-                <div className='warning_before_start_sub_01_sub_01'>
-                  If the fault is on our side while playing the game, such as missing any question, wrong options, or image errors, we will pay 2 rupees for each previously answered question.
-
+                  This is a knowledge and skill assessment focused on logic, reasoning, mental ability, and more. Participate at your own discretion.
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
@@ -931,11 +934,7 @@ const Play = () => {
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
-                  Your payment is non‑refundable after the game starts.
-                </div>
-
-                <div className='warning_before_start_sub_01_sub_01'>
-                  Refunds are not available once the Time Shortage question has been answered.
+                  Your payment is non‑refundable after the Quiz starts.
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
@@ -943,14 +942,16 @@ const Play = () => {
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
-                  We charge entry fees only, and GST is included in the amount.
+                  The amount charged is a training and platform service fee for accessing educational content, practice sessions, and skill-based knowledge assessments. Applicable GST is included
                 </div>
 
                 <div className='warning_before_start_sub_01_sub_01'>
                   Connect with us on WhatsApp or Instagram, but please confirm that the official website link and domain is <a href="https://www.stawro.com" target="_blank" rel="noopener noreferrer">https://www.stawro.com</a>.
                   <br /><br />
                   We do not send or share payment links via WhatsApp or Instagram.
-                  Make payments only through our verified website <a href="https://www.stawro.com" target="_blank" rel="noopener noreferrer">https://www.stawro.com</a>.
+                  Make payments only through our verified website 
+                  <strong> https://www.stawro.com</strong> or <strong>https://stawro.com</strong>
+                  {/* <a href="https://www.stawro.com" target="_blank" rel="noopener noreferrer">https://www.stawro.com</a>. */}
                   <br /><br />
                   We are not responsible for any loss of money outside our official site.
                   <br /><br />

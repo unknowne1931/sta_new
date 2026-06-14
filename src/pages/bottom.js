@@ -18,7 +18,7 @@ const Bottom = () => {
                 </div>
                 
                 <div className='waves-cnt-01'>
-                    <strong>sta<span>W</span>ro</strong>
+                    <strong style={{color : "white"}} >sta<span style={{color : "orange"}} >W</span>ro</strong>
                 </div>
 
                 <br/>
