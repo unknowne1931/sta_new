@@ -58,7 +58,7 @@ const Ten_qst = () => {
 
       localStorage.removeItem("targetSecond");
 
-      window.location.replace("/play");
+      // window.location.replace("/play");
     }
   };
 
@@ -73,21 +73,31 @@ const Ten_qst = () => {
     api.get("http://192.168.126.1/milionear/game/get/qst/no/to/play")
       .then(res => {
         if (res.data.Status === "OUT") {
+          
           setText(res.data.Status)
           // setData("Your game is over.")
           // setAlert(true)
           setInfo("")
+          clearInterval(intervalRef.current);
+          localStorage.removeItem("targetSecond");
+          setRemaining(0);
         }
          else if (res.data.Status === "yes/no") {
           setInfo("")
           localStorage.setItem("rss", res.data.rs)
           setText(res.data.Status)
+          clearInterval(intervalRef.current);
+          localStorage.removeItem("targetSecond");
+          setRemaining(0);
           // setData("Do you want to Quit")
           // setAlert(true)
         } else if (res.data.Status === "show") {
           setInfo("")
           setText(res.data.Status)
           setTypp(res.data.cat)
+          clearInterval(intervalRef.current);
+          localStorage.removeItem("targetSecond");
+          setRemaining(0);
           // setData("Do you want to Quit")
           // setAlert(true)
         } else if (res.data.Data) {
@@ -110,6 +120,9 @@ const Ten_qst = () => {
             localStorage.setItem("rw", res.data.rw);
           }
         } else {
+          clearInterval(intervalRef.current);
+          localStorage.removeItem("targetSecond");
+          setRemaining(0);
           setData("Something went Wrong")
           setAlert(true)
         }
@@ -123,7 +136,9 @@ const Ten_qst = () => {
   }, [])
 
   function Quit(ans) {
-    stopCountdown()
+    clearInterval(intervalRef.current);
+    localStorage.removeItem("targetSecond");
+    setRemaining(0);
     setAlert(false)
     api.post("http://192.168.126.1/milionear/game/quit/ten/qst", { yn: ans })
       .then(res => {
@@ -203,7 +218,9 @@ const Ten_qst = () => {
             {info?.options?.map((data, i) => {
 
               function submit_ans() {
-                stopCountdown()
+                clearInterval(intervalRef.current);
+                localStorage.removeItem("targetSecond");
+                setRemaining(0);
                 fetchData();
                 setAlert(false)
                 api.post("http://192.168.126.1/milionear/game/verify/ans", { answer: data })
