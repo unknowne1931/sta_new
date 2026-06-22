@@ -282,6 +282,7 @@ async function get_my_review() {
                 </button>
               </div>
 
+
               {/* <div className='Home-cnt-01-sub-02-sub-01-sub-cnt-02'>
                 <strong>Play and Get Reward$</strong>
               </div> */
