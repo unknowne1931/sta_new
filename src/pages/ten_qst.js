@@ -58,7 +58,7 @@ const Ten_qst = () => {
 
       localStorage.removeItem("targetSecond");
 
-      // window.location.replace("/play");
+      window.location.replace("/play");
     }
   };
 
