@@ -42,8 +42,6 @@ const Home = () => {
   const [ledData, setLed_Data] = useState([]);
 
 
-
-
   const CACHE_KEY = 'leaderboard_data';
   const CACHE_TIME = 60 * 1000; // 1 minute
 
