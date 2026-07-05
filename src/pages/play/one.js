@@ -2,7 +2,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPuzzlePiece } from "@fortawesome/free-solid-svg-icons";
+import { faI, faInfo, faPuzzlePiece } from "@fortawesome/free-solid-svg-icons";
+import img1 from "../../image/simi_1.jpg"
+import img2 from "../../image/simi_2.jpg"
+
 
 const One = () => {
   const [selectedIds, setSelectedIds] = useState([]);
@@ -67,14 +70,17 @@ const One = () => {
 
   const dataa = [
     {
-      num : 1
+      title : "Character Sequence",
+      img : img1,
+      num : 1,
+      p : "Find the given character in all images. Select every image that contains it, then submit before the timer reaches 0 seconds"
     },
     {
-      num : 2
+      title : "Number Sequence",
+      img : img2,
+      num : 2,
+      p : "Find the given Numbers in all images. Select every image that contains it, then submit before the timer reaches 0 seconds"
     },
-    {
-      num : 3
-    }
   ]
 
   return (
@@ -217,17 +223,24 @@ const One = () => {
     // <>
     // <div className="similar_main">
     //   <br/>
-    //   <h1 className="slp_h1_01" >Solve the Puzzle <FontAwesomeIcon icon={faPuzzlePiece} /> </h1>
+    //   <h1 className="slp_h1_01" ><span>Solve</span> the Puzzle </h1>
     //   <br/>
 
     //   <div className="slp_div_01">
     //     start
+    //     {/* <span>Change the background image or whole UI</span> */}
     //   </div>
     //   <br/>
 
-    //   <div className="slp_div_02">
+    //   <h1 className="slp_how_to_solve" onClick={()=>{window.location.href = "/teach/one"}} >How to solve?</h1>
+
+    //   {/* <div className="slp_div_02">
     //     <h1>How to solve?</h1>
-    //   </div>
+    //   </div> */}
+
+
+    //   <div style={{height : "20px"}}></div>
+    //   <h1 className="slp_h1_main_01">Example Puzzle Modules</h1>
 
     //   <div className="slp_div_03">
 
@@ -235,8 +248,14 @@ const One = () => {
     //       return(
     //         <>
     //           <div className="slp_div_03_sub_div_01">
+    //             <h1>{data.title}</h1>
     //             <div className="slp_div_03_sub_div_01_sub_01">
-
+    //               <img src={data.img} />
+    //             </div>
+    //             <div className="slp_div_03_sub_div_01_sub_02">
+    //               <p>
+    //                 {data.p}
+    //               </p>
     //             </div>
     //           </div>
     //         </>

@@ -35,6 +35,7 @@ import View_Most_Ans from './admin/view_most_ans';
 import Milion from './pages/milion';
 import Ten_qst from './pages/ten_qst';
 import One from "./pages/play/one"
+import Teach_Similar from './pages/play/teach_similar';
 
 
 const User_admin = lazy(()=> import('./admin/add_admins'))
@@ -270,6 +271,7 @@ const App = () => {
                 <Route path='/load' element={<Loading />} />
                 <Route path='/sample' element={<Sample_qn />} />
                 <Route path='/cal' element={<Users_Paid />} />
+                <Route path='/teach/one' element={<Teach_Similar />} />
 
                 <Route path='/try' element={<Try />} />
 
