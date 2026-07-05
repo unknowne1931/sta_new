@@ -18,7 +18,7 @@ const One = () => {
 
   const fetch_data = () => {
     axios
-      .get("http://192.168.31.133/similar/question/text")
+      .get("http://192.168.127.1/similar/question/text")
       .then((res) => {
         if (res.data.Data) {
           setImages(res.data.Data.images || []);
@@ -63,134 +63,151 @@ const One = () => {
     images.length > 0 && viewed.length === images.length;
 
   return (
+
+
+    // <div className="similar_main">
+    //   {qst && (
+    //     <div className="similar_main_sub_03">
+    //       <span>
+    //         Seconds : <strong>01</strong>
+    //       </span>
+    //     </div>
+    //   )}
+
+    //   {qst !== "" && (
+    //     <div className="similar_main_sub_02">
+    //       {qst}
+    //     </div>
+    //   )}
+
+    //   {clue && (
+    //     <div className="similar_main_sub_01">
+    //       <img src={clue} alt="Clue" />
+    //     </div>
+    //   )}
+
+    //   {images.length > 0 && (
+    //     <div className="similar_main_sub_01_sub_01">
+    //       {images.map((item, i) => (
+    //         <div
+    //           key={i}
+    //           className="similar_main_sub_01_sub_01_div"
+    //           onClick={() => handleImageClick(i)}
+
+    //         //   style={{width : selectedIndex === i
+    //         //           ? "53px"
+    //         //           : "50px",}}
+    //         >
+    //           <img
+    //             src={item}
+    //             alt={`option-${i}`}
+    //             style={{
+    //               cursor: "pointer",
+    //               border:
+    //                 selectedIndex === i
+    //                   ? "3px solid green"
+    //                   : "1px solid transparent",
+    //             }}
+    //           />
+
+    //           {selectedIds.includes(i) && (
+    //             <div className="similar_main_sub_01_sub_01_div_div_abs">
+    //               Selected
+    //             </div>
+    //           )}
+
+    //           {/* {viewed.includes(i) && (
+    //             <div
+    //               style={{
+    //                 position: "absolute",
+    //                 top: 10,
+    //                 right: 10,
+    //                 background: "#000",
+    //                 color: "#fff",
+    //                 padding: "3px 8px",
+    //                 borderRadius: "5px",
+    //                 fontSize: "12px",
+    //               }}
+    //             >
+    //               Viewed
+    //             </div>
+    //           )} */}
+    //         </div>
+    //       ))}
+    //     </div>
+    //   )}
+
+    //   {images.length > 0 && (
+    //     <div className="similar_main_sub_01_sub_02">
+    //       <img
+    //         src={images[selectedIndex]}
+    //         alt="Preview"
+    //       />
+    //     </div>
+    //   )}
+
+    //   {images.length > 0 && (
+    //     <div
+    //       className="similar_main_sub_01_sub_03"
+    //       onClick={handleSelect}
+    //       style={{
+    //         cursor: "pointer",
+    //         userSelect: "none",
+    //         backgroundColor: selectedIds.includes(selectedIndex)
+    //           ? "#ff4d00"
+    //           : "",
+    //         color: "#fff",
+    //       }}
+    //     >
+    //       {selectedIds.includes(selectedIndex)
+    //         ? "Deselect"
+    //         : "Select"}
+    //     </div>
+    //   )}
+
+    //     <br/>
+    //   {/* Submit button appears only after all images are viewed */}
+    //   {allViewed && (
+    //     <div
+    //       className="similar_view_01"
+    //       onClick={() => {
+    //         console.log("Selected:", selectedIds);
+    //         console.log("Answer:", ans);
+    //       }}
+    //       style={{
+    //         marginTop: "3px",
+    //         padding: "12px",
+    //         // background: "green",
+    //         color: "#fff",
+    //         textAlign: "center",
+    //         cursor: "pointer",
+    //         borderRadius: "8px",
+    //       }}
+    //     >
+    //       Submit
+    //     </div>
+    //   )}
+
+    //   {/* Debug */}
+    //   {/* <p>Selected: {JSON.stringify(selectedIds)}</p>
+    //   <p>Viewed: {JSON.stringify(viewed)}</p>
+    //   <p>Answer: {JSON.stringify(ans)}</p> */}
+    // </div>
+
+
+    <>
     <div className="similar_main">
-      {qst && (
-        <div className="similar_main_sub_03">
-          <span>
-            Seconds : <strong>01</strong>
-          </span>
-        </div>
-      )}
+      <h1 className="slp_h1_01" >Solve the Puzzle</h1>
+      <br/>
 
-      {qst !== "" && (
-        <div className="similar_main_sub_02">
-          {qst}
-        </div>
-      )}
-
-      {clue && (
-        <div className="similar_main_sub_01">
-          <img src={clue} alt="Clue" />
-        </div>
-      )}
-
-      {images.length > 0 && (
-        <div className="similar_main_sub_01_sub_01">
-          {images.map((item, i) => (
-            <div
-              key={i}
-              className="similar_main_sub_01_sub_01_div"
-              onClick={() => handleImageClick(i)}
-
-            //   style={{width : selectedIndex === i
-            //           ? "53px"
-            //           : "50px",}}
-            >
-              <img
-                src={item}
-                alt={`option-${i}`}
-                style={{
-                  cursor: "pointer",
-                  border:
-                    selectedIndex === i
-                      ? "3px solid green"
-                      : "1px solid transparent",
-                }}
-              />
-
-              {selectedIds.includes(i) && (
-                <div className="similar_main_sub_01_sub_01_div_div_abs">
-                  Selected
-                </div>
-              )}
-
-              {/* {viewed.includes(i) && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 10,
-                    right: 10,
-                    background: "#000",
-                    color: "#fff",
-                    padding: "3px 8px",
-                    borderRadius: "5px",
-                    fontSize: "12px",
-                  }}
-                >
-                  Viewed
-                </div>
-              )} */}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {images.length > 0 && (
-        <div className="similar_main_sub_01_sub_02">
-          <img
-            src={images[selectedIndex]}
-            alt="Preview"
-          />
-        </div>
-      )}
-
-      {images.length > 0 && (
-        <div
-          className="similar_main_sub_01_sub_03"
-          onClick={handleSelect}
-          style={{
-            cursor: "pointer",
-            userSelect: "none",
-            backgroundColor: selectedIds.includes(selectedIndex)
-              ? "#ff4d00"
-              : "",
-            color: "#fff",
-          }}
-        >
-          {selectedIds.includes(selectedIndex)
-            ? "Deselect"
-            : "Select"}
-        </div>
-      )}
-
-        <br/>
-      {/* Submit button appears only after all images are viewed */}
-      {allViewed && (
-        <div
-          className="similar_view_01"
-          onClick={() => {
-            console.log("Selected:", selectedIds);
-            console.log("Answer:", ans);
-          }}
-          style={{
-            marginTop: "3px",
-            padding: "12px",
-            // background: "green",
-            color: "#fff",
-            textAlign: "center",
-            cursor: "pointer",
-            borderRadius: "8px",
-          }}
-        >
-          Submit
-        </div>
-      )}
-
-      {/* Debug */}
-      {/* <p>Selected: {JSON.stringify(selectedIds)}</p>
-      <p>Viewed: {JSON.stringify(viewed)}</p>
-      <p>Answer: {JSON.stringify(ans)}</p> */}
+      <div className="slp_div_01">
+        start
+      </div>
     </div>
+    </>
+
+
+
   );
 };
 

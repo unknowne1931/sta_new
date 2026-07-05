@@ -721,6 +721,37 @@ const Play = () => {
               }
 
 
+              {start.Status === "on" &&
+                <>
+                  <div className='singel_qstt_cnt_01'>
+                    <h1>Single Question</h1>
+                    <div className='singel_qstt_cnt_01_div_01'>
+                      {/* <p>
+                        Answer the question as soon as possible. Saved time is converted into money at the rate of <strong className='class_200_max_data'>10.00₹</strong> per second.
+                      </p> */}
+
+                      <p>
+                        Answer the question as quickly as possible. Time saved is converted into reward points at a rate of ₹10.00 per second.
+                      </p>
+                      <div onClick={() => { window.location.href = '/similar' }} className='play_start_game_btn_01_cnt'>
+                        <div className='play_start_game_btn_01_cnt-sub_02'>
+                          Earn up to <strong className='class_200_max_data'>100.00 ₹</strong> | 20s/q
+                        </div>
+                        <span>Start</span>
+                        <div className='play_start_game_btn_01_cnt-sub_01'>
+                          Training Fee ₹ {get_rupe.rupee} only
+                        </div>
+                      </div>
+
+                      
+
+                      
+                    </div>
+                  </div>
+                </>
+              }
+
+
 
               {start.Status === "on" &&
                 <>

@@ -5352,3 +5352,24 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
+.slp_h1_01{
+  font-size: 3.5rem;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
+}
+
+.slp_div_01{
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 20px;
+  /* text-align: start; */
+  font-size: 10rem;
+  font-weight: 700;
+  color: rgb(157, 158, 158);
+  background-color: #1118e5;
+  background-image: url("https://cdn.dribbble.com/userupload/26384358/file/original-9087ca578898fc82c7589104828ec93d.gif");
+  background-position: center;
+}
