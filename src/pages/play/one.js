@@ -232,11 +232,15 @@ const One = () => {
       </div>
       <br/>
 
-      <h1 className="slp_how_to_solve" onClick={()=>{window.location.href = "/teach/one"}} >How to solve?</h1>
+      {/* <h1 className="slp_how_to_solve" onClick={()=>{window.location.href = "/teach/one"}} >How to solve?</h1> */}
 
-      {/* <div className="slp_div_02">
+      <div className="slp_div_02"
+      
+      onClick={()=>{window.location.href = "/teach/one"}}
+
+      >
         <h1>How to solve?</h1>
-      </div> */}
+      </div>
 
 
       <div style={{height : "20px"}}></div>
