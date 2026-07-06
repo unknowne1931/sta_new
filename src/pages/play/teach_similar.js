@@ -116,6 +116,8 @@ const Teach_Similar = () => {
             Go Back to Play
         </div>
 
+        <br/>
+
 
 
     </div>
