@@ -5411,13 +5411,20 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .slp_div_03_sub_div_01{
-  min-width: 80%;
-  max-width: 90%;
+  min-width: 400px;
+  max-width: 450px;
   height: auto;
   padding: 5px;
   border: 1px solid white;
   border-radius: 10px;
   background-color: #0015d679;
+}
+
+@media all and (max-width : 500px){
+  .slp_div_03_sub_div_01{
+    min-width: 89%;
+    max-width: 91%;
+  }
 }
 
 .slp_div_03_sub_div_01_sub_01{
@@ -5504,8 +5511,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .how_to_play_main_div_01_sub_01{
-  min-width: 90%;
-  max-width: 95%;
+  min-width: 400px;
+  max-width: 450px;
   height: auto;
   padding: 10px;
   border: 1px solid white;
