@@ -86,187 +86,187 @@ const One = () => {
   return (
 
 
-    <div className="similar_main">
-      {qst && (
-        <div className="similar_main_sub_03">
-          <span>
-            Seconds : <strong>01</strong>
-          </span>
-        </div>
-      )}
-
-      {qst !== "" && (
-        <div className="similar_main_sub_02">
-          {qst}
-        </div>
-      )}
-
-      {clue && (
-        <div className="similar_main_sub_01">
-          <img src={clue} alt="Clue" />
-        </div>
-      )}
-
-      <br/>
-
-      {images.length > 0 && (
-        <div className="similar_main_sub_01_sub_01">
-          {images.map((item, i) => (
-            <div
-              key={i}
-              className="similar_main_sub_01_sub_01_div"
-              onClick={() => handleImageClick(i)}
-
-            //   style={{width : selectedIndex === i
-            //           ? "53px"
-            //           : "50px",}}
-            >
-              <img
-                src={item}
-                alt={`option-${i}`}
-                style={{
-                  cursor: "pointer",
-                  border:
-                    selectedIndex === i
-                      ? "3px solid green"
-                      : "1px solid transparent",
-                }}
-              />
-
-              {selectedIds.includes(i) && (
-                <div className="similar_main_sub_01_sub_01_div_div_abs">
-                  Selected
-                </div>
-              )}
-
-              {/* {viewed.includes(i) && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 10,
-                    right: 10,
-                    background: "#000",
-                    color: "#fff",
-                    padding: "3px 8px",
-                    borderRadius: "5px",
-                    fontSize: "12px",
-                  }}
-                >
-                  Viewed
-                </div>
-              )} */}
-            </div>
-          ))}
-        </div>
-      )}
-
-      <br/>
-
-      {images.length > 0 && (
-        <div className="similar_main_sub_01_sub_02">
-          <img
-            src={images[selectedIndex]}
-            alt="Preview"
-          />
-        </div>
-      )}
-
-      {images.length > 0 && (
-        <div
-          className="similar_main_sub_01_sub_03"
-          onClick={handleSelect}
-          style={{
-            cursor: "pointer",
-            userSelect: "none",
-            backgroundColor: selectedIds.includes(selectedIndex)
-              ? "#ff4d00"
-              : "",
-            color: "#fff",
-          }}
-        >
-          {selectedIds.includes(selectedIndex)
-            ? "Deselect"
-            : "Select"}
-        </div>
-      )}
-
-        <br/>
-      {/* Submit button appears only after all images are viewed */}
-      {allViewed && (
-        <div
-          className="similar_view_01"
-          onClick={() => {
-            console.log("Selected:", selectedIds);
-            console.log("Answer:", ans);
-          }}
-          style={{
-            marginTop: "3px",
-            padding: "12px",
-            // background: "green",
-            color: "#fff",
-            textAlign: "center",
-            cursor: "pointer",
-            borderRadius: "8px",
-          }}
-        >
-          Submit
-        </div>
-      )}
-
-      {/* Debug */}
-      {/* <p>Selected: {JSON.stringify(selectedIds)}</p>
-      <p>Viewed: {JSON.stringify(viewed)}</p>
-      <p>Answer: {JSON.stringify(ans)}</p> */}
-    </div>
-
-
-    // <>
     // <div className="similar_main">
+    //   {qst && (
+    //     <div className="similar_main_sub_03">
+    //       <span>
+    //         Seconds : <strong>01</strong>
+    //       </span>
+    //     </div>
+    //   )}
+
+    //   {qst !== "" && (
+    //     <div className="similar_main_sub_02">
+    //       {qst}
+    //     </div>
+    //   )}
+
+    //   {clue && (
+    //     <div className="similar_main_sub_01">
+    //       <img src={clue} alt="Clue" />
+    //     </div>
+    //   )}
+
     //   <br/>
-    //   <h1 className="slp_h1_01" ><span>Solve</span> the Puzzle </h1>
-    //   <br/>
 
-    //   <div className="slp_div_01">
-    //     start
-    //     {/* <span>Change the background image or whole UI</span> */}
-    //   </div>
-    //   <br/>
+    //   {images.length > 0 && (
+    //     <div className="similar_main_sub_01_sub_01">
+    //       {images.map((item, i) => (
+    //         <div
+    //           key={i}
+    //           className="similar_main_sub_01_sub_01_div"
+    //           onClick={() => handleImageClick(i)}
 
-    //   <h1 className="slp_how_to_solve" onClick={()=>{window.location.href = "/teach/one"}} >How to solve?</h1>
+    //         //   style={{width : selectedIndex === i
+    //         //           ? "53px"
+    //         //           : "50px",}}
+    //         >
+    //           <img
+    //             src={item}
+    //             alt={`option-${i}`}
+    //             style={{
+    //               cursor: "pointer",
+    //               border:
+    //                 selectedIndex === i
+    //                   ? "3px solid green"
+    //                   : "1px solid transparent",
+    //             }}
+    //           />
 
-    //   {/* <div className="slp_div_02">
-    //     <h1>How to solve?</h1>
-    //   </div> */}
-
-
-    //   <div style={{height : "20px"}}></div>
-    //   <h1 className="slp_h1_main_01">Example Puzzle Modules</h1>
-
-    //   <div className="slp_div_03">
-
-    //     {dataa.map((data, i) =>{
-    //       return(
-    //         <>
-    //           <div className="slp_div_03_sub_div_01">
-    //             <h1>{data.title}</h1>
-    //             <div className="slp_div_03_sub_div_01_sub_01">
-    //               <img src={data.img} />
+    //           {selectedIds.includes(i) && (
+    //             <div className="similar_main_sub_01_sub_01_div_div_abs">
+    //               Selected
     //             </div>
-    //             <div className="slp_div_03_sub_div_01_sub_02">
-    //               <p>
-    //                 {data.p}
-    //               </p>
+    //           )}
+
+    //           {/* {viewed.includes(i) && (
+    //             <div
+    //               style={{
+    //                 position: "absolute",
+    //                 top: 10,
+    //                 right: 10,
+    //                 background: "#000",
+    //                 color: "#fff",
+    //                 padding: "3px 8px",
+    //                 borderRadius: "5px",
+    //                 fontSize: "12px",
+    //               }}
+    //             >
+    //               Viewed
     //             </div>
-    //           </div>
-    //         </>
-    //       )
-    //     })}
+    //           )} */}
+    //         </div>
+    //       ))}
+    //     </div>
+    //   )}
 
-    //   </div>
+    //   <br/>
 
+    //   {images.length > 0 && (
+    //     <div className="similar_main_sub_01_sub_02">
+    //       <img
+    //         src={images[selectedIndex]}
+    //         alt="Preview"
+    //       />
+    //     </div>
+    //   )}
 
+    //   {images.length > 0 && (
+    //     <div
+    //       className="similar_main_sub_01_sub_03"
+    //       onClick={handleSelect}
+    //       style={{
+    //         cursor: "pointer",
+    //         userSelect: "none",
+    //         backgroundColor: selectedIds.includes(selectedIndex)
+    //           ? "#ff4d00"
+    //           : "",
+    //         color: "#fff",
+    //       }}
+    //     >
+    //       {selectedIds.includes(selectedIndex)
+    //         ? "Deselect"
+    //         : "Select"}
+    //     </div>
+    //   )}
+
+    //     <br/>
+    //   {/* Submit button appears only after all images are viewed */}
+    //   {allViewed && (
+    //     <div
+    //       className="similar_view_01"
+    //       onClick={() => {
+    //         console.log("Selected:", selectedIds);
+    //         console.log("Answer:", ans);
+    //       }}
+    //       style={{
+    //         marginTop: "3px",
+    //         padding: "12px",
+    //         // background: "green",
+    //         color: "#fff",
+    //         textAlign: "center",
+    //         cursor: "pointer",
+    //         borderRadius: "8px",
+    //       }}
+    //     >
+    //       Submit
+    //     </div>
+    //   )}
+
+    //   {/* Debug */}
+    //   {/* <p>Selected: {JSON.stringify(selectedIds)}</p>
+    //   <p>Viewed: {JSON.stringify(viewed)}</p>
+    //   <p>Answer: {JSON.stringify(ans)}</p> */}
     // </div>
-    // </>
+
+
+    <>
+    <div className="similar_main">
+      <br/>
+      <h1 className="slp_h1_01" ><span>Solve</span> the Puzzle </h1>
+      <br/>
+
+      <div className="slp_div_01">
+        start
+        {/* <span>Change the background image or whole UI</span> */}
+      </div>
+      <br/>
+
+      <h1 className="slp_how_to_solve" onClick={()=>{window.location.href = "/teach/one"}} >How to solve?</h1>
+
+      {/* <div className="slp_div_02">
+        <h1>How to solve?</h1>
+      </div> */}
+
+
+      <div style={{height : "20px"}}></div>
+      <h1 className="slp_h1_main_01">Example Puzzle Modules</h1>
+
+      <div className="slp_div_03">
+
+        {dataa.map((data, i) =>{
+          return(
+            <>
+              <div className="slp_div_03_sub_div_01">
+                <h1>{data.title}</h1>
+                <div className="slp_div_03_sub_div_01_sub_01">
+                  <img src={data.img} />
+                </div>
+                <div className="slp_div_03_sub_div_01_sub_02">
+                  <p>
+                    {data.p}
+                  </p>
+                </div>
+              </div>
+            </>
+          )
+        })}
+
+      </div>
+
+
+    </div>
+    </>
 
 
 
