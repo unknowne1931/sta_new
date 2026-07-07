@@ -58,10 +58,8 @@ const show_puz = ({ typ }) => {
           </div>
           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
             <br />
-            <strong>Q.</strong> How many Unbroken boxes contain stars? <br />
-            <strong>Q.</strong> How many uncomplete boxes contain circles <br />
-            <strong>Q.</strong> Count the broken boxes that contain circles and triangles. <br />
-            <strong>...</strong>
+            <strong>Q.</strong> Count how many colour names match their actual colours? <br />
+            <strong>Q.</strong> Count how many colour names do not match their actual colours. <br />
 
             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
               <span>Sample Question</span>
