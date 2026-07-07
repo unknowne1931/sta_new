@@ -13,6 +13,7 @@ import imgg from "../image/to.gif"
 import one from "../image/one.png"
 import { getFromDB, saveToDB } from '../db';
 import { useNavigate } from "react-router-dom";
+import Pop_Show_Module from './pop_show_module';
 
 const Play = () => {
 
@@ -1000,8 +1001,8 @@ const Play = () => {
 
               </div>
               <div className='warning_before_start_sub_02'>
-                <button onClick={() => { setPlay(false) }} className='warning_before_start_sub_02-2'>Reject</button>
-                {/* <button onClick={StartGame_1} className='warning_before_start_sub_02-1'>Start</button> */}
+                {/* <button onClick={() => { setPlay(false) }} className='warning_before_start_sub_02-2'>Reject</button> */}
+                <button onClick={StartGame_1} className='warning_before_start_sub_02-1'>Start</button>
                 <button onClick={start_mili} className='warning_before_start_sub_02-1'>Start</button>
 
               </div>
@@ -1116,45 +1117,12 @@ const Play = () => {
         </div>
       }
 
-      {type_ct != "" &&
+      {type_ct !== "" &&
         <div className='playyy_main_sub_01_pop'>
 
 
 
-          {type_ct === "star_circ_tria" &&
-            <>
-              <div className='playyy_main_sub_01_pop_sub_01'>
-                <h1>Understand Before You Solve</h1>
-                
-                <div className='playyy_main_sub_01_pop_sub_01_img'>
-                  <img src={one} />
-                </div>
-
-                <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-                  <br />
-                  <strong>Q.</strong> How many Unbroken boxes contain stars? <br />
-                  <strong>Q.</strong> How many uncomplete boxes contain circles <br />
-                  <strong>Q.</strong> Count the broken boxes that contain circles and triangles. <br />
-                  <strong>...</strong>
-                  <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-                    <span>Sample Question</span>
-                  </div>
-
-                </div>
-
-                <div className='start_note_01'>
-                  <strong>Dont refersh the page</strong>
-                </div>
-
-                <div className='str_btn00on_01' onClick={() => { setType_Ct(""); window.location.href = "/start" }} >
-                  Let’s go!
-                </div>
-
-
-              </div>
-
-            </>
-          }
+          <Pop_Show_Module cat = {type_ct} setType_Ct={setType_Ct} />
 
 
         </div>
