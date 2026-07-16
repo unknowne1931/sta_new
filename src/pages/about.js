@@ -251,6 +251,10 @@ const About = () => {
           </div>
         </div>
 
+        {/* <div>
+          <h1>Developer</h1>
+        </div> */}
+
     </div>
   )
 }
