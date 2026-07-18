@@ -5586,3 +5586,24 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #04052c;
   cursor: pointer;
 }
+
+
+.playyy_main_sub_01_pop_sub_01_img_containr_main{
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  overflow-x: scroll;
+  /* border: 1px solid white; */
+  display:flex;
+  border-radius: 10px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.playyy_main_sub_01_pop_sub_01_img_containr_main::-webkit-scrollbar{
+  display:none;
+}
+

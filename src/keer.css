@@ -3959,10 +3959,13 @@
 }
 
 .playyy_main_sub_01_pop_sub_01_img{
-    width: 100%;
+    min-width: 85%;
+    max-width: 90%;
     height: auto;
-    object-fit: cover;
-    border-radius: 10px;
+    object-fit: contain;
+    border-radius: 5px;
+    background-color: rgb(32, 77, 176);
+    /* background-color: #000000; */
 }
 
 .playyy_main_sub_01_pop_sub_01_img img{
@@ -3976,9 +3979,9 @@
     height: auto;
     padding: 10px;
     border: 1px solid white;
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #000000;
+    border-radius: 5px;
+    /* background-color: #ffffff; */
+    color: #ffffff;
     font-size: 2rem;
     font-family: 'Courier New', Courier, monospace;
     box-shadow: 4px 4px 8px rgba(46, 44, 44, 0.688);
@@ -4467,10 +4470,10 @@
 }
 
 .Accept_btn_01{
-  width: 90%;
+  width: 100%;
   height: auto;
-  padding: 10px;
-  border-radius: 30px;
+  /* padding: 10px; */
+  border-radius: 10px;
   background-color: #060934;
   border: 1px solid;
   font-family: var(--ff1);
