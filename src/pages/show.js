@@ -1,374 +1,3 @@
-// import React from 'react'
-// import one from "../image/one.png"
-// import two from "../image/colour_name_text.jpg"
-// import three from "../image/pattern.jpg"
-// import api from './api';
-// import four from "../image/morse_code.jpg"
-// import five from "../image/leters_b_w.jpg"
-// import six from "../image/puzle.jpg"
-// import seven from "../image/misleding.jpg"
-// import eight from "../image/clock.jpg"
-// import nine from "../image/leters_shifted.jpg"
-// import ten from "../image/leter_color.jpg"
-// import eleven from "../image/word_leter_match.jpg"
-
-// import m1 from "../image/m_1.png"
-// import m11 from "../image/m_11.png"
-
-
-// const show_puz = ({ typ }) => {
-
-//   const start = () => {
-//     api.post("http://192.168.126.1/revel/qst/start/game")
-//       .then(res => {
-//         if (res.data.Status === "OK") {
-//           window.location.reload()
-//         } else {
-//           console.log("Error Starting Game")
-//         }
-//       }).catch(err => {
-//         console.log(err)
-//       })
-//   }
-//   return (
-//     <div>
-
-//       {typ === "star_circ_tria" &&
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-//           <div className='playyy_main_sub_01_pop_sub_01_img'>
-//             <img src={one} />
-//           </div>
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> How many Unbroken boxes contain stars? <br />
-//             <strong>Q.</strong> How many uncomplete boxes contain circles <br />
-//             <strong>Q.</strong> Count the broken boxes that contain circles and triangles. <br />
-//             <strong>...</strong>
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-//       }
-
-//       {typ === "Colours & Name Match" &&
-
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-//           <div className='playyy_main_sub_01_pop_sub_01_img'>
-//             <img src={two} />
-//           </div>
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> Count how many colour names match their actual colours? <br />
-//             <strong>Q.</strong> Count how many colour names do not match their actual colours. <br />
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-
-//       }
-
-//       {typ === "Pattern_to_Numbers" &&
-
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-//           <div className='playyy_main_sub_01_pop_sub_01_img'>
-//             <img src={three} />
-//           </div>
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> Follow pattern order and extract numbers <br />
-//             {/* <strong>Q.</strong> Count how many colour names do not match their actual colours. <br /> */}
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-
-//       }
-
-
-//       {typ === "Morse code" &&
-
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-//           <div className='playyy_main_sub_01_pop_sub_01_img'>
-//             <img src={four} />
-//           </div>
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> Find the correct word from the Morse code. <br />
-//             {/* <strong>Q.</strong> Count how many colour names do not match their actual colours. <br /> */}
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-
-//       }
-
-
-//       {typ === "Black_&_White_letters" &&
-
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-//           <div className='playyy_main_sub_01_pop_sub_01_img'>
-//             <img src={five} />
-//           </div>
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> How many letters match the clue colours? <br />
-//             {/* <strong>Q.</strong> Count how many colour names do not match their actual colours. <br /> */}
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-
-//       }
-
-
-//       {typ === "puzle_peace_male_female" &&
-
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-//           <div className='playyy_main_sub_01_pop_sub_01_img'>
-//             <img src={six} />
-//           </div>
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> How many puzzle pieces contain 2 or more MALE connectors (outward tabs)? <br />
-//             {/* <strong>Q.</strong> Count how many colour names do not match their actual colours. <br /> */}
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-
-//       }
-
-
-//       {typ === "letters_missalign" &&
-
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-//           <div className='playyy_main_sub_01_pop_sub_01_img'>
-//             <img src={seven} />
-//           </div>
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> How many letters are misaligned? <br />
-//             {/* <strong>Q.</strong> Count how many colour names do not match their actual colours. <br /> */}
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-
-//       }
-
-
-//       {typ === "clock_s" &&
-
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-//           <div className='playyy_main_sub_01_pop_sub_01_img'>
-//             <img src={eight} />
-//           </div>
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> How many clocks show a time between 12:30 and 02:21? <br />
-//             {/* <strong>Q.</strong> Count how many colour names do not match their actual colours. <br /> */}
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-
-//       }
-
-
-//       {typ === "scramble_words" &&
-
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-//           <div className='playyy_main_sub_01_pop_sub_01_img'>
-//             <img src={nine} />
-//           </div>
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> How many words are scrambled? <br />
-//             {/* <strong>Q.</strong> Count how many colour names do not match their actual colours. <br /> */}
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-
-//       }
-
-
-//       {typ === "word_colour_find" &&
-
-//         <div className='playyy_main_sub_01_pop_sub_01'>
-//           <h1>Understand Before You Solve</h1>
-
-//           <div className='playyy_main_sub_01_pop_sub_01_img_containr_main'>
-//             <div className='playyy_main_sub_01_pop_sub_01_img'>
-//               <img src={eleven} style={{
-//                 width : "100%", height : "100%",
-//                 objectFit : "contain"
-//               }} />
-//             </div>
-//             <div className='playyy_main_sub_01_pop_sub_01_img'>
-//               <img src={m1} style={{
-//                 borderRadius : "10px"
-//                 // objectFit : "contain"
-//               }} />
-//             </div>
-//             <div className='playyy_main_sub_01_pop_sub_01_img'>
-//               <img src={m11} style={{
-//                 borderRadius : "10px"
-//                 // objectFit : "contain"
-//               }} />
-//             </div>
-//           </div>
-
-          
-//           <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
-//             <br />
-//             <strong>Q.</strong> How many words are colored with the WRONG color? <br />
-//             {/* <strong>Q.</strong> Count how many colour names do not match their actual colours. <br /> */}
-
-//             <div className='playyy_main_sub_01_pop_sub_01_sp_qst_sub_01'>
-//               <span>Sample Question</span>
-//             </div>
-
-//           </div>
-
-//           <br />
-
-//           <div className='Accept_btn_01' onClick={start} >
-//             <h1 style={{ textAlign: "center" }} >Ok</h1>
-//           </div>
-
-//         </div>
-
-//       }
-
-
-
-
-
-
-
-//     </div>
-//   )
-// }
-
-// export default show_puz
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React from 'react'
 import one from "../image/one.png"
 import two from "../image/colour_name_text.jpg"
@@ -384,6 +13,35 @@ import ten from "../image/leter_color.jpg"
 import eleven from "../image/word_leter_match.jpg"
 import m1 from "../image/m_1.png"
 import m11 from "../image/m_11.png"
+
+import c_1 from "../image/c_1.png"
+import c_2 from "../image/c_2.png"
+import p_1 from "../image/p_1.png"
+import p_2 from "../image/p_2.png"
+
+import w_1 from "../image/w_1.png"
+import w_2 from "../image/w_2.png"
+
+import s_w_1 from "../image/s_w_1.png"
+import s_w_2 from "../image/s_w_2.png"
+
+import w_l_1 from "../image/w_l_1.png"
+import w_l_2 from '../image/w_l_2.png'
+
+import str_1 from "../image/str_1.png"
+import str_2 from "../image/str_2.png"
+
+import decode_img from "../image/p_.jpg"
+import decode_img_1 from "../image/decode_img_1.png"
+import decode_img_2 from "../image/decode_img_2.png"
+
+import i_exist from "../image/l_exist.jpg"
+import i_ex_1 from "../image/l_exist_1.png"
+import i_ex_2 from "../image/l_exist_2.png"
+
+import word_count from "../image/word_count.jpg"
+import nm_w_1 from "../image/nm_count_1.png"
+import nm_w_2 from "../image/nm_count_2.png"
 
 const ShowPuzzle = ({ typ }) => {
 
@@ -404,20 +62,23 @@ const ShowPuzzle = ({ typ }) => {
   const puzzleConfigs = {
     "star_circ_tria": {
       title: "Star, Circle & Triangle Puzzle",
-      image: one,
+      images: [one, str_1, str_2],
       questions: [
         "How many Unbroken boxes contain stars?",
         "How many incomplete boxes contain circles?",
-        "Count the broken boxes that contain circles and triangles."
-      ]
+        "Count the broken boxes that contain circles and triangles.",
+        "More ..."
+      ],
+      isMultiImage: true
     },
     "Colours & Name Match": {
       title: "Colours & Name Match",
-      image: two,
+      images: [two, c_1, c_2],
       questions: [
         "Count how many colour names match their actual colours?",
         "Count how many colour names do not match their actual colours."
-      ]
+      ],
+      isMultiImage: true
     },
     "Pattern_to_Numbers": {
       title: "Pattern to Numbers",
@@ -442,17 +103,19 @@ const ShowPuzzle = ({ typ }) => {
     },
     "puzle_peace_male_female": {
       title: "Puzzle Piece Connectors",
-      image: six,
+      images: [six, p_1, p_2] ,
       questions: [
         "How many puzzle pieces contain 2 or more MALE connectors (outward tabs)?"
-      ]
+      ],
+      isMultiImage: true
     },
     "letters_missalign": {
       title: "Misaligned Letters",
-      image: seven,
+      images: [seven, w_1, w_2],
       questions: [
         "How many letters are misaligned?"
-      ]
+      ],
+      isMultiImage: true
     },
     "clock_s": {
       title: "Clock Time Puzzle",
@@ -463,10 +126,11 @@ const ShowPuzzle = ({ typ }) => {
     },
     "scramble_words": {
       title: "Scrambled Words",
-      image: nine,
+      images: [nine, s_w_1, s_w_2],
       questions: [
         "How many words are scrambled?"
-      ]
+      ],
+      isMultiImage: true
     },
     "word_colour_find": {
       title: "Word Color Matching",
@@ -475,7 +139,42 @@ const ShowPuzzle = ({ typ }) => {
         "How many words are colored with the WRONG color?"
       ],
       isMultiImage: true
+    },
+    "letter_colour_find": {
+      title: "Letters Color Matching",
+      images: [ten, w_l_1, w_l_2],
+      questions: [
+        "How many letters are colored with the WRONG color?"
+      ],
+      isMultiImage: true
+    },
+    "encode_decode" : {
+      title : "Decoding",
+      images : [decode_img, decode_img_1, decode_img_2],
+      questions : [
+        "Decode 'AVI' using cipher key"
+      ],
+      isMultiImage : true
+    },
+    "count_leters_exist" : {
+      title : "Counting Letters in a Sentence",
+      images : [i_exist, i_ex_1, i_ex_2],
+      questions : [
+        "How many times do the letters A, V, I appear in the paragraph?"
+      ],
+      isMultiImage : true
+    },
+
+    "count_word_exist" : {
+      title : "Counting words in a word",
+      images : [word_count, nm_w_1, nm_w_2],
+      questions : [
+        "How many times does the letter sequence 'avi' appear in the given words?"
+      ],
+      isMultiImage : true
     }
+
+    
   }
 
   const config = puzzleConfigs[typ]
