@@ -1,167 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Name Cubes</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
-body{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:
-    radial-gradient(circle at top,#1e3a8a,#0f172a 70%);
-}
-
-.name{
-    display:flex;
-    gap:25px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.cube{
-    position:relative;
-    width:110px;
-    height:110px;
-    transform-style:preserve-3d;
-    transform:rotateX(-20deg) rotateY(25deg);
-}
-
-/* Front Face */
-.front{
-    position:absolute;
-    inset:0;
-    border-radius:22px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:55px;
-    font-weight:900;
-    color:white;
-    transform:translateZ(25px);
-    box-shadow:
-    0 25px 40px rgba(0,0,0,.35),
-    inset 0 2px 10px rgba(255,255,255,.25);
-}
-
-/* Right Face */
-.right{
-    position:absolute;
-    top:0;
-    right:-25px;
-    width:25px;
-    height:110px;
-    border-radius:0 22px 22px 0;
-    transform-origin:left;
-    transform:rotateY(90deg);
-    filter:brightness(.7);
-}
-
-/* Top Face */
-.top{
-    position:absolute;
-    top:-25px;
-    left:0;
-    width:110px;
-    height:25px;
-    border-radius:22px 22px 0 0;
-    transform-origin:bottom;
-    transform:rotateX(90deg);
-    filter:brightness(1.2);
-}
-
-/* Shine */
-.front::before{
-    content:'';
-    position:absolute;
-    top:8px;
-    left:8px;
-    right:8px;
-    height:25px;
-    border-radius:20px;
-    background:rgba(255,255,255,.18);
-}
-
-/* Colors */
-
-.c1 .front,.c1 .right,.c1 .top{
-    background:linear-gradient(135deg,#ff416c,#ff4b2b);
-}
-
-.c2 .front,.c2 .right,.c2 .top{
-    background:linear-gradient(135deg,#00c6ff,#0072ff);
-}
-
-.c3 .front,.c3 .right,.c3 .top{
-    background:linear-gradient(135deg,#00b09b,#96c93d);
-}
-
-.c4 .front,.c4 .right,.c4 .top{
-    background:linear-gradient(135deg,#f7971e,#ffd200);
-}
-
-.c5 .front,.c5 .right,.c5 .top{
-    background:linear-gradient(135deg,#8e2de2,#4a00e0);
-}
-
-.c6 .front,.c6 .right,.c6 .top{
-    background:linear-gradient(135deg,#fc466b,#3f5efb);
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SBI Add Money</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    .container h2 {
+      text-align: center;
+      color: #004d99;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #004d99;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0066cc;
+    }
+    .note {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>SBI Add Money</h2>
+    <form>
+      <label for="account">Account Number</label>
+      <input type="text" id="account" name="account" placeholder="Enter SBI Account Number" required>
 
-<div class="name">
+      <label for="amount">Amount (₹)</label>
+      <input type="number" id="amount" name="amount" placeholder="Enter Amount" required>
 
-    <div class="cube c1">
-        <div class="top"></div>
-        <div class="right"></div>
-        <div class="front">S</div>
-    </div>
+      <label for="ifsc">IFSC Code</label>
+      <input type="text" id="ifsc" name="ifsc" placeholder="Enter IFSC Code" required>
 
-    <div class="cube c2">
-        <div class="top"></div>
-        <div class="right"></div>
-        <div class="front">T</div>
-    </div>
-
-    <div class="cube c3">
-        <div class="top"></div>
-        <div class="right"></div>
-        <div class="front">A</div>
-    </div>
-
-    <div class="cube c4">
-        <div class="top"></div>
-        <div class="right"></div>
-        <div class="front">W</div>
-    </div>
-
-    <div class="cube c5">
-        <div class="top"></div>
-        <div class="right"></div>
-        <div class="front">R</div>
-    </div>
-
-    <div class="cube c6">
-        <div class="top"></div>
-        <div class="right"></div>
-        <div class="front">O</div>
-    </div>
-
-</div>
-
+      <button type="submit">Add Money</button>
+    </form>
+    <p class="note">This is a demo form. No real transactions occur.</p>
+  </div>
 </body>
 </html>
