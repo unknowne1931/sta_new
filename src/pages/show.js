@@ -164,7 +164,6 @@ const ShowPuzzle = ({ typ }) => {
       ],
       isMultiImage : true
     },
-
     "count_word_exist" : {
       title : "Counting words in a word",
       images : [word_count, nm_w_1, nm_w_2],
