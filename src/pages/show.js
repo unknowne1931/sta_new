@@ -43,6 +43,10 @@ import word_count from "../image/word_count.jpg"
 import nm_w_1 from "../image/nm_count_1.png"
 import nm_w_2 from "../image/nm_count_2.png"
 
+import ral from "../image/p_2.jpg"
+import ral_1 from "../image/ral_1.png"
+import ral_2 from "../image/ral_2.png"
+
 const ShowPuzzle = ({ typ }) => {
 
   const start = () => {
@@ -169,6 +173,14 @@ const ShowPuzzle = ({ typ }) => {
       images : [word_count, nm_w_1, nm_w_2],
       questions : [
         "How many times does the letter sequence 'avi' appear in the given words?"
+      ],
+      isMultiImage : true
+    },
+    "re_arrange_letters" : {
+      title : "Re-arrange the Alphabets",
+      images : [ral, ral_1, ral_2],
+      questions : [
+        "What is the alphabetical arrangement of these random letters: 'AVI'?"
       ],
       isMultiImage : true
     }
