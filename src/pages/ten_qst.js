@@ -70,7 +70,7 @@ const Ten_qst = () => {
   const fetchData = async () => {
     localStorage.removeItem("rw")
     setAlert(false)
-    api.get("http://192.168.126.1/milionear/game/get/qst/no/to/play")
+    api.get("http://192.168.31.133/milionear/game/get/qst/no/to/play")
       .then(res => {
         if (res.data.Status === "OUT") {
           
@@ -140,7 +140,7 @@ const Ten_qst = () => {
     localStorage.removeItem("targetSecond");
     setRemaining(0);
     setAlert(false)
-    api.post("http://192.168.126.1/milionear/game/quit/ten/qst", { yn: ans })
+    api.post("http://192.168.31.133/milionear/game/quit/ten/qst", { yn: ans })
       .then(res => {
         if (res.data.Status === "Credit_Quit") {
           setData("Game exited. Rewards have been added to your account.")
@@ -170,7 +170,10 @@ const Ten_qst = () => {
       }}
     >
       <div style={{ height: "50px" }}></div>
-      <Milion prz={localStorage.getItem("rw")} />
+
+      {info.seconds &&
+        <Milion prz={localStorage.getItem("rw")} />
+      }
 
       <br />
 
@@ -223,7 +226,7 @@ const Ten_qst = () => {
                 setRemaining(0);
                 fetchData();
                 setAlert(false)
-                api.post("http://192.168.126.1/milionear/game/verify/ans", { answer: data })
+                api.post("http://192.168.31.133/milionear/game/verify/ans", { answer: data })
                   .then(res => {
                     if (res.data.Status === "OUT") {
                       setText(res.data.Status)
@@ -271,13 +274,11 @@ const Ten_qst = () => {
                   }}
 
                   onClick={() => { submit_ans() }}
-
-
                 >
 
                   <p
                     style={{
-                      color: remaining === 1 ? "black" : "white",
+                      color: "white",
                       fontSize: "2rem"
                     }}
                   >

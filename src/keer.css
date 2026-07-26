@@ -3949,9 +3949,8 @@
 
 .playyy_main_sub_01_pop_sub_01{
     font-size: 1.2rem;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 10px;
-
 }
 
 .playyy_main_sub_01_pop_sub_01 h1{
@@ -3987,8 +3986,10 @@
     box-shadow: 4px 4px 8px rgba(46, 44, 44, 0.688);
     margin-top: 10px;
     position: relative;
-    margin-top: 20px;
     text-align: start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
 }
 
 .playyy_main_sub_01_pop_sub_01_sp_qst_sub_01{
@@ -4294,7 +4295,7 @@
 }
 
 .option_cnt_cnt_01{
-    width: 90%;
+    width: 99%;
     height: auto;
     padding: auto;
     display: flex;
@@ -4471,15 +4472,17 @@
 }
 
 .Accept_btn_01{
-  width: 100%;
+  width: 90%;
   height: auto;
-  /* padding: 10px; */
+  margin: auto;
+  padding: 10px;
   border-radius: 10px;
   background-color: #060934;
   border: 1px solid;
   font-family: var(--ff1);
   font-weight: 600;
   color: #ffffff;
+  font-size: 20px;
   font-size: 1rem;
   position: relative;
   cursor: pointer;

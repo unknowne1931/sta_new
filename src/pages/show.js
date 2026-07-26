@@ -50,7 +50,7 @@ import ral_2 from "../image/ral_2.png"
 const ShowPuzzle = ({ typ }) => {
 
   const start = () => {
-    api.post("http://192.168.126.1/revel/qst/start/game")
+    api.post("http://192.168.31.133/revel/qst/start/game")
       .then(res => {
         if (res.data.Status === "OK") {
           window.location.reload()
@@ -229,8 +229,10 @@ const ShowPuzzle = ({ typ }) => {
       {/* Questions Section */}
       <div className='playyy_main_sub_01_pop_sub_01_sp_qst'>
         <br />
+        
         {config.questions.map((question, index) => (
           <strong key={index}>
+            <div style={{height:"10px"}}></div>
             Q{index + 1}. {question}
             <br />
           </strong>
@@ -245,7 +247,7 @@ const ShowPuzzle = ({ typ }) => {
 
       {/* Start Button */}
       <div className='Accept_btn_01' onClick={start}>
-        <h1 style={{ textAlign: "center" }}>OK</h1>
+        <h1 style={{ textAlign: "center", fontSize : "3rem" }}>OK</h1>
       </div>
     </div>
   )

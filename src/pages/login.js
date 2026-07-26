@@ -14,11 +14,34 @@ const Login = () => {
   const [imageLoaded, setImageLoaded] = useState(false); // NEW STATE
   const [show_i, setShow_I] = useState(false)
 
-  const url = "http://192.168.126.1";
+  const url = "http://192.168.31.133";
 
   useEffect(()=>{
     document.body.style.backgroundColor = "#0641e5c6";
   },[])
+
+
+  async function Dataa() {
+    axios.post("http://192.168.31.133/post/login", {
+      data : "hello"
+    }).then(res => {
+          if(res.data.Status === "OK") {
+            localStorage.setItem("email", res.data.email);
+            localStorage.setItem("ssid", res.data.token);
+            localStorage.setItem("user", res.data.user);
+            localStorage.setItem("username", res.data.username);
+            saveToDB("email" , res.data.email)
+            window.location.href = '/';
+          } else {
+            setData("Something went wrong with Google Sign-UP");
+            setAlert(true);
+          }
+        }).catch(err => {
+          console.error(err);
+          setData("Google Sign-In Failed");
+          setAlert(true);
+        });
+  }
 
 
   async function handleGoogleSignup(){
@@ -32,7 +55,7 @@ const Login = () => {
         const username = email.split('@')[0];
         const uid = user.uid;
 
-        axios.post("http://192.168.126.1/post/google/auth", {
+        axios.post("http://192.168.31.133/post/google/auth", {
           email,
           name,
           username,
@@ -113,7 +136,7 @@ const Login = () => {
           <div style={{width : "5rem"}}>
             <img src={g} />
           </div>
-          <div onClick={handleGoogleSignup}>
+          <div onClick={Dataa}>
             <h2>Login / Create Account</h2>
           </div>
         </div>

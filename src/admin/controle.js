@@ -10,7 +10,7 @@ const Admin_controle = () => {
     }, [])
 
     function get_data() {
-        apiAdmin.get("http://192.168.126.1/get/data/of/level/controle/data")
+        apiAdmin.get("http://192.168.31.133/get/data/of/level/controle/data")
             .then(res => {
                 if (res.data.data) {
                     setData(res.data.data)
