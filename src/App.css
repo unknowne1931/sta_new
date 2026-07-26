@@ -3094,12 +3094,12 @@ footer .wave#wave4 {
 
 .terms_page-main-cnt-01_sub-01 {
   width: 90%;
-  border: 1px solid;
+  /* border: 1px solid; */
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 2px 2px 10px gray;
+  /* box-shadow: 2px 2px 10px gray; */
   text-align: start;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
 }
 
 .terms_page-main-cnt-01_sub-01 p {
@@ -3163,7 +3163,12 @@ footer .wave#wave4 {
 
 .shipping_page-h1-01 {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 3.5em;
+  font-size: 3.8em;
+  text-align: start;
+  margin-top: 80px;
+  margin-left: 20px;
+  color: #3f3f3f;
+  font-family: var(--ff1);
 }
 
 .shipping_main-sub-cnt-02 {

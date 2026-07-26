@@ -104,7 +104,7 @@ const ShippingAndRefundPolicy = () => {
             If you have any questions about our shipping or refund policies, please reach out to us at:
             </p>
             <ul>
-                <li>Email: <strong>stawropuzzle@gmail.com</strong></li>
+                <li>Email: <strong>krishnakick1931@gmail.com</strong></li>
                 <li>Address: <strong>Chitradurga, Karnataka, India</strong></li>
             </ul>
         </div>
