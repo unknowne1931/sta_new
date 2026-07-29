@@ -31,7 +31,7 @@ const Coin = () => {
         try{
             setAlert(false)
             e.preventDefault()
-            axios.post(`${"http://192.168.31.133"}/coin/new/data`,{title, img, valid, body, stars})
+            axios.post(`${process.env.REACT_APP_API_URL}/coin/new/data`,{title, img, valid, body, stars})
             .then(res =>{
                 if(res.data.Status === "OK"){
                     GetStoreCoins()
@@ -58,7 +58,7 @@ const Coin = () => {
     const GetStoreCoins = () =>{
         try{
             setTimeout(()=>{
-                apiAdmin.get(`${"http://192.168.31.133"}/get/coin/data/2`)
+                apiAdmin.get(`${process.env.REACT_APP_API_URL}/get/coin/data/2`)
                 .then(res=>{
                 if(res.data.data){
                     setStore_coins(res.data.data);
@@ -122,7 +122,7 @@ const Coin = () => {
                     try{
                         e.preventDefault()
                         setAlert(false)
-                        axios.delete(`${"http://192.168.31.133"}/delete/coin/by/${data._id}`)
+                        axios.delete(`${process.env.REACT_APP_API_URL}/delete/coin/by/${data._id}`)
                         .then(res=>{
                             if(res.data.Status === "OK"){
                                 GetStoreCoins();

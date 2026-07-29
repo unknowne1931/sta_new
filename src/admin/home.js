@@ -50,7 +50,7 @@ const AdminHome = () => {
 
     const GetTotal = () =>{
         try{
-            apiAdmin.get(`${"http://192.168.31.133"}/get/aal/tottttal/users`)
+            apiAdmin.get(`${process.env.REACT_APP_API_URL}/get/aal/tottttal/users`)
             .then(res =>{
                 if(res.data.users){
                     setTotal_List(res.data.users)
@@ -78,7 +78,7 @@ const AdminHome = () => {
 
     const GetTotalWinners = () =>{
         try{
-            apiAdmin.get(`${"http://192.168.31.133"}/get/total/users/by/winners/datas/all`)
+            apiAdmin.get(`${process.env.REACT_APP_API_URL}/get/total/users/by/winners/datas/all`)
             .then(res =>{
                 if(res.data.users){
                     setWin_data(res.data.users)
@@ -107,7 +107,7 @@ const AdminHome = () => {
     const GetLive = () =>{
         try{
             setTimeout(()=>{
-                apiAdmin.get(`${"http://192.168.31.133"}/admin/get/all/users/data/logined`)
+                apiAdmin.get(`${process.env.REACT_APP_API_URL}/admin/get/all/users/data/logined`)
                 .then(res =>{
                     if(res.data.users){
                         setLive(res.data.users);
@@ -144,7 +144,7 @@ const AdminHome = () => {
         try{
             e.preventDefault()
             setAlert(false);
-            apiAdmin.post(`${"http://192.168.31.133"}/length/and/calcul/ation/of/chart`)
+            apiAdmin.post(`${process.env.REACT_APP_API_URL}/length/and/calcul/ation/of/chart`)
             .then(res =>{
                 if(res.data.Status === "OK"){
                     setData("Data Saved")

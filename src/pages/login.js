@@ -22,7 +22,8 @@ const Login = () => {
 
 
   async function Dataa() {
-    axios.post("http://192.168.31.133/post/login", {
+    console.log(process.env.REACT_APP_API_URL)
+    axios.post(`${process.env.REACT_APP_API_URL}/post/login`, {
       data : "hello"
     }).then(res => {
           if(res.data.Status === "OK") {

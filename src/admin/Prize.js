@@ -24,7 +24,7 @@ const Prize = () => {
 
     const GetStarsData = () =>{
         try{
-            apiAdmin.get(`${"http://192.168.31.133"}/stars/get/all/data/by/stars`)
+            apiAdmin.get(`${process.env.REACT_APP_API_URL}/stars/get/all/data/by/stars`)
             .then(res =>{
                 if(res.data.data){
                     setStars_Data(res.data.data)
@@ -53,7 +53,7 @@ const Prize = () => {
     const GetRupeeVal = () =>{
         try{
             setTimeout(()=>{
-                fetch(`${"http://192.168.31.133"}/get/rupee/data/play`)
+                fetch(`${process.env.REACT_APP_API_URL}/get/rupee/data/play`)
                 .then(res => res.json())
                 .then(data =>{
                     if(data.data){
@@ -85,7 +85,7 @@ const Prize = () => {
     const RupeePo = (e) =>{
         try{
             e.preventDefault();
-            axios.post(`${"http://192.168.31.133"}/rupee/get/for/game`,{rupee})
+            axios.post(`${process.env.REACT_APP_API_URL}/rupee/get/for/game`,{rupee})
             .then(res=>{
                 if(res.data.Status === "OK"){
                     GetRupeeVal()
@@ -110,7 +110,7 @@ const Prize = () => {
     const PostorUpdate = async (e) => {
         try{
             e.preventDefault();
-            axios.post(`${"http://192.168.31.133"}/stars/count/one/stars`,{ stars, count: stars_count })
+            axios.post(`${process.env.REACT_APP_API_URL}/stars/count/one/stars`,{ stars, count: stars_count })
             .then(res =>{
                 if(res.data.Status === "OK"){
                     GetStarsData()

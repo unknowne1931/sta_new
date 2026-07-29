@@ -15,7 +15,7 @@ const Show_ticket = () => {
   }, []);
 
   const get_data = () => {
-    apiAdmin.get("http://192.168.31.133/get/all/tickets/data/admin")
+    apiAdmin.get(`${process.env.REACT_APP_API_URL}/get/all/tickets/data/admin`)
       .then(res => {
         if (res.data.data) {
           setData(res.data.data)
@@ -28,7 +28,7 @@ const Show_ticket = () => {
   }
 
   const add = (id, dat, level, cat) => {
-    apiAdmin.post("http://192.168.31.133/refund/data/and/add/to/users", { id, text: dat, ex_seconds: sec[id] || "no", level : level, cat: cat  })
+    apiAdmin.post(`${process.env.REACT_APP_API_URL}/refund/data/and/add/to/users`, { id, text: dat, ex_seconds: sec[id] || "no", level : level, cat: cat  })
       .then(res => {
         if (res.data.Status === "OK") {
           get_data()

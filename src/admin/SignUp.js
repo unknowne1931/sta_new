@@ -18,7 +18,7 @@ const SignUpAdmin = () => {
         try{
             e.preventDefault();
             if(answ.length > 2 && id.length > 2){
-                axios.post(`${"http://192.168.31.133"}/get/new/user/admin/account`,{username, pass, quest, answ, id})
+                axios.post(`${process.env.REACT_APP_API_URL}/get/new/user/admin/account`,{username, pass, quest, answ, id})
                 .then(res=>{
                     if(res.data.Status === "OK"){
                         alert("Account Created")

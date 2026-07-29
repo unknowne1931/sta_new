@@ -59,7 +59,7 @@ const User_Data = () => {
         console.log(data)
         if (data.length > 0) {
             setSearch(false)
-            apiAdmin.get(`http://192.168.31.133/get/all/user/data/new/for/kick/dataa/${data}`)
+            apiAdmin.get(`${process.env.REACT_APP_API_URL}/get/all/user/data/new/for/kick/dataa/${data}`)
                 .then(res => {
                     if (res.data.Status === "OK") {
                         setGet_Data(res.data)
@@ -124,7 +124,7 @@ const User_Data = () => {
         e.preventDefault();
 
         apiAdmin.post(
-            "http://192.168.31.133/add/from/admin/balance/to/balance",
+            `${process.env.REACT_APP_API_URL}/add/from/admin/balance/to/balance`,
             { user, new_balance: new_bal }
         )
             .then(res => {
@@ -141,7 +141,7 @@ const User_Data = () => {
         e.preventDefault();
 
         apiAdmin.post(
-            "http://192.168.31.133/verify/data/to-confirm/reported/doc/async",
+            `${process.env.REACT_APP_API_URL}/verify/data/to-confirm/reported/doc/async`,
             { user, id : code }
         )
             .then(res => {

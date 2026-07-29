@@ -25,7 +25,7 @@ const Cupon = () => {
     const GetCupon = () =>{
         try{
             setTimeout(()=>{
-                fetch(`${"http://192.168.31.133"}/get/cupon/get/all/datas`)
+                fetch(`${process.env.REACT_APP_API_URL}/get/cupon/get/all/datas`)
                 .then(res => res.json())
                 .then(data =>{
                     if(data.data){
@@ -58,7 +58,7 @@ const Cupon = () => {
         try{
             e.preventDefault();
             setAlert(false)
-            axios.post(`${"http://192.168.31.133"}/get/new/cupon/for/neww/cupon`, {title, img, valid, body, type, user})
+            axios.post(`${process.env.REACT_APP_API_URL}/get/new/cupon/for/neww/cupon`, {title, img, valid, body, type, user})
             .then(res=>{
                 if(res.data.Status === "OK"){
                     GetCupon()
@@ -117,7 +117,7 @@ const Cupon = () => {
                     const Dele = () =>{
                         try{
                             setAlert(false)
-                            axios.delete(`${"http://192.168.31.133"}/delete/cupon/s/by/id/${data._id}`)
+                            axios.delete(`${process.env.REACT_APP_API_URL}/delete/cupon/s/by/id/${data._id}`)
                             .then(res=>{
                                 if(res.data.Status === "OK"){
                                     GetCupon()

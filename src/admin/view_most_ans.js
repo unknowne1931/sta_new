@@ -6,7 +6,7 @@ const View_Most_Ans = () => {
   const [data, setData] = useState([])
 
   const data_fetch = () => {
-    axios.get("http://192.168.31.133/get/calculate/data/monitor/main")
+    axios.get(`${process.env.REACT_APP_API_URL}/get/calculate/data/monitor/main`)
       .then(res => {
         if (res.data) {
           setData(res.data.data)
