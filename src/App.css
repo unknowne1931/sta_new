@@ -5629,3 +5629,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 
+.ac_bnk_body_01{
+  width: 100%;
+  min-height: 100vh;
+  max-height: auto;
+  background-color: #14337d;
+}
