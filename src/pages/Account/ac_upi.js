@@ -1316,9 +1316,21 @@
 
 
 
-import React from 'react'
+import React, { useEffect } from 'react'
+import api from '../api'
 
-const ac_upi = () => {
+const Ac_upi = () => {
+
+  function get_bank_info() {
+    api.get(`${process.env.REACT_APP_API_URL}/get/bank/account/data`)
+    .then(res =>{
+      console.log(res.data)
+    })
+  }
+
+  useEffect(()=>{
+    get_bank_info()
+  },[])
 
 
   return (
@@ -1356,4 +1368,4 @@ const ac_upi = () => {
   )
 }
 
-export default ac_upi
+export default Ac_upi

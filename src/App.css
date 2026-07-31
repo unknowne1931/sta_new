@@ -5652,7 +5652,20 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid white;
   border-radius: 10px;
   box-shadow: 4px 4px 10px rgb(27, 27, 27);
-  background:linear-gradient(130deg, rgb(150, 2, 125)60%, rgb(68, 4, 124)80%);
+  background:linear-gradient(130deg, rgb(150, 2, 125)60%, rgba(157, 42, 7, 0.642)80%);
+}
+
+
+.ac_upi_main_02{
+  width: 90%;
+  height: auto;
+  margin: auto;
+  margin-top: 60px;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgb(27, 27, 27);
+  background:linear-gradient(130deg, rgb(3, 118, 16)60%, rgb(2, 137, 8)30%);
 }
 
 .ac_bnk_body_01_h1_01{
@@ -5675,7 +5688,7 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: start;
   font-size: 2.9rem;
   margin-top: 20px;
-  color: rgb(35, 34, 34);
+  color: rgb(232, 229, 229);
   font-weight: 600;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -5692,7 +5705,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .ac_upi_main_01_sub_cnt_01 p{
   font-weight: 600;
-  color: white;
+  color: rgb(249, 249, 249);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
