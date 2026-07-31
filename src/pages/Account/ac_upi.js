@@ -1232,7 +1232,7 @@
 // //           }
 
 // //           .btn-primary {
-// //             padding: 0.7rem;
+// //             padding: 0.7rem; 
 // //             font-size: 0.95rem;
 // //           }
 // //         }
@@ -1319,10 +1319,39 @@
 import React from 'react'
 
 const ac_upi = () => {
+
+
   return (
     <div className='ac_bnk_body_01'>
 
-      <h1>Account</h1>
+      <h1 className='ac_bnk_body_01_h1_01'>Payment Account</h1>
+
+      <br/>
+
+      <div className='ac_upi_main_01'>
+        <h1 className='ac_upi_main_01_h1_01' >State Bank of India</h1>
+        <p className='ac_upi_main_01_p_1' >1931 XXXX XXXX 1948</p>
+
+        <div className='ac_upi_main_01_sub_cnt_01'>
+          <p style={{
+          }} >SBI0001931</p>
+          <p style={{
+            fontSize : "4rem"
+          }} >staWro</p>
+          
+        </div>
+
+        <p className='powerd_by_avi' >Powered by <strong>AVI</strong></p>
+
+      </div>
+
+      <br/>
+
+      <div className='ac_upi_main_02'>
+
+      </div>
+
+
     </div>
   )
 }
