@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAdd, faArrowDownAZ, faBaby, faBank, faBell, faCartShopping, faCoins, faGear, faHome, faI, faICursor, faIgloo, faImage, faInfo, faLocationArrow, faLocationDot, faPerson, faPersonCirclePlus, faPersonPraying, faPersonRays, faPlay, faPlus, faSchool, faSign, faSignIn, faSignOut, faUserPlus, faUsers, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faAdd, faArrowDownAZ, faBaby, faBank, faBell, faCartShopping, faCoins, faGear, faHome, faI, faICursor, faIgloo, faImage, faInfo, faLocationArrow, faLocationDot, faPerson, faPersonCirclePlus, faPersonPraying, faPersonRays, faPlay, faPlus, faSchool, faSign, faSignIn, faSignOut, faTicket, faUser, faUserPlus, faUsers, faVideo } from '@fortawesome/free-solid-svg-icons';
 import feather from 'feather-icons';
 import "./navi.css"
 import img1 from "./image/logo.png"
@@ -120,16 +120,16 @@ const Navi = ({data}) => {
 
 
                         <div className="orbital-menu__item">
-                            <div className="orbital-menu__link" onClick={()=>{window.location.href='/cupon'}}>
+                            <div className="orbital-menu__link" onClick={()=>{window.location.href='/about'}}>
                                 <div className="orbital-menu__link-icon">
                                     <div >
-                                        <FontAwesomeIcon icon={faCoins} />
+                                        <FontAwesomeIcon icon={faInfo} />
                                     </div>
                                     <div className='text_bottom_main'>
-                                        <span>Coins</span>
+                                        <span>About</span>
                                     </div>
                                 </div>
-                                <span className="orbital-menu__link-text">Coins</span>
+                                <span className="orbital-menu__link-text">About</span>
                             </div>
                         </div>
 
@@ -138,7 +138,7 @@ const Navi = ({data}) => {
                         {token ?
 
                             <div className="orbital-menu__item">
-                            <div className="orbital-menu__link" onClick={()=>{window.location.href='/account'}}>
+                            <div className="orbital-menu__link" onClick={()=>{window.location.href='/account/upi'}}>
                                 
 
                                 <div className="orbital-menu__link-icon">
@@ -146,7 +146,7 @@ const Navi = ({data}) => {
                                         <FontAwesomeIcon icon={faBank} />
                                     </div>
                                     <div className='text_bottom_main'>
-                                        <span>Bank</span>
+                                        <span>wallet</span>
                                     </div>
                                 </div>
 
@@ -157,19 +157,19 @@ const Navi = ({data}) => {
                             :
 
                             <div className="orbital-menu__item">
-                                <div className="orbital-menu__link" onClick={()=>{window.location.href='/about'}}>
+                                <div className="orbital-menu__link" onClick={()=>{window.location.href='/tickets'}}>
                                    
 
                                     <div className="orbital-menu__link-icon">
                                         <div >
-                                            <FontAwesomeIcon icon={faInfo} />
+                                            <FontAwesomeIcon icon={faTicket} />
                                         </div>
                                         <div className='text_bottom_main'>
-                                            <span>About</span>
+                                            <span>Tickets</span>
                                         </div>
                                     </div>
 
-                                    <span className="orbital-menu__link-text">About</span>
+                                    <span className="orbital-menu__link-text">Tickets</span>
                                 </div>
                             </div>
                         }
@@ -195,19 +195,19 @@ const Navi = ({data}) => {
                         
 
                         <div className="orbital-menu__item">
-                            <div className="orbital-menu__link" onClick={()=>{window.location.href ="/settings"}}>
+                            <div className="orbital-menu__link" onClick={()=>{window.location.href ="/data"}}>
                   
 
                                 <div className="orbital-menu__link-icon">
                                     <div >
-                                        <FontAwesomeIcon icon={faGear} />
+                                        <FontAwesomeIcon icon={faUser} />
                                     </div>
                                     <div className='text_bottom_main'>
-                                        <span>Settings</span>
+                                        <span>Profile</span>
                                     </div>
                                 </div>
 
-                                <span className="orbital-menu__link-text">Settings</span>
+                                <span className="orbital-menu__link-text">Profile</span>
                             </div>
                         </div>
 
