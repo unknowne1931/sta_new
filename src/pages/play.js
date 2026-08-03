@@ -73,7 +73,7 @@ const Play = () => {
   }, []);
 
   const post_tm_out = async (data) => {
-    api.post("http://192.168.31.133/verify/by/timed/out/data/v/fy", { difi: data.tough, cat: data.cat, q_id: data.qno_id })
+    api.post("http://192.168.126.1/verify/by/timed/out/data/v/fy", { difi: data.tough, cat: data.cat, q_id: data.qno_id })
       .then(res => {
         if (res.data.Status === "OK") {
           console.log("Everything went Good")
@@ -103,7 +103,7 @@ const Play = () => {
 
 
   const start_check = () => {
-    fetch("http://192.168.31.133/start/or/no/check")
+    fetch("http://192.168.126.1/start/or/no/check")
       .then(res => res.json())
       .then(data => {
         if (data.status) {
@@ -120,7 +120,7 @@ const Play = () => {
 
 
   const new_sec = (msg) => {
-    api.post("http://192.168.31.133/get/id/to/update/seonds", {
+    api.post("http://192.168.126.1/get/id/to/update/seonds", {
       id: time_ot.qno_id, sec: time_ot.seconds, qst: time_ot.Qst, options: time_ot.options, img: time_ot.img, ans: time_ot.Ans, usa: time_ot.usa, vr: time_ot.vr, msg, ex_seconds: ex_sec, cat: time_ot.cat, tough: time_ot.tough
     })
       .then(res => {
@@ -136,7 +136,7 @@ const Play = () => {
   }
 
   const get_rank = () => {
-    api.get("http://192.168.31.133/get/levels/user")
+    api.get("http://192.168.126.1/get/levels/user")
       .then(res => {
         if (res.data) {
           console.log(res.data.data)
@@ -164,7 +164,7 @@ const Play = () => {
 
   const GetAllDAta = () => {
     try {
-      api.get("http://192.168.31.133/get/all/admin/new/languages/data/user")
+      api.get("http://192.168.126.1/get/all/admin/new/languages/data/user")
         .then(res => {
           if (res.data.Data) {
             setALLLDAta(res.data.Data)
@@ -190,7 +190,7 @@ const Play = () => {
 
   const Delete_Lang = () => {
     try {
-      api.delete(`http://192.168.31.133/get/language/datas/all/get/and/delete`)
+      api.delete(`http://192.168.126.1/get/language/datas/all/get/and/delete`)
         .then(res => {
           if (res.data.Status === "OK") {
             GetLanguages()
@@ -219,7 +219,7 @@ const Play = () => {
 
   const GetRupeeVal = () => {
     try {
-      fetch(`${"http://192.168.31.133"}/get/rupee/data/play`)
+      fetch(`${"http://192.168.126.1"}/get/rupee/data/play`)
         .then(res => res.json())
         .then(data => {
           if (data.data) {
@@ -244,7 +244,7 @@ const Play = () => {
   const PostLang = () => {
     try {
       setAlert(false)
-      api.post(`${"http://192.168.31.133"}/get/language/datas/all`, { lang: selLanguages, user })
+      api.post(`${"http://192.168.126.1"}/get/language/datas/all`, { lang: selLanguages, user })
         .then(res => {
           if (res.data.Status === "OK") {
             GetLanguages()
@@ -269,7 +269,7 @@ const Play = () => {
 
   const GetBalance = () => {
     try {
-      api.get(`${"http://192.168.31.133"}/get/acount/balence`)
+      api.get(`${"http://192.168.126.1"}/get/acount/balence`)
         .then(res => {
           if (res.data.data) {
             setBtn1(true)
@@ -304,7 +304,7 @@ const Play = () => {
       const valid_to_claim = (await getFromDB("new")) || "";
       const refer_ui = (await getFromDB("refer_ui")) || "";
 
-      const res = await api.post("http://192.168.31.133/get/balance/new/data", {
+      const res = await api.post("http://192.168.126.1/get/balance/new/data", {
         user,
         val_cm: valid_to_claim,
         refer_ui
@@ -338,7 +338,7 @@ const Play = () => {
   //   try {
   //     setAlert(false)
   //     e.preventDefault()
-  //     api.post(`${"http://192.168.31.133"}/start/playing/by/debit/amount/new/${Api}`, { user })
+  //     api.post(`${"http://192.168.126.1"}/start/playing/by/debit/amount/new/${Api}`, { user })
   //       .then(res => {
   //         if (res.data.Status === "OK") {
   //           localStorage.setItem("valid", "yes")
@@ -407,7 +407,7 @@ const Play = () => {
     try {
       setAlert(false)
       e.preventDefault()
-      api.post(`${"http://192.168.31.133"}/start/playing/by/debit/amount/new/all/xx/main`, { user })
+      api.post(`${"http://192.168.126.1"}/start/playing/by/debit/amount/new/all/xx/main`, { user })
         .then(res => {
           if (res.data.Status === "OK") {
             if (res.data.type !== "") {
@@ -476,7 +476,7 @@ const Play = () => {
   const start_mili = () => {
     setAlert(false)
     setVerify(true)
-    api.post("http://192.168.31.133/milionear/game/start/ten/qst", { rs: 10 })
+    api.post("http://192.168.126.1/milionear/game/start/ten/qst", { rs: 10 })
       .then(res => {
         if (res.data.Status === "Time") {
           setVerify(false)
@@ -504,7 +504,7 @@ const Play = () => {
   const GetLanguages = () => {
     try {
       setTimeout(() => {
-        api.get(`${"http://192.168.31.133"}/get/language/datas/all/get/${user}`)
+        api.get(`${"http://192.168.126.1"}/get/language/datas/all/get/${user}`)
           .then(res => {
 
             if (res.data.Users) {
@@ -575,7 +575,7 @@ const Play = () => {
         return;
       }
 
-      const response = await fetch("http://192.168.31.133/create-order", {
+      const response = await fetch("http://192.168.126.1/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user, amt }),

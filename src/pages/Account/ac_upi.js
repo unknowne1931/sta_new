@@ -1,400 +1,400 @@
-// import axios from 'axios';
-// import React, { useEffect, useState } from 'react'
-// import { useLocation } from 'react-router-dom';
-// import Popup from '../popup';
-// import api from '../api';
-// import Loading from '../../loading';
-// import { getFromDB, saveToDB } from '../../db';
-// import FingerprintJS from '@fingerprintjs/fingerprintjs';
+// // import axios from 'axios';
+// // import React, { useEffect, useState } from 'react'
+// // import { useLocation } from 'react-router-dom';
+// // import Popup from '../popup';
+// // import api from '../api';
+// // import Loading from '../../loading';
+// // import { getFromDB, saveToDB } from '../../db';
+// // import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
-// const Ac_upi = () => {
+// // const Ac_upi = () => {
 
-//     // const location = useLocation;
-//     // const queryParm = new URLSearchParams(location.search);
-//     // const code = queryParm.get('code');
+// //     // const location = useLocation;
+// //     // const queryParm = new URLSearchParams(location.search);
+// //     // const code = queryParm.get('code');
 
-//     const [show1, setShow1] = useState(true)
+// //     const [show1, setShow1] = useState(true)
 
-//     const user = localStorage.getItem("user")
-//     const [app, setApp] = useState('')
-//     const [h_name, setH_Name] = useState([]);
-//     const [bank, setBank] = useState('');
-//     const [acc_no, setAcc_no] = useState([]);
-//     const [ifsc, setIFSC] = useState('');
+// //     const user = localStorage.getItem("user")
+// //     const [app, setApp] = useState('')
+// //     const [h_name, setH_Name] = useState([]);
+// //     const [bank, setBank] = useState('');
+// //     const [acc_no, setAcc_no] = useState([]);
+// //     const [ifsc, setIFSC] = useState('');
 
-//     const [isdata, setIsData] = useState([]);
-//     const [isBank, setIsBank] = useState(false);
-//     const [update, setUpdate] = useState(false);
-//     const [data, setData] = useState([])
-//     const [alert, setAlert] = useState(false);
-//     const [load, setLoad] = useState(true);
-//     const [reward_data, setReward_Data] = useState([])
-
-
-//     const [info, setInfo] = useState([])
-
-//     const di = getFromDB("di")
+// //     const [isdata, setIsData] = useState([]);
+// //     const [isBank, setIsBank] = useState(false);
+// //     const [update, setUpdate] = useState(false);
+// //     const [data, setData] = useState([])
+// //     const [alert, setAlert] = useState(false);
+// //     const [load, setLoad] = useState(true);
+// //     const [reward_data, setReward_Data] = useState([])
 
 
+// //     const [info, setInfo] = useState([])
 
-//     useEffect(() => {
-//         async function fetchData() {
-//           const cached = await getFromDB('DB_Bank'); // ✅ await is important
-      
-//           if (cached) {
-//             setIsData(true)
-//             setInfo(cached)
-//             if(cached.type === "UPI"){
-//                 setIsBank(false)
-//                 setLoad(false)
-//             }else{
-//                 setIsBank(true)
-//                 setLoad(false)
-//             }
-//           } else {
-//             setIsData(false)
-//             console.log("🌐 Fetch from server...");
-//             GetData()
-//           }
-//         }
-      
-//         fetchData();
-//         get_reward();
-//       }, []);
-
-
-//     const get_reward = async () => {
-//         const fp = await FingerprintJS.load();
-//         const result = await fp.get();
-//         const id = result.visitorId
-//         const u_id = localStorage.getItem("user")
-//         api.get(`http://192.168.31.133/get/singel/reward/data/by/${id}/${u_id}`)
-//         .then(res=>{
-//             if(res.data.data){
-//                 console.log(res.data.data)
-//                 setReward_Data(res.data.data)
-//             }else{
-//                 console.log("No Data Found")
-//             }
-//         }).catch(error =>{
-//             console.log(error)
-//         })
-//     }
-
-
-//     const GetData = () =>{
-//         try{
-//             setTimeout(()=>{
-//                 api.get(`${"http://192.168.31.133"}/get/bank/account/data`)
-//                 .then(res =>{
-//                     if(res.data.data){
-//                         setIsData(true)
-//                         setInfo(res.data.data)
-//                         saveToDB("DB_Bank" , res.data.data)
-//                         const dat = res.data.data
-//                         if(dat.type === "UPI"){
-//                             setIsBank(false)
-//                             setLoad(false)
-//                         }else{
-//                             setIsBank(true)
-//                             setLoad(false)
-//                         }
-//                     }else if(res.data.Status === "No"){
-//                         setIsData(false);
-//                         setLoad(false)
-//                     }else if(res.data.Logout === "OUT"){
-//                         setLoad(false)
-//                         localStorage.removeItem("ssid");
-//                         window.location.reload()
-//                     }else{
-//                         setLoad(false)
-//                         console.warn("Unexpected response structure:", res.data);
-//                     }
-//                 })
-//                 .catch(error=>{
-//                     setLoad(false)
-//                     if (error.response) {
-//                         console.error("API Error:", error.response.status, error.response.data);
-//                     } else if (error.request) {
-//                         console.error("No response from server. Please check your connection.");
-//                     } else {
-//                         console.error("Error occurred:", error.message);
-//                     }
-//                 })
-//             },1000)
-            
-//         }catch(error){
-//             setLoad(false)
-//             console.log(error)
-//         }
-        
-
-//     }
-
-//     const UPIpost = (e) =>{
-//         e.preventDefault()
-//         setData('Adding a bank account via UPI is not allowed. We are working on it, so please add only a bank account manually.')
-//         setAlert(true)
-//         // e.preventDefault()
-//         // try{
-
-//         //     if(app !== ''){
-//         //         api.post(`${"http://192.168.31.133"}/bank/upi/data/collect`,{user, ac_h_nme : h_name, bank_nme : "No", Acc_no : acc_no, ifsc : "No", app , type : "UPI"})
-//         //         .then(res=>{
-//         //             if(res.data.Status === "OK"){
-//         //                 setData("Account Added")
-//         //                 setAlert(true)
-//         //                 GetData()
-//         //             }else{
-//         //                 setData("Something Went Wrong")
-//         //                 setAlert(true)
-//         //             }
-//         //         }).catch(error=>{
-//         //             if (error.response) {
-//         //                 console.error("API Error:", error.response.status, error.response.data);
-//         //             } else if (error.request) {
-//         //                 console.error("No response from server. Please check your connection.");
-//         //             } else {
-//         //                 console.error("Error occurred:", error.message);
-//         //             }
-//         //         })
-//         //     }else{
-//         //         setData("All field are manditory")
-//         //         setAlert(true)
-//         //     }
-
-//         // }catch(error){
-//         //     console.log(error)
-//         // }
-        
-        
-//     }
-
-//     const BankUp = (e) =>{
-//         setAlert(false)
-//         e.preventDefault()
-//         try{
-//             api.post(`${"http://192.168.31.133"}/bank/upi/data/collect`,{user, ac_h_nme : h_name, bank_nme : bank, Acc_no : acc_no, ifsc, app : "No" , type : "BANK"})
-//             .then(res=>{
-//                 if(res.data.Status === "OK"){
-//                     setData("Account Added")
-//                     setAlert(true)
-//                     GetData()
-//                 }else{
-//                     setData("Something Went Wrong")
-//                     setAlert(true)
-//                 }
-//             }).catch(error=>{
-//                 if (error.response) {
-//                     console.error("API Error:", error.response.status, error.response.data);
-//                 } else if (error.request) {
-//                     console.error("No response from server. Please check your connection.");
-//                 } else {
-//                     console.error("Error occurred:", error.message);
-//                 }
-//             })
-//         }catch(error){
-//             console.log(error)
-//         }
-        
-//     }
-
-
-//   return (
-//     <div className='bank_UPI_main_cnt-01'>
-//         {load ? <Loading /> : 
-//       <center>
-        
-//         <h1 className='account-subb-part-01'>{info.type === "BANK" ? "User Bank Account" : "User UPI Account"}</h1>
-
-//         {isdata === true &&
-//         <>
-//         {/* <h1>{info.type}</h1> */}
-//         <div className={update ? "ac_upi-main-cnt-03" : 'ac_upi-main-cnt-02'}>
-//             {isBank ?
-//             <div className={update ? "ac_upi-main-cnt-02-sub-02" : "ac_upi-main-cnt-02-sub-01"}>
-//                 {update ? 
-//                 <div>
-//                     <form>
-//                         <input type='text' placeholder='Account Holder Name' /><br/>
-//                         <input type='text' placeholder='Account Number' /><br/>
-//                         <input type='text' placeholder='Bank Name' /><br/>
-//                         <input type='text' placeholder='IFSC Code' /><br/>
-//                         <button>update</button>
-
-//                     </form>
-
-//                 </div>
-//                 :
-//                 <div>
-//                     {info.type === "BANK" &&
-//                     <div className='upi_data_cnt'>
-//                         <h2>Bank Account Added :</h2>
-//                         <strong>Account Holder Name : <span>{info.ac_h_nme}</span></strong><br/>
-//                         <strong>Account Number : <span>{info.Acc_no}</span></strong><br/>
-//                         <strong>Bank Name : <span>{info.bank_nme}</span></strong><br/>
-//                         <strong>IFSC Code : <span>{info.ifsc}</span></strong><br/>
-//                     </div>
-//                     }
-//                 </div>
-//                 }
-                
-//             </div>
-//             :
-//             <div className={update ? "ac_upi-main-cnt-02-sub-02" : "ac_upi-main-cnt-02-sub-01"}>
-//                 {update ?
-//                 <div>
-//                     <form>
-//                         <input type='text' placeholder='Account Holder Name' /><br/>
-//                         <input type='text' placeholder='UPI ID' /><br/>
-//                         <select onChange={e=>{setApp(e.target.value)}} >
-//                             <option value="">Select Payments</option>
-//                             <option value="phone pay">Phone Pay</option>
-//                             <option value="google pay">Google Pay</option>
-//                             <option value="paytm">Paytm</option>
-//                         </select><br/>
-//                         <button>update</button>
-
-//                     </form>
-//                 </div>
-//                 :
-//                 <div>
-//                     {info.type === "UPI" &&
-//                     <div className='upi_data_cnt'>
-//                         <h2>UPI Account Added :</h2>
-//                         <strong>Account Holder Name : <span>{info.ac_h_nme}</span></strong><br/>
-//                         <strong>UPI ID : <span>{info.Acc_no}</span></strong><br/>
-//                         <strong>App : <span>{info.app}</span></strong><br/>
-//                     </div>}
-                    
-//                 </div>
-//                 }
-                
-//             </div>
-//             }
-//         </div>
-//         </>
-        
-        
-//         }
-        
-//         {isdata === false && 
-//         <div>
-// {/* 
-//             <div className='account-subb-part-strong-01'>
-//                 <strong>
-//                     Add any one Bank Account / UPI    
-//                 </strong>
-//             </div> */}
-
-
-//             <div className='bank_nme_cnt-01'>
-//                 <span onClick={()=>{setShow1(true)}}>Bank</span>
-//                 <span onClick={()=>{setShow1(false)}} >UPI</span>
-//             </div>
-
-//             {show1 ?
-
-//                 <div className='container_banks_in_put_01'>
-//                     <h2>Bank</h2>
-//                     <form onSubmit={BankUp}>
-//                     <input className='inn_01' type='text' placeholder='Account Holder Name' onChange={e=>{setH_Name(e.target.value)}} required /><br/>
-//                     <input className='inn_01' type='text' placeholder='Bank Name' onChange={e=>{setBank(e.target.value)}} required /><br/>
-//                     <input className='inn_01' type='text' placeholder='Account No' onChange={e=>{setAcc_no(e.target.value)}} required /><br/>
-//                     <input className='inn_01' type='text' placeholder='IFSC Code' onChange={e=>{setIFSC(e.target.value)}} required /><br/>
-//                     <button className='sub_022' type='submit'>Add</button>
-//                 </form>
-//                 </div>
-
-//                 :
-
-//                 <div className='container_banks_in_put_01'>
-//                     <h2>UPI</h2>
-//                     <form onSubmit={UPIpost}>
-//                     <input className='inn_01' type='text' placeholder='Account Holder Name' onChange={e=>{setH_Name(e.target.value)}} required /><br/>
-//                     <input className='inn_01' type='text' placeholder='UPI ID/ Mobile No' onChange={e=>{setAcc_no(e.target.value)}} required /><br/>
-//                     <select required className='inn_02' onChange={e=>{setApp(e.target.value)}} >
-//                         <option value="">Select Payments</option>
-//                         <option value="phone pay">Phone Pay</option>
-//                         <option value="google pay">Google Pay</option>
-//                         <option value="paytm">Paytm</option>
-//                     </select><br/>
-//                     <button className='sub_022' type='submit'>Add</button>
-//                 </form>
-//                 </div>
-
-//             }
+// //     const di = getFromDB("di")
 
 
 
+// //     useEffect(() => {
+// //         async function fetchData() {
+// //           const cached = await getFromDB('DB_Bank'); // ✅ await is important
 
-//             {/* <div className='ac_upi-main-cnt-01'>
-//                 <form onSubmit={BankUp}>
-//                     <input type='text' placeholder='Account Holder Name' onChange={e=>{setH_Name(e.target.value)}} required /><br/>
-//                     <input type='text' placeholder='Bank Name' onChange={e=>{setBank(e.target.value)}} required /><br/>
-//                     <input type='text' placeholder='Account No' onChange={e=>{setAcc_no(e.target.value)}} required /><br/>
-//                     <input type='text' placeholder='IFSC Code' onChange={e=>{setIFSC(e.target.value)}} required /><br/>
-//                     <button type='submit'>post</button>
-//                 </form>
-//             </div>
-//             <br/>
-//             <br/>
+// //           if (cached) {
+// //             setIsData(true)
+// //             setInfo(cached)
+// //             if(cached.type === "UPI"){
+// //                 setIsBank(false)
+// //                 setLoad(false)
+// //             }else{
+// //                 setIsBank(true)
+// //                 setLoad(false)
+// //             }
+// //           } else {
+// //             setIsData(false)
+// //             console.log("🌐 Fetch from server...");
+// //             GetData()
+// //           }
+// //         }
 
-
-
-//             <div className='ac_upi-main-cnt-01'>
-//                 <form onSubmit={UPIpost}>
-//                     <input type='text' placeholder='Account Holder Name' onChange={e=>{setH_Name(e.target.value)}} required /><br/>
-//                     <input type='text' placeholder='UPI ID/ Mobile No' onChange={e=>{setAcc_no(e.target.value)}} required /><br/>
-//                     <select onChange={e=>{setApp(e.target.value)}} >
-//                         <option value="">Select Payments</option>
-//                         <option value="phone pay">Phone Pay</option>
-//                         <option value="google pay">Google Pay</option>
-//                         <option value="paytm">Paytm</option>
-//                     </select><br/>
-//                     <button type='submit'>post</button>
-//                 </form>
-//             </div> */}
-
-//         </div>}
-
-//         <br/>
-
-//         <br/>
+// //         fetchData();
+// //         get_reward();
+// //       }, []);
 
 
-//         <h2 className='reward_h2_clain_m' >Reward Claim Requested</h2>
-//         <div className='rward_cnt_01'>
-
-            
-
-//                 {reward_data._id &&
-//                     <div className='rward_cnt_01_sub_cop'>
-//                         <h2>₹ {reward_data.rupee}</h2>
-//                         <div className='rward_cnt_01_sub_cop_sub'>
-//                             Waiting for Funds.
-//                         </div>
-//                     </div>
-//                 }
-            
-
-//         </div>
-
-        
-
+// //     const get_reward = async () => {
+// //         const fp = await FingerprintJS.load();
+// //         const result = await fp.get();
+// //         const id = result.visitorId
+// //         const u_id = localStorage.getItem("user")
+// //         api.get(`http://192.168.126.1/get/singel/reward/data/by/${id}/${u_id}`)
+// //         .then(res=>{
+// //             if(res.data.data){
+// //                 console.log(res.data.data)
+// //                 setReward_Data(res.data.data)
+// //             }else{
+// //                 console.log("No Data Found")
+// //             }
+// //         }).catch(error =>{
+// //             console.log(error)
+// //         })
+// //     }
 
 
-//       </center>}
-//       <div style={{height:"50px"}}>
-//       </div>
-//       {alert &&
-//       <Popup data={data} val={alert} />
-//       }
-//       </div>
-//   )
-// }
+// //     const GetData = () =>{
+// //         try{
+// //             setTimeout(()=>{
+// //                 api.get(`${"http://192.168.126.1"}/get/bank/account/data`)
+// //                 .then(res =>{
+// //                     if(res.data.data){
+// //                         setIsData(true)
+// //                         setInfo(res.data.data)
+// //                         saveToDB("DB_Bank" , res.data.data)
+// //                         const dat = res.data.data
+// //                         if(dat.type === "UPI"){
+// //                             setIsBank(false)
+// //                             setLoad(false)
+// //                         }else{
+// //                             setIsBank(true)
+// //                             setLoad(false)
+// //                         }
+// //                     }else if(res.data.Status === "No"){
+// //                         setIsData(false);
+// //                         setLoad(false)
+// //                     }else if(res.data.Logout === "OUT"){
+// //                         setLoad(false)
+// //                         localStorage.removeItem("ssid");
+// //                         window.location.reload()
+// //                     }else{
+// //                         setLoad(false)
+// //                         console.warn("Unexpected response structure:", res.data);
+// //                     }
+// //                 })
+// //                 .catch(error=>{
+// //                     setLoad(false)
+// //                     if (error.response) {
+// //                         console.error("API Error:", error.response.status, error.response.data);
+// //                     } else if (error.request) {
+// //                         console.error("No response from server. Please check your connection.");
+// //                     } else {
+// //                         console.error("Error occurred:", error.message);
+// //                     }
+// //                 })
+// //             },1000)
 
-// export default Ac_upi
+// //         }catch(error){
+// //             setLoad(false)
+// //             console.log(error)
+// //         }
+
+
+// //     }
+
+// //     const UPIpost = (e) =>{
+// //         e.preventDefault()
+// //         setData('Adding a bank account via UPI is not allowed. We are working on it, so please add only a bank account manually.')
+// //         setAlert(true)
+// //         // e.preventDefault()
+// //         // try{
+
+// //         //     if(app !== ''){
+// //         //         api.post(`${"http://192.168.126.1"}/bank/upi/data/collect`,{user, ac_h_nme : h_name, bank_nme : "No", Acc_no : acc_no, ifsc : "No", app , type : "UPI"})
+// //         //         .then(res=>{
+// //         //             if(res.data.Status === "OK"){
+// //         //                 setData("Account Added")
+// //         //                 setAlert(true)
+// //         //                 GetData()
+// //         //             }else{
+// //         //                 setData("Something Went Wrong")
+// //         //                 setAlert(true)
+// //         //             }
+// //         //         }).catch(error=>{
+// //         //             if (error.response) {
+// //         //                 console.error("API Error:", error.response.status, error.response.data);
+// //         //             } else if (error.request) {
+// //         //                 console.error("No response from server. Please check your connection.");
+// //         //             } else {
+// //         //                 console.error("Error occurred:", error.message);
+// //         //             }
+// //         //         })
+// //         //     }else{
+// //         //         setData("All field are manditory")
+// //         //         setAlert(true)
+// //         //     }
+
+// //         // }catch(error){
+// //         //     console.log(error)
+// //         // }
+
+
+// //     }
+
+// //     const BankUp = (e) =>{
+// //         setAlert(false)
+// //         e.preventDefault()
+// //         try{
+// //             api.post(`${"http://192.168.126.1"}/bank/upi/data/collect`,{user, ac_h_nme : h_name, bank_nme : bank, Acc_no : acc_no, ifsc, app : "No" , type : "BANK"})
+// //             .then(res=>{
+// //                 if(res.data.Status === "OK"){
+// //                     setData("Account Added")
+// //                     setAlert(true)
+// //                     GetData()
+// //                 }else{
+// //                     setData("Something Went Wrong")
+// //                     setAlert(true)
+// //                 }
+// //             }).catch(error=>{
+// //                 if (error.response) {
+// //                     console.error("API Error:", error.response.status, error.response.data);
+// //                 } else if (error.request) {
+// //                     console.error("No response from server. Please check your connection.");
+// //                 } else {
+// //                     console.error("Error occurred:", error.message);
+// //                 }
+// //             })
+// //         }catch(error){
+// //             console.log(error)
+// //         }
+
+// //     }
+
+
+// //   return (
+// //     <div className='bank_UPI_main_cnt-01'>
+// //         {load ? <Loading /> : 
+// //       <center>
+
+// //         <h1 className='account-subb-part-01'>{info.type === "BANK" ? "User Bank Account" : "User UPI Account"}</h1>
+
+// //         {isdata === true &&
+// //         <>
+// //         {/* <h1>{info.type}</h1> */}
+// //         <div className={update ? "ac_upi-main-cnt-03" : 'ac_upi-main-cnt-02'}>
+// //             {isBank ?
+// //             <div className={update ? "ac_upi-main-cnt-02-sub-02" : "ac_upi-main-cnt-02-sub-01"}>
+// //                 {update ? 
+// //                 <div>
+// //                     <form>
+// //                         <input type='text' placeholder='Account Holder Name' /><br/>
+// //                         <input type='text' placeholder='Account Number' /><br/>
+// //                         <input type='text' placeholder='Bank Name' /><br/>
+// //                         <input type='text' placeholder='IFSC Code' /><br/>
+// //                         <button>update</button>
+
+// //                     </form>
+
+// //                 </div>
+// //                 :
+// //                 <div>
+// //                     {info.type === "BANK" &&
+// //                     <div className='upi_data_cnt'>
+// //                         <h2>Bank Account Added :</h2>
+// //                         <strong>Account Holder Name : <span>{info.ac_h_nme}</span></strong><br/>
+// //                         <strong>Account Number : <span>{info.Acc_no}</span></strong><br/>
+// //                         <strong>Bank Name : <span>{info.bank_nme}</span></strong><br/>
+// //                         <strong>IFSC Code : <span>{info.ifsc}</span></strong><br/>
+// //                     </div>
+// //                     }
+// //                 </div>
+// //                 }
+
+// //             </div>
+// //             :
+// //             <div className={update ? "ac_upi-main-cnt-02-sub-02" : "ac_upi-main-cnt-02-sub-01"}>
+// //                 {update ?
+// //                 <div>
+// //                     <form>
+// //                         <input type='text' placeholder='Account Holder Name' /><br/>
+// //                         <input type='text' placeholder='UPI ID' /><br/>
+// //                         <select onChange={e=>{setApp(e.target.value)}} >
+// //                             <option value="">Select Payments</option>
+// //                             <option value="phone pay">Phone Pay</option>
+// //                             <option value="google pay">Google Pay</option>
+// //                             <option value="paytm">Paytm</option>
+// //                         </select><br/>
+// //                         <button>update</button>
+
+// //                     </form>
+// //                 </div>
+// //                 :
+// //                 <div>
+// //                     {info.type === "UPI" &&
+// //                     <div className='upi_data_cnt'>
+// //                         <h2>UPI Account Added :</h2>
+// //                         <strong>Account Holder Name : <span>{info.ac_h_nme}</span></strong><br/>
+// //                         <strong>UPI ID : <span>{info.Acc_no}</span></strong><br/>
+// //                         <strong>App : <span>{info.app}</span></strong><br/>
+// //                     </div>}
+
+// //                 </div>
+// //                 }
+
+// //             </div>
+// //             }
+// //         </div>
+// //         </>
+
+
+// //         }
+
+// //         {isdata === false && 
+// //         <div>
+// // {/* 
+// //             <div className='account-subb-part-strong-01'>
+// //                 <strong>
+// //                     Add any one Bank Account / UPI    
+// //                 </strong>
+// //             </div> */}
+
+
+// //             <div className='bank_nme_cnt-01'>
+// //                 <span onClick={()=>{setShow1(true)}}>Bank</span>
+// //                 <span onClick={()=>{setShow1(false)}} >UPI</span>
+// //             </div>
+
+// //             {show1 ?
+
+// //                 <div className='container_banks_in_put_01'>
+// //                     <h2>Bank</h2>
+// //                     <form onSubmit={BankUp}>
+// //                     <input className='inn_01' type='text' placeholder='Account Holder Name' onChange={e=>{setH_Name(e.target.value)}} required /><br/>
+// //                     <input className='inn_01' type='text' placeholder='Bank Name' onChange={e=>{setBank(e.target.value)}} required /><br/>
+// //                     <input className='inn_01' type='text' placeholder='Account No' onChange={e=>{setAcc_no(e.target.value)}} required /><br/>
+// //                     <input className='inn_01' type='text' placeholder='IFSC Code' onChange={e=>{setIFSC(e.target.value)}} required /><br/>
+// //                     <button className='sub_022' type='submit'>Add</button>
+// //                 </form>
+// //                 </div>
+
+// //                 :
+
+// //                 <div className='container_banks_in_put_01'>
+// //                     <h2>UPI</h2>
+// //                     <form onSubmit={UPIpost}>
+// //                     <input className='inn_01' type='text' placeholder='Account Holder Name' onChange={e=>{setH_Name(e.target.value)}} required /><br/>
+// //                     <input className='inn_01' type='text' placeholder='UPI ID/ Mobile No' onChange={e=>{setAcc_no(e.target.value)}} required /><br/>
+// //                     <select required className='inn_02' onChange={e=>{setApp(e.target.value)}} >
+// //                         <option value="">Select Payments</option>
+// //                         <option value="phone pay">Phone Pay</option>
+// //                         <option value="google pay">Google Pay</option>
+// //                         <option value="paytm">Paytm</option>
+// //                     </select><br/>
+// //                     <button className='sub_022' type='submit'>Add</button>
+// //                 </form>
+// //                 </div>
+
+// //             }
+
+
+
+
+// //             {/* <div className='ac_upi-main-cnt-01'>
+// //                 <form onSubmit={BankUp}>
+// //                     <input type='text' placeholder='Account Holder Name' onChange={e=>{setH_Name(e.target.value)}} required /><br/>
+// //                     <input type='text' placeholder='Bank Name' onChange={e=>{setBank(e.target.value)}} required /><br/>
+// //                     <input type='text' placeholder='Account No' onChange={e=>{setAcc_no(e.target.value)}} required /><br/>
+// //                     <input type='text' placeholder='IFSC Code' onChange={e=>{setIFSC(e.target.value)}} required /><br/>
+// //                     <button type='submit'>post</button>
+// //                 </form>
+// //             </div>
+// //             <br/>
+// //             <br/>
+
+
+
+// //             <div className='ac_upi-main-cnt-01'>
+// //                 <form onSubmit={UPIpost}>
+// //                     <input type='text' placeholder='Account Holder Name' onChange={e=>{setH_Name(e.target.value)}} required /><br/>
+// //                     <input type='text' placeholder='UPI ID/ Mobile No' onChange={e=>{setAcc_no(e.target.value)}} required /><br/>
+// //                     <select onChange={e=>{setApp(e.target.value)}} >
+// //                         <option value="">Select Payments</option>
+// //                         <option value="phone pay">Phone Pay</option>
+// //                         <option value="google pay">Google Pay</option>
+// //                         <option value="paytm">Paytm</option>
+// //                     </select><br/>
+// //                     <button type='submit'>post</button>
+// //                 </form>
+// //             </div> */}
+
+// //         </div>}
+
+// //         <br/>
+
+// //         <br/>
+
+
+// //         <h2 className='reward_h2_clain_m' >Reward Claim Requested</h2>
+// //         <div className='rward_cnt_01'>
+
+
+
+// //                 {reward_data._id &&
+// //                     <div className='rward_cnt_01_sub_cop'>
+// //                         <h2>₹ {reward_data.rupee}</h2>
+// //                         <div className='rward_cnt_01_sub_cop_sub'>
+// //                             Waiting for Funds.
+// //                         </div>
+// //                     </div>
+// //                 }
+
+
+// //         </div>
+
+
+
+
+
+// //       </center>}
+// //       <div style={{height:"50px"}}>
+// //       </div>
+// //       {alert &&
+// //       <Popup data={data} val={alert} />
+// //       }
+// //       </div>
+// //   )
+// // }
+
+// // export default Ac_upi
 
 
 
@@ -468,7 +468,7 @@
 // //     const id = result.visitorId;
 // //     const u_id = localStorage.getItem('user');
 // //     api
-// //       .get(`http://192.168.31.133/get/singel/reward/data/by/${id}/${u_id}`)
+// //       .get(`http://192.168.126.1/get/singel/reward/data/by/${id}/${u_id}`)
 // //       .then((res) => {
 // //         if (res.data.data) {
 // //           console.log(res.data.data);
@@ -486,7 +486,7 @@
 // //     try {
 // //       setTimeout(() => {
 // //         api
-// //           .get(`${'http://192.168.31.133'}/get/bank/account/data`)
+// //           .get(`${'http://192.168.126.1'}/get/bank/account/data`)
 // //           .then((res) => {
 // //             if (res.data.data) {
 // //               setIsData(true);
@@ -540,7 +540,7 @@
 // //     e.preventDefault();
 // //     try {
 // //       api
-// //         .post(`${'http://192.168.31.133'}/bank/upi/data/collect`, {
+// //         .post(`${'http://192.168.126.1'}/bank/upi/data/collect`, {
 // //           user,
 // //           ac_h_nme: h_name,
 // //           bank_nme: bank,
@@ -1316,56 +1316,795 @@
 
 
 
-import React, { useEffect } from 'react'
-import api from '../api'
+// // import React, { useEffect, useState } from 'react'
+// // import api from '../api'
+
+// // const Ac_upi = () => {
+
+// //   const [select_payment_typ, setSelect_payment_typ] = useState('Bank')
+// //   const [form_data, setForm_data] = useState({
+// //     name: "",
+// //     bank: ""
+// //   });
+
+// //   const handleChange = (e) => {
+// //     const { name, value } = e.target;
+
+// //     setForm_data((prev) => ({
+// //       ...prev,
+// //       [name]: value
+// //     }));
+// //   };
+
+// //   function get_bank_info() {
+// //     api.get(`${process.env.REACT_APP_API_URL}/get/bank/account/data`)
+// //       .then(res => {
+// //         console.log(res.data)
+// //       })
+// //   }
+
+// //   function post_data(){
+// //     console.log(form_data)
+// //   }
+
+// //   useEffect(() => {
+// //     get_bank_info()
+// //   }, [])
+
+
+// //   return (
+
+// //     <>
+
+
+
+
+
+// //       <div className='ac_bnk_body_01'>
+
+// //         <h1 className='ac_bnk_body_01_h1_01'>Payment Account</h1>
+
+// //         <br />
+
+// //         {/* <div className='ac_upi_main_01'>
+// //         <h1 className='ac_upi_main_01_h1_01' >State Bank of India</h1>
+// //         <p className='ac_upi_main_01_p_1'>1931 XXXX XXXX 1948</p>
+
+// //         <div className='ac_upi_main_01_sub_cnt_01'>
+// //           <p style={{
+// //           }} >SBI0001931</p>
+// //           <p style={{
+// //             fontSize : "4rem"
+// //           }} >staWro</p>
+          
+// //         </div>
+
+// //         <p className='powerd_by_avi' >Powered by <strong>AVI</strong></p>
+
+// //       </div>
+
+// //       <br/>
+
+// //       <div className='ac_upi_main_02'>
+
+// //         <h1 className='ac_upi_main_01_h1_01' >App</h1>
+// //         <p className='ac_upi_main_01_p_1' >Phone Pay</p>
+
+// //         <div className='ac_upi_main_01_sub_cnt_01'>
+// //           <p style={{
+// //           }} >staWro@ybl</p>
+// //           <p style={{
+// //             fontSize : "4rem"
+// //           }} >staWro</p>
+          
+// //         </div>
+
+// //         <p className='powerd_by_avi' >Powered by <strong>AVI</strong></p>
+
+
+// //       </div> */}
+
+// //         <div className='ac_uppi_form_01'>
+
+// //           <div className='ac_uppi_form_01_sub_01'>
+// //             <h2>Your personal information is safe with us. We do not share it with anyone outside our company</h2>
+
+// //             <div className='ac_uppi_form_01_sub_01_sub_01' >Note</div>
+// //           </div>
+
+// //           <div className='ac_uppi_acnt_upi'>
+
+// //             {/* <div onClick={()=>{setSelect_payment_typ("Bank")}} style={select_payment_typ == "Bank" && {boxShadow: "0 2px 0 rgb(252, 252, 252)"}} >
+// //               Bank
+// //             </div> */}
+
+// //             <div
+// //               onClick={() => setSelect_payment_typ("Bank")}
+// //               style={select_payment_typ === "Bank" ? { boxShadow: "0 2px 0 rgb(252, 252, 252)" } : {}}
+// //             >
+// //               Bank
+// //             </div>
+
+// //             <div
+// //               onClick={() => setSelect_payment_typ("UPI")}
+// //               style={select_payment_typ === "UPI" ? { boxShadow: "0 2px 0 rgb(252, 252, 252)" } : {}}
+// //             >
+// //               UPI
+// //             </div>
+
+
+// //           </div>
+
+
+// //           {select_payment_typ == "Bank" &&
+
+// //             <form onSubmit={() => { }}>
+
+// //               <legend>Account Holder Name</legend>
+
+// //               <input
+// //                 type="text"
+// //                 id="Name"
+// //                 name="Name"
+// //                 placeholder="Account Holder Name. Ex: Avi"
+// //                 required
+// //                 autoComplete="off"
+// //                 value={form_data.name}
+// //                 onChange={handleChange}
+// //                 onInvalid={(e) =>
+// //                   e.target.setCustomValidity("Please enter the Account Holder Name. Ex: Avi")
+// //                 }
+// //                 onInput={(e) => e.target.setCustomValidity("")}
+// //               />
+
+
+// //               {/* <input type='text' name='Name' id='Name' placeholder='Account Holder Name. Ex : Avi' required autoComplete='off' /> */}
+
+// //               <legend>Account Number</legend>
+// //               <input type='text' placeholder='Account Number. Ex : 1234 2005 2002 1931'
+
+// //                 onInvalid={(e) =>
+// //                   e.target.setCustomValidity("Please enter the Account Number. Ex : 1234 2005 2002 1931")
+// //                 }
+// //                 onInput={(e) => e.target.setCustomValidity("")} required autoComplete='off'
+
+// //               />
+
+// //               <legend>IFSC</legend>
+// //               <input type='text' placeholder='IFSC. Ex : AVI1234' required autoComplete='off'
+
+// //                 onInvalid={(e) =>
+// //                   e.target.setCustomValidity("Please enter the IFSC. Ex : AVI1234")
+// //                 }
+// //                 onInput={(e) => e.target.setCustomValidity("")} required autoComplete='off'
+
+// //               />
+
+// //               <legend>Bank Name</legend>
+// //               <input type='text' placeholder='Bank Name. Ex : Avi Central Bank' required autoComplete='off'
+
+// //                 onInvalid={(e) =>
+// //                   e.target.setCustomValidity("Please enter the Bank Name. Ex : Avi Central Bank")
+// //                 }
+// //                 onInput={(e) => e.target.setCustomValidity("")} required autoComplete='off'
+
+// //               />
+
+// //               <br />
+
+// //               <button type='submit'>Post</button>
+
+// //             </form>}
+
+// //           {select_payment_typ == "UPI" &&
+
+// //             <form onSubmit={() => {post_data()}}>
+
+// //               <legend>UPI Account Holder Name</legend>
+
+// //               <input
+// //                 type="text"
+// //                 id="Name"
+// //                 name="Name"
+// //                 placeholder="UPI Account Holder Name. Ex: Avi"
+// //                 required
+// //                 autoComplete="off"
+
+// //                 value={form_data.name}
+// //                 onChange={handleChange}
+// //                 onInvalid={(e) =>
+// //                   e.target.setCustomValidity("Please enter the UPI Account Holder Name. Ex: Avi")
+// //                 }
+// //                 onInput={(e) => e.target.setCustomValidity("")}
+// //               />
+
+
+// //               {/* <input type='text' name='Name' id='Name' placeholder='Account Holder Name. Ex : Avi' required autoComplete='off' /> */}
+
+// //               <legend>UPI ID</legend>
+// //               <input type='text' placeholder='UPI ID. Ex : avi@ybl or 1234@ybl'
+
+// //                 onInvalid={(e) =>
+// //                   e.target.setCustomValidity("Please enter the UPI ID. Ex : avi@ybl or 1234@ybl")
+// //                 }
+// //                 onInput={(e) => e.target.setCustomValidity("")} required autoComplete='off'
+
+// //               />
+
+// //               {/* <legend>IFSC</legend>
+// //             <input type='text' placeholder='IFSC. Ex : AVI1234' required autoComplete='off'
+
+// //               onInvalid={(e) =>
+// //                 e.target.setCustomValidity("Please enter the IFSC. Ex : AVI1234")
+// //               }
+// //               onInput={(e) => e.target.setCustomValidity("")} required autoComplete='off'
+
+// //             /> */}
+
+// //               {/* <legend>Bank Name</legend> */}
+// //               {/* <input type='text' placeholder='Bank Name. Ex : Avi Central Bank' required autoComplete='off'
+
+// //               onInvalid={(e) =>
+// //                 e.target.setCustomValidity("Please enter the Bank Name. Ex : Avi Central Bank")
+// //               }
+// //               onInput={(e) => e.target.setCustomValidity("")} required autoComplete='off'
+
+// //             /> */}
+
+// //               <br />
+
+// //               <button type='submit'>Post</button>
+
+// //             </form>}
+
+
+// //         </div>
+
+// //         <div style={{ height: "50px" }}></div>
+
+
+// //       </div>
+
+
+
+
+
+// //     </>
+
+
+
+// //   )
+// // }
+
+// // export default Ac_upi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useEffect, useState } from 'react';
+import api from '../api';
 
 const Ac_upi = () => {
+  const [select_payment_typ, setSelect_payment_typ] = useState('Bank');
+  const [form_data, setForm_data] = useState({
+    name: "",
+    account_number: "",
+    ifsc: "",
+    bank_name: "",
+    upi_id: ""
+  });
 
-  function get_bank_info() {
-    api.get(`${process.env.REACT_APP_API_URL}/get/bank/account/data`)
-    .then(res =>{
-      console.log(res.data)
-    })
-  }
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  
+  // State for storing fetched data
+  const [bankData, setBankData] = useState(null);
+  const [upiData, setUpiData] = useState(null);
+  const [fetching, setFetching] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+  const [type_data, setType_data] = useState(false)
 
-  useEffect(()=>{
-    get_bank_info()
-  },[])
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm_data((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
+  // ============ FETCH DATA FUNCTION ============
+  const fetchUserData = async () => {
+    try {
+      setFetching(true);
+      setError(null);
+      
+      // Fetch all data for the user
+      const response = await api.get(`${process.env.REACT_APP_API_URL}/bank/upi/data/get/upi_data`);
+      
+      console.log("Full response:", response.data);
+      
+      // Check if data exists
+      if (response.data.Status === "OK") {
+        const allData = response.data.data || [];
+
+        if (allData){
+          setType_data(false)
+        }else{
+          setType_data(true)
+        }
+        
+        // Separate Bank and UPI data
+        const bankData = allData.find(item => item.type === 'Bank');
+        const upiData = allData.find(item => item.type === 'UPI');
+        
+        setBankData(bankData || null);
+        setUpiData(upiData || null);
+        
+        console.log("Bank Data:", bankData);
+        console.log("UPI Data:", upiData);
+      } else {
+        setType_data(true)
+        setBankData(null);
+        setUpiData(null);
+      }
+      
+    } catch (err) {
+      console.error("Error fetching data:", err);
+      setBankData(null);
+      setUpiData(null);
+    } finally {
+      setFetching(false);
+    }
+  };
+
+  // ============ POST DATA FUNCTION ============
+  const post_data = async (e) => {
+    e.preventDefault();
+    
+    setError(null);
+    setSuccess(null);
+    
+    // Validate based on payment type
+    if (select_payment_typ === "Bank") {
+      if (!form_data.name || !form_data.account_number || !form_data.ifsc || !form_data.bank_name) {
+        setError("Please fill all bank details");
+        return;
+      }
+    } else if (select_payment_typ === "UPI") {
+      if (!form_data.name || !form_data.upi_id) {
+        setError("Please fill all UPI details");
+        return;
+      }
+    }
+
+    // Prepare data for API
+    const payload = {
+      user: "USER_ID_HERE",
+      ac_h_nme: form_data.name,
+      type: select_payment_typ,
+      ...(select_payment_typ === "Bank" && {
+        bank_nme: form_data.bank_name,
+        Acc_no: form_data.account_number,
+        ifsc: form_data.ifsc,
+        app: null,
+        upi_id: null
+      }),
+      ...(select_payment_typ === "UPI" && {
+        app: null,
+        upi_id: form_data.upi_id,
+        bank_nme: null,
+        Acc_no: null,
+        ifsc: null
+      })
+    };
+
+    try {
+      setLoading(true);
+      
+      const response = await api.post(
+        `${process.env.REACT_APP_API_URL}/bank/upi/data/collect`, 
+        payload
+      );
+      
+      setSuccess(response.data.message || "Payment details submitted successfully!");
+      
+      // Reset form
+      setForm_data({
+        name: "",
+        account_number: "",
+        ifsc: "",
+        bank_name: "",
+        upi_id: ""
+      });
+      
+      // Refetch data to show updated info
+      await fetchUserData();
+      setShowForm(false);
+      
+    } catch (err) {
+      console.error("Error submitting data:", err);
+      setError(err.response?.data?.message || "Failed to submit payment details");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ============ SHOW FORM HANDLER ============
+  const handleShowForm = () => {
+    setShowForm(true);
+    // Pre-fill form if data exists
+    if (select_payment_typ === "Bank" && bankData) {
+      setForm_data({
+        ...form_data,
+        name: bankData.ac_h_nme || "",
+        account_number: bankData.Acc_no || "",
+        ifsc: bankData.ifsc || "",
+        bank_name: bankData.bank_nme || ""
+      });
+    } else if (select_payment_typ === "UPI" && upiData) {
+      setForm_data({
+        ...form_data,
+        name: upiData.ac_h_nme || "",
+        upi_id: upiData.upi_id || ""
+      });
+    }
+  };
+
+
+  // ============ FETCH DATA ON LOAD ============
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  // ============ REFETCH WHEN SWITCHING TABS ============
+  useEffect(() => {
+    if (!fetching) {
+      const hasData = select_payment_typ === "Bank" ? bankData : upiData;
+      if (hasData) {
+        setShowForm(false);
+      } else {
+        setShowForm(true);
+      }
+    }
+  }, [select_payment_typ, bankData, upiData]);
 
   return (
-    <div className='ac_bnk_body_01'>
+    <>
+      <div className='ac_bnk_body_01'>
+        <h1 className='ac_bnk_body_01_h1_01'>Payment Account</h1>
 
-      <h1 className='ac_bnk_body_01_h1_01'>Payment Account</h1>
+        <div style={{height : "30px"}}></div>
 
-      <br/>
 
-      <div className='ac_upi_main_01'>
-        <h1 className='ac_upi_main_01_h1_01' >State Bank of India</h1>
-        <p className='ac_upi_main_01_p_1' >1931 XXXX XXXX 1948</p>
+        <div className='ac_uppi_form_01_sub_01'>
+            <h2>Your personal information is safe with us. We do not share it with anyone outside our company</h2>
+            <div className='ac_uppi_form_01_sub_01_sub_01'>Note</div>
+          </div>
 
-        <div className='ac_upi_main_01_sub_cnt_01'>
-          <p style={{
-          }} >SBI0001931</p>
-          <p style={{
-            fontSize : "4rem"
-          }} >staWro</p>
+
+        {type_data &&
+        <>
+        
+          <div className='ac_uppi_form_01'>
           
+
+          <div className='ac_uppi_acnt_upi'>
+            <div
+              onClick={() => {
+                setSelect_payment_typ("Bank");
+                setError(null);
+                setSuccess(null);
+                setShowForm(false);
+              }}
+              style={select_payment_typ === "Bank" ? { boxShadow: "0 2px 0 rgb(252, 252, 252)" } : {}}
+            >
+              Bank
+            </div>
+
+            <div
+              onClick={() => {
+                setSelect_payment_typ("UPI");
+                setError(null);
+                setSuccess(null);
+                setShowForm(false);
+              }}
+              style={select_payment_typ === "UPI" ? { boxShadow: "0 2px 0 rgb(252, 252, 252)" } : {}}
+            >
+              UPI
+            </div>
+          </div>
+
+          {/* Loading State */}
+          {fetching && (
+            <div style={{ 
+              textAlign: 'center', 
+              padding: '20px',
+              color: '#666'
+            }}>
+              Loading your payment details...
+            </div>
+          )}
+
+          {/* Error and Success Messages */}
+          {error && (
+            <div style={{ 
+              color: 'red', 
+              marginBottom: '10px', 
+              padding: '10px', 
+              background: '#ffebee', 
+              borderRadius: '4px' 
+            }}>
+              ❌ {error}
+            </div>
+          )}
+          {success && (
+            <div style={{ 
+              color: 'green', 
+              marginBottom: '10px', 
+              padding: '10px', 
+              background: '#e8f5e9', 
+              borderRadius: '4px' 
+            }}>
+              ✅ {success}
+            </div>
+          )}
+
+          {/* Show Data or Form */}
+          {!fetching && (
+            <>
+              {/* Bank Section */}
+              {select_payment_typ === "Bank" && (
+                <>
+                  
+                  {(showForm || !bankData) && (
+                    <form onSubmit={post_data}>
+                      <legend>{bankData ? 'Update Bank Details' : 'Add Bank Details'}</legend>
+                      
+                      <legend>Account Holder Name</legend>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Account Holder Name. Ex: Avi"
+                        required
+                        autoComplete="off"
+                        value={form_data.name}
+                        onChange={handleChange}
+                        onInvalid={(e) =>
+                          e.target.setCustomValidity("Please enter the Account Holder Name. Ex: Avi")
+                        }
+                        onInput={(e) => e.target.setCustomValidity("")}
+                      />
+
+                      <legend>Account Number</legend>
+                      <input 
+                        type='text' 
+                        name="account_number"
+                        placeholder='Account Number. Ex : 1234 2005 2002 1931'
+                        value={form_data.account_number}
+                        onChange={handleChange}
+                        onInvalid={(e) =>
+                          e.target.setCustomValidity("Please enter the Account Number. Ex : 1234 2005 2002 1931")
+                        }
+                        onInput={(e) => e.target.setCustomValidity("")} 
+                        required 
+                        autoComplete='off'
+                      />
+
+                      <legend>IFSC</legend>
+                      <input 
+                        type='text' 
+                        name="ifsc"
+                        placeholder='IFSC. Ex : AVI1234'
+                        value={form_data.ifsc}
+                        onChange={handleChange}
+                        required 
+                        autoComplete='off'
+                        onInvalid={(e) =>
+                          e.target.setCustomValidity("Please enter the IFSC. Ex : AVI1234")
+                        }
+                        onInput={(e) => e.target.setCustomValidity("")}
+                      />
+
+                      <legend>Bank Name</legend>
+                      <input 
+                        type='text' 
+                        name="bank_name"
+                        placeholder='Bank Name. Ex : Avi Central Bank'
+                        value={form_data.bank_name}
+                        onChange={handleChange}
+                        required 
+                        autoComplete='off'
+                        onInvalid={(e) =>
+                          e.target.setCustomValidity("Please enter the Bank Name. Ex : Avi Central Bank")
+                        }
+                        onInput={(e) => e.target.setCustomValidity("")}
+                      />
+
+                      <br />
+                      <button type='submit' disabled={loading}>
+                        {loading ? 'Submitting...' : bankData ? 'Update' : 'Post'}
+                      </button>
+                      
+                      {bankData && showForm && (
+                        <button 
+                          type="button"
+                          onClick={() => setShowForm(false)}
+                          style={{
+                            marginLeft: '10px',
+                            padding: '10px 20px',
+                            background: '#6c757d',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      )}
+                    </form>
+                  )}
+                </>
+              )}
+
+              {/* UPI Section */}
+              {select_payment_typ === "UPI" && (
+                <>
+                  
+                  {(showForm || !upiData) && (
+                    <form onSubmit={post_data}>
+                      <legend>{upiData ? 'Update UPI Details' : 'Add UPI Details'}</legend>
+                      
+                      <legend>UPI Account Holder Name</legend>
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="UPI Account Holder Name. Ex: Avi"
+                        required
+                        autoComplete="off"
+                        value={form_data.name}
+                        onChange={handleChange}
+                        onInvalid={(e) =>
+                          e.target.setCustomValidity("Please enter the UPI Account Holder Name. Ex: Avi")
+                        }
+                        onInput={(e) => e.target.setCustomValidity("")}
+                      />
+
+                      <legend>UPI ID</legend>
+                      <input 
+                        type='text' 
+                        name="upi_id"
+                        placeholder='UPI ID. Ex : avi@ybl or 1234@ybl'
+                        value={form_data.upi_id}
+                        onChange={handleChange}
+                        onInvalid={(e) =>
+                          e.target.setCustomValidity("Please enter the UPI ID. Ex : avi@ybl or 1234@ybl")
+                        }
+                        onInput={(e) => e.target.setCustomValidity("")} 
+                        required 
+                        autoComplete='off'
+                      />
+
+                      <br />
+                      <button type='submit' disabled={loading}>
+                        {loading ? 'Submitting...' : upiData ? 'Update' : 'Post'}
+                      </button>
+                      
+                      {upiData && showForm && (
+                        <button 
+                          type="button"
+                          onClick={() => setShowForm(false)}
+                          style={{
+                            marginLeft: '10px',
+                            padding: '10px 20px',
+                            background: '#6c757d',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '4px',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      )}
+                    </form>
+                  )}
+                </>
+              )}
+            </>
+          )}
         </div>
+        </>
+        }
 
-        <p className='powerd_by_avi' >Powered by <strong>AVI</strong></p>
+        {bankData &&
+          <>
+            <div className='ac_upi_main_01'>
+              <h1 className='ac_upi_main_01_h1_01' >{bankData.bank_nme}</h1>
 
+              <p className='ac_upi_main_01_p_1'>{bankData.Acc_no}</p>
+
+              <div className='ac_upi_main_01_sub_cnt_01'>
+                <p style={{
+                }} >{bankData.ifsc}</p>
+                <p style={{
+                  fontSize: "4rem"
+                }} >{bankData.ac_h_nme}</p>
+
+              </div>
+
+            </div>
+          </>
+        }
+
+
+        {upiData &&
+          <>
+            {/* <h1>Bank Data</h1> */}
+            <div className='ac_upi_main_01'>
+              <h1 className='ac_upi_main_01_h1_01' >App</h1>
+
+              <p className='ac_upi_main_01_p_1'>{bankData.upi_id}</p>
+
+              <div className='ac_upi_main_01_sub_cnt_01'>
+                <p style={{
+                }} >{bankData.app}</p>
+                <p style={{
+                  fontSize: "4rem"
+                }} >{bankData.ac_h_nme}</p>
+
+              </div>
+
+            </div>
+
+          </>
+        }
+
+
+
+
+
+
+
+
+
+        {/* <div style={{ height: "50px" }}></div> */}
       </div>
+    </>
+  );
+};
 
-      <br/>
-
-      <div className='ac_upi_main_02'>
-
-      </div>
-
-
-    </div>
-  )
-}
-
-export default Ac_upi
+export default Ac_upi;

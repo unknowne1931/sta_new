@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api_user_admin = axios.create({
-  baseURL: `${"http://192.168.31.133"}/user_admin`
+  baseURL: `${"http://192.168.126.1"}/user_admin`
 });
 
 // Add a request interceptor

@@ -1,7 +1,7 @@
 import requests
 from datetime import datetime, timedelta, timezone
 
-url = "http://192.168.31.133:80/doc/betwween/time/cal"
+url = "http://192.168.126.1:80/doc/betwween/time/cal"
 
 IST = timezone(timedelta(hours=5, minutes=30))
 

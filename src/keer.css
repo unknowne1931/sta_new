@@ -480,12 +480,12 @@
 .cart-page-main-cnt-03_star_bal {
     position: absolute;
     top: -10px;
-    font-size: 2rem;
+    font-size: 2.5rem;
     left: 25px;
-    border: 1px solid;
-    border-radius: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
     padding: 5px;
-    background-color: #0025c8;
+    background-color: #c35a0a;
     color: white;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
@@ -518,10 +518,10 @@
 }
 
 .cart_main_cnttt_0111-1_pos-2 {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    top: auto;
+    margin: 10px;
+    width: 100px;   
+    height: auto;
+    padding: 10px;
 }
 
 .cart_main_cnttt_0111-1_pos {
@@ -4487,4 +4487,71 @@
   position: relative;
   cursor: pointer;
   text-align: center;
+}
+
+
+
+.cart-page-main-cnt-05{
+    margin: 10px;
+    width: 300px;
+    padding: 10px;
+    height: auto;
+    border: 1px solid red;
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 4px;
+    cursor: pointer;
+    /* background-color: #dd831c; */
+    /* color: white; */
+    margin-top: 20px;
+}
+
+.cart_sohp_3_page_consnectors{
+    width: 90%;
+    height: auto;
+    border: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 200px;
+}
+
+.cart_sohp_3_page_connectors div{
+    border: 1px solid;
+}
+
+
+@media all and (max-width : 400px){
+    .cart-page-main-cnt-05{
+        width: 80%;
+    }
+}
+
+.cart_sel_t_buy_main_01{
+    width: 90%;
+    /* border: 1px solid; */
+    margin-top: 20px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.cart_sel_t_buy_main_01 div{
+    /* border: 1px solid; */
+    padding: 10px;
+    cursor: pointer;
+    font-size: 2.5rem;
+    font-family: var(--ff2);
+    font-weight: 600;
+}
+
+.cart_sel_t_buy_main_02{
+    width: 95%;
+    /* border: 1px solid; */
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    overflow: scroll;
+
+    /* background-color: #ff7003; */
 }
