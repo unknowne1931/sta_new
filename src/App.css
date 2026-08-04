@@ -1852,10 +1852,16 @@ select {
   padding: 10px;
   border: 1px solid gray;
   margin-bottom: 20px;
-  /* background-color: #009ad6; */
-  border-radius: 10px;
-  box-shadow: 2px 5px 12px rgb(54, 50, 50);
+  background-color: #023db4;
+  border-radius: 5px;
+  box-shadow: 2px 5px 12px rgb(31, 31, 31);
   align-content: center;
+}
+
+.play-main-cnt-02-true h2{
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+  font-size: 20px;
 }
 
 .play-main-cnt-02 span {

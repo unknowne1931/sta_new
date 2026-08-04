@@ -68,7 +68,7 @@
 // //         const result = await fp.get();
 // //         const id = result.visitorId
 // //         const u_id = localStorage.getItem("user")
-// //         api.get(`http://192.168.126.1/get/singel/reward/data/by/${id}/${u_id}`)
+// //         api.get(`http://192.168.31.133/get/singel/reward/data/by/${id}/${u_id}`)
 // //         .then(res=>{
 // //             if(res.data.data){
 // //                 console.log(res.data.data)
@@ -85,7 +85,7 @@
 // //     const GetData = () =>{
 // //         try{
 // //             setTimeout(()=>{
-// //                 api.get(`${"http://192.168.126.1"}/get/bank/account/data`)
+// //                 api.get(`${"http://192.168.31.133"}/get/bank/account/data`)
 // //                 .then(res =>{
 // //                     if(res.data.data){
 // //                         setIsData(true)
@@ -139,7 +139,7 @@
 // //         // try{
 
 // //         //     if(app !== ''){
-// //         //         api.post(`${"http://192.168.126.1"}/bank/upi/data/collect`,{user, ac_h_nme : h_name, bank_nme : "No", Acc_no : acc_no, ifsc : "No", app , type : "UPI"})
+// //         //         api.post(`${"http://192.168.31.133"}/bank/upi/data/collect`,{user, ac_h_nme : h_name, bank_nme : "No", Acc_no : acc_no, ifsc : "No", app , type : "UPI"})
 // //         //         .then(res=>{
 // //         //             if(res.data.Status === "OK"){
 // //         //                 setData("Account Added")
@@ -174,7 +174,7 @@
 // //         setAlert(false)
 // //         e.preventDefault()
 // //         try{
-// //             api.post(`${"http://192.168.126.1"}/bank/upi/data/collect`,{user, ac_h_nme : h_name, bank_nme : bank, Acc_no : acc_no, ifsc, app : "No" , type : "BANK"})
+// //             api.post(`${"http://192.168.31.133"}/bank/upi/data/collect`,{user, ac_h_nme : h_name, bank_nme : bank, Acc_no : acc_no, ifsc, app : "No" , type : "BANK"})
 // //             .then(res=>{
 // //                 if(res.data.Status === "OK"){
 // //                     setData("Account Added")
@@ -468,7 +468,7 @@
 // //     const id = result.visitorId;
 // //     const u_id = localStorage.getItem('user');
 // //     api
-// //       .get(`http://192.168.126.1/get/singel/reward/data/by/${id}/${u_id}`)
+// //       .get(`http://192.168.31.133/get/singel/reward/data/by/${id}/${u_id}`)
 // //       .then((res) => {
 // //         if (res.data.data) {
 // //           console.log(res.data.data);
@@ -486,7 +486,7 @@
 // //     try {
 // //       setTimeout(() => {
 // //         api
-// //           .get(`${'http://192.168.126.1'}/get/bank/account/data`)
+// //           .get(`${'http://192.168.31.133'}/get/bank/account/data`)
 // //           .then((res) => {
 // //             if (res.data.data) {
 // //               setIsData(true);
@@ -540,7 +540,7 @@
 // //     e.preventDefault();
 // //     try {
 // //       api
-// //         .post(`${'http://192.168.126.1'}/bank/upi/data/collect`, {
+// //         .post(`${'http://192.168.31.133'}/bank/upi/data/collect`, {
 // //           user,
 // //           ac_h_nme: h_name,
 // //           bank_nme: bank,

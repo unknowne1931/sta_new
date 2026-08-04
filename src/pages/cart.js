@@ -28,7 +28,7 @@
 //     const GetStarsBala = () => {
 //         try {
 //             setAlert(false)
-//             api.get(`${"http://192.168.126.1"}/get/stars/balance`)
+//             api.get(`${"http://192.168.31.133"}/get/stars/balance`)
 //                 .then(res => {
 //                     if (res.data.data) {
 //                         setStarBal(res.data.data);
@@ -59,7 +59,7 @@
 //     const GetMyCoins = () => {
 //         try {
 //             setAlert(false)
-//             api.get(`${"http://192.168.126.1"}/get/coins/data/by/id`)
+//             api.get(`${"http://192.168.31.133"}/get/coins/data/by/id`)
 //                 .then(res => {
 //                     if (res.data.data) {
 //                         setMy_Coins(res.data.data);
@@ -92,7 +92,7 @@
 //         try {
 //             setTimeout(() => {
 //                 setAlert(false)
-//                 api.get(`${"http://192.168.126.1"}/get/coin/data`)
+//                 api.get(`${"http://192.168.31.133"}/get/coin/data`)
 //                     .then(res => {
 //                         if (res.data.data) {
 //                             setStore_coins(res.data.data);
@@ -212,7 +212,7 @@
 //                                     e.preventDefault();
 //                                     try {
 //                                         setAlert(false);
-//                                         api.post(`${"http://192.168.126.1"}/claim/reqst/coins/admin`, { user, id: data._id })
+//                                         api.post(`${"http://192.168.31.133"}/claim/reqst/coins/admin`, { user, id: data._id })
 //                                             .then(res => {
 //                                                 if (res.data.Status === "OK") {
 //                                                     delay(5000)
@@ -282,7 +282,7 @@
 //                                     try {
 //                                         setAlert(false);
 //                                         e.preventDefault();
-//                                         api.post(`${"http://192.168.126.1"}/get/my/conis/get`, { user, id: data._id })
+//                                         api.post(`${"http://192.168.31.133"}/get/my/conis/get`, { user, id: data._id })
 //                                             .then(res => {
 //                                                 if (res.data.Status === "OK") {
 //                                                     GetMyCoins()
@@ -440,7 +440,7 @@ const Cart = () => {
     const GetStarsBala = () => {
         try {
             setAlert(false)
-            api.get(`${"http://192.168.126.1"}/get/stars/balance`)
+            api.get(`${"http://192.168.31.133"}/get/stars/balance`)
                 .then(res => {
                     if (res.data.data) {
                         setStarBal(res.data.data);
@@ -471,7 +471,7 @@ const Cart = () => {
     const GetMyCoins = () => {
         try {
             setAlert(false)
-            api.get(`${"http://192.168.126.1"}/get/coins/data/by/id`)
+            api.get(`${"http://192.168.31.133"}/get/coins/data/by/id`)
                 .then(res => {
                     if (res.data.data) {
                         setMy_Coins(res.data.data);
@@ -504,7 +504,7 @@ const Cart = () => {
         try {
             setTimeout(() => {
                 setAlert(false)
-                api.get(`${"http://192.168.126.1"}/get/coin/data`)
+                api.get(`${"http://192.168.31.133"}/get/coin/data`)
                     .then(res => {
                         if (res.data.data) {
                             setStore_coins(res.data.data);
@@ -545,7 +545,7 @@ const Cart = () => {
     const GetPendingData = () => {
         try {
             setTimeout(() => {
-                api.get(`${"http://192.168.126.1"}/get/pending/notification`)
+                api.get(`${"http://192.168.31.133"}/get/pending/notification`)
                     .then(res => {
                         if (res.data.data) {
                             setPending_Data(res.data.data);
@@ -640,7 +640,7 @@ const Cart = () => {
                                     e.preventDefault();
                                     try {
                                         setAlert(false);
-                                        api.post(`${"http://192.168.126.1"}/claim/reqst/coins/admin`, { user, id: data._id })
+                                        api.post(`${"http://192.168.31.133"}/claim/reqst/coins/admin`, { user, id: data._id })
                                             .then(res => {
                                                 if (res.data.Status === "OK") {
                                                     delay(5000)
@@ -724,7 +724,7 @@ const Cart = () => {
                                         try {
                                             setAlert(false);
                                             e.preventDefault();
-                                            api.post(`${"http://192.168.126.1"}/get/my/conis/get`, { user, id: data._id })
+                                            api.post(`${"http://192.168.31.133"}/get/my/conis/get`, { user, id: data._id })
                                                 .then(res => {
                                                     if (res.data.Status === "OK") {
                                                         GetMyCoins()

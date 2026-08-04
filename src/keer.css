@@ -1662,19 +1662,21 @@
     height: auto;
     padding: 10px;
     /* border: 1px solid; */
-    border-radius: 5px;
+    border-radius: 2px;
     display: flex;
 }
 
 .play-main-cnt-02-true_sub input {
     width: 90%;
     height: 40px;
-    border: 1px solid black;
-    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 5px;
     font-size: 4rem;
+    padding: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 600;
     color: green;
+    background-color: transparent;
 }
 
 .play-main-cnt-02-true_sub_sub {
@@ -1685,6 +1687,8 @@
     flex-wrap: wrap;
     gap: 10px;
     flex-direction: row;
+    margin: auto;
+    justify-content:space-around;
 }
 
 .play-main-cnt-02-true_sub_sub button {
@@ -1692,12 +1696,14 @@
     max-width: auto;
     height: 40px;
     border: 1px solid white;
-    border-radius: 10px;
-    background-color: #385bf7;
-    color: white;
+    border-radius: 5px;
+    /* background-color: #385bf7; */
+    color: rgb(0, 0, 0);
     font-size: 3rem;
     cursor: pointer;
-    box-shadow: 2px 4px 8px gray;
+    /* box-shadow: 2px 4px 8px rgb(30, 29, 29); */
+    font-family: var(--ff1);
+    font-weight: 600;
 }
 
 .mod-rppu {
@@ -1706,7 +1712,7 @@
     font-size: 2rem;
     font-family: 'Times New Roman', Times, serif;
     margin-top: 10px;
-    color: #413f3f;
+    color: #fefefe;
 }
 
 .pay_buttonn-n {
@@ -1723,7 +1729,7 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
     color: white;
-    background-color: #008b00;
+    background-color: #01227b;
     border: 1px solid;
     border-radius: 10px;
     cursor: pointer;
@@ -4555,3 +4561,42 @@
 
     /* background-color: #ff7003; */
 }
+
+.data-page-main-cnt-02-sub-01{
+    /* width: 90%; */
+    height: auto;
+    padding: 10px;
+    /* border: 1px solid; */
+}
+
+.data-page-main-cnt-02-sub-01 h3{
+    text-align: start;
+    font-size: 20px;
+    margin-left: 1%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.data-page-main-cnt-02-sub-01 div{
+    width: 95%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid white;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 4px 4px 10px rgb(40, 39, 39);
+    text-align: center;
+    background: linear-gradient(90deg, rgba(31, 125, 232, 0.93), rgb(5, 42, 224));
+    /* margin-left: 20px; */
+}
+
+.data-page-main-cnt-02-sub-01 div span{
+    margin-left: 30px;
+    color: white;
+    padding: 10px;
+    /* margin: 5px; */
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+}
+

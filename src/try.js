@@ -72,7 +72,7 @@ const Try = () => {
 
     if (!deviceId) return;
 
-    axios.post("http://192.168.126.1/get/question/for/new/users/signed/out/users/qstion", { u_id: deviceId })
+    axios.post("http://192.168.31.133/get/question/for/new/users/signed/out/users/qstion", { u_id: deviceId })
       .then(res => {
         if (res.data.Status === "OK") {
           setData(res.data.data);
@@ -88,7 +88,7 @@ const Try = () => {
   // Post data to start game
   const postData = () => {
     setAlert(false)
-    axios.post("http://192.168.126.1/get/question/for/new/users/signed/out/users", { u_id: deviceId })
+    axios.post("http://192.168.31.133/get/question/for/new/users/signed/out/users", { u_id: deviceId })
       .then(res => {
         if (res.data.Status === "OK") {
           console.log("Created");
@@ -113,7 +113,7 @@ const Try = () => {
 
   const verify_data = (opt) => {
     setAlert(false)
-    axios.post("http://192.168.126.1/get/question/for/new/users/signed/out/users/verify/qst", { u_id: deviceId, sec: seconds, ans: opt, q_id: data._id })
+    axios.post("http://192.168.31.133/get/question/for/new/users/signed/out/users/verify/qst", { u_id: deviceId, sec: seconds, ans: opt, q_id: data._id })
       .then(res => {
         if (res.data.Status === "OKK") {
           setNavi("cart")

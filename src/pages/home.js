@@ -103,7 +103,7 @@ const Home = () => {
         const uid = user.uid;
 
         // Send to backend
-        axios.post("http://192.168.126.1/post/google/auth", {
+        axios.post("http://192.168.31.133/post/google/auth", {
           email,
           name,
           username,
@@ -145,7 +145,7 @@ const Home = () => {
         console.log(cached.data)
       } else {
         try {
-          const response = await fetch("http://192.168.126.1/get/total/users/by/winners/datas/all/one");
+          const response = await fetch("http://192.168.31.133/get/total/users/by/winners/datas/all/one");
           const result = await response.json();
           setLed_Data(result.users);
           saveToDB(CACHE_KEY, { data: result.users, timestamp: now });
@@ -190,7 +190,7 @@ const Home = () => {
 
 
   function get_review() {
-    axios.get("http://192.168.126.1/comment/review/frome/all/users")
+    axios.get("http://192.168.31.133/comment/review/frome/all/users")
       .then(res => {
         if (res.data.data) {
           setRate_data(res.data.data)
@@ -205,7 +205,7 @@ const Home = () => {
 
   // {make this continue}
   // async function get_geck_ut_hd(){
-  //   const res = await api.get(`http://192.168.126.1/comment/get/single/data/email/${email}`);
+  //   const res = await api.get(`http://192.168.31.133/comment/get/single/data/email/${email}`);
   //   if (res.data.data){
   //     sessionStorage.setItem("check", "no")
   //     localStorage.setItem("ban", "hide");
@@ -231,7 +231,7 @@ async function get_my_review() {
     }
 
     // If not found, fetch from API
-    const res = await api.get(`http://192.168.126.1/comment/get/single/data/email/${email}`);
+    const res = await api.get(`http://192.168.31.133/comment/get/single/data/email/${email}`);
     if (res.data.data) {
       setShow(res.data.data);
       await saveToDB(email, res.data.data); // Save to IndexedDBnpm
@@ -681,7 +681,7 @@ async function get_my_review() {
             const star = parseInt(dat.stars)
 
             // function like() {
-            //   api.post("http://192.168.126.1/make/like/review/count", { l_id: dat._id, email: data.email })
+            //   api.post("http://192.168.31.133/make/like/review/count", { l_id: dat._id, email: data.email })
             //     .then(res => {
             //       if (res.data.Status === "OK") {
             //         get_review()

@@ -50,7 +50,7 @@ import ral_2 from "../image/ral_2.png"
 const ShowPuzzle = ({ typ }) => {
 
   const start = () => {
-    api.post("http://192.168.126.1/revel/qst/start/game")
+    api.post("http://192.168.31.133/revel/qst/start/game")
       .then(res => {
         if (res.data.Status === "OK") {
           window.location.reload()

@@ -34,7 +34,7 @@ const Start = () => {
       const left = Math.floor((target - now) / 1000);
 
       if (left > 0) {
-        const res = await api.get("http://192.168.126.1/get/question/no/by/user/name/bf/all/xx");
+        const res = await api.get("http://192.168.31.133/get/question/no/by/user/name/bf/all/xx");
         if(res.data?.Status === "EXIT"){
           window.location.replace("/play")
         }
@@ -59,7 +59,7 @@ const Start = () => {
       setAlert(false);
       setVerify(false);
 
-      const res = await api.get("http://192.168.126.1/get/question/no/by/user/name/bf/all/xx");
+      const res = await api.get("http://192.168.31.133/get/question/no/by/user/name/bf/all/xx");
       const q = res.data?.data;
 
       if(res.data?.Status === "EXIT"){
@@ -134,7 +134,7 @@ const Start = () => {
     await removeFromDB("targetSecond");
 
     try {
-      api.post("http://192.168.126.1/verify/answer/question/number/all/xs", {
+      api.post("http://192.168.31.133/verify/answer/question/number/all/xs", {
         answer,
         id: QData._id,
         Ans: QData.Ans,
@@ -190,7 +190,7 @@ const Start = () => {
 
     try {
       const res = await api.post(
-        "http://192.168.126.1/verify/answer/question/number",
+        "http://192.168.31.133/verify/answer/question/number",
         
         {
           answer,

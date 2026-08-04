@@ -4,7 +4,9 @@ import Loading from '../loading'
 import { getFromDB, saveToDB } from '../db'
 
 const Data = () => {
-  const CACHE_TIME = 2 * 60 * 1000 // 2 minutes
+  // const CACHE_TIME = 2 * 60 * 1000 // 2 minutes
+    const CACHE_TIME = 1 // 2 minutes
+
   const CACHE_KEY_USER = 'userData'
   const CACHE_KEY_BANK = 'bankData'
 
@@ -30,7 +32,7 @@ const Data = () => {
     } else {
       try {
         const res = await api.get(
-          `http://192.168.126.1/users/name/and/more/get/${user}`
+          `http://192.168.31.133/users/name/and/more/get/id`
         )
         if (res.data?.data) {
           setData(res.data.data)
@@ -52,20 +54,20 @@ const Data = () => {
     if (cached && now - cached.timestamp < CACHE_TIME) {
       setHasData(true)
       setInfo(cached.data)
-      setIsBank(cached.data.type === 'BANK')
+      setIsBank(cached.data.type === 'Bank')
       setLoad(false)
-      console.log('✅ Loaded bank data from cache')
+      // console.log('✅ Loaded bank data from cache')
     } else {
       try {
         const res = await api.get(
-          `http://192.168.126.1/get/bank/account/data`
+          `http://192.168.31.133/get/bank/account/data`
         )
         const result = res.data
 
         if (result.data) {
           setHasData(true)
           setInfo(result.data)
-          setIsBank(result.data.type === 'BANK')
+          setIsBank(result.data.type === 'Bank')
           await saveToDB(CACHE_KEY_BANK, {
             data: result.data,
             timestamp: now,
@@ -140,10 +142,10 @@ const Data = () => {
                 {isBank ? (
                   <div className='data-page-main-cnt-02-sub-01'>
                     <h3>Bank</h3>
-                    {info?.type === 'BANK' && (
+                    {info?.type === 'Bank' && (
                       <div>
                         <span>
-                          Account Holder Name : <strong>{info.ac_h_name}</strong>
+                          Account Holder Name : <strong>{info.ac_h_nme}</strong>
                         </span>
                         <br />
                         <span>
@@ -151,7 +153,7 @@ const Data = () => {
                         </span>
                         <br />
                         <span>
-                          Bank Name : <strong>{info.bank_name}</strong>
+                          Bank Name : <strong>{info.bank_nme}</strong>
                         </span>
                         <br />
                         <span>
@@ -167,8 +169,8 @@ const Data = () => {
                     {info?.type === 'UPI' && (
                       <div>
                         <span>
-                          Account Holder Name :{' '}
-                          <strong>{info.ac_h_name}</strong>
+                          Account Holder Name :
+                          <strong>{info.ac_h_nme}</strong>
                         </span>
                         <br />
                         <span>
