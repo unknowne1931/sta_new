@@ -624,7 +624,7 @@ const Play = () => {
       {load ? <Loading /> :
         <center >
           <div className='Home-cnt-01-sub-01_logo'>
-            <strong>sta<span>W</span>ro</strong>
+            <strong style={{color : "white"}} >sta<span>W</span>ro</strong>
             <hr />
           </div>
 
@@ -722,14 +722,11 @@ const Play = () => {
               }
 
 
-              {start.Status === "on" &&
+              {/* {start.Status === "on" &&
                 <>
                   <div className='singel_qstt_cnt_01'>
                     <h1>Single Question</h1>
                     <div className='singel_qstt_cnt_01_div_01'>
-                      {/* <p>
-                        Answer the question as soon as possible. Saved time is converted into money at the rate of <strong className='class_200_max_data'>10.00₹</strong> per second.
-                      </p> */}
 
                       <p>
                         Answer the question as quickly as possible. Time saved is converted into reward points at a rate of ₹10.00 per second.
@@ -750,18 +747,15 @@ const Play = () => {
                     </div>
                   </div>
                 </>
-              }
+              } */}
 
 
-
+{/* 
               {start.Status === "on" &&
                 <>
                   <div className='singel_qstt_cnt_01'>
                     <h1>Single Question</h1>
                     <div className='singel_qstt_cnt_01_div_01'>
-                      {/* <p>
-                        Answer the question as soon as possible. Saved time is converted into money at the rate of <strong className='class_200_max_data'>10.00₹</strong> per second.
-                      </p> */}
 
                       <p>
                         Answer the question as quickly as possible. Time saved is converted into reward points at a rate of ₹10.00 per second.
@@ -775,14 +769,11 @@ const Play = () => {
                           Training Fee ₹ {get_rupe.rupee} only
                         </div>
                       </div>
-
-                      
-
                       
                     </div>
                   </div>
                 </>
-              }
+              } */}
 
               <br />
 
@@ -792,9 +783,6 @@ const Play = () => {
                   <div className='singel_qstt_cnt_01'>
                     <h1>Ten Question</h1>
                     <div className='singel_qstt_cnt_01_div_01'>
-                      {/* <p>
-                        Answer the question as soon as possible. Saved time is converted into money at the rate of <strong className='class_200_max_data'>10.00₹</strong> per second.
-                      </p> */}
 
                       <p>
                         <strong>10 questions</strong>. You must answer the <strong>first 5</strong>. After that, you may <strong>stop anytime</strong> and claim your <strong>earned rewards</strong>, or continue playing for more rewards.
@@ -1002,7 +990,7 @@ const Play = () => {
               </div>
               <div className='warning_before_start_sub_02'>
                 {/* <button onClick={() => { setPlay(false) }} className='warning_before_start_sub_02-2'>Reject</button> */}
-                <button onClick={StartGame_1} className='warning_before_start_sub_02-1'>Start</button>
+                <button onClick={()=>{setPlay(false)}} className='warning_before_start_sub_02-2'>Reject</button>
                 <button onClick={start_mili} className='warning_before_start_sub_02-1'>Start</button>
 
               </div>

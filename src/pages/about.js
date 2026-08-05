@@ -1,10 +1,15 @@
 import React from 'react'
 import founder from "../image/founder.jpeg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faContactBook } from '@fortawesome/free-solid-svg-icons';
+import { faBolt, faContactBook, faCrosshairs, faFlag, faLocation, faLocationArrow, faLocationCrosshairs, faLock, faPhone, faSpinner, faTentArrowLeftRight } from '@fortawesome/free-solid-svg-icons';
 import insta from "../image/insta_b.png"
 import whatsapp from "../image/whatsapp.png"
 import linked_in from "../image/linked_in_b.png"
+import ko from "../image/KOTHI.jpeg"
+import admin from "../image/admin.png"
+import mams from "../image/mams.png"
+import kinta from "../image/kinta.png"
+import avi from "../image/avi.png"
 
 
 const About = () => {
@@ -251,9 +256,141 @@ const About = () => {
           </div>
         </div>
 
+        <div className='Home-cnt-05' >
+          <h1>Mission</h1>
+          <p>Our mission is to build a knowledge-driven platform that inspires users to think logically, develop valuable skills, and make informed decisions with confidence. We aim to strengthen critical thinking, improve problem-solving abilities, and encourage continuous learning through engaging and meaningful experiences.</p>
+        </div>
+
+
+        <div className='Home-cnt-06' >
+          <h1>Vision</h1>
+          <p>
+            Our vision is to become the world's most trusted knowledge and skill-based platform, empowering millions of people to develop logical thinking, strengthen decision-making skills, and embrace lifelong learning. We aspire to create a future where knowledge, intelligence, and critical thinking are valued and rewarded
+          </p>
+        </div>
+
+        <div className='Home-cnt-07'>
+          <h1 className='Home-cnt-07_h1_01' >Why <strong>Us</strong></h1>
+          <div className='Home-cnt-07_div_sub_01' style={{backgroundColor : "darkblue"}} >
+            <FontAwesomeIcon icon={faLock} />  Secure Payments.
+          </div>
+          <br/>
+          <div className='Home-cnt-07_div_sub_01' style={{backgroundColor : "blue"}} >
+            <FontAwesomeIcon icon={faBolt} />  Fast Withdrawals.
+          </div>
+          <br/>
+          <div className='Home-cnt-07_div_sub_01' style={{backgroundColor : "darkblue"}} >
+            <FontAwesomeIcon icon={faLocationCrosshairs} />  Fair Competition.
+          </div>
+          <br/>
+          <div className='Home-cnt-07_div_sub_01' style={{backgroundColor : "blue"}} >
+            <FontAwesomeIcon icon={faPhone} />  24/7 Support.
+          </div>
+        </div>
+
+        <div className='Home-cnt-08'>
+          <h1>Meet Our Team</h1>
+
+          <div className='Home-cnt-08_sub_01'>
+
+            <div className='Home-cnt-08_sub_01_sub_01'
+            
+            style={{
+              backgroundColor : "#32053db6"
+            }}
+
+            >
+              <img src={avi} />
+
+              <h2>Savithramma, <strong>AVI</strong></h2>
+              <p>Sponsor</p>
+
+            </div>
+
+            <div className='Home-cnt-08_sub_01_sub_01'
+            
+            style={{
+              backgroundColor : "#043859d2"
+            }}
+
+            >
+              <img src={kinta} />
+
+              <h2>Shri Krishna</h2>
+              <p>Founder & CEO</p>
+
+            </div>
+
+            <div className='Home-cnt-08_sub_01_sub_01'
+            
+            style={{
+              backgroundColor : "#282423"
+            }}
+
+            >
+              <img src={admin} />
+
+              <h2>A4dish Kalyan Krishna</h2>
+              <p>Developer & Technology Department</p>
+
+            </div>
+
+            
+
+            <div className='Home-cnt-08_sub_01_sub_01'
+            
+            style={{
+              backgroundColor : "#02283f"
+            }}
+
+            >
+              <img src={founder} />
+
+              <h2>Markeev Darshan CS</h2>
+              <p>Application Security Team[Cybersecurity]</p>
+
+            </div>
+
+            <div className='Home-cnt-08_sub_01_sub_01'
+            
+            style={{
+              backgroundColor : "#007991"
+            }}
+
+            >
+              <img src={ko} />
+
+              <h2>Divya Shree C</h2>
+              <p>Sales & Marketing</p>
+
+            </div>
+
+
+            <div className='Home-cnt-08_sub_01_sub_01'
+            
+            style={{
+              backgroundColor : "#161717a6"
+            }}
+
+            >
+              <img src={mams} />
+
+              <h2>Harsha</h2>
+              <p>Customer Support Executive</p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
         {/* <div>
           <h1>Developer</h1>
         </div> */}
+
+        <div style={{height : "50px"}} ></div>
 
     </div>
   )
