@@ -17,7 +17,7 @@ const About = () => {
     
 
 
-  return (
+  return(
     <div className='about_body_01' >
         {/* <center>
             <div className='Home-cnt-01-sub-01'>

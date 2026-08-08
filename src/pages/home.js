@@ -545,9 +545,14 @@ async function get_my_review() {
         </div>
 
 
+        <div className='leadboard_cnt'>
+
+          
         <h2 className='leadboard_h2'>leadboard</h2>
         <p className='leadboard_p1'>The Latest Winners List.</p>
-        <div className='leadboard'>
+
+
+          <div className='leadboard'>
 
 
           {ledData.length <= 0 &&
@@ -580,6 +585,8 @@ async function get_my_review() {
           })}
 
         </div>
+        </div>
+        
         <br />
 
         
@@ -787,6 +794,10 @@ async function get_my_review() {
           })}
 
         </div>
+
+        <br/>
+
+
 
         <div style={{ height: "150px" }}>
         </div>

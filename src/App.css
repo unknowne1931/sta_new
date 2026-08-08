@@ -4308,8 +4308,15 @@ input[type="number"]::-webkit-outer-spin-button {
   bottom: 10px;
 }
 
-.leadboard {
+.leadboard_cnt{
   width: 90%;
+  height: auto;
+  padding: 10px;
+  /* border: 1px solid; */
+}
+
+.leadboard {
+  width: 95%;
   min-height: 50vh;
   padding: 10px;
   border: 1px solid;
@@ -4508,24 +4515,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 .sm_main_1 {
-  width: 99%;
-  max-height: 350px;
+  width: 90%;
+  height: auto;
   padding: 10px;
+  /* max-height: 350px; */
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  /* Force horizontal */
-  gap: 10px;
-  /* border: 1px solid blue; */
-  overflow-x: auto;
-  /* Enable horizontal scroll */
-  overflow-y: hidden;
-  /* Optional: hide vertical scroll */
-  align-items: center;
-  /* Center vertically */
-  border-radius: 10px;
-  scroll-behavior: smooth;
-  /* Optional: smooth scroll */
+  /* flex-wrap: nowrap; */
+  overflow-x: scroll;
 }
 
 .sm_main_1::-webkit-scrollbar {
@@ -4534,13 +4531,16 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
 .cmnt_cnt {
-  width: auto;
+  min-width: 270px;
+  max-width: auto;
   height: auto;
+  left: 1px;
   padding: 10px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2px;
+  /* border: 1px solid blue; */
+  gap: 10px;
+  text-align: start;
+  position: sticky;
+  transition: 4s;
 }
 
 @media all and (max-width: 700px) {
@@ -4558,9 +4558,10 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .cmnt_cnt_sub_01 {
-  width: 250px;
-  min-height: 50px;
+  min-width: 250px;
+  max-width: 260px;
   max-height: auto;
+  position: sticky;
   padding: 10px;
   border: 1px solid rgb(0, 140, 255);
   border-top-right-radius: 50px;
@@ -4568,8 +4569,8 @@ input[type="number"]::-webkit-outer-spin-button {
   border-bottom-left-radius: 30px;
   margin-top: 1px;
   background-color: #ffffff;
-  box-shadow: 2px 2px 8px rgba(63, 59, 59, 0.841);
-  position: relative;
+  /* box-shadow: 2px 2px 8px rgba(63, 59, 59, 0.841); */
+  position: sticky;
 }
 
 .cmnt_profile {
@@ -4578,7 +4579,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 1px solid rgb(0, 110, 255);
   border-radius: 50%;
   box-shadow: 2px 2px 8px rgba(43, 41, 41, 0.732);
-  overflow: hidden;
+  overflow: hidden;  
 }
 
 .cmnt_profile img {
@@ -4710,14 +4711,15 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: start;
   font-size: 1.5rem;
   font-family: var(--ff4);
-  color: #ffffffde;
+  color: #2b2a2ade;
+  margin-top: 20px;
   font-weight: 600;
   text-shadow: 2px 2px 10px rgba(128, 128, 128, 0.337);
-  border: 1px solid;
+  /* border: 1px solid; */
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  background: linear-gradient(90deg, rgb(0, 89, 223), rgba(2, 2, 171, 0.695));
+  /* background: linear-gradient(90deg, rgb(0, 89, 223), rgba(2, 2, 171, 0.695)); */
   align-content: center;
   justify-content: center;
 }
@@ -4728,7 +4730,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .sm_main span {
-  color: #ffffff;
+  color: #0371d9;
 }
 
 
@@ -6042,4 +6044,12 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 13px;
   font-family: 'Times New Roman', Times, serif;
   text-align: start;
+}
+
+
+.underline {
+  text-decoration-line: underline;
+  text-decoration-color: rgb(255, 140, 0);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 4px;
 }

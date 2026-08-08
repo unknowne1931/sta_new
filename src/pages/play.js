@@ -722,7 +722,7 @@ const Play = () => {
               }
 
 
-              {/* {start.Status === "on" &&
+              {start.Status === "on" &&
                 <>
                   <div className='singel_qstt_cnt_01'>
                     <h1>Single Question</h1>
@@ -747,7 +747,7 @@ const Play = () => {
                     </div>
                   </div>
                 </>
-              } */}
+              }
 
 
 {/* 

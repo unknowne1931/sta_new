@@ -611,19 +611,19 @@ const Cart = () => {
 
                     <div className='cart_sel_t_buy_main_01'>
 
-                        <div onClick={() => { setSel_Nav("My Coin") }} >
+                        <div className={sel_nav === "My Coin" && "underline"}  onClick={() => { setSel_Nav("My Coin") }} >
                             My Coin
                         </div>
 
-                        <div onClick={() => { setSel_Nav("Buy Coin") }} >
+                        <div className={sel_nav === "Buy Coin" && "underline"} onClick={() => { setSel_Nav("Buy Coin") }} >
                             Buy Coin
                         </div>
 
-                        <div onClick={() => { setSel_Nav("Pending") }} >
+                        <div className={sel_nav === "Pending" && "underline"} onClick={() => { setSel_Nav("Pending") }} >
                             Pending
                         </div>
 
-                        <div onClick={() => { setSel_Nav("Claimed") }} >
+                        <div className={sel_nav === "Claimed" && "underline"} onClick={() => { setSel_Nav("Claimed") }} >
                             Claimed
                         </div>
 
