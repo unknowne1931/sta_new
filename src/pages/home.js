@@ -58,6 +58,9 @@ const Home = () => {
       img: Img1,
       text: "How many broken boxes have stars?",
     },
+    {
+      
+    }
 
   ];
 
