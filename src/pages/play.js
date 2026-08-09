@@ -722,7 +722,7 @@ const Play = () => {
               }
 
 
-              {start.Status === "on" &&
+              {/* {start.Status === "on" &&
                 <>
                   <div className='singel_qstt_cnt_01'>
                     <h1>Single Question</h1>
@@ -747,7 +747,7 @@ const Play = () => {
                     </div>
                   </div>
                 </>
-              }
+              } */}
 
 
 {/* 
@@ -918,11 +918,11 @@ const Play = () => {
           }
 
           <div className='stop_play_ticket_page' onClick={() => window.location.href = '/tickets'} >
-            My Submissions
+            My Tickets
           </div>
 
 
-          <h2 className='play_refer_h2_01'>Refer <span>Friend</span> </h2>
+          {/* <h2 className='play_refer_h2_01'>Refer <span>Friend</span> </h2>
           <div className='play_refer_one'>
             <div className='play_refer_one_img'>
               <img src={img1} />
@@ -932,7 +932,7 @@ const Play = () => {
               <br />
               <button onClick={() => { window.location.href = '/refer' }} >Go</button>
             </div>
-          </div>
+          </div> */}
 
 
           {play &&

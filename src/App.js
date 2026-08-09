@@ -28,7 +28,6 @@ import api from './pages/api';
 import UsersPlayedWalletAdmin from './admin/users_played_wallet';
 import User_Data from './admin/user_data';
 import Test from './admin/test';
-import Extra_time from './pages/extra_time';
 import Admin_controle from './admin/controle';
 import Users_Paid from './admin/users_paid';
 import View_Most_Ans from './admin/view_most_ans';
@@ -44,11 +43,7 @@ const Home = lazy(()=> import('./pages/home'))
 const Error = lazy(()=> import('./error'))
 const Ac_upi = lazy(()=> import('./pages/Account/ac_upi'))
 const History = lazy(()=> import('./pages/Account/history'))
-const Pending = lazy(()=> import('./pages/Account/pending'))
-const Payment = lazy(()=> import('./pages/Account/payment'))
 const Cart = lazy(()=> import('./pages/cart'))
-const Carthist = lazy(()=> import('./pages/carthist'))
-const Settings = lazy(()=> import('./pages/settings'))
 const Play = lazy(()=> import('./pages/play'))
 const Start = lazy(()=> import('./pages/start'))
 const Coin = lazy(()=> import('./admin/coin'))
@@ -71,7 +66,6 @@ const AddBalance = lazy(()=> import('./admin/addBalance'))
 const Terms = lazy(()=> import('./pages/terms'))
 const Privacy = lazy(()=> import('./pages/privacy'))
 const ShippingAndRefundPolicy = lazy(()=> import("./pages/shippingandrefund"))
-const Account = lazy(() => import("./pages/account"))
 
 
 
@@ -248,7 +242,7 @@ const App = () => {
   return (
     <div>
       <center>
-        {show ? 
+        {show ?
           <div>
             <Navi />
             <div onClick={() => setShow(false)} className='app-navi-main-cnt'>
@@ -281,14 +275,9 @@ const App = () => {
                 <Route path='/signup' element={token ? <Home /> : <Signup />} />
                 <Route path='/login' element={token ? <Home /> : <Login />} />
                 <Route path='/navi' element={<Navi />} />
-                <Route path='/account' element={token ? <Account /> : <Login />} />
                 <Route path='/account/upi' element={token ? <Ac_upi /> : <Login />} />
                 <Route path='/account/history' element={token ? <History /> : <Login />} />
-                <Route path='/account/pending' element={token ? <Pending /> : <Login />} />
-                <Route path='/payment' element={token ? <Payment /> : <Login />} />
                 <Route path='/cart' element={token ? <Cart /> : <Login />} />
-                <Route path='/cart/history' element={token ? <Carthist /> : <Login />} />
-                <Route path='/settings' element={token ? <Settings /> : <Login />} />
                 <Route path='/play' element={token ? <Play /> : <Login />} />
                 <Route path='/claim/cupon' element={token ? <Claimcupom /> : <Login /> } />
                 <Route path='/delete' element={token? <Delete /> : <Login/>} />

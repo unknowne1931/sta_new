@@ -58,7 +58,7 @@ const Claimdreques = () => {
     }
 
   return (
-    <div>
+    <div style={{backgroundColor : "orange"}} >
       {load ? <Loading /> :
       <center>
         

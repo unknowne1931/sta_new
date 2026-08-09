@@ -1735,7 +1735,8 @@ select {
 }
 
 .admin-home-h1-01 {
-  font-size: 20px;
+  font-size: 26px;
+  color: white;
   font-family: var(--ff1);
 }
 
@@ -4398,7 +4399,7 @@ input[type="number"]::-webkit-outer-spin-button {
   position: absolute;
   color: #000;
   bottom: -5px;
-  left: 15px;
+  left: 30px;
   border: 1px solid white;
   border-radius: 8px;
   background-color: #ffffff;
@@ -6052,4 +6053,88 @@ input[type="number"]::-webkit-outer-spin-button {
   text-decoration-color: rgb(255, 140, 0);
   text-decoration-thickness: 4px;
   text-underline-offset: 4px;
+}
+
+.admin-home-data_types_view{
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  /* border: 1px solid; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.admin-home-data_types_view div{
+  font-size: 16px;
+  cursor: pointer;
+  font-family: var(--ff2);
+  color: white;
+}
+
+.admin-home-data_types_view_number{
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  /* border: 1px solid; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.admin-home-data_types_view_number_cnt_01{
+  min-width: 200px;
+  max-width: auto;
+  height: auto;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  box-shadow: 4px 4px 12px rgb(30, 29, 29);
+  position: relative;
+}
+
+.admin-home-data_types_view_number_cnt_01 h1{
+  text-align: start;
+  color: white;
+  font-family: var(--ff1);
+}
+
+.admin-home-data_types_view_number_cnt_01_sub_cnt_01 h1 strong{
+  font-size: 5rem;
+}
+
+.admin-home-data_types_view_number_cnt_01_abs_cnt_01{
+  position: absolute;
+  background-color: #ffffff;
+  padding: 1px 10px 1px 10px;
+  border-radius: 2px;
+  top: -13px;
+  left: 15px;
+}
+
+.admin-home-data_types_view_number_cnt_01_abs_cnt_01 h1{
+  color: #080808;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;
+}
+
+
+/* Add to your existing CSS */
+.admin-home-data_types_view {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.admin-home-data_types_view div {
+    transition: all 0.3s ease;
+}
+
+.admin-home-data_types_view div:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }

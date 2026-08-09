@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom';
+import Error from '../error';
 
 const SignUpAdmin = () => {
 
@@ -78,6 +79,16 @@ const SignUpAdmin = () => {
                 </div>
             </center>
         }
+
+        {show !== "true" &&
+        
+        <Error />
+        
+        }
+
+
+
+
     </div>
   )
 }
