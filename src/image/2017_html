@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.Sc Chemistry 2017 · Marks-wise Answers</title>
+    <style>
+        /* minimal, clean – only structure, no UI design */
+        body {
+            background: white;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            color: #111;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-weight: 600;
+            margin: 1.8rem 0 0.6rem 0;
+        }
+        h1 { font-size: 1.8rem; border-bottom: 1px solid #ccc; padding-bottom: 0.3rem; }
+        h2 { font-size: 1.4rem; margin-top: 2.2rem; }
+        .q-block {
+            margin-bottom: 1.8rem;
+            padding-left: 0.2rem;
+        }
+        .q {
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+        }
+        .answer {
+            margin-left: 1.2rem;
+            margin-top: 0.1rem;
+        }
+        .answer ul {
+            margin: 0.2rem 0 0.2rem 1.8rem;
+            padding-left: 0.2rem;
+        }
+        .answer li {
+            margin-bottom: 0.1rem;
+        }
+        .marks {
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #2a4b7a;
+            background: #f0f3f8;
+            padding: 0.05rem 0.6rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-left: 0.4rem;
+        }
+        .sub-part {
+            margin-top: 0.7rem;
+        }
+        .sub-part .label {
+            font-weight: 500;
+        }
+        hr {
+            border: 0.5px solid #e0e6ed;
+            margin: 0.5rem 0 1.2rem 0;
+        }
+        .section-note {
+            color: #2a4b7a;
+            background: #f2f6fc;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .footer {
+            margin-top: 3rem;
+            border-top: 1px solid #ddd;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: #444;
+        }
+        .inline-math {
+            font-family: 'Times New Roman', serif;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🧪 B.Sc. I Sem Chemistry (CBCS) · 36122 · Nov/Dec 2017</h1>
+<p style="margin-bottom: 1.2rem;"><strong>All questions &amp; answers</strong> – marks indicated, length scaled to marks (1‑mark: concise; 4‑marks: ~4 points; 6‑marks: ~6 points).</p>
+
+<!-- ==================== SECTION A ==================== -->
+<h2>Section – A <span style="font-weight:400; font-size:1rem;">(10×1 = 10 marks) · answer any ten</span></h2>
+<div class="section-note">✔️ All 12 questions shown; each 1‑mark concise answer.</div>
+
+<div class="q-block">
+    <div class="q">1. State Pauli's exclusion principle. <span class="marks">1</span></div>
+    <div class="answer">No two electrons in an atom can have all four quantum numbers identical; an orbital can hold a maximum of two electrons with opposite spins.</div>
+</div>
+
+<div class="q-block">
+    <div class="q">2. Define Lattice energy. <span class="marks">1</span></div>
+    <div class="answer">The enthalpy change when 1 mole of an ionic solid is formed from its gaseous ions (or the energy released when gaseous ions combine to form a crystal).</div>
+</div>
+
+<div class="q-block">
+    <div class="q">3. Give an example for polar and non-polar molecule. <span class="marks">1</span></div>
+    <div class="answer">Polar: HCl (hydrogen chloride); Non-polar: Cl₂ (chlorine) or CH₄ (methane).</div>
+</div>
+
+<div class="q-block">
+    <div class="q">4. Define Electronegativity. <span class="marks">1</span></div>
+    <div class="answer">The ability of an atom in a molecule to attract shared electrons towards itself.</div>
+</div>
+
+<div class="q-block">
+    <div class="q">5. Define homolytic fission. <span class="marks">1</span></div>
+    <div class="answer">The breaking of a covalent bond such that each atom gets one of the shared electrons, forming free radicals.</div>
+</div>
+
+<div class="q-block">
+    <div class="q">6. What is optical activity? <span class="marks">1</span></div>
+    <div class="answer">The ability of a chiral compound to rotate the plane of plane‑polarised light.</div>
+</div>
+
+<div class="q-block">
+    <div class="q">7. What are diastereomers? <span class="marks">1</span></div>
+    <div class="answer">Stereoisomers that are not mirror images of each other; they have different physical and chemical properties.</div>
+</div>
+
+<div class="q-block">
+    <div class="q">8. What is sigma bond? <span class="marks">1</span></div>
+    <div class="answer">A covalent bond formed by the end-on (axial) overlap of atomic orbitals, with electron density concentrated along the internuclear axis.</div>
+</div>
+
+<div class="q-block">
+    <div class="q">9. Give the atomic refractivity of Carbon and Hydrogen. <span class="marks">1</span></div>
+    <div class="answer">Atomic refractivity: Carbon (C) = 2.418, Hydrogen (H) = 1.100 (based on specific systems; approximate values).</div>
+</div>
+
+<div class="q-block">
+    <div class="q">10. What is Bravais-lattice? <span class="marks">1</span></div>
+    <div class="answer">The 14 unique three-dimensional arrangements of points (unit cells) that describe the periodic structure of a crystal.</div>
+</div>
+
+<div class="q-block">
+    <div class="q">11. State law of corresponding states. <span class="marks">1</span></div>
+    <div class="answer">Gases at the same reduced temperature and reduced pressure have the same reduced volume and behave similarly.</div>
+</div>
+
+<div class="q-block">
+    <div class="q">12. Define mean free path. <span class="marks">1</span></div>
+    <div class="answer">The average distance traveled by a gas molecule between successive collisions.</div>
+</div>
+
+<hr>
+
+<!-- ==================== SECTION B ==================== -->
+<h2>Section – B <span style="font-weight:400; font-size:1rem;">Inorganic · (2×10 = 20) · answer any two</span></h2>
+
+<!-- Q13 -->
+<div class="q-block">
+    <div class="q">13. (a) Define Electron Affinity? Discuss its variation in the periodic table. <span class="marks">6</span> &nbsp; (b) Write a note on physical significance of ψ and ψ². <span class="marks">4</span></div>
+    <div class="answer">
+        <div class="sub-part"><span class="label">(a) – 6 marks</span>
+            <ul>
+                <li>Electron affinity is the energy released when an electron is added to a neutral gaseous atom (X + e⁻ → X⁻ + energy).</li>
+                <li><strong>Variation across a period (left to right):</strong> becomes more negative (increases) due to decreasing atomic size and increasing effective nuclear charge.</li>
+                <li><strong>Variation down a group:</strong> generally becomes less negative (decreases) because of increased atomic size and shielding.</li>
+                <li>Halogens have the highest electron affinity (most negative) in their periods.</li>
+                <li>Noble gases have positive electron affinity (energy is required).</li>
+                <li>It is related to electronegativity and non-metallic character.</li>
+            </ul>
+        </div>
+        <div class="sub-part"><span class="label">(b) – 4 marks</span>
+            <ul>
+                <li>ψ (wave function) describes the amplitude of the electron wave; it can be positive or negative.</li>
+                <li>ψ² gives the probability density of finding the electron in a given region of space.</li>
+                <li>ψ² is always positive and represents the electron cloud (shape of the orbital).</li>
+                <li>Higher ψ² means higher probability of finding the electron.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Q14 -->
+<div class="q-block">
+    <div class="q">14. (a) What are the factors favoring the formation of ionic compounds? <span class="marks">6</span> &nbsp; (b) Write a note on effective nuclear charge. <span class="marks">4</span></div>
+    <div class="answer">
+        <div class="sub-part"><span class="label">(a) – 6 marks</span>
+            <ul>
+                <li><strong>Low ionisation energy</strong> of the metal (cation formation is easier).</li>
+                <li><strong>High electron affinity</strong> of the non-metal (anion formation is favourable).</li>
+                <li><strong>Large electronegativity difference</strong> between the two atoms (typically > 1.7).</li>
+                <li><strong>High lattice energy</strong> (strong electrostatic attraction between ions) stabilises the crystal.</li>
+                <li><strong>Formation of stable octet</strong> (noble gas configuration) for both ions.</li>
+                <li>These factors collectively make the overall formation of the ionic compound energetically favourable.</li>
+            </ul>
+        </div>
+        <div class="sub-part"><span class="label">(b) – 4 marks</span>
+            <ul>
+                <li>Effective nuclear charge (Zₑff) is the net positive charge felt by an outer electron: Zₑff = Z – σ.</li>
+                <li>Shielding constant (σ) accounts for the repulsion by inner electrons.</li>
+                <li>Zₑff increases across a period (poor shielding by same shell) and decreases down a group.</li>
+                <li>It explains trends in atomic size, ionisation energy, and electronegativity.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Q15 -->
+<div class="q-block">
+    <div class="q">15. (a) Discuss the Born-Haber's cycle. <span class="marks">6</span> &nbsp; (b) State Hund's rule and Aufbau principle with example. <span class="marks">4</span></div>
+    <div class="answer">
+        <div class="sub-part"><span class="label">(a) – 6 marks</span>
+            <ul>
+                <li>Born-Haber cycle is a thermodynamic cycle used to determine lattice energy of ionic compounds.</li>
+                <li>It applies Hess's law to calculate lattice energy from other measurable quantities.</li>
+                <li>Steps: sublimation of metal, ionisation energy, dissociation of diatomic gas, electron affinity, and formation enthalpy.</li>
+                <li>For NaCl: ΔHf = ΔHsub + IE + ½BDE(Cl₂) + EA(Cl) + U (lattice energy).</li>
+                <li>Lattice energy is calculated as: U = ΔHf – (ΔHsub + IE + ½BDE + EA).</li>
+                <li>The cycle confirms that lattice energy is exothermic and very large for ionic solids.</li>
+            </ul>
+        </div>
+        <div class="sub-part"><span class="label">(b) – 4 marks</span>
+            <ul>
+                <li><strong>Hund's rule:</strong> electrons occupy degenerate orbitals singly with parallel spins before pairing. Example: nitrogen (1s² 2s² 2p³) has three unpaired electrons in 2p orbitals.</li>
+                <li><strong>Aufbau principle:</strong> electrons fill orbitals in order of increasing energy (lower energy first). Example: electron configuration of K (Z=19) is 1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹.</li>
+                <li>Both rules help determine the electronic configuration of atoms.</li>
+                <li>They are fundamental to understanding periodic trends.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="section-note">✔️ Answer any two of Q13, Q14, Q15 – all three shown.</div>
+
+<hr>
+
+<!-- ==================== SECTION C ==================== -->
+<h2>Section – C <span style="font-weight:400; font-size:1rem;">Organic · (2×10 = 20) · answer any two</span></h2>
+
+<!-- Q16 -->
+<div class="q-block">
+    <div class="q">16. (a) What is hybridization? Discuss the SP hybridization by taking acetylene as an example. <span class="marks">6</span> &nbsp; (b) What are carbonium ions? Give one method of formation of carbonium ion. <span class="marks">4</span></div>
+    <div class="answer">
+        <div class="sub-part"><span class="label">(a) – 6 marks</span>
+            <ul>
+                <li>Hybridisation is the mixing of atomic orbitals to form new equivalent hybrid orbitals.</li>
+                <li>sp hybridisation involves one s and one p orbital forming two sp hybrid orbitals (linear, 180°).</li>
+                <li>In acetylene (C₂H₂), each carbon uses two sp orbitals: one for σ bond with H, one for σ bond with other C.</li>
+                <li>The two unhybridised p orbitals on each carbon overlap sideways to form two π bonds.</li>
+                <li>This results in a C≡C triple bond (one σ, two π) and a linear molecular structure.</li>
+                <li>Acetylene has a bond angle of 180°.</li>
+            </ul>
+        </div>
+        <div class="sub-part"><span class="label">(b) – 4 marks</span>
+            <ul>
+                <li>Carbonium ions (carbocations) are trivalent carbon species with a positive charge (e.g., tert‑butyl cation).</li>
+                <li>Formation by heterolytic cleavage of a C–X bond: R–X → R⁺ + X⁻.</li>
+                <li>Protonation of an alkene followed by loss of a leaving group also forms carbocations.</li>
+                <li>Stability order: 3° > 2° > 1° > methyl.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Q17 -->
+<div class="q-block">
+    <div class="q">17. (a) Define with example of the following: (i) Elimination reaction. (ii) Hydrolysis. <span class="marks">6</span> &nbsp; (b) Write a note on enantiomers. <span class="marks">4</span></div>
+    <div class="answer">
+        <div class="sub-part"><span class="label">(a) – 6 marks</span>
+            <ul>
+                <li><strong>Elimination reaction:</strong> removal of atoms/groups from adjacent carbons to form a multiple bond. Example: dehydration of ethanol (C₂H₅OH → C₂H₄ + H₂O).</li>
+                <li>Example: dehydrohalogenation of bromoethane (CH₃CH₂Br + KOH → C₂H₄ + KBr + H₂O).</li>
+                <li><strong>Hydrolysis:</strong> breaking of a bond using water. Example: hydrolysis of ester (CH₃COOC₂H₅ + H₂O → CH₃COOH + C₂H₅OH).</li>
+                <li>Example: hydrolysis of amide (CH₃CONH₂ + H₂O → CH₃COOH + NH₃).</li>
+                <li>Both are important functional group transformations.</li>
+                <li>These reactions are widely used in organic synthesis.</li>
+            </ul>
+        </div>
+        <div class="sub-part"><span class="label">(b) – 4 marks</span>
+            <ul>
+                <li>Enantiomers are stereoisomers that are non‑superimposable mirror images of each other.</li>
+                <li>They contain a chiral centre (asymmetric carbon atom).</li>
+                <li>They rotate plane‑polarised light in opposite directions (dextrorotatory and levorotatory).</li>
+                <li>Example: (+) and (–) lactic acid (CH₃CH(OH)COOH).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Q18 -->
+<div class="q-block">
+    <div class="q">18. (a) What is Geometrical isomerism? Explain geometrical isomerism in maleic and fumaric acids. <span class="marks">6</span> &nbsp; (b) Define Bond length and Bond energy with example. <span class="marks">4</span></div>
+    <div class="answer">
+        <div class="sub-part"><span class="label">(a) – 6 marks</span>
+            <ul>
+                <li>Geometrical (cis-trans) isomerism arises due to restricted rotation around a double bond or in ring compounds.</li>
+                <li>Maleic acid is the cis isomer: both –COOH groups on the same side of the double bond.</li>
+                <li>Maleic acid forms intramolecular H‑bonding, has mp 130°C, and is more water soluble.</li>
+                <li>Fumaric acid is the trans isomer: –COOH groups on opposite sides.</li>
+                <li>Fumaric acid has no intramolecular H‑bonding, higher mp (287°C), and is more stable.</li>
+                <li>Interconversion requires breaking the π bond (heat/UV).</li>
+            </ul>
+        </div>
+        <div class="sub-part"><span class="label">(b) – 4 marks</span>
+            <ul>
+                <li><strong>Bond length:</strong> equilibrium distance between nuclei of bonded atoms (in Å). Example: C–C = 1.54 Å.</li>
+                <li><strong>Bond energy:</strong> energy required to break 1 mole of a bond (in kJ/mol). Example: C–C = 347 kJ/mol.</li>
+                <li>Shorter bond length = stronger bond (inverse relationship).</li>
+                <li>Order: C≡C (1.20 Å, 839 kJ/mol) > C=C (1.34 Å, 611 kJ/mol) > C–C.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="section-note">✔️ Answer any two of Q16, Q17, Q18 – all three shown.</div>
+
+<hr>
+
+<!-- ==================== SECTION D ==================== -->
+<h2>Section – D <span style="font-weight:400; font-size:1rem;">Physical · (2×10 = 20) · answer any two</span></h2>
+
+<!-- Q19 -->
+<div class="q-block">
+    <div class="q">19. (a) Discuss the isotherms of CO₂ and hence define the critical constants. <span class="marks">6</span> &nbsp; (b) Explain elements of symmetry. <span class="marks">4</span></div>
+    <div class="answer">
+        <div class="sub-part"><span class="label">(a) – 6 marks</span>
+            <ul>
+                <li>Andrews studied isotherms of CO₂ at different temperatures.</li>
+                <li>Below Tc (31.1°C), CO₂ liquefies under pressure; horizontal portion shows liquid‑gas equilibrium.</li>
+                <li>At critical point, liquid and gas become indistinguishable.</li>
+                <li><strong>Critical temperature (Tc):</strong> temp above which gas cannot be liquefied.</li>
+                <li><strong>Critical pressure (Pc):</strong> pressure at critical point.</li>
+                <li><strong>Critical volume (Vc):</strong> molar volume at critical point. For CO₂: Tc = 31.1°C, Pc = 73 atm.</li>
+            </ul>
+        </div>
+        <div class="sub-part"><span class="label">(b) – 4 marks</span>
+            <ul>
+                <li><strong>Centre of symmetry (i):</strong> if (x,y,z) is present, then (-x,-y,-z) is also present.</li>
+                <li><strong>Plane of symmetry (σ):</strong> a mirror plane that reflects one part onto the other.</li>
+                <li><strong>Axis of symmetry (Cₙ):</strong> rotation by 360°/n gives identical arrangement.</li>
+                <li>These symmetry elements are used to classify molecules and crystals.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Q20 -->
+<div class="q-block">
+    <div class="q">20. (a) Discuss the application of parachor in elucidating the structure of quinone. <span class="marks">6</span> &nbsp; (b) Write a note on Maxwell's distribution of molecular velocities. <span class="marks">4</span></div>
+    <div class="answer">
+        <div class="sub-part"><span class="label">(a) – 6 marks</span>
+            <ul>
+                <li>Parachor (P) = M γ^(1/4) / (ρ₁ – ρ₂), related to molar volume and surface tension.</li>
+                <li>It is an additive and constitutive property (depends on structure).</li>
+                <li>Quinone (C₆H₄O₂) has two possible structures: para‑ and ortho‑benzoquinone.</li>
+                <li>By calculating parachor for each structure (using atomic and group contributions) and comparing with experimental parachor, the correct structure is identified.</li>
+                <li>The experimental parachor matches the para‑benzoquinone structure.</li>
+                <li>Thus, parachor is useful for structure elucidation.</li>
+            </ul>
+        </div>
+        <div class="sub-part"><span class="label">(b) – 4 marks</span>
+            <ul>
+                <li>Maxwell‑Boltzmann distribution gives the distribution of speeds of gas molecules at a given temperature.</li>
+                <li>It is a probability distribution: most molecules have speeds near the most probable speed (u_mp).</li>
+                <li>The curve is asymmetric: rises sharply and tails off gradually.</li>
+                <li>At higher temperatures, the curve broadens and shifts to higher speeds (u_avg, u_rms).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Q21 -->
+<div class="q-block">
+    <div class="q">21. (a) Derive Bragg's equation. <span class="marks">6</span> &nbsp; (b) Calculate the parachor of benzene given surface tension of benzene at 20°C is 29.2 dynes/cm. Given the density of benzene at 20°C is 0.875 g/cc. <span class="marks">4</span></div>
+    <div class="answer">
+        <div class="sub-part"><span class="label">(a) – 6 marks</span>
+            <ul>
+                <li>X‑rays are scattered by crystal planes (atomic layers).</li>
+                <li>Constructive interference occurs when path difference = nλ.</li>
+                <li>Path difference between waves from adjacent planes = 2d sinθ.</li>
+                <li>Bragg's equation: nλ = 2d sinθ, where n = integer (order), d = interplanar spacing, θ = glancing angle.</li>
+                <li>This equation is fundamental for X‑ray diffraction (XRD).</li>
+                <li>It is used to determine crystal structures and d‑spacings.</li>
+            </ul>
+        </div>
+        <div class="sub-part"><span class="label">(b) – 4 marks</span>
+            <ul>
+                <li>Parachor (P) = M γ^(1/4) / (ρ₁ – ρ₂). For a liquid, P = M γ^(1/4) / ρ (since ρ₂ (vapour) ≈ 0).</li>
+                <li>Molar mass of benzene (C₆H₆) = 78 g/mol.</li>
+                <li>γ = 29.2 dynes/cm = 29.2 erg/cm² (since 1 dyne/cm = 1 erg/cm²).</li>
+                <li>P = 78 × (29.2)^(1/4) / 0.875. (29.2)^(1/4) = (29.2)^0.25 ≈ 2.32.</li>
+                <li>Numerator = 78 × 2.32 = 180.96. P = 180.96 / 0.875 ≈ <strong>206.8</strong> (approx).</li>
+                <li>Parachor of benzene is approximately 206.8.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="section-note">✔️ Answer any two of Q19, Q20, Q21 – all three shown.</div>
+
+<hr>
+<div class="footer">
+    <p>📘 VSKUB B.Sc Chemistry (36122) · Nov/Dec 2017 · All questions with marks‑appropriate answers. <br> Section A: 1 mark each (concise). Sections B,C,D: sub‑parts scaled (4 marks → 4 points, 6 marks → 6 points).</p>
+</div>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>
