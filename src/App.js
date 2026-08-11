@@ -6,7 +6,6 @@ import Navi from './navi';
 import Signup from './pages/signup';
 import Loading from './loading';
 import Login from"./pages/login"
-import Sel_question from './admin/sel_question';
 import Sample_qn from './pages/sample_qn';
 import Start_Gm from './admin/start_gm';
 import Delete from './pages/deete';
@@ -37,7 +36,6 @@ import One from "./pages/play/one"
 import Teach_Similar from './pages/play/teach_similar';
 
 
-const User_admin = lazy(()=> import('./admin/add_admins'))
 const Home = lazy(()=> import('./pages/home'))
 // const Login = lazy(()=> import('./pages/login'))
 const Error = lazy(()=> import('./error'))
@@ -328,8 +326,6 @@ const App = () => {
                 <Route path='/admin/questions' element={admin ? <Questionview /> : <LoginAdmin /> } />
                 <Route path='/admin/check' element={admin ? <Qstallcheck/> : <LoginAdmin/> } />
                 <Route path='/admin/balance' element={admin ? <AddBalance /> : <LoginAdmin /> } />
-                <Route path='/admin/add/users' element={admin ? <User_admin /> : <LoginAdmin /> } />
-                <Route path='/admin/select' element={admin ? <Sel_question /> : <LoginAdmin />} />
                 <Route path='/admin/add/reward' element={admin ? <Add_reward_1 /> : <LoginAdmin />} />
                 <Route path='/admin/ticket' element={admin ? <Show_ticket /> : <LoginAdmin/> } />
                 <Route path='/admin/graphs' element={admin ? <DemoBarGraph /> : <LoginAdmin />} />

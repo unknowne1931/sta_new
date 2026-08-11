@@ -58,7 +58,7 @@ const Ten_qst = () => {
 
       localStorage.removeItem("targetSecond");
 
-      // window.location.replace("/play");
+      window.location.replace("/play");
     }
   };
 
@@ -248,6 +248,7 @@ const Ten_qst = () => {
                       setData("Incorrect Answer. Game Over.")
                       setAlert(true)
                       setInfo("")
+                      window.location.href = "/play"
                     } else {
                       setInfo("")
                       setData("Something went Wrong")
