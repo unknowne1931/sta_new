@@ -34,6 +34,7 @@ import Milion from './pages/milion';
 import Ten_qst from './pages/ten_qst';
 import One from "./pages/play/one"
 import Teach_Similar from './pages/play/teach_similar';
+import EnableNotifications from './EnableNotifications';
 
 
 const Home = lazy(()=> import('./pages/home'))
@@ -125,7 +126,7 @@ const DisplayPath = () => {
     setAlert(false);
     removeFromDB("targetSecond");
 
-    api.delete("http://localhost/delete/by/user/id/for/valid/data")
+    api.delete(`${process.env.REACT_APP_API_URL}/delete/by/user/id/for/valid/data`)
       .then((res) => {
         if (res.data.Status === "OK") {
           localStorage.removeItem("valid");
@@ -234,11 +235,16 @@ const App = () => {
     }
   }
 
+  useEffect(()=>{
+    
+  },[])
+
 
 
 
   return (
     <div>
+      {/* <EnableNotifications /> */}
       <center>
         {show ?
           <div>
