@@ -339,7 +339,7 @@ const App = () => {
                 <Route path='/admin/data' element={admin ? <User_Data /> : <LoginAdmin /> } />
                 <Route path='/admin/data/:pass' element={admin ? <User_Data /> : <LoginAdmin /> } />
                 <Route path='/admin/test/:id' element={<Test />} />
-                <Route path='/admin/most/ans' element={<View_Most_Ans />} />
+                <Route path='/admin/most/ans' element={ admin ? <View_Most_Ans /> : <LoginAdmin />} />
 
                 {/* User Routes */}
                 <Route path='*' element={<Error />} />

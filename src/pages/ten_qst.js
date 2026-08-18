@@ -156,10 +156,6 @@ const Ten_qst = () => {
       })
   }
 
-
-
-
-
   return (
     <div
       style={{
