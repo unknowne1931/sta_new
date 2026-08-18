@@ -75,7 +75,7 @@ const Claimdreques = () => {
                     try{
                       setAlert(false)
                       e.preventDefault();
-                      axios.delete(`${process.env.REACT_APP_API_URL}/find/by/id/and/delete/req/coins/${user.data._id}`)
+                      apiAdmin.delete(`${process.env.REACT_APP_API_URL}/find/by/id/and/delete/req/coins/${user.data._id}`)
                       .then(res =>{
                           if(res.data.Status === "OK"){
                               GetPending()
