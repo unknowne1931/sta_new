@@ -832,7 +832,7 @@ select {
 
 
 .account_histor-page-main-cnt-01 {
-  width: 99%;
+  width: 95%;
   height: auto;
   border-radius: 5px;
   overflow: scroll;
@@ -6230,3 +6230,22 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #0015d672;
 }
 
+.account_histor-page-main-cnt-01_h2_01{
+  text-align: start;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  font-size: 15px;
+  margin-left: 4%;
+}
+
+.modal-content_img_cnt{
+  width: 90%;
+  height: auto;
+  padding: 10px;
+  object-fit: cover;
+}
+
+.modal-content_img_cnt img{
+  width: 100%;
+  height: auto;
+}

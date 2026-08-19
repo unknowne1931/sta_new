@@ -35,6 +35,7 @@ import Ten_qst from './pages/ten_qst';
 import One from "./pages/play/one"
 import Teach_Similar from './pages/play/teach_similar';
 import EnableNotifications from './EnableNotifications';
+import Report from './report';
 
 
 const Home = lazy(()=> import('./pages/home'))
@@ -292,6 +293,7 @@ const App = () => {
                 <Route path='/refer' element={token ? <Refer /> : <Login />} />
                 <Route path='/get/start' element={token ? <Play /> : <Get_start />  } />
                 <Route path='/similar' element={<One />} />
+                <Route path='/report' element={token ? <Report /> : <Login />} /> 
                 {/* <Route path='/milion' element={ token ? <Ten_qst /> : <Login /> } /> */}
                 {/* <Route path='/milion' element={<Ten_qst />} /> */}
 

@@ -20,6 +20,7 @@ const Ten_qst = () => {
   const [txt, setText] = useState([])
   const [typp, setTypp] = useState("")
 
+
   const [remaining, setRemaining] = useState(0);
 
   const intervalRef = useRef(null);
@@ -73,7 +74,6 @@ const Ten_qst = () => {
     api.get("http://192.168.31.133/milionear/game/get/qst/no/to/play")
       .then(res => {
         if (res.data.Status === "OUT") {
-          
           setText(res.data.Status)
           // setData("Your game is over.")
           // setAlert(true)
@@ -103,9 +103,8 @@ const Ten_qst = () => {
         } else if (res.data.Data) {
           if (res.data.Data) {
             setInfo(res.data.Data);
-
+            localStorage.setItem("pre_img", res.data.Data.img)
             const savedTarget = localStorage.getItem("targetSecond");
-
             if (!savedTarget) {
               const target =
                 Date.now() + Number(res.data.Data.seconds) * 1000;
@@ -145,6 +144,7 @@ const Ten_qst = () => {
         if (res.data.Status === "Credit_Quit") {
           setData("Game exited. Rewards have been added to your account.")
           setAlert(true)
+          window.location.replace("/cart")
         } else if (res.data.Status === "No-Game") {
           setText("OUT")
         } else if (res.data.Status === "Continue") {
@@ -217,6 +217,8 @@ const Ten_qst = () => {
             {info?.options?.map((data, i) => {
 
               function submit_ans() {
+                localStorage.setItem("ans" , data)
+                stopCountdown()
                 clearInterval(intervalRef.current);
                 localStorage.removeItem("targetSecond");
                 setRemaining(0);
@@ -244,7 +246,11 @@ const Ten_qst = () => {
                       setData("Incorrect Answer. Game Over.")
                       setAlert(true)
                       setInfo("")
-                      window.location.href = "/play"
+                      setText("OUT")
+                      stopCountdown()
+                      localStorage.removeItem("targetSecond")
+                      
+                      // window.location.href = "/play"
                     } else {
                       setInfo("")
                       setData("Something went Wrong")
@@ -323,6 +329,8 @@ const Ten_qst = () => {
 
       {txt === "OUT" &&
 
+      
+
         <>
           <div style={{ height: "50px" }}>
 
@@ -377,6 +385,7 @@ const Ten_qst = () => {
 
         </>
       }
+
 
 
 
