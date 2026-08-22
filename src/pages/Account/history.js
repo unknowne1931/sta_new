@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import api from '../api';
 import Loading from '../../loading';
 import { getFromDB, saveToDB } from '../../db';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const History = () => {
   const user = localStorage.getItem("user");
@@ -211,13 +213,13 @@ const History = () => {
                           <span className='account_histor-page-main-cnt-01-sub-cnt-01_01_sub_div_deb'>
 
                             {item.tp === "Rupee" && (
-                              <span>+ ₹</span>
+                              <span>- {item.rupee} ₹</span>
                             )}
 
-                            {item.rupee}
+                            
 
                             {item.tp === "Stars" && (
-                              <span> Stars</span>
+                              <span>- {item.rupee} <FontAwesomeIcon icon={faStar} /></span>
                             )}
 
                           </span>
@@ -231,14 +233,15 @@ const History = () => {
 
                           <span className='account_histor-page-main-cnt-01-sub-cnt-01_01_sub_div_cred'>
 
-                            {item.tp === "Rupee"
-                              ? "+ ₹"
-                              : "Stars"
-                            }
+                           {item.tp === "Rupee" && (
+                              <span>+ {item.rupee} ₹</span>
+                            )}
 
-                            {" "}
+                            
 
-                            {item.rupee}
+                            {item.tp === "Stars" && (
+                              <span>+ {item.rupee} <FontAwesomeIcon icon={faStar} /></span>
+                            )}
 
                           </span>
 
