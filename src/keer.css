@@ -4573,7 +4573,7 @@
 .data-page-main-cnt-02-sub-01 h3{
     text-align: start;
     font-size: 20px;
-    margin-left: 1%;
+    margin-left:3%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -4581,7 +4581,7 @@
     width: 95%;
     height: auto;
     padding: 10px;
-    border: 1px solid white;
+    border: 1px solid rgb(255, 255, 255);
     border-top-right-radius: 50px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 50px;
@@ -4600,4 +4600,5 @@
     font-size: 16px;
     font-family: 'Courier New', Courier, monospace;
 }
+
 
