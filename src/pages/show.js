@@ -54,6 +54,8 @@ const ShowPuzzle = ({ typ }) => {
       .then(res => {
         if (res.data.Status === "OK") {
           window.location.reload()
+        }else if(res.data.Status === "BAD"){
+          alert("Something went Wrong")
         } else {
           console.log("Error Starting Game")
         }

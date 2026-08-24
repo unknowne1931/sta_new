@@ -76,16 +76,14 @@ const DisplayPath = () => {
   const [data, setData] = useState([]);
   const [alert, setAlert] = useState(false);
 
-  useEffect(()=>{
-    api.get("http://localhost/print/user/data")
-    .then(res=>
-      res.json()
-    ).then(res=>{
-      console.log(res.data)
-    }).catch((error)=>{
-      console.log(error)
-    })
-  },[])
+  // useEffect(()=>{
+  //   api.get("http://localhost/print/user/data")
+  //   .then(res=>{
+  //     console.log(res.data)
+  //   }).catch((error)=>{
+  //     console.log(error)
+  //   })
+  // },[])
 
   // useEffect(()=>{
   //   if(!(location.pathname) "/start" && user){
