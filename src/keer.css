@@ -1736,6 +1736,9 @@
 }
 
 .playyy_main {
+    width: 100%;
+    min-height: 100vh;
+    max-height: auto;
     position: relative;
     background-color: #035b83;
 }

@@ -20,6 +20,10 @@ const Popup = ({ data, val }) => {
     if (data.includes("Incorrect Answer. Game Over.")) {
       const data = localStorage.getItem("pre_img")
     }
+
+    if(data.includes("You Have Completed the Game!")){
+      window.location.replace("/cart")
+    }
   };
 
   return (

@@ -26,6 +26,10 @@ const Loading = () => {
                     <h1 className='loading_page-h1-01'><span className="">o</span></h1>
                 </div>
             </div>
+
+            <h1 className='span-6' style={{color : "white", fontFamily : "monospace", fontSize : "20px"}} >Powerd by AVI</h1>
+
+
             <div className='loading_page_img-cnt-01'>
                 <img src={img1} alt='image' />
             </div>
